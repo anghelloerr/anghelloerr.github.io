@@ -1,0 +1,626 @@
+{
+  "meta": {
+    "title": "Anghello Rodríguez | Research & Engineering Portfolio",
+    "description": "Portafolio de Anghello Eduardo Rodríguez Risco: Ingeniería Mecatrónica, investigación, robótica espacial, AOCS, control avanzado y manufactura digital.",
+    "language": "es",
+    "updated": "2026-09-25",
+    "source": "CV Anghello Rodriguez.pdf · 3 páginas · archivo proporcionado por el autor",
+    "siteUrl": "https://anghelloerr.github.io/"
+  },
+  "profile": {
+    "name": "Anghello Eduardo Rodríguez Risco",
+    "shortName": "Anghello Rodríguez",
+    "location": "Lima, Perú",
+    "headline": "Mecatrónica. Investigación. Desarrollo.",
+    "intro": "Investigo y desarrollo sistemas mecatrónicos, con énfasis en control avanzado, robótica y aplicaciones espaciales. Conecto el diseño, la simulación y la manufactura digital con la investigación aplicada.",
+    "bio": "Estoy concluyendo mis estudios de Ingeniería Mecatrónica en USIL, con mención en Robótica Industrial, y el doble grado en Business Administration en San Ignacio University. Mi formación se complementa con una especialización en Sistemas Mecatrónicos en TECSUP. Trabajo con equipos multidisciplinarios en el desarrollo de prototipos y soy coautor de un artículo científico en Biomimetics.",
+    "portrait": "assets/images/anghello-rodriguez.png",
+    "portraitAlt": "Retrato de Anghello Eduardo Rodríguez Risco",
+    "cv": "assets/documents/CV-Anghello-Rodriguez.pdf",
+    "links": [
+      {
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com/in/anghelloerr",
+        "icon": "linkedin"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/anghelloerr",
+        "icon": "github"
+      },
+      {
+        "label": "ORCID",
+        "url": "https://orcid.org/0009-0009-0931-8086",
+        "icon": "orcid"
+      },
+      {
+        "label": "Email",
+        "url": "mailto:anghello.rodriguez@ieee.org",
+        "icon": "mail"
+      }
+    ],
+    "email": "anghello.rodriguez@ieee.org",
+    "secondaryEmail": "anghellorodriguez@gmail.com",
+    "certificatesUrl": "https://bit.ly/Certificados_cv",
+    "current": [
+      {
+        "institution": "ESAN R&D Labs",
+        "role": "I+D · FabLab",
+        "anchor": "exp-esan"
+      },
+      {
+        "institution": "Chasqui 2",
+        "role": "Investigación · AOCS",
+        "anchor": "exp-chasqui"
+      },
+      {
+        "institution": "INTINAUTA / PachaLab",
+        "role": "Robótica espacial",
+        "anchor": "exp-intinauta"
+      }
+    ]
+  },
+  "research": [
+    {
+      "title": "Space Robotics & AOCS",
+      "text": "Control de actitud y órbita en Chasqui 2; desarrollo y pruebas de prototipos de robótica espacial en PachaLab.",
+      "tags": [
+        "Chasqui 2",
+        "PachaLab"
+      ],
+      "anchor": "aerospace"
+    },
+    {
+      "title": "Autonomous Robotics",
+      "text": "Enjambre de robots, robótica móvil y de servicio; experiencia en cuadrúpedos, veleros autónomos y manipuladores.",
+      "tags": [
+        "ESAN",
+        "USIL / IEEE"
+      ],
+      "anchor": "projects"
+    },
+    {
+      "title": "Advanced Control Systems",
+      "text": "Proyectos de control clásico, moderno, avanzado e inteligente, junto con sistemas bioinspirados.",
+      "tags": [
+        "Control",
+        "Simulación"
+      ],
+      "anchor": "skills"
+    },
+    {
+      "title": "Biomedical Mechatronics & Bionics",
+      "text": "Interés en biomecánica, bioinstrumentación y biónica; investigación aplicada en impresión 3D con biomateriales.",
+      "tags": [
+        "Biomateriales",
+        "Fundamentos"
+      ],
+      "anchor": "biomedical"
+    },
+    {
+      "title": "Digital Manufacturing",
+      "text": "Diseño y fabricación de prototipos mediante CAD/CAE/CAM, mecanizado CNC, corte láser e impresión 3D.",
+      "tags": [
+        "FabLab",
+        "Prototipado"
+      ],
+      "anchor": "projects"
+    },
+    {
+      "title": "Applied AI",
+      "text": "Visión por computadora y seguimiento de objetos, con formación complementaria en Inteligencia Artificial y Data Science.",
+      "tags": [
+        "Visión",
+        "Data Science"
+      ],
+      "anchor": "project-vision"
+    }
+  ],
+  "publication": {
+    "title": "Mechatronics Design of a Clinostat Agriculture Space System for Biomimetic Phyto-Growth in Microgravity (Phyto-G) and 3D-Motion Computer Simulation on Hydroponic Environment",
+    "authors": [
+      "Ricardo Barreto",
+      "Jose Cornejo",
+      "Mariela Vargas",
+      "Nicolas Gastello",
+      "Anghello Rodriguez"
+    ],
+    "year": 2026,
+    "date": "14 de mayo de 2026",
+    "journal": "Biomimetics",
+    "publisher": "MDPI",
+    "volume": "11",
+    "issue": "5",
+    "article": "340",
+    "doi": "10.3390/biomimetics11050340",
+    "url": "https://doi.org/10.3390/biomimetics11050340",
+    "summary": "Investigación en agricultura espacial, biomimética y sistemas mecatrónicos, centrada en el diseño de un clinostato y la simulación computacional de movimiento en un entorno hidropónico.",
+    "contribution": "Colaboración de investigación en BETTA Tech: diseño CAD mecánico, documentación de ingeniería, soporte CAE/FEA relacionado con el movimiento y coordinación con un equipo multidisciplinario.",
+    "tags": [
+      "Agricultura espacial",
+      "Biomimética",
+      "Simulación"
+    ],
+    "source": "Título, DOI y coautoría: CV, p. 1. Autores, volumen, número y fecha: índice editorial de MDPI Biomimetics, 11(5)."
+  },
+  "projects": [
+    {
+      "id": "chasqui",
+      "code": "01 / SPACE",
+      "title": "Chasqui 2 — AOCS",
+      "institution": "Chasqui 2",
+      "period": "Jul. 2026 – actualidad",
+      "category": "Aeroespacial",
+      "description": "Investigación en el Sistema de Control de Actitud y Órbita del proyecto Chasqui 2.",
+      "contribution": "Colaboración en desarrollo y pruebas del AOCS; documentación, verificación de datos e investigación para apoyar la integración de subsistemas.",
+      "tags": [
+        "AOCS",
+        "Sistemas satelitales"
+      ],
+      "result": null,
+      "image": null,
+      "url": null,
+      "repository": null,
+      "source": "CV, p. 1",
+      "evidence": []
+    },
+    {
+      "id": "pachalab",
+      "code": "02 / SPACE",
+      "title": "PachaLab — robótica espacial",
+      "institution": "INTINAUTA Research Center",
+      "period": "Jul. 2026 – actualidad",
+      "category": "Aeroespacial",
+      "description": "Desarrollo y pruebas de prototipos de robótica para diferentes hábitats espaciales.",
+      "contribution": "Colaboración en el desarrollo y las pruebas de prototipos de robótica espacial dentro de PachaLab.",
+      "tags": [
+        "Robótica espacial",
+        "Prototipos"
+      ],
+      "result": null,
+      "image": null,
+      "url": null,
+      "repository": null,
+      "source": "CV, p. 1",
+      "evidence": []
+    },
+    {
+      "id": "swarm",
+      "code": "03 / ROBOTICS",
+      "title": "Enjambre de robots",
+      "institution": "ESAN R&D Labs",
+      "period": "Desde abr. 2026 · etapa en ESAN",
+      "category": "Robótica",
+      "description": "Investigación aplicada en enjambre de robots dentro del laboratorio de robótica.",
+      "contribution": "Participación desde el rol de practicante de Investigación y Desarrollo, integrando el desarrollo de prototipos con la investigación aplicada.",
+      "tags": [
+        "Robótica",
+        "I+D"
+      ],
+      "result": null,
+      "image": null,
+      "url": null,
+      "repository": null,
+      "source": "CV, p. 1",
+      "evidence": []
+    },
+    {
+      "id": "biomaterials",
+      "code": "04 / FABRICATION",
+      "title": "Impresión 3D con biomateriales",
+      "institution": "ESAN R&D Labs / FabLab",
+      "period": "Desde abr. 2026 · etapa en ESAN",
+      "category": "Manufactura",
+      "description": "Investigación aplicada que conecta diseño, manufactura digital y biomateriales.",
+      "contribution": "Desarrollo de prototipos y soluciones tecnológicas en el FabLab, en la línea de impresión 3D con biomateriales.",
+      "tags": [
+        "Biomateriales",
+        "Impresión 3D"
+      ],
+      "result": null,
+      "image": null,
+      "url": null,
+      "repository": null,
+      "source": "CV, p. 1",
+      "evidence": []
+    },
+    {
+      "id": "quadruped",
+      "code": "05 / ROBOTICS",
+      "title": "Cuadrúpedo para terrenos complejos",
+      "institution": "IEEE USIL",
+      "period": "Presentado en CITIIC 2023",
+      "category": "Robótica",
+      "description": "Stability and mobility of a quadruped robot for transporting objects in challenging terrain.",
+      "contribution": "Desarrollo e investigación de un cuadrúpedo orientado al transporte de objetos en terrenos desafiantes.",
+      "tags": [
+        "Cuadrúpedo",
+        "Movilidad"
+      ],
+      "result": "Trabajo presentado en CITIIC 2023, según el CV.",
+      "image": null,
+      "url": null,
+      "repository": null,
+      "source": "CV, p. 2",
+      "evidence": []
+    },
+    {
+      "id": "saildrone",
+      "code": "06 / ROBOTICS",
+      "title": "Velero autónomo — Saildrone",
+      "institution": "GIIM / USIL",
+      "period": "Etapa de investigación USIL · 2022–2025",
+      "category": "Robótica",
+      "description": "Desarrollo y construcción de un velero autónomo no tripulado.",
+      "contribution": "Desarrollo y construcción en el Grupo de Investigación de Ingeniería Mecatrónica, para la primera regata de veleros autónomos no tripulados organizada por la Marina de Guerra del Perú.",
+      "tags": [
+        "Saildrone",
+        "Sistemas autónomos"
+      ],
+      "result": null,
+      "image": null,
+      "url": null,
+      "repository": null,
+      "source": "CV, p. 2",
+      "evidence": []
+    },
+    {
+      "id": "service",
+      "code": "07 / ROBOTICS",
+      "title": "Robot de servicio para estudiantes",
+      "institution": "USIL",
+      "period": "Etapa de investigación USIL · 2022–2025",
+      "category": "Robótica",
+      "description": "Robot guía de apoyo a nuevos estudiantes en el entorno universitario.",
+      "contribution": "Desarrollo de un robot de servicio guía como proyecto de robótica.",
+      "tags": [
+        "Robótica de servicio",
+        "Prototipado"
+      ],
+      "result": null,
+      "image": null,
+      "url": null,
+      "repository": null,
+      "source": "CV, p. 2",
+      "evidence": []
+    },
+    {
+      "id": "vision",
+      "code": "08 / VISION",
+      "title": "Visión por computadora — OC-SORT",
+      "institution": "USIL",
+      "period": "Etapa de investigación USIL · 2022–2025",
+      "category": "IA y control",
+      "description": "Proyecto de visión por computadora referido en el CV como “Observation-Centric SORT: Rethinking SORT for Robust Multi-Object Tracking”.",
+      "contribution": "Participación en el proyecto de visión por computadora mencionado en el CV. Alcance de la implementación y contribución individual: por completar.",
+      "tags": [
+        "Visión por computadora",
+        "Seguimiento de objetos"
+      ],
+      "result": null,
+      "image": null,
+      "url": null,
+      "repository": null,
+      "source": "CV, p. 2. No se atribuye autoría del artículo OC-SORT.",
+      "evidence": []
+    },
+    {
+      "id": "flanders",
+      "code": "09 / ENGINEERING",
+      "title": "Prototipo de perforadora minera",
+      "institution": "Flanders Electric Perú",
+      "period": "Dic. 2024 – mar. 2025",
+      "category": "Manufactura",
+      "description": "Prototipo a escala que integra diseño mecánico, manufactura y electrónica.",
+      "contribution": "Diseño y desarrollo de un prototipo para evaluar condiciones de operación y apoyar la optimización del diseño real, manteniendo la confidencialidad técnica.",
+      "tags": [
+        "Diseño mecánico",
+        "Integración"
+      ],
+      "result": "El prototipo se utilizó en demostraciones corporativas.",
+      "image": null,
+      "url": null,
+      "repository": null,
+      "source": "CV, p. 2",
+      "evidence": []
+    }
+  ],
+  "experience": [
+    {
+      "id": "chasqui",
+      "period": "Jul. 2026 – actualidad",
+      "institution": "Chasqui 2",
+      "role": "Investigador del Sistema de Control de Actitud y Órbita (AOCS)",
+      "location": "Lima · híbrido",
+      "current": true,
+      "text": "Desarrollo y pruebas del AOCS; documentación, verificación de datos y tareas de investigación para apoyar la integración de subsistemas."
+    },
+    {
+      "id": "intinauta",
+      "period": "Jul. 2026 – actualidad",
+      "institution": "INTINAUTA Research Center",
+      "role": "Investigador de Robótica Espacial — PachaLab",
+      "location": "Lima · híbrido",
+      "current": true,
+      "text": "Colaboración en el desarrollo y las pruebas de prototipos de robótica espacial aplicados a diferentes hábitats espaciales."
+    },
+    {
+      "id": "esan",
+      "period": "Abr. 2026 – actualidad",
+      "institution": "ESAN R&D Labs / FabLab",
+      "role": "Practicante en Investigación y Desarrollo",
+      "location": "Lima, Perú",
+      "current": true,
+      "text": "Desarrollo de prototipos y soluciones tecnológicas con diseño, manufactura digital e investigación aplicada en impresión 3D con biomateriales y enjambre de robots."
+    },
+    {
+      "id": "betta",
+      "period": "Feb. – may. 2026",
+      "institution": "BETTA College of Science and Technology",
+      "role": "Colaborador de investigación · coautor",
+      "location": "Remoto",
+      "current": false,
+      "text": "Investigación mecatrónica-aeroespacial: diseño CAD mecánico, documentación, soporte CAE/FEA relacionado con el movimiento y colaboración multidisciplinaria. Coautor del artículo publicado en Biomimetics."
+    },
+    {
+      "id": "inbestiga",
+      "period": "Dic. 2025 – mar. 2026",
+      "institution": "INBESTIGA",
+      "role": "Investigador académico junior",
+      "location": "Lima · híbrido",
+      "current": false,
+      "text": "Investigación académica y asesoría metodológica en proyectos de pregrado y posgrado, con énfasis en calidad metodológica y acompañamiento integral."
+    },
+    {
+      "id": "betta-teaching",
+      "period": "Dic. 2025 – feb. 2026",
+      "institution": "BETTA College of Science and Technology",
+      "role": "Profesor investigador · Ingeniería de diseño industrial",
+      "location": "Remoto",
+      "current": false,
+      "text": "Desarrollo de contenidos académicos y supervisión de proyectos de diseño de productos tecnológicos con enfoque ingenieril. También figura docencia en diseño electrónico y circuitos; su periodo específico está pendiente de precisar."
+    },
+    {
+      "id": "fatima",
+      "period": "Ago. – oct. 2025",
+      "institution": "Colegio Bilingüe Santa María de Fátima",
+      "role": "Docente de Robótica y Matemáticas",
+      "location": "Lima, Perú",
+      "current": false,
+      "text": "Docencia en primaria y secundaria, fomentando proyectos tecnológicos y el interés por las carreras STEM."
+    },
+    {
+      "id": "autotec",
+      "period": "Mar. – jun. 2025",
+      "institution": "AUTOTEC Perú",
+      "role": "Practicante Integrador Industrial",
+      "location": "Lima, Perú",
+      "current": false,
+      "text": "Programación y pruebas de PLC Siemens, Allen-Bradley y Delta; diseño básico HMI/SCADA y planos con EPLAN. Integración de variadores, instrumentación y redes Profinet, Modbus TCP/RTU, Ethernet/IP y Profibus. Documentación técnica y participación como co-instructor de capacitaciones PLC."
+    },
+    {
+      "id": "flanders",
+      "period": "Dic. 2024 – mar. 2025",
+      "institution": "Flanders Electric Perú",
+      "role": "Diseñador mecánico autónomo",
+      "location": "Lima, Perú",
+      "current": false,
+      "text": "Diseño y desarrollo de una perforadora minera a escala, integrando mecánica, manufactura y electrónica. Prototipo utilizado en demostraciones corporativas."
+    },
+    {
+      "id": "usil",
+      "period": "Ene. 2022 – 2025",
+      "institution": "Universidad San Ignacio de Loyola",
+      "role": "Investigador de Proyectos Tecnológicos",
+      "location": "Lima, Perú",
+      "current": false,
+      "text": "Proyectos de visión por computadora, robótica de servicio, control clásico, moderno, avanzado e inteligente. Desarrollo en cuadrúpedos, veleros autónomos y manipuladores KUKA, UR y DOBOT. Investigación en simulación de sistemas dinámicos no lineales en el Grupo de Investigación en Física."
+    }
+  ],
+  "aerospace": {
+    "intro": "Sistemas de control y robótica para aplicaciones espaciales.",
+    "text": "Mi experiencia reúne la investigación en AOCS de Chasqui 2, el desarrollo de prototipos de robótica espacial en PachaLab y la colaboración mecatrónica-aeroespacial en BETTA Tech.",
+    "skills": [
+      "AOCS",
+      "Robótica espacial",
+      "Fundamentos de GNC",
+      "OpenRocket",
+      "Mecánica orbital",
+      "Aviónica",
+      "Sistemas satelitales",
+      "Integración de subsistemas"
+    ]
+  },
+  "biomedical": {
+    "intro": "Del prototipado con biomateriales a la mecatrónica biomédica.",
+    "text": "La investigación en impresión 3D con biomateriales en ESAN conecta mi experiencia de manufactura digital con este campo. Mi CV también recoge conocimientos en biomimética y fundamentos de biomecánica, bioinstrumentación y control biomolecular.",
+    "skills": [
+      "Fundamentos de biomecánica",
+      "Bioinstrumentación",
+      "Señales EMG, ECG y EOG",
+      "Biomimética",
+      "Biomateriales",
+      "Prótesis biónicas y exoesqueletos",
+      "Fundamentos de control biomolecular"
+    ],
+    "note": "Área de conocimientos e interés. Los proyectos específicos de prótesis, exoesqueletos o dispositivos biomédicos están pendientes de documentar."
+  },
+  "teaching": [
+    {
+      "title": "Ingeniería de diseño industrial",
+      "institution": "BETTA College",
+      "period": "Dic. 2025 – feb. 2026",
+      "text": "Contenidos académicos y supervisión de proyectos de diseño de productos tecnológicos."
+    },
+    {
+      "title": "Diseño electrónico y circuitos",
+      "institution": "BETTA College",
+      "period": "Periodo por completar",
+      "text": "Enseñanza y asesoría en análisis, diseño y aplicación de circuitos electrónicos en proyectos académicos."
+    },
+    {
+      "title": "Robótica y Matemáticas",
+      "institution": "Santa María de Fátima",
+      "period": "Ago. – oct. 2025",
+      "text": "Docencia en primaria y secundaria, con proyectos tecnológicos y orientación STEM."
+    },
+    {
+      "title": "Automatización con PLC",
+      "institution": "AUTOTEC Perú",
+      "period": "Mar. – jun. 2025 · etapa en AUTOTEC",
+      "text": "Co-instructor en capacitaciones de PLC Siemens S7-1200, LOGO! y Delta."
+    }
+  ],
+  "education": [
+    {
+      "institution": "Universidad San Ignacio de Loyola",
+      "short": "USIL",
+      "degree": "Ingeniería Mecatrónica",
+      "period": "Mar. 2021 – 2026",
+      "detail": "Mención en Robótica Industrial. Estudios en curso; 9.º ciclo según el CV.",
+      "status": "En curso"
+    },
+    {
+      "institution": "San Ignacio University",
+      "short": "SIU",
+      "degree": "Business Administration",
+      "period": "Mar. 2021 – 2026",
+      "detail": "Programa de doble grado con SIU–Miami. Condición de estudiante según el CV.",
+      "status": "En curso"
+    }
+  ],
+  "training": [
+    {
+      "institution": "Platzi",
+      "title": "Especialización en Inteligencia Artificial y Data Science",
+      "period": "Ene. 2026"
+    },
+    {
+      "institution": "Tecnológico de Monterrey",
+      "title": "Especialización en Gestión de Proyectos",
+      "period": "Ene. 2025"
+    },
+    {
+      "institution": "TECSUP",
+      "title": "Especialización en Sistemas Mecatrónicos",
+      "period": "Jun. 2023 – mar. 2024"
+    },
+    {
+      "institution": "Colegio de Economistas de Lima",
+      "title": "Especialización en Ciencia de Datos para el Mantenimiento Predictivo",
+      "period": "Ene. – feb. 2023"
+    },
+    {
+      "institution": "Universidad San Ignacio de Loyola",
+      "title": "Programa Ejecutivo Trading e Inversiones",
+      "period": "Nov. 2022 – feb. 2023"
+    },
+    {
+      "institution": "Universidad Nacional Agraria La Molina",
+      "title": "Programa Integral en Excel – 2019",
+      "period": "Jul. – ago. 2020 (fechas del CV)"
+    },
+    {
+      "institution": "Británico",
+      "title": "Inglés · CEFR B2",
+      "period": "Fecha no indicada en el CV"
+    },
+    {
+      "institution": "Goethe-Institut Perú",
+      "title": "Alemán · CEFR A2",
+      "period": "Fecha no indicada en el CV"
+    }
+  ],
+  "leadership": [
+    {
+      "institution": "IEEE Peru Section",
+      "role": "Section Student Representative (SSR)",
+      "period": "Ene. 2025 – actualidad",
+      "text": "Representación estudiantil; apoyo y gestión de RNR 2025 e INTERCON 2025."
+    },
+    {
+      "institution": "IEEE USIL Student Branch",
+      "role": "Chair",
+      "period": "Ene. – dic. 2024",
+      "text": "Organización de eventos, gestión de recursos y participación en la gestión de INTERCON 2024."
+    },
+    {
+      "institution": "IEEE USIL AESS SBC",
+      "role": "Chair",
+      "period": "Ene. – dic. 2024",
+      "text": "Impulso de eventos y proyectos aeroespaciales, alianzas académicas y representación en conferencias."
+    },
+    {
+      "institution": "IEEE USIL RAS SBC",
+      "role": "Chair",
+      "period": "Ene. – dic. 2023",
+      "text": "Impulso de proyectos y eventos de robótica, alianzas académicas y representación en conferencias."
+    }
+  ],
+  "skills": [
+    {
+      "title": "Control y simulación",
+      "items": [
+        "Control clásico, moderno, avanzado e inteligente",
+        "Sistemas bioinspirados",
+        "MATLAB",
+        "Simulink"
+      ]
+    },
+    {
+      "title": "Programación",
+      "items": [
+        "Python",
+        "C / C++",
+        "Ladder (LAD)",
+        "FBD"
+      ]
+    },
+    {
+      "title": "Robótica e integración",
+      "items": [
+        "Robótica móvil y manipuladores",
+        "ESP32",
+        "Raspberry Pi",
+        "NVIDIA Jetson",
+        "Sensores y actuadores",
+        "KUKA / UR / DOBOT"
+      ]
+    },
+    {
+      "title": "CAD / CAE / CAM y electrónica",
+      "items": [
+        "Fusion 360",
+        "Siemens NX",
+        "SolidWorks",
+        "ANSYS",
+        "MasterCAM",
+        "Altium Designer",
+        "KiCad"
+      ]
+    },
+    {
+      "title": "Automatización industrial",
+      "items": [
+        "PLCs Siemens / Allen-Bradley / Delta",
+        "HMI / SCADA",
+        "EPLAN",
+        "Profinet",
+        "Modbus TCP/RTU",
+        "Ethernet/IP",
+        "Profibus"
+      ]
+    },
+    {
+      "title": "Manufactura y gestión",
+      "items": [
+        "CNC · Carvera / ShopBot",
+        "Corte láser · Trotec",
+        "Impresión 3D FDM",
+        "MS Project",
+        "Excel / VBA",
+        "Power BI"
+      ]
+    }
+  ]
+}
