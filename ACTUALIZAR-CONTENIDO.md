@@ -4,13 +4,13 @@ Sí puedes actualizar tu biografía, experiencia, formación y CV, añadir proye
 
 Esta versión se edita desde los archivos del repositorio en GitHub. No tiene todavía un panel privado con inicio de sesión y botón de subir publicaciones. Se puede incorporar un editor visual más adelante, conectándolo al repositorio y configurando su acceso.
 
-## La primera vez
+## Tu sitio y la publicación automática
 
-Publica el sitio siguiendo la opción **publicación automática** del [README](README.md). Debe quedar seleccionado **GitHub Actions** en Settings → Pages. Una vez configurado, cada cambio guardado en la rama `main` reconstruye y publica la web.
+Tu web está en **https://anghelloerr.github.io/** y sus archivos están en [tu repositorio](https://github.com/anghelloerr/anghelloerr.github.io). GitHub Actions está seleccionado en Settings → Pages. Cada cambio guardado en la rama `main` reconstruye y publica la web. No necesitas volver a configurar el alojamiento.
 
 ## Cambiar textos o datos desde GitHub
 
-1. Abre tu repositorio y el archivo `content.json`.
+1. Abre [content.json en tu repositorio](https://github.com/anghelloerr/anghelloerr.github.io/blob/main/content.json).
 2. Pulsa el lápiz para editar. Localiza el texto que quieres actualizar y modifícalo conservando comillas, comas y corchetes.
 3. Guarda con **Commit changes** en `main`.
 4. Comprueba que **Publicar portfolio en GitHub Pages**, en la pestaña Actions, finalice correctamente. Después abre tu web y actualiza la página.

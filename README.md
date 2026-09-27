@@ -4,6 +4,10 @@ Web académica estática, en español, inspirada en la organización de Hugo Aca
 
 ## Ver la web
 
+Web pública: **https://anghelloerr.github.io/**.
+
+Repositorio: [anghelloerr/anghelloerr.github.io](https://github.com/anghelloerr/anghelloerr.github.io). Para actualizar datos, fotos o evidencias, consulta [ACTUALIZAR-CONTENIDO.md](ACTUALIZAR-CONTENIDO.md).
+
 Abre `index.html` en tu navegador. La web está generada y no necesita instalación, conexión a un servicio ni compilación para verse. Los enlaces externos requieren internet.
 
 Para previsualizarla con un servidor local, instala Node.js 20 o posterior y ejecuta dentro de esta carpeta:
@@ -16,9 +20,9 @@ Abre `http://127.0.0.1:4173`. Detén la vista previa con `Ctrl+C`.
 
 ## Publicar gratis en GitHub Pages
 
-La estructura está preparada para un repositorio nuevo. No se ha creado, modificado ni publicado ningún repositorio remoto. GitHub Pages admite sitios estáticos gratuitos desde repositorios públicos con GitHub Free. [Documentación oficial](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site).
+Este portfolio utiliza el repositorio público `anghelloerr/anghelloerr.github.io`, la rama `main` y GitHub Actions como origen de publicación. Cada cambio guardado en `main` genera y publica la web automáticamente. Puedes consultar el resultado de cada actualización en [Actions](https://github.com/anghelloerr/anghelloerr.github.io/actions). GitHub Pages admite sitios estáticos gratuitos desde repositorios públicos con GitHub Free. [Documentación oficial](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site).
 
-### Opción recomendada: publicación automática
+### Pasos para reproducir la configuración en otro repositorio
 
 1. Crea un repositorio **público**. Si tu usuario es `anghelloerr`, utiliza `anghelloerr.github.io` para obtener `https://anghelloerr.github.io/`. Si ese repositorio ya existe, conserva su contenido y utiliza uno nuevo, por ejemplo `research-portfolio`, cuya dirección será `https://anghelloerr.github.io/research-portfolio/`.
 2. Copia **el contenido de esta carpeta**, incluyendo `.github`, `.nojekyll`, `assets`, `scripts` y `content.json`, en la raíz del repositorio. No subas el ZIP como un solo archivo. GitHub Desktop permite añadir la carpeta completa, incluidos los archivos ocultos.
@@ -137,7 +141,7 @@ HTML, CSS y JavaScript nativos, con un generador opcional sin dependencias. Esta
 
 No se usan analítica, cookies, formularios que simulen envíos, fuentes remotas, servicios de pago ni bibliotecas externas en el navegador. Contacto abre el cliente de correo mediante `mailto:`. Los enlaces profesionales, el PDF y el BibTeX son reales.
 
-La publicación remota debe comprobarse cuando se configure el repositorio: las pruebas locales no ejecutan el entorno de GitHub Actions.
+Cada publicación remota se comprueba en [GitHub Actions](https://github.com/anghelloerr/anghelloerr.github.io/actions). El trabajo `build` genera la web y `deploy` la publica; ambos deben finalizar correctamente. Las pruebas locales no sustituyen estas comprobaciones.
 
 ## Verificación
 
