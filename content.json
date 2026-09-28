@@ -1,9 +1,9 @@
 {
   "meta": {
     "title": "Anghello Rodríguez | Research & Engineering Portfolio",
-    "description": "Portafolio de Anghello Eduardo Rodríguez Risco: Ingeniería Mecatrónica, investigación, robótica espacial, AOCS, control avanzado y manufactura digital.",
+    "description": "Proyectos de Anghello Rodríguez en I+D, robótica, AOCS, control, biomateriales, manufactura digital y visión por computadora. Contribuciones, publicaciones y evidencias.",
     "language": "es",
-    "updated": "2026-09-25",
+    "updated": "2026-09-27",
     "source": "CV Anghello Rodriguez.pdf · 3 páginas · archivo proporcionado por el autor",
     "siteUrl": "https://anghelloerr.github.io/"
   },
@@ -62,6 +62,15 @@
   },
   "research": [
     {
+      "title": "Research & Development",
+      "text": "Diseño, desarrollo y fabricación de prototipos mecatrónicos para investigación y servicios tecnológicos.",
+      "tags": [
+        "I+D",
+        "Integración"
+      ],
+      "anchor": "esan"
+    },
+    {
       "title": "Space Robotics & AOCS",
       "text": "Control de actitud y órbita en Chasqui 2; desarrollo y pruebas de prototipos de robótica espacial en PachaLab.",
       "tags": [
@@ -71,7 +80,7 @@
       "anchor": "aerospace"
     },
     {
-      "title": "Autonomous Robotics",
+      "title": "Robotics & Autonomous Systems",
       "text": "Enjambre de robots, robótica móvil y de servicio; experiencia en cuadrúpedos, veleros autónomos y manipuladores.",
       "tags": [
         "ESAN",
@@ -107,13 +116,13 @@
       "anchor": "projects"
     },
     {
-      "title": "Applied AI",
-      "text": "Visión por computadora y seguimiento de objetos, con formación complementaria en Inteligencia Artificial y Data Science.",
+      "title": "Applied AI / Computer Vision",
+      "text": "Prototipos de visión por computadora con Roboflow y sistemas embebidos en ESAN; proyectos de seguimiento de objetos en USIL.",
       "tags": [
-        "Visión",
-        "Data Science"
+        "Visión por computadora",
+        "Roboflow"
       ],
-      "anchor": "project-vision"
+      "anchor": "project-esan-vision"
     }
   ],
   "publication": {
@@ -145,8 +154,56 @@
   },
   "projects": [
     {
+      "id": "biomaterials",
+      "code": "01 / BIOMATERIALES",
+      "title": "Extrusora para impresión 3D con biomateriales",
+      "institution": "ESAN R&D Labs / FabLab",
+      "period": "Desde abr. 2026 · etapa en ESAN",
+      "category": "Biomateriales",
+      "description": "Desarrollo de una extrusora como parte de la investigación aplicada en impresión 3D con biomateriales.",
+      "contribution": "Participación en el desarrollo de una extrusora para impresión 3D con biomateriales dentro de ESAN R&D Labs / FabLab.",
+      "tags": [
+        "Biomateriales",
+        "Impresión 3D"
+      ],
+      "result": null,
+      "image": null,
+      "url": null,
+      "repository": null,
+      "source": "CV maestro actualizado, p. 1. El periodo corresponde a la vinculación con ESAN; no indica la fecha exacta de inicio del proyecto.",
+      "evidence": [],
+      "featured": true,
+      "kind": "Proyecto",
+      "cover": "biomaterials",
+      "experienceId": "esan"
+    },
+    {
+      "id": "unitree",
+      "code": "02 / ROBÓTICA",
+      "title": "Robótica experimental con Unitree",
+      "institution": "ESAN – R&D Labs / FabLab",
+      "period": "Desde abr. 2026 · etapa en ESAN",
+      "category": "Robótica",
+      "description": "Preparación y operación experimental con plataformas robóticas Unitree G1+ y Go2.",
+      "contribution": "Participación en la preparación y la operación experimental con robots Unitree G1+ y Go2 en ESAN.",
+      "tags": [
+        "Robótica experimental",
+        "Unitree G1+ / Go2"
+      ],
+      "result": null,
+      "image": null,
+      "url": null,
+      "repository": null,
+      "source": "CV maestro actualizado, p. 1. Periodo de vinculación institucional, no fecha exacta del proyecto.",
+      "evidence": [],
+      "kind": "Actividad experimental",
+      "cover": "robotics",
+      "experienceId": "esan",
+      "featured": true
+    },
+    {
       "id": "chasqui",
-      "code": "01 / SPACE",
+      "code": "03 / AEROESPACIAL",
       "title": "Chasqui 2 — AOCS",
       "institution": "Chasqui 2",
       "period": "Jul. 2026 – actualidad",
@@ -162,11 +219,15 @@
       "url": null,
       "repository": null,
       "source": "CV, p. 1",
-      "evidence": []
+      "evidence": [],
+      "featured": true,
+      "kind": "Proyecto",
+      "cover": "space",
+      "experienceId": "chasqui"
     },
     {
       "id": "pachalab",
-      "code": "02 / SPACE",
+      "code": "04 / AEROESPACIAL",
       "title": "PachaLab — robótica espacial",
       "institution": "INTINAUTA Research Center",
       "period": "Jul. 2026 – actualidad",
@@ -182,11 +243,98 @@
       "url": null,
       "repository": null,
       "source": "CV, p. 1",
-      "evidence": []
+      "evidence": [],
+      "featured": true,
+      "kind": "Proyecto",
+      "cover": "space",
+      "experienceId": "intinauta"
+    },
+    {
+      "id": "esan-vision",
+      "code": "05 / IA Y CONTROL",
+      "title": "Visión por computadora y sistemas embebidos",
+      "institution": "ESAN – R&D Labs / FabLab",
+      "period": "Desde abr. 2026 · etapa en ESAN",
+      "category": "IA y control",
+      "description": "Prototipos de visión por computadora mediante Roboflow y sistemas embebidos.",
+      "contribution": "Participación en prototipos de visión por computadora mediante Roboflow y sistemas embebidos en ESAN.",
+      "tags": [
+        "Roboflow",
+        "Sistemas embebidos"
+      ],
+      "result": null,
+      "image": null,
+      "url": null,
+      "repository": null,
+      "source": "CV maestro actualizado, p. 1. Periodo de vinculación institucional, no fecha exacta del proyecto.",
+      "evidence": [],
+      "kind": "Línea de prototipado",
+      "cover": "vision",
+      "experienceId": "esan",
+      "featured": true
+    },
+    {
+      "id": "phyto-g",
+      "code": "06 / AEROESPACIAL",
+      "title": "Phyto-G — agricultura espacial",
+      "institution": "BETTA College / BETTA Tech",
+      "period": "Feb. – may. 2026 · colaboración de investigación",
+      "category": "Aeroespacial",
+      "description": "Diseño mecatrónico de un clinostato y simulación de movimiento para agricultura espacial en un entorno hidropónico.",
+      "contribution": "Colaboración de investigación en BETTA Tech: diseño CAD mecánico, documentación de ingeniería, soporte CAE/FEA relacionado con el movimiento y coordinación con un equipo multidisciplinario.",
+      "tags": [
+        "Biomimética",
+        "Simulación",
+        "Agricultura espacial"
+      ],
+      "result": "Coautor del artículo publicado en Biomimetics el 14 de mayo de 2026.",
+      "image": null,
+      "url": "https://doi.org/10.3390/biomimetics11050340",
+      "repository": null,
+      "source": "CV, p. 1 y metadatos editoriales de la publicación ya verificados.",
+      "kind": "Investigación publicada",
+      "cover": "phytog",
+      "experienceId": "betta",
+      "evidence": [
+        {
+          "title": "Artículo en Biomimetics",
+          "date": "14 de mayo de 2026",
+          "description": "Mechatronics Design of a Clinostat Agriculture Space System for Biomimetic Phyto-Growth in Microgravity (Phyto-G) and 3D-Motion Computer Simulation on Hydroponic Environment",
+          "image": null,
+          "alt": "",
+          "url": "https://doi.org/10.3390/biomimetics11050340",
+          "linkLabel": "Leer publicación · DOI 10.3390/biomimetics11050340"
+        }
+      ],
+      "featured": true
+    },
+    {
+      "id": "arm",
+      "code": "07 / ROBÓTICA",
+      "title": "Ensamblaje de brazo robótico",
+      "institution": "ESAN – R&D Labs / FabLab",
+      "period": "Desde abr. 2026 · etapa en ESAN",
+      "category": "Robótica",
+      "description": "Ensamblaje de un brazo robótico dentro de las actividades de investigación y robótica aplicada.",
+      "contribution": "Participación en el ensamblaje de un brazo robótico en ESAN R&D Labs.",
+      "tags": [
+        "Ensamblaje",
+        "Manipuladores"
+      ],
+      "result": null,
+      "image": null,
+      "url": null,
+      "repository": null,
+      "source": "CV maestro actualizado, p. 1. Periodo de vinculación institucional, no fecha exacta del proyecto.",
+      "evidence": [],
+      "kind": "Proyecto",
+      "cover": "robotics",
+      "experienceId": "esan",
+      "featured": false
     },
     {
       "id": "swarm",
-      "code": "03 / ROBOTICS",
+      "code": "08 / ROBÓTICA",
       "title": "Enjambre de robots",
       "institution": "ESAN R&D Labs",
       "period": "Desde abr. 2026 · etapa en ESAN",
@@ -202,31 +350,40 @@
       "url": null,
       "repository": null,
       "source": "CV, p. 1",
-      "evidence": []
+      "evidence": [],
+      "featured": false,
+      "kind": "Proyecto",
+      "cover": "robotics",
+      "experienceId": "esan"
     },
     {
-      "id": "biomaterials",
-      "code": "04 / FABRICATION",
-      "title": "Impresión 3D con biomateriales",
-      "institution": "ESAN R&D Labs / FabLab",
+      "id": "fablab",
+      "code": "09 / MANUFACTURA",
+      "title": "Prototipado mecatrónico en FabLab",
+      "institution": "ESAN – R&D Labs / FabLab",
       "period": "Desde abr. 2026 · etapa en ESAN",
       "category": "Manufactura",
-      "description": "Investigación aplicada que conecta diseño, manufactura digital y biomateriales.",
-      "contribution": "Desarrollo de prototipos y soluciones tecnológicas en el FabLab, en la línea de impresión 3D con biomateriales.",
+      "description": "Diseño y fabricación de prototipos para proyectos de I+D y servicios tecnológicos.",
+      "contribution": "Desarrollo de prototipos integrando diseño CAD, fabricación digital, PCBs y componentes electrónicos y mecánicos. Soporte técnico, mantenimiento y formación a estudiantes en prototipado, diseño mecánico, Arduino y aplicaciones de visión por computadora.",
       "tags": [
-        "Biomateriales",
-        "Impresión 3D"
+        "CAD",
+        "Fabricación digital",
+        "Integración"
       ],
       "result": null,
       "image": null,
       "url": null,
       "repository": null,
-      "source": "CV, p. 1",
-      "evidence": []
+      "source": "CV maestro actualizado, p. 1. Periodo de vinculación institucional, no fecha exacta del proyecto.",
+      "evidence": [],
+      "kind": "Práctica de I+D",
+      "cover": "manufacturing",
+      "experienceId": "esan",
+      "featured": false
     },
     {
       "id": "quadruped",
-      "code": "05 / ROBOTICS",
+      "code": "10 / ROBÓTICA",
       "title": "Cuadrúpedo para terrenos complejos",
       "institution": "IEEE USIL",
       "period": "Presentado en CITIIC 2023",
@@ -242,11 +399,15 @@
       "url": null,
       "repository": null,
       "source": "CV, p. 2",
-      "evidence": []
+      "evidence": [],
+      "featured": false,
+      "kind": "Proyecto",
+      "cover": "robotics",
+      "experienceId": "usil"
     },
     {
       "id": "saildrone",
-      "code": "06 / ROBOTICS",
+      "code": "11 / ROBÓTICA",
       "title": "Velero autónomo — Saildrone",
       "institution": "GIIM / USIL",
       "period": "Etapa de investigación USIL · 2022–2025",
@@ -262,11 +423,15 @@
       "url": null,
       "repository": null,
       "source": "CV, p. 2",
-      "evidence": []
+      "evidence": [],
+      "featured": false,
+      "kind": "Proyecto",
+      "cover": "robotics",
+      "experienceId": "usil"
     },
     {
       "id": "service",
-      "code": "07 / ROBOTICS",
+      "code": "12 / ROBÓTICA",
       "title": "Robot de servicio para estudiantes",
       "institution": "USIL",
       "period": "Etapa de investigación USIL · 2022–2025",
@@ -282,11 +447,15 @@
       "url": null,
       "repository": null,
       "source": "CV, p. 2",
-      "evidence": []
+      "evidence": [],
+      "featured": false,
+      "kind": "Proyecto",
+      "cover": "robotics",
+      "experienceId": "usil"
     },
     {
       "id": "vision",
-      "code": "08 / VISION",
+      "code": "13 / IA Y CONTROL",
       "title": "Visión por computadora — OC-SORT",
       "institution": "USIL",
       "period": "Etapa de investigación USIL · 2022–2025",
@@ -302,11 +471,15 @@
       "url": null,
       "repository": null,
       "source": "CV, p. 2. No se atribuye autoría del artículo OC-SORT.",
-      "evidence": []
+      "evidence": [],
+      "featured": false,
+      "kind": "Proyecto",
+      "cover": "vision",
+      "experienceId": "usil"
     },
     {
       "id": "flanders",
-      "code": "09 / ENGINEERING",
+      "code": "14 / MANUFACTURA",
       "title": "Prototipo de perforadora minera",
       "institution": "Flanders Electric Perú",
       "period": "Dic. 2024 – mar. 2025",
@@ -322,7 +495,11 @@
       "url": null,
       "repository": null,
       "source": "CV, p. 2",
-      "evidence": []
+      "evidence": [],
+      "featured": false,
+      "kind": "Proyecto",
+      "cover": "manufacturing",
+      "experienceId": "flanders"
     }
   ],
   "experience": [
@@ -347,11 +524,33 @@
     {
       "id": "esan",
       "period": "Abr. 2026 – actualidad",
-      "institution": "ESAN R&D Labs / FabLab",
-      "role": "Practicante en Investigación y Desarrollo",
+      "institution": "ESAN – R&D Labs / FabLab",
+      "role": "Practicante en Investigación y Desarrollo – FabLab",
       "location": "Lima, Perú",
       "current": true,
-      "text": "Desarrollo de prototipos y soluciones tecnológicas con diseño, manufactura digital e investigación aplicada en impresión 3D con biomateriales y enjambre de robots."
+      "text": "Desarrollo de prototipos mecatrónicos para proyectos de I+D y servicios tecnológicos, investigación en robótica aplicada y acompañamiento técnico a estudiantes de pregrado y posgrado.",
+      "highlights": [
+        {
+          "title": "Diseño y fabricación de prototipos",
+          "text": "Diseño, desarrollo y fabricación de prototipos mecatrónicos, integrando CAD, impresión 3D con materiales de ingeniería, mecanizado CNC, corte láser, fabricación de PCBs e integración electrónico-mecánica."
+        },
+        {
+          "title": "Investigación y robótica aplicada",
+          "text": "Desarrollo de una extrusora para impresión 3D con biomateriales, ensamblaje de brazo robótico, robótica de enjambres, preparación y operación experimental con robots Unitree G1+ y Go2, y prototipos de visión por computadora mediante Roboflow y sistemas embebidos."
+        },
+        {
+          "title": "Soporte técnico y formación",
+          "text": "Servicios de fabricación digital, mantenimiento de equipos, asesoría en prototipado y capacitaciones en diseño mecánico, Arduino y aplicaciones de visión por computadora para programas de pregrado y posgrado."
+        }
+      ],
+      "projectIds": [
+        "biomaterials",
+        "unitree",
+        "arm",
+        "swarm",
+        "esan-vision",
+        "fablab"
+      ]
     },
     {
       "id": "betta",
@@ -446,6 +645,12 @@
     "note": "Área de conocimientos e interés. Los proyectos específicos de prótesis, exoesqueletos o dispositivos biomédicos están pendientes de documentar."
   },
   "teaching": [
+    {
+      "title": "Fabricación digital y prototipado",
+      "institution": "ESAN – R&D Labs / FabLab",
+      "period": "Desde abr. 2026 · etapa en ESAN",
+      "text": "Soporte técnico, asesoría y capacitaciones en diseño mecánico, Arduino y aplicaciones de visión por computadora para estudiantes de pregrado y posgrado."
+    },
     {
       "title": "Ingeniería de diseño industrial",
       "institution": "BETTA College",
@@ -577,14 +782,25 @@
       ]
     },
     {
-      "title": "Robótica e integración",
+      "title": "Robótica y navegación autónoma",
       "items": [
-        "Robótica móvil y manipuladores",
+        "Robots manipuladores, móviles, UAV y ROV",
+        "ROS 2",
+        "SLAM",
+        "Odometría Visual-Inercial (VIO)",
+        "Filtros de Kalman",
+        "Realidad Aumentada (AR)"
+      ]
+    },
+    {
+      "title": "Sistemas embebidos y hardware",
+      "items": [
+        "STM32",
+        "FPGA",
         "ESP32",
         "Raspberry Pi",
-        "NVIDIA Jetson",
-        "Sensores y actuadores",
-        "KUKA / UR / DOBOT"
+        "NVIDIA Jetson Orin",
+        "Sensores y actuadores"
       ]
     },
     {
@@ -620,6 +836,13 @@
         "MS Project",
         "Excel / VBA",
         "Power BI"
+      ]
+    },
+    {
+      "title": "Visión por computadora aplicada",
+      "items": [
+        "Roboflow",
+        "Prototipos con sistemas embebidos"
       ]
     }
   ]

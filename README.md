@@ -1,6 +1,15 @@
 # Anghello Rodríguez — Research & Engineering Portfolio
 
-Web académica estática, en español, inspirada en la organización de Hugo Academic/HugoBlox y adaptada al CV de Anghello Eduardo Rodríguez Risco. La portada minimalista muestra foto circular, nombre y redes a la izquierda; biografía, formación e intereses a la derecha. En móvil, el perfil se coloca encima de la biografía. Incluye modo claro/oscuro, navegación móvil, proyectos desplegables, publicación con DOI y BibTeX, experiencia, formación, enlaces profesionales y el PDF original descargable.
+Web académica estática, en español, inspirada en la organización de Hugo Academic/HugoBlox y adaptada al CV de Anghello Eduardo Rodríguez Risco. La portada minimalista muestra foto circular, nombre y redes a la izquierda; presentación y áreas de trabajo a la derecha. Los proyectos aparecen inmediatamente después. En móvil, el perfil se coloca encima de la biografía. Incluye modo claro/oscuro, navegación móvil, catálogo filtrable, fichas de proyectos con galerías multimedia, publicación con DOI y BibTeX, trayectoria/CV en una página propia y el PDF maestro actualizado descargable.
+
+## Organización del portafolio
+
+- `index.html`: presentación, seis trabajos destacados, ESAN, publicación y áreas de investigación.
+- `projects.html`: catálogo con filtros por área y ESAN.
+- `projects/<id>.html`: contribución, contexto, evidencias y trabajos relacionados.
+- `cv.html`: experiencia completa, docencia, formación, habilidades y descarga del CV.
+
+Todas las páginas se generan desde `content.json`. Las imágenes conceptuales están identificadas y se sustituyen al añadir una foto real. Las galerías admiten fotografías, documentos, videos MP4/WebM y YouTube/Vimeo.
 
 ## Ver la web
 
@@ -35,7 +44,7 @@ El flujo usa Node.js para generar HTML y los servicios oficiales de GitHub Pages
 
 ### Alternativa sin generación automática
 
-Puedes subir `index.html`, `assets/` y `.nojekyll` a la raíz de un repositorio público nuevo y elegir **Settings → Pages → Deploy from a branch → main → /(root)**. No incluyas `.github/workflows/pages.yml` si eliges esta alternativa. Cada vez que edites `content.json`, ejecuta primero `npm run build` y vuelve a subir el HTML, los documentos y los recursos actualizados.
+Puedes subir `index.html`, `projects.html`, `cv.html`, `projects/`, `assets/` y `.nojekyll` a la raíz de un repositorio público nuevo y elegir **Settings → Pages → Deploy from a branch → main → /(root)**. No incluyas `.github/workflows/pages.yml` si eliges esta alternativa. Cada vez que edites `content.json`, ejecuta primero `npm run build` y vuelve a subir el HTML, los documentos y los recursos actualizados.
 
 Todas las rutas locales son relativas: funcionan tanto en un dominio `usuario.github.io` como dentro de `/nombre-del-repositorio/`. No hace falta contratar un dominio.
 
@@ -44,10 +53,10 @@ Todas las rutas locales son relativas: funcionan tanto en un dominio `usuario.gi
 La fuente principal es **`content.json`**. Separa los textos y datos del diseño para que puedas actualizar tu trayectoria sin tocar las plantillas. Consulta [la guía para actualizar datos, fotos y evidencias](ACTUALIZAR-CONTENIDO.md) para hacerlo desde GitHub. Esta versión no incluye un panel privado de administración.
 
 1. Edita los textos, fechas, enlaces o listas dentro de `content.json`, conservando el formato JSON.
-2. Ejecuta `npm run build` para regenerar `index.html` y `assets/documents/phyto-g.bib`.
+2. Ejecuta `npm run build` para regenerar todas las páginas y `assets/documents/phyto-g.bib`.
 3. Abre la web y revisa el cambio. Publica los archivos actualizados. Con GitHub Actions, también puedes editar `content.json` desde GitHub y la publicación se regenera automáticamente.
 
-No se necesita `npm install`. Si modificas directamente `index.html`, el siguiente `build` sobrescribirá esos cambios. Para modificar la estructura, edita `scripts/build.mjs`.
+No se necesita `npm install`. Si modificas directamente `index.html`, el siguiente `build` sobrescribirá esos cambios. Para modificar la estructura, edita `scripts/build.mjs` y `scripts/portfolio.mjs`.
 
 ### Cambios habituales
 
@@ -56,12 +65,12 @@ No se necesita `npm install`. Si modificas directamente `index.html`, el siguien
 | Bio, nombre y contactos | `profile` en `content.json` |
 | Líneas de investigación | `research` |
 | Publicación y DOI | `publication` |
-| Proyectos y contribuciones | `projects` |
+| Proyectos y contribuciones | `projects`; `featured` selecciona destacados |
 | Experiencia, docencia y liderazgo | `experience`, `teaching`, `leadership` |
 | Educación y formación complementaria | `education`, `training` |
 | Competencias | `skills`, `aerospace`, `biomedical` |
 | Fotos y evidencias de un proyecto | `projects[].image` y `projects[].evidence` |
-| Colores, tipografía, espacios y adaptación móvil | `assets/styles.css` y `assets/identity.css` |
+| Colores, tipografía, espacios y adaptación móvil | `assets/styles.css`, `assets/identity.css` y `assets/portfolio.css` |
 | Fecha de revisión y URL definitiva | `meta.updated`, `meta.siteUrl` |
 | PDF descargable | Reemplaza `assets/documents/CV-Anghello-Rodriguez.pdf` |
 
@@ -77,7 +86,7 @@ Con `null` se muestra el monograma y el texto **Foto pendiente**. La foto se rec
 
 ### Completar los proyectos
 
-Cada proyecto incluye campos `image`, `url`, `repository` y `result`. Con `null` se muestran avisos claros de contenido pendiente. Para incorporar una imagen o enlace, por ejemplo:
+Cada proyecto incluye campos `image`, `url`, `repository` y `result`. Con `image: null` se muestra una portada conceptual etiquetada; los enlaces no disponibles se omiten. Para incorporar una imagen o enlace, por ejemplo:
 
 ```json
 "image": "assets/images/chasqui-2.jpg",
@@ -88,7 +97,7 @@ Cada proyecto incluye campos `image`, `url`, `repository` y `result`. Con `null`
 
 La dirección `.example` de arriba es solo una muestra para esta guía: sustitúyela por un enlace real. Conserva `null` cuando no exista un recurso público. Usa imágenes que correspondan al proyecto y datos que puedas publicar. No se han inventado fotografías ni resultados.
 
-El generador comprueba que las imágenes y el CV locales existan. Se admiten enlaces HTTPS y rutas bajo `assets/`. Mantén los identificadores `id` de los proyectos únicos y estables para conservar sus enlaces directos. Cada proyecto también tiene una lista `evidence` para añadir varias fotos, avances y documentos. Está vacía hasta que incorpores material real; la galería solo aparece cuando tiene contenido.
+El generador comprueba que las imágenes y el CV locales existan. Se admiten enlaces HTTPS y rutas bajo `assets/`. Mantén los identificadores `id` de los proyectos únicos y estables para conservar sus enlaces directos. Cada proyecto también tiene una lista `evidence` para añadir varias fotos, avances y documentos. Sin material, la ficha indica que el registro visual está pendiente. Phyto-G ya enlaza la publicación científica.
 
 ### Añadir publicaciones
 
@@ -103,7 +112,7 @@ Esta primera versión tiene una publicación destacada. Sus metadatos están en 
 - Precisar alcance y contribución individual en el proyecto de visión **OC-SORT**. No se presenta como un artículo escrito por Anghello.
 - Confirmar el contraste entre el nombre **Programa Integral en Excel – 2019** y las fechas **julio–agosto de 2020**. Se conservaron ambos datos del CV.
 - Agregar proyectos biomédicos o de biónica cuando estén documentados. Los conocimientos listados no se convierten en supuestos prototipos terminados.
-- Actualizar condición académica y cargos marcados como actuales cuando cambien. La información corresponde al PDF recibido y a la revisión del 25 de septiembre de 2026.
+- Actualizar condición académica y cargos marcados como actuales cuando cambien. La información corresponde al PDF recibido y a la revisión del 27 de septiembre de 2026.
 
 Los cuartiles JCR/Scopus del PDF no se muestran como sellos sin año/categoría: la ficha destaca el artículo, la revista, la coautoría y el DOI. El PDF descargable se conserva íntegro.
 
@@ -111,7 +120,10 @@ Los cuartiles JCR/Scopus del PDF no se muestran como sellos sin año/categoría:
 
 ```text
 anghello-portfolio/
-  index.html                     Web lista para abrir
+  index.html                     Portada centrada en proyectos
+  projects.html                  Catálogo filtrable
+  cv.html                        Trayectoria y CV
+  projects/*.html                Fichas individuales generadas
   content.json                   Contenido editable
   README.md                      Esta guía
   ACTUALIZAR-CONTENIDO.md        Guía para datos, fotos y evidencias
@@ -121,6 +133,8 @@ anghello-portfolio/
   assets/
     styles.css                   Diseño responsive y temas
     identity.css                 Identidad azul noche, acero y cian
+    portfolio.css                Catálogo, fichas y multimedia
+    videos/                      Videos reales MP4 o WebM
     theme.js                     Preferencia inicial del tema
     app.js                       Menú, tema y enlaces a bloques plegados
     favicon.svg                  Monograma AR
@@ -131,6 +145,7 @@ anghello-portfolio/
       phyto-g.bib                 Cita bibliográfica
   scripts/
     build.mjs                    Generador sin dependencias
+    portfolio.mjs                Vistas de proyectos y medios
     preview.mjs                  Servidor local
   package.json
 ```

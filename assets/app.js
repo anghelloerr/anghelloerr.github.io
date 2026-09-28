@@ -62,7 +62,8 @@
     }
     return target;
   }
-  document.querySelectorAll('a[href^="#"]').forEach(link => link.addEventListener('click', () => {
+  document.querySelectorAll('a[href]').forEach(link => link.addEventListener('click', () => {
+    if (link.origin !== location.origin || link.pathname !== location.pathname) { setMenu(false); return; }
     const target = revealTarget(link.hash);
     const inMobileMenu = !!link.closest('#mobile-nav');
     setMenu(false);
@@ -76,7 +77,50 @@
     if (target) requestAnimationFrame(() => target.scrollIntoView({ block: 'start' }));
   }
   window.addEventListener('hashchange', handleHash);
-  if (location.hash) handleHash();
+  // Keep links shared before the portfolio was split into pages working.
+  if (root.querySelector('body').dataset.page === 'home' && location.hash) {
+    const id = location.hash.slice(1);
+    if (/^(experience|teaching|education|skills|exp-[a-z-]+)$/.test(id)) location.replace(`cv.html#${id}`);
+    else if (id.startsWith('project-') && !document.getElementById(id)) location.replace(`projects.html#${id}`);
+    else handleHash();
+  } else if (location.hash) handleHash();
+
+  const filters = document.querySelector('.project-filters');
+  if (filters) {
+    const cards = [...document.querySelectorAll('.catalog-grid .portfolio-card')];
+    const buttons = [...filters.querySelectorAll('button[data-filter]')];
+    const status = document.querySelector('.filter-status');
+    const selectFilter = value => {
+      let count = 0;
+      cards.forEach(card => {
+        const match = value === 'all' || (value === 'esan' ? card.querySelector('.small-label').textContent.includes('ESAN') : card.dataset.category === value);
+        card.hidden = !match;
+        if (match) count++;
+      });
+      buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.filter === value)));
+      status.textContent = `${count} ${count === 1 ? 'ficha' : 'fichas'} · ${buttons.find(button => button.dataset.filter === value).textContent}`;
+    };
+    filters.hidden = false;
+    buttons.forEach(button => button.addEventListener('click', () => {
+      selectFilter(button.dataset.filter);
+      if (location.hash) history.replaceState(null,'',location.pathname+location.search);
+    }));
+    const applyHash = () => selectFilter(location.hash === '#esan' ? 'esan' : 'all');
+    applyHash();
+    window.addEventListener('hashchange', applyHash);
+  }
+
+  document.querySelectorAll('[data-load-video]').forEach(button => button.addEventListener('click', () => {
+    const box = button.closest('[data-video-src]');
+    const frame = document.createElement('iframe');
+    frame.src = box.dataset.videoSrc;
+    frame.title = box.dataset.videoTitle;
+    frame.className = 'video-frame';
+    frame.allow = 'fullscreen; picture-in-picture';
+    frame.allowFullscreen = true;
+    frame.referrerPolicy = 'strict-origin-when-cross-origin';
+    box.replaceWith(frame);
+  }));
 
   if ('IntersectionObserver' in window) {
     const sections = [...document.querySelectorAll('main > section[id]')];
@@ -85,7 +129,8 @@
       const visible = entries.find(entry => entry.isIntersecting);
       if (!visible) return;
       links.forEach(link => {
-        if (link.hash === `#${visible.target.id}`) link.setAttribute('aria-current', 'location');
+        if (link.getAttribute('aria-current') === 'page') return;
+        if (document.body.dataset.page === 'home' && link.hash === `#${visible.target.id}`) link.setAttribute('aria-current', 'location');
         else link.removeAttribute('aria-current');
       });
     }, { rootMargin: '-15% 0px -65% 0px' });

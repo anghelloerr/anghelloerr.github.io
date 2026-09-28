@@ -31,7 +31,7 @@ La descripción del artículo es un resumen del tema, no una reproducción de su
 - USIL y SIU figuran como estudios en curso, no como grados ya obtenidos.
 - Se interpretaron las fechas de BETTA con la distribución visual: investigación/coautoría, febrero–mayo de 2026; ingeniería de diseño industrial, diciembre de 2025–febrero de 2026. Diseño electrónico y circuitos queda con periodo pendiente.
 - Las fechas ESAN o USIL en proyectos representan periodos de vinculación institucional, no fechas exactas de cada proyecto.
-- No se trasladaron a la web tecnologías sugeridas en conversaciones previas que no aparecían en este PDF (por ejemplo, ROS 2, SLAM o STM32).
+- El CV maestro del 27 de septiembre de 2026 incluye ROS 2, SLAM, VIO, filtros de Kalman, AR, STM32, FPGA y NVIDIA Jetson Orin. Se incorporan como competencias declaradas, sin atribuir su uso a proyectos que no lo especifican.
 - Se corrigen erratas de presentación (puntuación, "Seildrone" → "Saildrone", "Manipuladores.movil" → "Robótica móvil y manipuladores") sin ampliar el alcance de las afirmaciones.
 - Se conserva el sentido del CV sobre las competencias biomédicas, separándolo de la experiencia documentada en biomateriales.
 - No se presentan premios, métricas de rendimiento, lanzamientos satelitales, ensayos clínicos ni resultados no documentados.
@@ -44,7 +44,16 @@ La descripción del artículo es un resumen del tema, no una reproducción de su
 - Retrato `Anghello_RR.png` proporcionado por Anghello e incorporado como `assets/images/anghello-rodriguez.png`, sin retocar el archivo. El encuadre visible se ajusta con CSS.
 - Paleta elegida expresamente por Anghello: azul noche, azul acero y cian; estilo tecnológico y académico.
 - Portada reorganizada según las dos capturas de referencia proporcionadas por Anghello: retrato circular y perfil a la izquierda, biografía, intereses y formación a la derecha. Se tomó la composición visual; no se incorporaron nombres, cargos, estudios ni logros de los ejemplos.
-- Las listas de evidencias de proyectos están vacías. La funcionalidad permite añadir material futuro, pero no añade actividades, fechas ni resultados a las afirmaciones del CV.
+- Las galerías de fotos y videos permanecen pendientes de material real. Phyto-G incluye el artículo publicado como evidencia documental. Las portadas SVG son ilustraciones conceptuales genéricas, identificadas expresamente; no son fotos, diseños CAD reales ni pruebas del trabajo realizado.
 - [Añadir archivos desde GitHub](https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository): referencia para la guía de actualización de imágenes y documentos.
 
-Revisión del CV: 25 de septiembre de 2026. Actualización del retrato, diseño y documentación: 26 de septiembre de 2026.
+## Actualización del CV maestro y enfoque de portafolio
+
+Revisión del documento actualizado: 27 de septiembre de 2026. Se extrajo el texto y se revisaron visualmente sus tres páginas. El PDF descargable se reemplaza por una copia exacta del archivo proporcionado.
+
+- ESAN se amplía con tres bloques: diseño y fabricación de prototipos; investigación y robótica aplicada; soporte técnico y formación. Biomateriales precisa el desarrollo de una extrusora.
+- El PDF dice **Unitree G1+ y Go2**. Se usa esa denominación como fuente principal, en lugar de combinarla con la mención G1 / Go2 Pro del mensaje.
+- Las fichas de Unitree, ensamblaje de brazo, visión con Roboflow y prototipado FabLab corresponden a actividades explícitas de la página 1. Se distinguen proyectos, líneas de prototipado y actividades experimentales; no se presentan todas como proyectos terminados.
+- Phyto-G tiene una ficha vinculada al artículo ya incorporado. La contribución individual sigue procediendo de BETTA; no se añaden resultados experimentales ni responsabilidades nuevas.
+- Los nueve trabajos previos y las diez experiencias se conservan. El catálogo reúne 14 fichas; esa cantidad no se usa como métrica de proyectos completados.
+- La portada prioriza proyectos. La trayectoria, docencia, educación y habilidades pasan a `cv.html`; cada trabajo tiene una página bajo `projects/`. Se conservan la identidad visual, el retrato a la izquierda y los modos claro y oscuro.
