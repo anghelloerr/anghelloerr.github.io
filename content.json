@@ -3,8 +3,8 @@
     "title": "Anghello Rodríguez | Research & Engineering Portfolio",
     "description": "Proyectos de Anghello Rodríguez en I+D, robótica, AOCS, control, biomateriales, manufactura digital y visión por computadora. Contribuciones, publicaciones y evidencias.",
     "language": "es",
-    "updated": "2026-09-27",
-    "source": "CV Anghello Rodriguez.pdf · 3 páginas · archivo proporcionado por el autor",
+    "updated": "2026-10-14",
+    "source": "CV_Anghello Rodriguez Risco.pdf · 2 páginas · archivo proporcionado por el autor",
     "siteUrl": "https://anghelloerr.github.io/"
   },
   "profile": {
@@ -43,11 +43,6 @@
     "secondaryEmail": "anghellorodriguez@gmail.com",
     "certificatesUrl": "https://bit.ly/Certificados_cv",
     "current": [
-      {
-        "institution": "ESAN R&D Labs",
-        "role": "I+D · FabLab",
-        "anchor": "exp-esan"
-      },
       {
         "institution": "Chasqui 2",
         "role": "Investigación · AOCS",
@@ -158,7 +153,7 @@
       "code": "01 / BIOMATERIALES",
       "title": "Extrusora para impresión 3D con biomateriales",
       "institution": "ESAN R&D Labs / FabLab",
-      "period": "Desde abr. 2026 · etapa en ESAN",
+      "period": "Abr. – oct. 2026 · etapa en ESAN",
       "category": "Biomateriales",
       "description": "Desarrollo de una extrusora como parte de la investigación aplicada en impresión 3D con biomateriales.",
       "contribution": "Participación en el desarrollo de una extrusora para impresión 3D con biomateriales dentro de ESAN R&D Labs / FabLab.",
@@ -182,7 +177,7 @@
       "code": "02 / ROBÓTICA",
       "title": "Robótica experimental con Unitree",
       "institution": "ESAN – R&D Labs / FabLab",
-      "period": "Desde abr. 2026 · etapa en ESAN",
+      "period": "Abr. – oct. 2026 · etapa en ESAN",
       "category": "Robótica",
       "description": "Preparación y operación experimental con plataformas robóticas Unitree G1+ y Go2.",
       "contribution": "Participación en la preparación y la operación experimental con robots Unitree G1+ y Go2 en ESAN.",
@@ -199,7 +194,8 @@
       "kind": "Actividad experimental",
       "cover": "robotics",
       "experienceId": "esan",
-      "featured": true
+      "featured": true,
+      "hidden": true
     },
     {
       "id": "chasqui",
@@ -254,7 +250,7 @@
       "code": "05 / IA Y CONTROL",
       "title": "Visión por computadora y sistemas embebidos",
       "institution": "ESAN – R&D Labs / FabLab",
-      "period": "Desde abr. 2026 · etapa en ESAN",
+      "period": "Abr. – oct. 2026 · etapa en ESAN",
       "category": "IA y control",
       "description": "Prototipos de visión por computadora mediante Roboflow y sistemas embebidos.",
       "contribution": "Participación en prototipos de visión por computadora mediante Roboflow y sistemas embebidos en ESAN.",
@@ -313,7 +309,7 @@
       "code": "07 / ROBÓTICA",
       "title": "Ensamblaje de brazo robótico",
       "institution": "ESAN – R&D Labs / FabLab",
-      "period": "Desde abr. 2026 · etapa en ESAN",
+      "period": "Abr. – oct. 2026 · etapa en ESAN",
       "category": "Robótica",
       "description": "Ensamblaje de un brazo robótico dentro de las actividades de investigación y robótica aplicada.",
       "contribution": "Participación en el ensamblaje de un brazo robótico en ESAN R&D Labs.",
@@ -337,7 +333,7 @@
       "code": "08 / ROBÓTICA",
       "title": "Enjambre de robots",
       "institution": "ESAN R&D Labs",
-      "period": "Desde abr. 2026 · etapa en ESAN",
+      "period": "Abr. – oct. 2026 · etapa en ESAN",
       "category": "Robótica",
       "description": "Investigación aplicada en enjambre de robots dentro del laboratorio de robótica.",
       "contribution": "Participación desde el rol de practicante de Investigación y Desarrollo, integrando el desarrollo de prototipos con la investigación aplicada.",
@@ -361,7 +357,7 @@
       "code": "09 / MANUFACTURA",
       "title": "Prototipado mecatrónico en FabLab",
       "institution": "ESAN – R&D Labs / FabLab",
-      "period": "Desde abr. 2026 · etapa en ESAN",
+      "period": "Abr. – oct. 2026 · etapa en ESAN",
       "category": "Manufactura",
       "description": "Diseño y fabricación de prototipos para proyectos de I+D y servicios tecnológicos.",
       "contribution": "Desarrollo de prototipos integrando diseño CAD, fabricación digital, PCBs y componentes electrónicos y mecánicos. Soporte técnico, mantenimiento y formación a estudiantes en prototipado, diseño mecánico, Arduino y aplicaciones de visión por computadora.",
@@ -523,11 +519,11 @@
     },
     {
       "id": "esan",
-      "period": "Abr. 2026 – actualidad",
+      "period": "Abr. – oct. 2026",
       "institution": "ESAN – R&D Labs / FabLab",
       "role": "Practicante en Investigación y Desarrollo – FabLab",
       "location": "Lima, Perú",
-      "current": true,
+      "current": false,
       "text": "Desarrollo de prototipos mecatrónicos para proyectos de I+D y servicios tecnológicos, investigación en robótica aplicada y acompañamiento técnico a estudiantes de pregrado y posgrado.",
       "highlights": [
         {
@@ -536,7 +532,7 @@
         },
         {
           "title": "Investigación y robótica aplicada",
-          "text": "Desarrollo de una extrusora para impresión 3D con biomateriales, ensamblaje de brazo robótico, robótica de enjambres, preparación y operación experimental con robots Unitree G1+ y Go2, y prototipos de visión por computadora mediante Roboflow y sistemas embebidos."
+          "text": "Desarrollo de una extrusora para impresión 3D con biomateriales, ensamblaje de brazo robótico, robótica de enjambres y prototipos de visión por computadora mediante Roboflow y sistemas embebidos."
         },
         {
           "title": "Soporte técnico y formación",
@@ -577,7 +573,7 @@
       "role": "Profesor investigador · Ingeniería de diseño industrial",
       "location": "Remoto",
       "current": false,
-      "text": "Desarrollo de contenidos académicos y supervisión de proyectos de diseño de productos tecnológicos con enfoque ingenieril. También figura docencia en diseño electrónico y circuitos; su periodo específico está pendiente de precisar."
+      "text": "Desarrollo de contenidos académicos y supervisión de proyectos de diseño de productos tecnológicos con enfoque ingenieril. Docencia en diseño electrónico y circuitos entre febrero y mayo de 2026."
     },
     {
       "id": "fatima",
@@ -648,7 +644,7 @@
     {
       "title": "Fabricación digital y prototipado",
       "institution": "ESAN – R&D Labs / FabLab",
-      "period": "Desde abr. 2026 · etapa en ESAN",
+      "period": "Abr. – oct. 2026 · etapa en ESAN",
       "text": "Soporte técnico, asesoría y capacitaciones en diseño mecánico, Arduino y aplicaciones de visión por computadora para estudiantes de pregrado y posgrado."
     },
     {
@@ -660,7 +656,7 @@
     {
       "title": "Diseño electrónico y circuitos",
       "institution": "BETTA College",
-      "period": "Periodo por completar",
+      "period": "Feb. – may. 2026",
       "text": "Enseñanza y asesoría en análisis, diseño y aplicación de circuitos electrónicos en proyectos académicos."
     },
     {

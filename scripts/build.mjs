@@ -1,4 +1,4 @@
-import { readFile, writeFile, mkdir, cp, access } from 'node:fs/promises';
+import { readFile, writeFile, mkdir, cp, access, unlink } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { createPortfolioViews } from './portfolio.mjs';
@@ -49,6 +49,17 @@ for (const project of data.projects) {
   }
 }
 for (const e of data.experience) for (const id of e.projectIds || []) if (!ids.has(id)) throw new Error(`Proyecto relacionado inexistente: ${id}`);
+// Hidden drafts stay in the source but never generate a page or related links.
+const hiddenIds = new Set(data.projects.filter(p => p.hidden === true).map(p => p.id));
+data.projects = data.projects.filter(p => !hiddenIds.has(p.id));
+for (const e of data.experience) if (e.projectIds) e.projectIds = e.projectIds.filter(id => !hiddenIds.has(id));
+for (const id of hiddenIds) {
+  for (const directory of [root, path.join(root, '.site')]) {
+    await unlink(path.join(directory, 'projects', `${id}.html`)).catch(error => {
+      if (error.code !== 'ENOENT') throw error;
+    });
+  }
+}
 for (const asset of [p.cv, p.portrait, ...data.projects.flatMap(x => [x.image,x.url,x.repository]), ...data.projects.flatMap(x => (x.evidence || []).flatMap(e => [e.image,e.url,e.video,e.poster,e.embedUrl]))].filter(Boolean)) {
   safeUrl(asset);
   if (asset.startsWith('assets/')) await access(path.join(root, asset));

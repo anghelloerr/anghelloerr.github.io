@@ -1,6 +1,12 @@
 # Fuentes y fidelidad del contenido
 
-## Fuente principal
+## Actualización del 14 de octubre de 2026
+
+El archivo descargable actual es **CV_Anghello Rodriguez Risco.pdf**, de 2 páginas, proporcionado por el autor. Se comprobaron ambas páginas y se copió el PDF sin modificarlo. El CV sitúa ESAN entre abril y octubre de 2026 y precisa la docencia de diseño electrónico de BETTA entre febrero y mayo de 2026; se actualizaron esos periodos. El autor pidió mantener el resto del portafolio, incluidas las actividades respaldadas por el CV maestro anterior.
+
+La actividad experimental solicitada por el autor queda como borrador `hidden: true`: no genera página, tarjeta ni enlaces relacionados. Sus menciones se retiraron del texto público de ESAN. Las fuentes siguientes documentan el contenido histórico que se conserva.
+
+## Fuente del contenido anterior
 
 **CV Anghello Rodriguez.pdf**, 3 páginas, proporcionado por Anghello para esta tarea. Se leyó el texto y se revisaron visualmente las tres páginas. Se conserva una copia exacta en `assets/documents/CV-Anghello-Rodriguez.pdf`.
 

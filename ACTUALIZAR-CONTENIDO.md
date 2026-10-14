@@ -100,3 +100,7 @@ Reemplaza `assets/documents/CV-Anghello-Rodriguez.pdf` para cambiar el PDF desca
 Dentro de la carpeta ejecuta `npm run build` y `npm start`. Abre `http://127.0.0.1:4173/`. No hace falta instalar paquetes. La estructura está en `scripts/build.mjs` y `scripts/portfolio.mjs`; el diseño original, en `assets/styles.css` y `assets/identity.css`; las vistas nuevas, en `assets/portfolio.css`.
 
 Una sección independiente de noticias o artículos puede incorporarse después. La galería actual ya permite registrar avances de cada proyecto.
+
+## Ocultar temporalmente un proyecto
+
+Añade `"hidden": true` al proyecto en `content.json`. La publicación excluye su ficha, tarjeta y enlaces relacionados. Para volver a publicarlo, cambia el valor a `false` y guarda los cambios. Revisa también cualquier mención escrita en otros textos del portafolio.
