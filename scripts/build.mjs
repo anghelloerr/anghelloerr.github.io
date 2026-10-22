@@ -1,9 +1,11 @@
-import { readFile, writeFile, mkdir, cp, access, unlink } from 'node:fs/promises';
+import { readFile, writeFile, mkdir, cp, access, unlink, rm, realpath } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { createPortfolioViews } from './portfolio.mjs';
+import { createEditorial } from './editorial.mjs';
+import { finalize } from './finalize.mjs';
 
-const root = fileURLToPath(new URL('../', import.meta.url));
+const root = await realpath(path.resolve(fileURLToPath(new URL('../', import.meta.url))));
 const data = JSON.parse(await readFile(path.join(root, 'content.json'), 'utf8'));
 const esc = (value = '') => String(value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 function safeUrl(value) {
@@ -34,17 +36,15 @@ function experience(e) {
   return `<li class="timeline-item" id="exp-${esc(e.id)}"><div class="timeline-date"><span>${esc(e.period)}</span>${e.current ? '<span class="current-label">Actividad actual</span>' : ''}</div><div class="timeline-body"><p class="small-label">${esc(e.location)}</p><h3>${esc(e.institution)}</h3><p class="role">${esc(e.role)}</p><p>${esc(e.text)}</p>${(e.highlights || []).map(h => `<div class="experience-highlight"><h4>${esc(h.title)}</h4><p>${esc(h.text)}</p></div>`).join('')}${related.length ? `<div class="experience-projects"><h4>Trabajo relacionado</h4>${related.map(p => `<a href="projects/${p.id}.html">${esc(p.title)} ${icon('arrow')}</a>`).join('')}</div>` : ''}</div></li>`;
 }
 const p = data.profile;
-const pub = data.publication;
-const bibtex = `@article{barreto2026phytog,\n  author = {Barreto, Ricardo and Cornejo, Jose and Vargas, Mariela and Gastello, Nicolas and Rodriguez, Anghello},\n  title = {${pub.title}},\n  journal = {${pub.journal}},\n  year = {${pub.year}},\n  volume = {${pub.volume}},\n  number = {${pub.issue}},\n  pages = {${pub.article}},\n  doi = {${pub.doi}},\n  url = {${pub.url}}\n}\n`;
-
+const editorial=createEditorial({data,esc,safeUrl,external,icon,tags});
 const ids = new Set();
 for (const project of data.projects) {
   if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(project.id) || ids.has(project.id)) throw new Error(`Identificador inválido o repetido: ${project.id}`);
   ids.add(project.id);
-  if (!data.experience.some(e => e.id === project.experienceId)) throw new Error(`Experiencia no encontrada: ${project.experienceId}`);
+  if (project.experienceId && !data.experience.some(e => e.id === project.experienceId)) throw new Error(`Experiencia no encontrada: ${project.experienceId}`);
   for (const evidence of project.evidence || []) {
     if (!evidence.title) throw new Error('Cada evidencia necesita un título.');
-    if ([evidence.image,evidence.video,evidence.embedUrl].filter(Boolean).length > 1) throw new Error(`Usa una imagen o un video por evidencia: ${evidence.title}`);
+    if ([evidence.image,evidence.video,evidence.audio,evidence.embedUrl].filter(Boolean).length > 1) throw new Error(`Usa una imagen o un video por evidencia: ${evidence.title}`);
     if (evidence.video && !/^assets\/videos\/[^?#]+\.(mp4|webm)$/.test(evidence.video)) throw new Error('Los videos locales deben ser MP4 o WebM bajo assets/videos/.');
   }
 }
@@ -53,27 +53,16 @@ for (const e of data.experience) for (const id of e.projectIds || []) if (!ids.h
 const hiddenIds = new Set(data.projects.filter(p => p.hidden === true).map(p => p.id));
 data.projects = data.projects.filter(p => !hiddenIds.has(p.id));
 for (const e of data.experience) if (e.projectIds) e.projectIds = e.projectIds.filter(id => !hiddenIds.has(id));
-for (const id of hiddenIds) {
-  for (const directory of [root, path.join(root, '.site')]) {
-    await unlink(path.join(directory, 'projects', `${id}.html`)).catch(error => {
-      if (error.code !== 'ENOENT') throw error;
-    });
-  }
-}
 for (const asset of [p.cv, p.portrait, ...data.projects.flatMap(x => [x.image,x.url,x.repository]), ...data.projects.flatMap(x => (x.evidence || []).flatMap(e => [e.image,e.url,e.video,e.poster,e.embedUrl]))].filter(Boolean)) {
   safeUrl(asset);
   if (asset.startsWith('assets/')) await access(path.join(root, asset));
 }
-const { projectCard, projectPage, catalog, labSection, hero, shell, compactFooter } = createPortfolioViews({ data, esc, safeUrl, icon, tags, socialLinks, external });
-const publicationSection = `<section id="publications" class="section publication-section" aria-labelledby="publications-title"><div class="container">
-${heading('03','PUBLICATIONS','<span id="publications-title">Investigación publicada</span>')}
-<article class="publication-card"><div class="publication-meta"><span class="publication-type">JOURNAL ARTICLE</span><p class="journal-name">Biomimetics<span>MDPI · ${pub.year}</span></p><p class="publication-volume">Vol. ${esc(pub.volume)} · N.º ${esc(pub.issue)}<br>Artículo ${esc(pub.article)}</p><p class="publication-date">${esc(pub.date)}</p><div class="publication-mark" aria-hidden="true">Phyto<span>-G</span></div></div>
-<div class="publication-content"><p class="small-label">AGRICULTURA ESPACIAL / MICROGRAVEDAD</p><h3>${esc(pub.title)}</h3><p class="authors">${pub.authors.map(a=>a==='Anghello Rodriguez'?`<strong>${esc(a)}</strong>`:esc(a)).join(' · ')}</p><p>${esc(pub.summary)}</p>${tags(pub.tags)}<details class="publication-details"><summary>Mi contribución en BETTA Tech</summary><p>${esc(pub.contribution)}</p></details><p class="doi">DOI: <a href="${safeUrl(pub.url)}" ${external}>${esc(pub.doi)}</a></p><div class="publication-actions"><a class="button primary" href="${safeUrl(pub.url)}" ${external}>Leer artículo ${icon('arrow')}</a><a class="text-link" href="assets/documents/phyto-g.bib" download>Descargar BibTeX ${icon('download')}</a></div></div></article>
-</div></section>`;
+const { projectCard, projectPage, catalog, labSection, hero, shell, compactFooter } = createPortfolioViews({ data, esc, safeUrl, icon, tags, socialLinks, external, editorial });
+const publicationSection = editorial.publicationSection();
 
 const domainSection = `<section class="domain-section" aria-label="Áreas de especialización"><div class="container domains">
-<article id="aerospace" class="domain aerospace"><p class="eyebrow">FOCUS / 01</p><h2>Aerospace</h2><h3>${esc(data.aerospace.intro)}</h3><p>${esc(data.aerospace.text)}</p>${tags(data.aerospace.skills)}<div class="domain-links"><a href="projects/chasqui.html">Chasqui 2 ${icon('arrow')}</a><a href="projects/pachalab.html">PachaLab ${icon('arrow')}</a><a href="#publications">Phyto-G ${icon('arrow')}</a></div></article>
-<article id="biomedical" class="domain biomedical"><p class="eyebrow">FOCUS / 02</p><h2>Biomedical<br>& Bionics</h2><h3>${esc(data.biomedical.intro)}</h3><p>${esc(data.biomedical.text)}</p>${tags(data.biomedical.skills)}<p class="domain-note">${esc(data.biomedical.note)}</p><div class="domain-links"><a href="projects/biomaterials.html">Extrusora para biomateriales ${icon('arrow')}</a></div></article>
+<article id="aerospace" class="domain aerospace"><p class="eyebrow">FOCUS / 01</p><h2>Aerospace</h2><h3>${esc(data.aerospace.intro)}</h3><p>${esc(data.aerospace.text)}</p>${tags(data.aerospace.skills)}<div class="domain-links">${data.projects.filter(p=>(data.aerospace.projectIds || ["chasqui","pachalab"]).includes(p.id)).map(p=>`<a href="projects/${p.id}.html">${esc(p.title)} ${icon("arrow")}</a>`).join("")}${editorial.publications.length?`<a href="#publications">Publicaciones ${icon("arrow")}</a>`:""}</div></article>
+<article id="biomedical" class="domain biomedical"><p class="eyebrow">FOCUS / 02</p><h2>Biomedical<br>& Bionics</h2><h3>${esc(data.biomedical.intro)}</h3><p>${esc(data.biomedical.text)}</p>${tags(data.biomedical.skills)}<p class="domain-note">${esc(data.biomedical.note)}</p><div class="domain-links">${data.projects.filter(p=>(data.biomedical.projectIds || ["biomaterials"]).includes(p.id)).map(p=>`<a href="projects/${p.id}.html">${esc(p.title)} ${icon("arrow")}</a>`).join("")}</div></article>
 </div></section>`;
 
 const experienceSection = `<section id="experience" class="section container" aria-labelledby="experience-title">
@@ -105,23 +94,32 @@ const researchSection = `<section id="research" class="section container" aria-l
 const selected = `<section id="projects" class="section container selected-projects" aria-labelledby="projects-title">${heading('01','SELECTED WORK','<span id="projects-title">Proyectos en foco</span>','Mi contribución, el contexto y las evidencias de cada trabajo, en una ficha propia.')}<div class="projects-grid">${data.projects.filter(p=>p.featured).map(projectCard).join('')}</div><div class="section-actions"><a class="button primary" href="projects.html">Explorar todo el portafolio ${icon('arrow')}</a><span class="media-note">Ilustraciones conceptuales hasta incorporar las fotografías reales.</span></div></section>`;
 const cvTeaser = `<section id="cv" class="cv-section container"><div><p class="eyebrow">TRAYECTORIA</p><h2>La experiencia detrás de los proyectos.</h2><p>Experiencia, docencia, formación, habilidades y CV actualizado.</p></div><a class="button" href="cv.html">Ver trayectoria y CV ${icon('arrow')}</a></section>`;
 const cvIntro = `<section class="container page-intro cv-intro" id="bio"><p class="eyebrow">TRAYECTORIA / CV</p><h1>Formación y experiencia</h1><p>${esc(p.bio)}</p><div class="section-actions"><a class="button primary" href="${safeUrl(p.cv)}" download>Descargar CV actualizado ${icon('download')}</a><a class="text-link" href="projects.html">Explorar proyectos ${icon('arrow')}</a></div><nav class="cv-index" aria-label="Secciones del CV"><a href="#experience">Experiencia</a><a href="#teaching">Docencia</a><a href="#education">Educación</a><a href="#skills">Habilidades</a></nav></section>`;
-await mkdir(path.join(root,'projects'), { recursive: true });
+// Generated pages live only in .site; the repository stores public source.
+const out = path.join(root,'.site');
+if(path.dirname(out)!==root || path.basename(out)!=='.site') throw Error('Invalid output');
+try { if(await realpath(out)!==out) throw Error('Output must not be a link'); } catch(e) { if(e.code!=='ENOENT') throw e; }
+await rm(out,{recursive:true,force:true});
+await mkdir(path.join(out,'projects'), { recursive: true });
 const pages = new Map([
-  ['index.html', shell(data.meta.title, hero()+selected+labSection()+publicationSection+researchSection+domainSection+cvTeaser+contactSection)],
-  ['projects.html', shell('Proyectos | Anghello Rodríguez', catalog()+compactFooter(), 'projects.html')],
-  ['cv.html', shell('Trayectoria y CV | Anghello Rodríguez', cvIntro+experienceSection+teachingSection+educationSection+skillsSection+compactFooter(), 'cv.html')]
+  ['index.html', shell(data.meta.title, hero()+(data.meta.sectionOrder || ["projects","lab","publications","research","domains","posts","cv","contact"]).map(key=>({projects:selected,lab:labSection(),publications:publicationSection,research:researchSection,domains:domainSection,posts:editorial.postsSection(),cv:cvTeaser,contact:contactSection})[key]||"").join(""))],
+  ['projects.html', shell(`Proyectos | ${p.shortName}`, catalog()+compactFooter(), 'projects.html')],
+  ['cv.html', shell(`Trayectoria y CV | ${p.shortName}`, cvIntro+experienceSection+teachingSection+educationSection+skillsSection+compactFooter(), 'cv.html')]
 ]);
 for (const item of data.projects) {
   const route = `projects/${item.id}.html`;
-  pages.set(route, shell(`${item.title} | Anghello Rodríguez`, projectPage(item)+compactFooter(), route, item.description));
+  pages.set(route, shell(`${item.title} | ${p.shortName}`, projectPage(item)+compactFooter(), route, item.description));
 }
-for (const [file, content] of pages) await writeFile(path.join(root,file), content);
-await writeFile(path.join(root,'assets/documents/phyto-g.bib'), bibtex);
-if (process.argv.includes('--publish')) {
-  const out = path.join(root,'.site');
-  await mkdir(path.join(out,'projects'), { recursive: true });
-  for (const [file, content] of pages) await writeFile(path.join(out,file), content);
-  await cp(path.join(root,'.nojekyll'),path.join(out,'.nojekyll'));
-  await cp(path.join(root,'assets'),path.join(out,'assets'), { recursive:true });
-}
-console.log(`Portfolio generado: ${pages.size} páginas, ${data.projects.length} fichas, ${data.experience.length} experiencias. Sin dependencias externas.`);
+await mkdir(path.join(out,'posts'), {recursive:true});
+pages.set('posts.html',shell('Bitácora | '+p.shortName,'<section class="container page-intro"><p class="eyebrow">BITÁCORA</p><h1>Notas y avances</h1></section><div class="container projects-grid">'+(data.posts||[]).map(editorial.postCard).join('')+'</div>'+compactFooter(),'posts.html'));
+for(const post of data.posts||[]) pages.set('posts/'+post.id+'.html',shell(post.title+' | '+p.shortName,editorial.postPage(post)+compactFooter(),'posts/'+post.id+'.html',post.summary));
+for (const [file, content] of pages) await writeFile(path.join(out,file), content);
+await cp(path.join(root,'.nojekyll'),path.join(out,'.nojekyll'));
+// Copy only reviewed public resources; unrelated tracked assets stay in Git.
+const publicAssets=new Set(['assets/app.js','assets/theme.js','assets/favicon.svg','assets/styles.css','assets/identity.css','assets/portfolio.css']);
+const collectAssets=value=>{if(typeof value==='string'&&value.startsWith('assets/'))publicAssets.add(value);else if(Array.isArray(value))value.forEach(collectAssets);else if(value&&typeof value==='object')Object.values(value).forEach(collectAssets);};
+collectAssets(data);
+for(const asset of publicAssets){safeUrl(asset);const dest=path.resolve(out,asset);if(!dest.startsWith(out+path.sep))throw Error('Invalid asset path');await mkdir(path.dirname(dest),{recursive:true});await cp(path.join(root,asset),dest);}
+await mkdir(path.join(out,'assets/documents'),{recursive:true});
+for(const pub of editorial.publications) await writeFile(path.join(out,editorial.bibPath(pub)),editorial.bib(pub));
+await finalize(out,data);
+console.log('Portfolio generado: '+pages.size+' páginas.');

@@ -17,8 +17,12 @@ jobs:
         with:
           node-version: '22'
           package-manager-cache: false
+      - name: Instalar dependencias fijadas
+        run: npm ci --ignore-scripts
       - name: Generar sitio estático
         run: node scripts/build.mjs --publish
+      - name: Verificar candidato revisado
+        run: node scripts/verify-publication.mjs
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:

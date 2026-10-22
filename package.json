@@ -7,5 +7,10 @@
     "build": "node scripts/build.mjs",
     "start": "node scripts/preview.mjs"
   },
-  "engines": { "node": ">=20" }
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "cheerio": "1.2.0"
+  }
 }
