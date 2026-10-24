@@ -295,31 +295,6 @@
       "evidence": []
     },
     {
-      "id": "fablab",
-      "code": "09 / MANUFACTURA",
-      "title": "Prototipado mecatrónico en FabLab",
-      "institution": "ESAN – R&D Labs / FabLab",
-      "period": "Abr. – oct. 2026 · etapa en ESAN",
-      "category": "Manufactura",
-      "description": "Diseño y fabricación de prototipos para proyectos de I+D y servicios tecnológicos.",
-      "contribution": "Desarrollo de prototipos integrando diseño CAD, fabricación digital, PCBs y componentes electrónicos y mecánicos. Soporte técnico, mantenimiento y formación a estudiantes en prototipado, diseño mecánico, Arduino y aplicaciones de visión por computadora.",
-      "tags": [
-        "CAD",
-        "Fabricación digital",
-        "Integración"
-      ],
-      "result": null,
-      "image": null,
-      "url": null,
-      "repository": null,
-      "source": "CV maestro actualizado, p. 1. Periodo de vinculación institucional, no fecha exacta del proyecto.",
-      "featured": false,
-      "kind": "Práctica de I+D",
-      "cover": "manufacturing",
-      "experienceId": "esan",
-      "evidence": []
-    },
-    {
       "id": "quadruped",
       "code": "10 / ROBÓTICA",
       "title": "Cuadrúpedo para terrenos complejos",
@@ -491,8 +466,7 @@
         "biomaterials",
         "esan-vision",
         "arm",
-        "swarm",
-        "fablab"
+        "swarm"
       ]
     },
     {
