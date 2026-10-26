@@ -4,6 +4,7 @@ import path from 'node:path';
 import { createPortfolioViews } from './portfolio.mjs';
 import { createEditorial } from './editorial.mjs';
 import { finalize } from './finalize.mjs';
+import { translationInputs, bilingualPages } from './i18n.mjs';
 
 const root = await realpath(path.resolve(fileURLToPath(new URL('../', import.meta.url))));
 const data = JSON.parse(await readFile(path.join(root, 'content.json'), 'utf8'));
@@ -112,7 +113,19 @@ for (const item of data.projects) {
 await mkdir(path.join(out,'posts'), {recursive:true});
 pages.set('posts.html',shell('Bitácora | '+p.shortName,'<section class="container page-intro"><p class="eyebrow">BITÁCORA</p><h1>Notas y avances</h1></section><div class="container projects-grid">'+(data.posts||[]).map(editorial.postCard).join('')+'</div>'+compactFooter(),'posts.html'));
 for(const post of data.posts||[]) pages.set('posts/'+post.id+'.html',shell(post.title+' | '+p.shortName,editorial.postPage(post)+compactFooter(),'posts/'+post.id+'.html',post.summary));
-for (const [file, content] of pages) await writeFile(path.join(out,file), content);
+// Remove links to unpublished pages before collecting translation strings.
+for (const [file, content] of pages) await writeFile(path.join(out, file), content);
+await finalize(out, data);
+for (const file of pages.keys()) pages.set(file, await readFile(path.join(out, file), 'utf8'));
+if (process.argv.includes('--translation-input')) {
+  await writeFile(path.join(root, 'translation-input.json'), JSON.stringify(translationInputs(pages, data)));
+  process.exit(0);
+}
+const localized = bilingualPages(pages, data);
+for (const [file, content] of localized) {
+  await mkdir(path.dirname(path.join(out, file)), {recursive: true});
+  await writeFile(path.join(out,file), content);
+}
 await cp(path.join(root,'.nojekyll'),path.join(out,'.nojekyll'));
 // Copy only reviewed public resources; unrelated tracked assets stay in Git.
 const publicAssets=new Set(['assets/app.js','assets/theme.js','assets/favicon.svg','assets/styles.css','assets/identity.css','assets/portfolio.css']);
@@ -122,4 +135,4 @@ for(const asset of publicAssets){safeUrl(asset);const dest=path.resolve(out,asse
 await mkdir(path.join(out,'assets/documents'),{recursive:true});
 for(const pub of editorial.publications) await writeFile(path.join(out,editorial.bibPath(pub)),editorial.bib(pub));
 await finalize(out,data);
-console.log('Portfolio generado: '+pages.size+' páginas.');
+console.log('Portfolio generado: '+localized.size+' páginas (EN / ES).');

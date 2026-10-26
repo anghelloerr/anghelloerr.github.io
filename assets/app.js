@@ -1,5 +1,16 @@
 (() => {
   const root = document.documentElement;
+  const english = root.lang === 'en';
+  const words = (en, es) => english ? en : es;
+  const languageButton = document.querySelector('.language-toggle');
+  // Preserve the current section, including when the hash changes after load.
+  if (languageButton) {
+    const languagePath = languageButton.getAttribute('href');
+    const syncLanguage = () => { languageButton.setAttribute('href', languagePath + location.search + location.hash); };
+    syncLanguage();
+    window.addEventListener('hashchange', syncLanguage);
+    languageButton.addEventListener('click', syncLanguage);
+  }
   root.classList.add('js');
   if ('ResizeObserver' in window) {
     new ResizeObserver(entries => {
@@ -16,8 +27,8 @@
   function syncThemeButton() {
     const dark = root.dataset.theme === 'dark';
     themeButton.setAttribute('aria-pressed', String(dark));
-    themeButton.setAttribute('aria-label', dark ? 'Activar modo claro' : 'Activar modo oscuro');
-    themeButton.title = dark ? 'Modo claro' : 'Modo oscuro';
+    themeButton.setAttribute('aria-label', dark ? words('Switch to light mode', 'Activar modo claro') : words('Switch to dark mode', 'Activar modo oscuro'));
+    themeButton.title = dark ? words('Light mode', 'Modo claro') : words('Dark mode', 'Modo oscuro');
   }
   themeButton.hidden = false;
   menuButton.hidden = false;
@@ -37,7 +48,7 @@
 
   function setMenu(open, returnFocus = false) {
     menuButton.setAttribute('aria-expanded', String(open));
-    menuButton.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    menuButton.setAttribute('aria-label', open ? words('Close menu', 'Cerrar menú') : words('Open menu', 'Abrir menú'));
     menu.classList.toggle('is-open', open);
     if (returnFocus) menuButton.focus();
   }
@@ -98,7 +109,7 @@
         if (match) count++;
       });
       buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.filter === value)));
-      status.textContent = `${count} ${count === 1 ? 'ficha' : 'fichas'} · ${buttons.find(button => button.dataset.filter === value).textContent}`;
+      status.textContent = `${count} ${count === 1 ? words('project', 'ficha') : words('projects', 'fichas')} · ${buttons.find(button => button.dataset.filter === value).textContent}`;
     };
     filters.hidden = false;
     buttons.forEach(button => button.addEventListener('click', () => {
