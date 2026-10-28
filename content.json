@@ -116,27 +116,230 @@
   "projects": [
     {
       "id": "biomaterials",
-      "code": "01 / BIOMATERIALES",
-      "title": "Extrusora para impresión 3D con biomateriales",
+      "code": "01 / MANUFACTURA ADITIVA",
+      "title": "Extrusora 3D de pasta cerámica con módulo auxético",
       "institution": "ESAN R&D Labs / FabLab",
-      "period": "Abr. – oct. 2026 · etapa en ESAN",
-      "category": "Biomateriales",
-      "description": "Desarrollo de una extrusora como parte de la investigación aplicada en impresión 3D con biomateriales.",
-      "contribution": "Participación en el desarrollo de una extrusora para impresión 3D con biomateriales dentro de ESAN R&D Labs / FabLab.",
+      "period": "Oct. 2026 · estudio numérico",
+      "category": "Manufactura aditiva",
+      "description": "Diseño de un extrusor de émbolo para una Ender-3 y estudio de un módulo auxético lozenge-chiral frente a un bloque rígido. Incluye CAD, análisis estructural, electrónica y animación del funcionamiento.",
+      "contribution": "Modelado y documentación de la reconstrucción técnica: celdas auxéticas, dimensionamiento del extrusor, integración mecánica y electrónica, comparación numérica y comunicación visual del diseño. La geometría lozenge-chiral de referencia corresponde a Hou et al. (2024).",
       "tags": [
-        "Biomateriales",
-        "Impresión 3D"
+        "SOLIDWORKS",
+        "CalculiX",
+        "Gmsh",
+        "KiCad",
+        "Manufactura aditiva",
+        "Metamateriales auxéticos"
       ],
-      "result": null,
-      "image": null,
+      "result": "Estudio numérico cerrado; prototipo y ensayos físicos pendientes. En el modelo estudiado, el módulo auxético añade flexibilidad y aumenta el retraso de arranque y el goteo frente al bloque rígido: no se presenta como una mejora demostrada.",
+      "image": "assets/images/7697b3e7f75fbb4ce07e6855bdcfc6ce0b33dc9548dedba1b041a3f080be161b.webp",
+      "imageAlt": "Modelo CAD de la revisión B sobre una Creality Ender-3. Es un render, no una fotografía de un prototipo construido.",
       "url": null,
       "repository": null,
-      "source": "CV maestro actualizado, p. 1. El periodo corresponde a la vinculación con ESAN; no indica la fecha exacta de inicio del proyecto.",
+      "source": "Documentación técnica y modelos del proyecto, octubre de 2026. El plan de julio de 2026 en FabLab es el antecedente; no demuestra fabricación. La ficha anterior usaba el título general «biomateriales»; el estudio disponible se refiere específicamente a pasta cerámica.",
       "featured": true,
-      "kind": "Proyecto",
+      "kind": "Diseño y simulación",
       "cover": "biomaterials",
       "experienceId": "esan",
-      "evidence": []
+      "body": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Del problema al diseño"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "La pregunta es cómo cambia el arranque y la detención del flujo al incorporar un módulo auxético en el tren de empuje. Se compara la configuración auxética (A) con un bloque rígido equivalente (R), manteniendo explícitos los supuestos de material y de pasta."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Qué se desarrolló"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "La revisión B integra una jeringa de 30 mL, motor NEMA 17 con reductor, transmisión GT2 y husillo Tr8 × 2. La unidad queda fija en el travesaño superior y alimenta la boquilla mediante una manguera de PA12. El conjunto incluye piezas modeladas, vista explosionada, lista de materiales y planos EXT-00 a EXT-07."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "El análisis comprende las cinco variantes G0–G4, compresión, rigidez, pandeo y respuesta dinámica. La electrónica está diseñada en KiCad: el eje E de la Ender-3 acciona el motor y un Arduino Nano con HX711 registra la fuerza. El firmware del registrador está compilado; no está probado en hardware y los cambios de Marlin siguen planificados."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Lo que muestran las simulaciones"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "En la revisión B, el módulo de PETG se acorta aproximadamente 0,60 mm a 740 N, con rigidez de unos 1226 N/mm. Son predicciones numéricas con propiedades de material supuestas, no mediciones."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "En la comparación hipotética sin manguera, con el módulo de revisión B y la jeringa de 30 mL, el tiempo hasta el 90 % del caudal pasa de 2,4 s (R) a 6,1 s (A), y el goteo de 8 a 20 mm³. En la configuración diseñada de revisión B, con manguera de PA12, esos valores son 32,5 s y 55 mm³ (R) frente a 51,9 s y 84 mm³ (A). El estudio documenta este resultado desfavorable; no demuestra una ventaja del módulo."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Alternativa y siguientes pasos"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "La revisión C elimina la manguera y sitúa una jeringa de 10 mL sobre el carro X. Es un diseño preliminar sin planos; la masa calculada de 1,42 kg sobre el carro exige verificar el eje y el pórtico."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "La fabricación, la caracterización de la pasta y los ensayos comparativos quedan para un proyecto posterior. El informe y el artículo son borradores técnicos, no publicaciones científicas aceptadas."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Referencia y atribución"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Las topologías cLAM, LCAM-2R y oLCAM proceden de Hou et al. (2024), Materials & Design, 237, 112530. El CAD de referencia de la Ender-3 es de Creality. Las imágenes de esta ficha son modelos y gráficos del estudio; el video es una simulación visual con tiempo acelerado."
+              }
+            ]
+          }
+        ]
+      },
+      "evidence": [
+        {
+          "title": "Funcionamiento del extrusor — simulación visual",
+          "date": "Oct. 2026 · simulación / diseño",
+          "description": "Video de 1 min 36 s con diseño, mecanismo e impresión simulada de la revisión B. El tiempo está acelerado y la deformación del módulo se amplía ×10 para visualizarla. La cifra de factor de seguridad ≥ 7,5 de la lámina corresponde a las piezas de aluminio, no al módulo auxético. No es una grabación de un prototipo.",
+          "alt": "Animación CAD del mecanismo de extrusión y la Ender-3.",
+          "video": "assets/videos/14fa4f860a981b585ed5050f53825230bfe7881f9a0c4c792b2b63240c5a4dc9.mp4",
+          "poster": "assets/images/7697b3e7f75fbb4ce07e6855bdcfc6ce0b33dc9548dedba1b041a3f080be161b.webp",
+          "transcript": "Resumen descriptivo: se presenta la geometría auxética, el conjunto mecánico y la electrónica; el motor mueve la transmisión y el husillo, el carro empuja el émbolo y la simulación muestra la deposición de pasta. Las magnitudes mostradas proceden del modelo numérico; el tiempo y la deformación visual están escalados.",
+          "sortOrder": 0
+        },
+        {
+          "title": "Unidad extrusora — vista explosionada",
+          "date": "Oct. 2026 · simulación / diseño",
+          "description": "Modelo CAD de la revisión B: jeringa, placas, guías, transmisión y módulo auxético. Documenta el ensamblaje diseñado; la fabricación está pendiente.",
+          "alt": "Vista explosionada del conjunto mecánico con jeringa y módulo auxético.",
+          "image": "assets/images/a1fe85ec008514dc81668496298d12964779285ce88788955b7fe2f96dda4f0c.webp",
+          "sortOrder": 1
+        },
+        {
+          "title": "Celda oLCAM — reconstrucción geométrica",
+          "date": "Oct. 2026 · simulación / diseño",
+          "description": "Modelo CAD de la variante G2, basado en la geometría lozenge-chiral de Hou et al. (2024). Se mantiene la atribución de la topología al artículo original.",
+          "alt": "Celda auxética oLCAM modelada en SOLIDWORKS.",
+          "url": "https://doi.org/10.1016/j.matdes.2023.112530",
+          "linkLabel": "Consultar el artículo de referencia",
+          "image": "assets/images/d537cdf21b9f2fa2292f64c05ca259bd23de31e0fd90c4e6796927a281523244.webp",
+          "sortOrder": 2
+        },
+        {
+          "title": "Cinco variantes — comparación por elementos finitos",
+          "date": "Oct. 2026 · simulación / diseño",
+          "description": "Comparación G0–G4 de rigidez relativa y coeficiente de Poisson efectivo. Simulación lineal en CalculiX con material normalizado; no son ensayos de probetas impresas.",
+          "alt": "Gráficos de rigidez normalizada y coeficiente de Poisson para G0 a G4.",
+          "image": "assets/images/dfbd91873a2e91d326a29769594f53f92d13115b402b7b83094ad2df2c88727c.webp",
+          "sortOrder": 3
+        },
+        {
+          "title": "Arranque y parada — configuración rígida frente a auxética",
+          "date": "Oct. 2026 · simulación / diseño",
+          "description": "Caudal y fuerza calculados para distintas mangueras y para el caso sin manguera. R representa el bloque rígido y A el módulo auxético. La flexibilidad añadida aumenta el retraso y el goteo en el modelo; las propiedades de la pasta son supuestos.",
+          "alt": "Curvas simuladas de caudal y fuerza durante el arranque y la parada de la extrusión.",
+          "image": "assets/images/bda96dbb947c10021ad9634209c583d91197392a3470b83decfac1f574e6d000.webp",
+          "sortOrder": 4
+        },
+        {
+          "title": "Electrónica de accionamiento y registro de fuerza",
+          "date": "Oct. 2026 · simulación / diseño",
+          "description": "Esquemático KiCad del motor conectado al eje E y del registrador Arduino Nano con HX711. Diseño electrónico, sin validación en hardware.",
+          "alt": "Esquemático eléctrico del motor, los finales de carrera y el registrador de fuerza.",
+          "image": "assets/images/742cc535e7df3c726ad17bdc01fa57881413446cab49c403c9b81f53bb6aef0e.webp",
+          "sortOrder": 5
+        },
+        {
+          "title": "Revisión C — alternativa sin manguera",
+          "date": "Oct. 2026 · simulación / diseño",
+          "description": "Modelo CAD preliminar con la unidad sobre el carro X. Reduce el recorrido de la pasta, pero añade una masa calculada de 1,42 kg; falta verificar su efecto en la impresora. No tiene todavía planos de fabricación.",
+          "alt": "Modelo CAD de la Ender-3 con extrusora compacta instalada sobre el carro X.",
+          "image": "assets/images/3d0340a510aaaac022eaca94ebe3e56e95cc2fc28e8db1c7188b5662d0d40c9b.webp",
+          "sortOrder": 6
+        }
+      ]
     },
     {
       "id": "chasqui",
@@ -273,26 +476,225 @@
     {
       "id": "swarm",
       "code": "08 / ROBÓTICA",
-      "title": "Enjambre de robots",
+      "title": "Enjambre de robots — ovejas y lobo",
       "institution": "ESAN R&D Labs",
-      "period": "Abr. – oct. 2026 · etapa en ESAN",
+      "period": "Oct. 2026 · reconstrucción en simulación",
       "category": "Robótica",
-      "description": "Investigación aplicada en enjambre de robots dentro del laboratorio de robótica.",
-      "contribution": "Participación desde el rol de practicante de Investigación y Desarrollo, integrando el desarrollo de prototipos con la investigación aplicada.",
+      "description": "Gemelo digital del Yahboom MicroROS-Pi5 y comportamiento colectivo de cinco robots oveja guiados por un robot pastor. Integra ROS 2, Gazebo, control de motores y estimación de posición.",
+      "contribution": "Reconstrucción y documentación del modelo del robot, el control de velocidad, la odometría y el comportamiento ovejas–lobo. Se reúnen código, registros y comparaciones de simulación; las fotografías del laboratorio aportan contexto de la plataforma física.",
       "tags": [
-        "Robótica",
-        "I+D"
+        "ROS 2 Humble",
+        "Gazebo Fortress",
+        "Python",
+        "GNU Octave",
+        "Odometría / EKF",
+        "Control multiagente"
       ],
-      "result": null,
-      "image": null,
-      "url": null,
-      "repository": null,
-      "source": "CV, p. 1",
-      "featured": false,
-      "kind": "Proyecto",
+      "result": "En el ensayo registrado de Gazebo con poses de odometría: llegada al corral en 43,8 s, cero colisiones registradas y contención del 100 % durante los 60 s siguientes. Son resultados de ese escenario simulado; falta validación en robots reales.",
+      "image": "assets/images/c8ae45571d014bf18611d1e5903e0fdf38e0019485993f30c672d875102de122.webp",
+      "imageAlt": "Flota Yahboom MicroROS-Pi5 en el laboratorio. Fotografía de la plataforma física; no documenta un ensayo del algoritmo ovejas–lobo.",
+      "url": "https://github.com/anghelloerr/enjambre-ovejas-lobo/blob/main/docs/08_experimentos.md",
+      "repository": "https://github.com/anghelloerr/enjambre-ovejas-lobo",
+      "source": "Repositorio enjambre-ovejas-lobo: documentación 00–08, registros CSV, figuras y fotografías aportadas. Reconstrucción de octubre de 2026 a partir de recursos de Yahboom. Las imágenes físicas no validan los resultados del simulador.",
+      "featured": true,
+      "kind": "Robótica y simulación",
       "cover": "robotics",
       "experienceId": "esan",
-      "evidence": []
+      "body": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Un comportamiento colectivo medible"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Cinco agentes oveja combinan separación, cohesión, alineación y evasión. Un agente lobo alterna entre reunir, conducir y vigilar el rebaño dentro del corral. El objetivo es estudiar un comportamiento coordinado con límites de velocidad, retardo de actuación y errores de localización."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "De la plataforma al simulador"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "El modelo representa un Yahboom MicroROS-Pi5 de cuatro ruedas con dirección por deslizamiento. Cada robot utiliza un nodo ROS 2, comandos de velocidad y estimación de pose. Gazebo Fortress aporta la física; Python y scripts compatibles con MATLAB, ejecutados en GNU Octave, permiten contrastar cálculos y escenarios."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "El trabajo incluye cinemática, un lazo PI para el motor y estimación de posición mediante encoders y giróscopo. Los scripts para construir modelos de Simulink y Simscape están disponibles, pero esos modelos no se ejecutaron por falta de licencia."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Resultados con contexto"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "En el escenario de Gazebo con la odometría de cada robot (EKF de robot_localization: encoders e IMU), las cinco ovejas alcanzan el corral en 43,8 s. El registro indica cero colisiones, separación mínima de 0,2645 m y permanencia de todas las ovejas durante 60 s. La animación reconstruye esas trayectorias registradas."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "En la prueba simulada de odometría de un cuadrado de 1 m repetido tres veces, el error final medio en Python pasa de 0,94 m con encoders a 0,11 m con encoders y giróscopo, y a 0,016 m con un EKF autocalibrado de siete estados (20 ensayos). Este último estimador es el experimento de Python; no se atribuye ese error al EKF de Gazebo ni a hardware."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "También se estudia la oscilación de rumbo del enjambre. Las correcciones incluyen separación continua y promediada, zona muerta y ajustes de marcha atrás, para reducir oscilaciones inducidas por fuerzas virtuales y retardo."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Qué queda por validar"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Medir los parámetros y el retardo en los robots reales, repetir la prueba de odometría y ejecutar el pastoreo físico. La transferencia al laboratorio aún necesita calibración y ensayos; no se considera demostrada por compartir interfaces ROS 2."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Referencias y recursos"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "La plataforma, mallas y firmware de referencia son de Yahboom Technology. El comportamiento se basa en reglas de Reynolds y en el pastoreo de Strömbom et al. (2014). El repositorio público incluye código, documentación, datos y créditos."
+              }
+            ]
+          }
+        ]
+      },
+      "evidence": [
+        {
+          "title": "Pastoreo con odometría — animación de trayectorias",
+          "date": "Oct. 2026 · simulación / diseño",
+          "description": "Visualización animada a partir del registro de Gazebo con cinco ovejas y un lobo guiados por odometría. Los trazos representan posiciones de referencia del simulador. Conversión del GIF original a video para reproducirlo en la web; no es filmación del laboratorio.",
+          "alt": "Animación de seis agentes simulados avanzando hacia el corral.",
+          "video": "assets/videos/182bbccd3b1f1effcdf2b9aa0a1d0f440b577ecd777c6c0f7d6c61410d5478d8.mp4",
+          "poster": "assets/images/3ff71ac4bd16a5ead3d56b5046249e6850cfee85563218a404c1064751a67689.webp",
+          "transcript": "Cinco agentes oveja se agrupan y avanzan hacia el corral verde mientras el agente pastor los conduce desde atrás. La animación representa las posiciones registradas en una simulación, no movimientos medidos en robots físicos.",
+          "sortOrder": 7
+        },
+        {
+          "title": "La plataforma física en el laboratorio",
+          "date": "",
+          "description": "Fotografía original de la flota Yahboom MicroROS-Pi5. Documenta la plataforma de referencia y su entorno; las pruebas y métricas presentadas en esta ficha siguen siendo de simulación.",
+          "alt": "Robots Yahboom MicroROS-Pi5 sobre mesas de laboratorio con sus periféricos.",
+          "image": "assets/images/c8ae45571d014bf18611d1e5903e0fdf38e0019485993f30c672d875102de122.webp",
+          "sortOrder": 8
+        },
+        {
+          "title": "Trayectorias del ensayo de pastoreo",
+          "date": "Oct. 2026 · simulación / diseño",
+          "description": "Recorrido de los cinco agentes y del pastor en Gazebo. Aunque el control utiliza odometría, la gráfica muestra las posiciones de referencia del simulador para evaluar el resultado.",
+          "alt": "Trayectorias de cinco robots oveja y un pastor hacia el corral.",
+          "url": "https://github.com/anghelloerr/enjambre-ovejas-lobo/blob/main/data/gazebo_swarm_herd_tf_summary.csv",
+          "linkLabel": "Consultar los datos del ensayo simulado",
+          "image": "assets/images/3ff71ac4bd16a5ead3d56b5046249e6850cfee85563218a404c1064751a67689.webp",
+          "sortOrder": 9
+        },
+        {
+          "title": "Métricas de cohesión, separación y contención",
+          "date": "Oct. 2026 · simulación / diseño",
+          "description": "Registro del mismo escenario de pastoreo con odometría: llegada a los 43,8 s, cero colisiones registradas y contención completa durante 60 s. Estos valores describen ese ensayo; no garantizan el comportamiento físico.",
+          "alt": "Gráficos de métricas del pastoreo simulado con poses de odometría.",
+          "image": "assets/images/23fd8c9f79e12577a9f321baa090a8ca73a3fbbc6765ab93a064b785ce3b292b.webp",
+          "sortOrder": 10
+        },
+        {
+          "title": "Odometría — comparación de estimadores en Python",
+          "date": "Oct. 2026 · simulación / diseño",
+          "description": "Prueba simulada de tres vueltas a un cuadrado de 1 m. Compara encoders, calibración, giróscopo y EKF autocalibrado de siete estados. El error medio de 0,016 m corresponde a los 20 ensayos de Python, no al robot real.",
+          "alt": "Comparación de trayectorias simuladas con cuatro métodos de estimación de posición.",
+          "url": "https://github.com/anghelloerr/enjambre-ovejas-lobo/blob/main/docs/05_odometria.md",
+          "linkLabel": "Leer el análisis de odometría",
+          "image": "assets/images/a3c3881d21f82047d7ba037ad403eb7675262bb7a7abdec81db76dbf7386dcb7.webp",
+          "sortOrder": 11
+        },
+        {
+          "title": "Control PI del motor — modelo no lineal",
+          "date": "Oct. 2026 · simulación / diseño",
+          "description": "Respuesta simulada del lazo de velocidad, con las limitaciones del modelo de motor y encoder. Los scripts de cálculo fueron verificados en GNU Octave; no es una medición del motor físico.",
+          "alt": "Respuesta simulada del motor con control PI, saturación y cuantización.",
+          "url": "https://github.com/anghelloerr/enjambre-ovejas-lobo/blob/main/docs/04_motor_y_control.md",
+          "linkLabel": "Leer el modelo y el diseño del control",
+          "image": "assets/images/9e98f46392b77f9f7d0b605e14607160f8e69267430f7852d83ba71dd362bd30.webp",
+          "sortOrder": 12
+        }
+      ]
     },
     {
       "id": "quadruped",
@@ -902,6 +1304,8 @@
       "10.3390/biomimetics11050340": "10.3390/biomimetics11050340",
       "14 de mayo de 2026": "14 May 2026",
       "2022–2026 · investigación, docencia e industria": "2022-2026 · research, teaching and industry",
+      "5 imágenes · 1 videos · 0 audios": "5 images · 1 videos · 0 audios",
+      "6 imágenes · 1 videos · 0 audios": "6 images · 1 videos · 0 audios",
       "ANSYS": "ANSYS",
       "AOCS": "AOCS",
       "AUTOTEC Perú": "AUTOTEC Perú",
@@ -917,12 +1321,25 @@
       "Ago. – oct. 2025": "Aug. – Oct. 2025",
       "Agricultura espacial": "Space agriculture",
       "Alemán · CEFR A2": "German · CEFR A2",
+      "Alternativa y siguientes pasos": "Alternative design and next steps",
       "Altium Designer": "Altium Designer",
+      "Ampliar: Arranque y parada — configuración rígida frente a auxética": "Enlarge: Startup and shutdown — rigid versus auxetic configuration",
+      "Ampliar: Celda oLCAM — reconstrucción geométrica": "Enlarge: oLCAM cell — geometric reconstruction",
+      "Ampliar: Cinco variantes — comparación por elementos finitos": "Enlarge: Five variants — finite element comparison",
+      "Ampliar: Control PI del motor — modelo no lineal": "Enlarge: Motor PI control — nonlinear model",
+      "Ampliar: Electrónica de accionamiento y registro de fuerza": "Enlarge: Drive electronics and force logging",
+      "Ampliar: La plataforma física en el laboratorio": "Enlarge: The physical platform in the laboratory",
+      "Ampliar: Métricas de cohesión, separación y contención": "Enlarge: Cohesion, separation and containment metrics",
+      "Ampliar: Odometría — comparación de estimadores en Python": "Enlarge: Odometry — estimator comparison in Python",
+      "Ampliar: Revisión C — alternativa sin manguera": "Enlarge: Revision C — hose-free alternative",
+      "Ampliar: Trayectorias del ensayo de pastoreo": "Enlarge: Shepherding trial trajectories",
+      "Ampliar: Unidad extrusora — vista explosionada": "Enlarge: Extrusion unit — exploded view",
       "Anghello Rodríguez": "Anghello Rodríguez",
       "Anghello Rodríguez | Research & Engineering Portfolio": "Anghello Rodríguez | Research & Engineering Portfolio",
       "Anghello Rodríguez, inicio": "Anghello Rodríguez, home",
       "Aplicaciones en laboratorio": "Laboratory applications",
       "Applied AI / Computer Vision": "Applied AI / Computer Vision",
+      "Arranque y parada — configuración rígida frente a auxética": "Startup and shutdown — rigid versus auxetic configuration",
       "Artículo 340": "Article 340",
       "Artículo en Biomimetics": "Article in Biomimetics",
       "Automatización con PLC": "Automation with PLC",
@@ -946,24 +1363,38 @@
       "CAD / CAE / CAM y electrónica": "CAD / CAE / CAM and electronics",
       "CNC · Carvera / ShopBot": "CNC · Carvera / ShopBot",
       "CONTACT": "CONTACT",
+      "Cada ficha distingue fotografías, modelos CAD y simulaciones. Las portadas esquemáticas indican que aún falta material visual del proyecto.": "Each page distinguishes photographs, CAD models and simulations. Schematic covers indicate that project visuals are still pending.",
+      "CalculiX": "Calculix",
       "Catálogo de proyectos": "Project catalogue",
+      "Caudal y fuerza calculados para distintas mangueras y para el caso sin manguera. R representa el bloque rígido y A el módulo auxético. La flexibilidad añadida aumenta el retraso y el goteo en el modelo; las propiedades de la pasta son supuestos.": "Calculated flow rate and force for different hoses and for the hose-free case. R denotes the rigid block and A the auxetic module. Added compliance increases delay and oozing in the model; paste properties are assumed.",
+      "Celda auxética oLCAM modelada en SOLIDWORKS.": "Auxetic oLCAM cell modeled in SOLIDWORKS.",
+      "Celda oLCAM — reconstrucción geométrica": "oLCAM cell — geometric reconstruction",
       "Chair": "Chair",
       "Chasqui 2": "Chasqui 2",
       "Chasqui 2 — AOCS": "Chasqui 2 — AOCS",
+      "Cinco agentes oveja combinan separación, cohesión, alineación y evasión. Un agente lobo alterna entre reunir, conducir y vigilar el rebaño dentro del corral. El objetivo es estudiar un comportamiento coordinado con límites de velocidad, retardo de actuación y errores de localización.": "Five sheep agents combine separation, cohesion, alignment and evasion. A wolf agent alternates between collecting, driving and guarding the flock inside the pen. The aim is to study coordinated behavior with speed limits, actuation delays and localization errors.",
+      "Cinco agentes oveja se agrupan y avanzan hacia el corral verde mientras el agente pastor los conduce desde atrás. La animación representa las posiciones registradas en una simulación, no movimientos medidos en robots físicos.": "Five sheep agents group together and move toward the green pen as the shepherd agent drives them from behind. The animation shows positions logged in a simulation, not movements measured on physical robots.",
+      "Cinco variantes — comparación por elementos finitos": "Five variants — finite element comparison",
       "Co-instructor en capacitaciones de PLC Siemens S7-1200, LOGO! y Delta.": "Co-instructor in PLC training Siemens S7-1200, LOGO! and Delta.",
       "Coautor del artículo publicado en Biomimetics el 14 de mayo de 2026.": "Co-author of the article published in Biomimetics on May 14, 2026.",
       "Colaboración de investigación en BETTA Tech: diseño CAD mecánico, documentación de ingeniería, soporte CAE/FEA relacionado con el movimiento y coordinación con un equipo multidisciplinario.": "BETTA Tech research collaboration: mechanical CAD design, engineering documentation, CAE / FEA support related to movement and coordination with a multidisciplinary team.",
       "Colaborador de investigación · coautor": "Research collaborator · co-author",
       "Colegio Bilingüe Santa María de Fátima": "Colegio Bilingüe Santa María de Fátima",
       "Colegio de Economistas de Lima": "Colegio de Economistas de Lima",
+      "Comparación G0–G4 de rigidez relativa y coeficiente de Poisson efectivo. Simulación lineal en CalculiX con material normalizado; no son ensayos de probetas impresas.": "G0–G4 comparison of relative stiffness and effective Poisson’s ratio. Linear simulation in CalculiX with a normalized material; these are not tests of printed specimens.",
+      "Comparación de trayectorias simuladas con cuatro métodos de estimación de posición.": "Comparison of simulated trajectories using four position-estimation methods.",
       "Compartir lo que construyo": "Share what I build",
       "Conectemos ideas.": "Let's connect ideas.",
       "Construyamos posibilidades.": "Let's build possibilities.",
       "Consultar certificados": "View certificates",
+      "Consultar el artículo de referencia": "Read the reference article",
+      "Consultar los datos del ensayo simulado": "View the simulated trial data",
       "Contacto": "Contact",
       "Contenidos académicos y supervisión de proyectos de diseño de productos tecnológicos.": "Academic content and monitoring of technological product design projects.",
       "Control": "Control",
+      "Control PI del motor — modelo no lineal": "Motor PI control — nonlinear model",
       "Control clásico, moderno, avanzado e inteligente": "Classical, modern, advanced and intelligent control",
+      "Control multiagente": "Multi-agent control",
       "Control y manipuladores": "Control and manipulators",
       "Control y simulación": "Control and simulation",
       "Coordinación técnica de un proyecto UAV: equipo de mecánica, electrónica, control y software; planificación, integración mecatrónica y seguimiento de avances. Participación inicial en control.": "Technical coordination of a UAV project across the mechanical, electronics, control and software team: planning, mechatronic integration and progress tracking. Initial involvement in control.",
@@ -972,26 +1403,30 @@
       "Cuadrúpedo": "Quadruped",
       "Cuadrúpedo para terrenos complejos": "Quadruped robot for challenging terrain",
       "Curso el 9.º ciclo de Ingeniería Mecatrónica en USIL, con mención en Robótica Industrial, y el doble grado en Business Administration en San Ignacio University. Mi formación se complementa con una especialización en Sistemas Mecatrónicos en TECSUP. Tengo experiencia en I+D, diseño y fabricación de prototipos, robótica, control, automatización y manufactura digital. Participo en investigación en robótica espacial y AOCS y soy coautor de un artículo científico en Biomimetics.": "I am in my ninth semester of Mechatronics Engineering at USIL, with a concentration in Industrial Robotics, while pursuing a dual degree in Business Administration at San Ignacio University. My education also includes a specialization in Mechatronic Systems at TECSUP. I have experience in R&D, prototype design and fabrication, robotics, control, automation and digital manufacturing. I participate in space robotics and AOCS research and am a co-author of a scientific article in Biomimetics.",
+      "Curvas simuladas de caudal y fuerza durante el arranque y la parada de la extrusión.": "Simulated flow-rate and force curves during extrusion startup and shutdown.",
       "DOI:": "DOI:",
+      "De la plataforma al simulador": "From the platform to the simulator",
       "Del laboratorio al prototipo.": "From the lab to the prototype.",
+      "Del problema al diseño": "From the problem to the design",
       "Del prototipado con biomateriales a la mecatrónica biomédica.": "From biomaterial prototyping to biomedical mechatronics.",
       "Desarrollo de contenidos académicos y supervisión de proyectos de diseño de productos tecnológicos con enfoque ingenieril. Docencia en diseño electrónico y circuitos entre febrero y mayo de 2026.": "Development of academic content and monitoring of technological product design projects with an engineering approach. Teaching in electronic design and circuits between February and May 2026.",
       "Desarrollo de prototipos mecatrónicos para proyectos de I+D y servicios tecnológicos, investigación en robótica aplicada y acompañamiento técnico a estudiantes de pregrado y posgrado.": "Development of mechatronic prototypes for R&D projects and technology services, applied robotics research, and technical guidance for undergraduate and graduate students.",
       "Desarrollo de un robot de servicio guía como proyecto de robótica.": "Development of a guide service robot as a robotic project.",
       "Desarrollo de un robot de servicio para guiar y apoyar a nuevos estudiantes. Proyectos de visión por computadora basados en OC-SORT para el seguimiento de múltiples objetos.": "Development of a service robot to guide and support new students. Computer vision projects based on OC-SORT for multi-object tracking.",
-      "Desarrollo de una extrusora como parte de la investigación aplicada en impresión 3D con biomateriales.": "Development of an extruder as part of applied research in 3D printing with biomaterials.",
       "Desarrollo e investigación de un cuadrúpedo orientado al transporte de objetos en terrenos desafiantes.": "Research and development of a quadruped robot for transporting objects over challenging terrain.",
       "Desarrollo y construcción de un velero autónomo no tripulado.": "Development and construction of an autonomous unmanned sailboat.",
       "Desarrollo y construcción de un velero autónomo para la primera Regata de Veleros Autónomos No Tripulados, organizada por la Marina de Guerra del Perú.": "Development and construction of an autonomous sailboat for the first Unmanned Autonomous Sailboat Regatta, organized by the Peruvian Navy.",
       "Desarrollo y construcción en el Grupo de Investigación de Ingeniería Mecatrónica, para la primera regata de veleros autónomos no tripulados organizada por la Marina de Guerra del Perú.": "Development and construction within the Mechatronics Engineering Research Group for the first unmanned autonomous sailboat regatta organized by the Peruvian Navy.",
       "Descargar BibTeX": "Download BibTeX",
       "Descargar CV actualizado": "Download updated CV",
+      "Descargar video": "Download video",
       "Dic. 2024 – mar. 2025": "Dec. 2024 – Mar. 2025",
       "Dic. 2025 – feb. 2026": "Dec. 2025 – Feb. 2026",
       "Dic. 2025 – mar. 2026": "Dec. 2025 – Mar. 2026",
       "Digital Manufacturing": "Digital Manufacturing",
       "Diseñador mecánico autónomo": "Freelance Mechanical Designer",
       "Diseño de celdas con brazo robótico, prototipado mediante impresión 3D y corte láser, y programación CNC.": "Design of cells with robotic arm, prototyped by 3D printing and laser cutting, and CNC programming.",
+      "Diseño de un extrusor de émbolo para una Ender-3 y estudio de un módulo auxético lozenge-chiral frente a un bloque rígido. Incluye CAD, análisis estructural, electrónica y animación del funcionamiento.": "Design of a plunger extruder for an Ender-3 and a study comparing a lozenge-chiral auxetic module with a rigid block. Includes CAD, structural analysis, electronics and an animated demonstration of the mechanism.",
       "Diseño electrónico y circuitos": "Electronic design and circuits",
       "Diseño mecatrónico de un clinostato y simulación de movimiento para agricultura espacial en un entorno hidropónico.": "Mechatronic design of a clinostat and motion simulation for space agriculture in a hydroponic environment.",
       "Diseño mecánico": "Mechanical design",
@@ -999,6 +1434,8 @@
       "Diseño y desarrollo de un prototipo para evaluar condiciones de operación y apoyar la optimización del diseño real, manteniendo la confidencialidad técnica.": "Design and development of a prototype to evaluate operating conditions and support the optimization of real design, maintaining technical confidentiality.",
       "Diseño y fabricación de prototipos": "Design and manufacture of prototypes",
       "Diseño y fabricación de prototipos mediante CAD/CAE/CAM, mecanizado CNC, corte láser e impresión 3D.": "Design and manufacture of prototypes using CAD / CAE / CAM, CNC machining, laser cutting and 3D printing.",
+      "Diseño y simulación": "Design and simulation",
+      "Diseño y simulación / Manufactura aditiva": "Design and simulation / Additive manufacturing",
       "Diseño, desarrollo y fabricación de prototipos mecatrónicos para investigación y servicios tecnológicos.": "Design, development and fabrication of mechatronic prototypes for research and technology services.",
       "Diseño, desarrollo y fabricación de prototipos mecatrónicos para proyectos de I+D y servicios tecnológicos, integrando CAD, impresión 3D, mecanizado CNC, corte láser, fabricación de PCBs e integración electrónico-mecánica.": "Design, development and fabrication of mechatronic prototypes for R&D projects and technology services, integrating CAD, 3D printing, CNC machining, laser cutting, PCB fabrication and electromechanical integration.",
       "Docencia": "Teaching",
@@ -1019,9 +1456,18 @@
       "EXPERIENCE": "EXPERIENCE",
       "EXPERIENCIA / I+D": "EXPERIENCE / R&D",
       "Educación": "Education",
+      "El análisis comprende las cinco variantes G0–G4, compresión, rigidez, pandeo y respuesta dinámica. La electrónica está diseñada en KiCad: el eje E de la Ender-3 acciona el motor y un Arduino Nano con HX711 registra la fuerza. El firmware del registrador está compilado; no está probado en hardware y los cambios de Marlin siguen planificados.": "The analysis covers five variants, G0–G4, compression, stiffness, buckling and dynamic response. The electronics are designed in KiCad: the Ender-3 E axis drives the motor, while an Arduino Nano with an HX711 records force. The logger firmware has been compiled but has not been tested on hardware; Marlin changes remain planned.",
+      "El modelo representa un Yahboom MicroROS-Pi5 de cuatro ruedas con dirección por deslizamiento. Cada robot utiliza un nodo ROS 2, comandos de velocidad y estimación de pose. Gazebo Fortress aporta la física; Python y scripts compatibles con MATLAB, ejecutados en GNU Octave, permiten contrastar cálculos y escenarios.": "The model represents a four-wheel skid-steer Yahboom MicroROS-Pi5. Each robot uses a ROS 2 node, velocity commands and pose estimation. Gazebo Fortress provides the physics; Python and MATLAB-compatible scripts executed in GNU Octave support comparisons of calculations and scenarios.",
       "El prototipo se utilizó en demostraciones corporativas.": "The prototype was used in corporate demonstrations.",
+      "El trabajo incluye cinemática, un lazo PI para el motor y estimación de posición mediante encoders y giróscopo. Los scripts para construir modelos de Simulink y Simscape están disponibles, pero esos modelos no se ejecutaron por falta de licencia.": "The work includes kinematics, a motor PI control loop and position estimation using encoders and a gyroscope. Scripts for building Simulink and Simscape models are available, but those models were not run because a license was unavailable.",
+      "Electrónica de accionamiento y registro de fuerza": "Drive electronics and force logging",
       "Email": "Email",
       "En curso": "In progress",
+      "En el ensayo registrado de Gazebo con poses de odometría: llegada al corral en 43,8 s, cero colisiones registradas y contención del 100 % durante los 60 s siguientes. Son resultados de ese escenario simulado; falta validación en robots reales.": "In the recorded Gazebo trial using odometry poses: arrival at the pen in 43.8 s, zero recorded collisions and 100% containment for the following 60 s. These results apply to that simulated scenario; validation on real robots is pending.",
+      "En el escenario de Gazebo con la odometría de cada robot (EKF de robot_localization: encoders e IMU), las cinco ovejas alcanzan el corral en 43,8 s. El registro indica cero colisiones, separación mínima de 0,2645 m y permanencia de todas las ovejas durante 60 s. La animación reconstruye esas trayectorias registradas.": "In the Gazebo scenario using each robot’s odometry (the robot_localization EKF with encoders and IMU), all five sheep reach the pen in 43.8 s. The log records zero collisions, a minimum separation of 0.2645 m and all sheep remaining inside for 60 s. The animation reconstructs those recorded trajectories.",
+      "En la comparación hipotética sin manguera, con el módulo de revisión B y la jeringa de 30 mL, el tiempo hasta el 90 % del caudal pasa de 2,4 s (R) a 6,1 s (A), y el goteo de 8 a 20 mm³. En la configuración diseñada de revisión B, con manguera de PA12, esos valores son 32,5 s y 55 mm³ (R) frente a 51,9 s y 84 mm³ (A). El estudio documenta este resultado desfavorable; no demuestra una ventaja del módulo.": "In the hypothetical hose-free comparison using the Revision B module and a 30 mL syringe, the time to reach 90% of the flow rate rises from 2.4 s (R) to 6.1 s (A), and oozing from 8 to 20 mm³. In the designed Revision B configuration with a PA12 hose, the values are 32.5 s and 55 mm³ (R), compared with 51.9 s and 84 mm³ (A). The study documents this unfavorable result; it does not demonstrate an advantage of the module.",
+      "En la prueba simulada de odometría de un cuadrado de 1 m repetido tres veces, el error final medio en Python pasa de 0,94 m con encoders a 0,11 m con encoders y giróscopo, y a 0,016 m con un EKF autocalibrado de siete estados (20 ensayos). Este último estimador es el experimento de Python; no se atribuye ese error al EKF de Gazebo ni a hardware.": "In the simulated odometry test consisting of three laps around a 1 m square, the mean final position error in Python decreases from 0.94 m with encoders to 0.11 m with encoders and a gyroscope, and to 0.016 m with a self-calibrating seven-state EKF (20 trials). The last estimator belongs to the Python experiment; that error is not attributed to the Gazebo EKF or to hardware.",
+      "En la revisión B, el módulo de PETG se acorta aproximadamente 0,60 mm a 740 N, con rigidez de unos 1226 N/mm. Son predicciones numéricas con propiedades de material supuestas, no mediciones.": "In Revision B, the PETG module shortens by approximately 0.60 mm at 740 N, with a stiffness of about 1226 N/mm. These are numerical predictions using assumed material properties, not measurements.",
       "Ene. 2022 – 2025": "Jan. 2022 – 2025",
       "Ene. 2025": "Jan. 2025",
       "Ene. 2025 – actualidad": "Jan. 2025 – present",
@@ -1029,7 +1475,7 @@
       "Ene. – dic. 2023": "Jan. – Dec. 2023",
       "Ene. – dic. 2024": "Jan. – Dec. 2024",
       "Ene. – feb. 2023": "Jan. – Feb. 2023",
-      "Enjambre de robots": "Robot swarm",
+      "Enjambre de robots — ovejas y lobo": "Robot swarm — sheep and wolf",
       "Enjambre de robots, robótica móvil y de servicio; experiencia en cuadrúpedos, veleros autónomos y manipuladores.": "Robot swarms, mobile and service robotics; experience with quadrupeds, autonomous sailboats and manipulators.",
       "Ensamblaje": "Assembly",
       "Ensamblaje de brazo robótico": "Robotic arm assembly",
@@ -1039,6 +1485,9 @@
       "Especialización en Gestión de Proyectos": "Project Management Specialization",
       "Especialización en Inteligencia Artificial y Data Science": "Specialization in Artificial Intelligence and Data Science",
       "Especialización en Sistemas Mecatrónicos": "Specialization in Mechatronic Systems",
+      "Esquemático KiCad del motor conectado al eje E y del registrador Arduino Nano con HX711. Diseño electrónico, sin validación en hardware.": "KiCad schematic of the motor connected to the E axis and the Arduino Nano logger with HX711. Electronic design without hardware validation.",
+      "Esquemático eléctrico del motor, los finales de carrera y el registrador de fuerza.": "Electrical schematic of the motor, limit switches and force logger.",
+      "Estudio numérico cerrado; prototipo y ensayos físicos pendientes. En el modelo estudiado, el módulo auxético añade flexibilidad y aumenta el retraso de arranque y el goteo frente al bloque rígido: no se presenta como una mejora demostrada.": "Numerical study completed; fabrication and physical testing remain pending. In the model studied, the auxetic module adds compliance and increases startup delay and oozing compared with the rigid block. It is not presented as a demonstrated improvement.",
       "Etapa de investigación USIL · 2022–2025": "Research phase USIL · 2022-2025",
       "EtherNet/IP": "EtherNet/IP",
       "Evidencias y avances": "Evidence and progress",
@@ -1049,7 +1498,7 @@
       "Explorar proyectos": "Explore projects",
       "Explorar todo el portafolio": "Explore the entire portfolio",
       "Explorar trabajos en ESAN": "Explore work at ESAN",
-      "Extrusora para impresión 3D con biomateriales": "Extruder for 3D printing with biomaterials",
+      "Extrusora 3D de pasta cerámica con módulo auxético": "Ceramic paste 3D extruder with an auxetic module",
       "FBD": "FBD",
       "FOCUS / 01": "FOCUS / 01",
       "FOCUS / 02": "FOCUS / 02",
@@ -1062,16 +1511,20 @@
       "Filtrar proyectos": "Filter projects",
       "Filtros de Kalman": "Kalman filters",
       "Flanders Electric Perú": "Flanders Electric Perú",
+      "Flota Yahboom MicroROS-Pi5 en el laboratorio. Fotografía de la plataforma física; no documenta un ensayo del algoritmo ovejas–lobo.": "Yahboom MicroROS-Pi5 fleet in the laboratory. Photograph of the physical platform; it does not document a trial of the sheep–wolf algorithm.",
       "Formación académica": "Education",
       "Formación complementaria": "Further training",
       "Formación y experiencia": "Education and experience",
+      "Fotografía original de la flota Yahboom MicroROS-Pi5. Documenta la plataforma de referencia y su entorno; las pruebas y métricas presentadas en esta ficha siguen siendo de simulación.": "Original photograph of the Yahboom MicroROS-Pi5 fleet. Documents the reference platform and its setting; the tests and metrics on this page remain simulation results.",
+      "Fotografías, diseños y simulaciones documentados en cada ficha.": "Photographs, designs and simulations documented on each project page.",
       "Fuente de la descripción: CV actualizado, 22 de octubre de 2026, p. 1": "Description source: updated CV, 22 October 2026, p. 1",
-      "Fuente de la descripción: CV maestro actualizado, p. 1. El periodo corresponde a la vinculación con ESAN; no indica la fecha exacta de inicio del proyecto.": "Description source: updated master CV, p. 1. The period refers to the affiliation with ESAN, not the exact project start date.",
       "Fuente de la descripción: CV maestro actualizado, p. 1. Periodo de vinculación institucional, no fecha exacta del proyecto.": "Description source: updated master CV, p. 1. The period refers to the institutional affiliation, not the exact project dates.",
-      "Fuente de la descripción: CV, p. 1": "Description source: CV, p. 1",
       "Fuente de la descripción: CV, p. 1 y metadatos editoriales de la publicación ya verificados.": "Description source: CV, p. 1, and previously verified publication metadata.",
       "Fuente de la descripción: CV, p. 2": "Description source: CV, p. 2",
       "Fuente de la descripción: CV, p. 2. No se atribuye autoría del artículo OC-SORT.": "Description source: CV, p. 2. No authorship of the OC-SORT paper is claimed.",
+      "Fuente de la descripción: Documentación técnica y modelos del proyecto, octubre de 2026. El plan de julio de 2026 en FabLab es el antecedente; no demuestra fabricación. La ficha anterior usaba el título general «biomateriales»; el estudio disponible se refiere específicamente a pasta cerámica.": "Description source: Project technical documentation and models, October 2026. The July 2026 FabLab plan is background material; it does not establish that fabrication took place. The previous page used the general title “biomaterials”; the available study specifically concerns ceramic paste.",
+      "Fuente de la descripción: Repositorio enjambre-ovejas-lobo: documentación 00–08, registros CSV, figuras y fotografías aportadas. Reconstrucción de octubre de 2026 a partir de recursos de Yahboom. Las imágenes físicas no validan los resultados del simulador.": "Description source: The enjambre-ovejas-lobo repository: documentation 00–08, CSV logs, figures and supplied photographs. October 2026 reconstruction based on Yahboom resources. Photographs of the physical platform do not validate simulator results.",
+      "Funcionamiento del extrusor — simulación visual": "Extruder operation — visual simulation",
       "Fundamentos": "Fundamentals",
       "Fundamentos de GNC": "GNC fundamentals",
       "Fundamentos de biomecánica": "Biomechanical foundations",
@@ -1079,10 +1532,16 @@
       "Fusion 360": "Fusion 360",
       "GIIM / USIL": "GIIM / USIL",
       "GIIM · Saildrone": "GIIM · Saildrone",
+      "GNU Octave": "GNU Octave",
+      "Gazebo Fortress": "Gazebo Fortress",
+      "Gemelo digital del Yahboom MicroROS-Pi5 y comportamiento colectivo de cinco robots oveja guiados por un robot pastor. Integra ROS 2, Gazebo, control de motores y estimación de posición.": "Digital twin of the Yahboom MicroROS-Pi5 and collective behavior of five sheep robots guided by a shepherd robot. Combines ROS 2, Gazebo, motor control and position estimation.",
       "Gestión de eventos, recursos y networking; incremento documentado de participación y membresía durante la gestión.": "Event, resource and networking management; documented increase in participation and membership during management.",
       "GitHub": "GitHub",
+      "Gmsh": "Gmsh",
       "Goethe-Institut Perú": "Goethe-Institut Perú",
       "Grupo de Investigación en Física": "Physics Research Group",
+      "Gráficos de métricas del pastoreo simulado con poses de odometría.": "Plots of simulated shepherding metrics using odometry poses.",
+      "Gráficos de rigidez normalizada y coeficiente de Poisson para G0 a G4.": "Plots of normalized stiffness and Poisson’s ratio for G0 through G4.",
       "HMI / SCADA": "HMI / SCADA",
       "Habilidades": "Skills",
       "Herramientas para llevar ideas a prototipos": "Tools to bring ideas to prototypes",
@@ -1099,10 +1558,8 @@
       "INTINAUTA / PachaLab": "INTINAUTA / PachaLab",
       "INTINAUTA Research Center": "INTINAUTA Research Center",
       "INTINAUTA Research Center – PachaLab": "INTINAUTA Research Center – PachaLab",
-      "Ilustraciones conceptuales hasta incorporar las fotografías reales.": "Conceptual illustrations to incorporate the actual photographs.",
       "Ilustración conceptual · foto pendiente": "Conceptual illustration · pending photo",
       "Ilustración conceptual · no es una fotografía del proyecto": "Conceptual illustration · is not a photograph of the project",
-      "Impresión 3D": "3D printing",
       "Impresión 3D FDM": "FDM 3D Printing",
       "Impulso de eventos y proyectos aeroespaciales, alianzas académicas y representación en conferencias.": "Promotion of aerospace events and projects, academic alliances and conference representation.",
       "Impulso de proyectos y eventos de robótica, alianzas académicas y representación en conferencias.": "Promotion of robotics projects and events, academic alliances and conference representation.",
@@ -1116,7 +1573,6 @@
       "Integración mecatrónica": "Mechatronic integration",
       "Interés en biomecánica, bioinstrumentación y biónica; investigación aplicada en impresión 3D con biomateriales.": "Interest in biomechanics, bioinstrumentation and bionics; applied research in 3D printing with biomaterials.",
       "Investigación académica y asesoría metodológica en proyectos de pregrado y posgrado, con énfasis en calidad metodológica y acompañamiento integral.": "Academic research and methodological advice in undergraduate and postgraduate projects, with emphasis on methodological quality and integral accompaniment.",
-      "Investigación aplicada en enjambre de robots dentro del laboratorio de robótica.": "Research applied in robot swarm inside the robotics lab.",
       "Investigación en agricultura espacial, biomimética y sistemas mecatrónicos, centrada en el diseño de un clinostato y la simulación computacional de movimiento en un entorno hidropónico.": "Research in space agriculture, biomimetics and mechatronic systems, focusing on clinostat design and computational motion simulation in a hydroponic environment.",
       "Investigación en el Sistema de Control de Actitud y Órbita del proyecto Chasqui 2.": "Research in the Attitude and Orbit Control System of the Chasqui 2 project.",
       "Investigación mecatrónica-aeroespacial: diseño CAD mecánico, documentación, soporte CAE/FEA relacionado con el movimiento y colaboración multidisciplinaria. Coautor del artículo publicado en Biomimetics.": "Mechatronics and aerospace research: mechanical CAD design, documentation, motion-related CAE/FEA support and multidisciplinary collaboration. Co-author of the article published in Biomimetics.",
@@ -1138,16 +1594,25 @@
       "Jun. 2023 – mar. 2024": "Jun. 2023 – Mar. 2024",
       "KiCad": "KiCad",
       "La experiencia detrás de los proyectos.": "The experience behind projects.",
+      "La fabricación, la caracterización de la pasta y los ensayos comparativos quedan para un proyecto posterior. El informe y el artículo son borradores técnicos, no publicaciones científicas aceptadas.": "Fabrication, paste characterization and comparative testing are left for a subsequent project. The report and article are technical drafts, not accepted scientific publications.",
       "La investigación en impresión 3D con biomateriales en ESAN conecta mi experiencia de manufactura digital con este campo. Mi CV también recoge conocimientos en biomimética y fundamentos de biomecánica, bioinstrumentación y control biomolecular.": "The research in 3D printing with biomaterials in ESAN connects my digital manufacturing experience with this field. My CV also collects knowledge in biomimetics and biomechanics, bioinstrumentation and biomolecular control.",
+      "La plataforma física en el laboratorio": "The physical platform in the laboratory",
+      "La plataforma, mallas y firmware de referencia son de Yahboom Technology. El comportamiento se basa en reglas de Reynolds y en el pastoreo de Strömbom et al. (2014). El repositorio público incluye código, documentación, datos y créditos.": "The reference platform, meshes and firmware are from Yahboom Technology. The behavior draws on Reynolds’ rules and the shepherding work of Strömbom et al. (2014). The public repository includes code, documentation, data and credits.",
+      "La pregunta es cómo cambia el arranque y la detención del flujo al incorporar un módulo auxético en el tren de empuje. Se compara la configuración auxética (A) con un bloque rígido equivalente (R), manteniendo explícitos los supuestos de material y de pasta.": "The study asks how flow startup and shutdown change when an auxetic module is incorporated into the plunger drive. The auxetic configuration (A) is compared with an equivalent rigid block (R), with material and paste assumptions stated explicitly.",
+      "La revisión B integra una jeringa de 30 mL, motor NEMA 17 con reductor, transmisión GT2 y husillo Tr8 × 2. La unidad queda fija en el travesaño superior y alimenta la boquilla mediante una manguera de PA12. El conjunto incluye piezas modeladas, vista explosionada, lista de materiales y planos EXT-00 a EXT-07.": "Revision B combines a 30 mL syringe, a geared NEMA 17 motor, a GT2 transmission and a Tr8 × 2 lead screw. The unit is fixed to the upper crossmember and feeds the nozzle through a PA12 hose. The assembly includes modeled parts, an exploded view, a bill of materials and drawings EXT-00 through EXT-07.",
+      "La revisión C elimina la manguera y sitúa una jeringa de 10 mL sobre el carro X. Es un diseño preliminar sin planos; la masa calculada de 1,42 kg sobre el carro exige verificar el eje y el pórtico.": "Revision C removes the hose and places a 10 mL syringe on the X carriage. It is a preliminary design without drawings; the calculated carriage-mounted mass of 1.42 kg requires checks of the axis and gantry.",
       "Ladder (LAD)": "Ladder (LAD)",
       "Las fotografías, videos y documentos de este trabajo aún no están publicados. La descripción recoge mi participación según el CV; la portada es una ilustración conceptual.": "The photographs, videos and documents of this work are not yet published. The description shows my participation according to the CV; the cover is a conceptual illustration.",
-      "Las portadas esquemáticas son ilustraciones conceptuales. Las fotografías y los videos reales se incorporarán en las galerías de cada trabajo.": "Schematic covers are conceptual illustrations. The actual photographs and videos will be incorporated in the galleries of each work.",
+      "Las topologías cLAM, LCAM-2R y oLCAM proceden de Hou et al. (2024), Materials & Design, 237, 112530. El CAD de referencia de la Ender-3 es de Creality. Las imágenes de esta ficha son modelos y gráficos del estudio; el video es una simulación visual con tiempo acelerado.": "The cLAM, LCAM-2R and oLCAM topologies are from Hou et al. (2024), Materials & Design, 237, 112530. The Ender-3 reference CAD is from Creality. The images on this page are models and plots from the study; the video is a visual simulation with accelerated time.",
       "Leer artículo": "Read article",
+      "Leer el análisis de odometría": "Read the odometry analysis",
+      "Leer el modelo y el diseño del control": "Read the model and control design",
       "Leer publicación · DOI 10.3390/biomimetics11050340": "Read publication · DOI 10.3390 / biomimetics11050340",
       "Liderazgo y comunidad": "Leadership and community",
       "Lima · híbrido": "Lima · hybrid",
       "Lima, Perú": "Lima, Peru",
       "LinkedIn": "LinkedIn",
+      "Lo que muestran las simulaciones": "What the simulations show",
       "Línea de prototipado": "Prototyping line",
       "Línea de prototipado / IA y control": "Prototyping / IA line and control",
       "MATLAB": "MATLAB",
@@ -1155,6 +1620,7 @@
       "MS Project": "MS Project",
       "Manipuladores": "Manipulators",
       "Manufactura": "Manufacturing",
+      "Manufactura aditiva": "Additive manufacturing",
       "Manufactura y gestión": "Manufacturing and management",
       "Mar. – jun. 2025": "Mar. – Jun. 2025",
       "Mar. – jun. 2025 · etapa en AUTOTEC": "Mar. – Jun. 2025 · role at AUTOTEC",
@@ -1163,21 +1629,35 @@
       "Mecatrónica. Investigación. Desarrollo.": "Mechatronics. Research. Development.",
       "Mechatronics Design of a Clinostat Agriculture Space System for Biomimetic Phyto-Growth in Microgravity (Phyto-G) and 3D-Motion Computer Simulation on Hydroponic Environment": "Mechatronics Design of a Clinostat Agriculture Space System for Biomimetic Phyto-Growth in Microgravity (Phyto-G) and 3D-Motion Computer Simulation on Hydroponic Environment",
       "Mecánica orbital": "Orbital mechanics",
+      "Medir los parámetros y el retardo en los robots reales, repetir la prueba de odometría y ejecutar el pastoreo físico. La transferencia al laboratorio aún necesita calibración y ensayos; no se considera demostrada por compartir interfaces ROS 2.": "Measure parameters and delay on the real robots, repeat the odometry test and perform physical shepherding trials. Transfer to the laboratory still requires calibration and testing; sharing ROS 2 interfaces does not establish that transfer has been validated.",
       "Mención en Robótica Industrial. 9.º ciclo; estudios en curso.": "Concentration in Industrial Robotics. Ninth semester; studies in progress.",
       "Menú móvil": "Mobile Menu",
+      "Metamateriales auxéticos": "Auxetic metamaterials",
       "Mi contribución": "My contribution",
       "Mi contribución, el contexto y las evidencias de cada trabajo, en una ficha propia.": "My contribution, the context and supporting material for each project, on its own page.",
       "Mi experiencia reúne las pruebas e integración de AOCS en Chasqui 2, la investigación en robótica espacial y coordinación de un proyecto UAV en PachaLab, y la colaboración mecatrónica-aeroespacial en BETTA College.": "My experience includes AOCS testing and integration in Chasqui 2, space robotics research and UAV project coordination at PachaLab, and mechatronics and aerospace collaboration at BETTA College.",
       "Mi trayectoria y CV": "My background and CV",
       "Modbus TCP/RTU": "Modbus TCP/RTU",
+      "Modelado y documentación de la reconstrucción técnica: celdas auxéticas, dimensionamiento del extrusor, integración mecánica y electrónica, comparación numérica y comunicación visual del diseño. La geometría lozenge-chiral de referencia corresponde a Hou et al. (2024).": "Modeling and documentation of the technical reconstruction: auxetic cells, extruder sizing, mechanical and electronic integration, numerical comparison and visual communication of the design. The reference lozenge-chiral geometry is attributed to Hou et al. (2024).",
+      "Modelo CAD de la Ender-3 con extrusora compacta instalada sobre el carro X.": "CAD model of the Ender-3 with a compact extruder on the X carriage.",
+      "Modelo CAD de la revisión B sobre una Creality Ender-3. Es un render, no una fotografía de un prototipo construido.": "CAD model of Revision B mounted on a Creality Ender-3. This is a rendering, not a photograph of a built prototype.",
+      "Modelo CAD de la revisión B: jeringa, placas, guías, transmisión y módulo auxético. Documenta el ensamblaje diseñado; la fabricación está pendiente.": "Revision B CAD model: syringe, plates, guides, transmission and auxetic module. Documents the designed assembly; fabrication is pending.",
+      "Modelo CAD de la variante G2, basado en la geometría lozenge-chiral de Hou et al. (2024). Se mantiene la atribución de la topología al artículo original.": "CAD model of variant G2, based on the lozenge-chiral geometry of Hou et al. (2024). The topology remains attributed to the original article.",
+      "Modelo CAD preliminar con la unidad sobre el carro X. Reduce el recorrido de la pasta, pero añade una masa calculada de 1,42 kg; falta verificar su efecto en la impresora. No tiene todavía planos de fabricación.": "Preliminary CAD model with the unit on the X carriage. Shortens the paste path but adds a calculated mass of 1.42 kg; its effect on the printer remains to be checked. Manufacturing drawings are not yet available.",
       "Movilidad": "Mobility",
+      "Métricas de cohesión, separación y contención": "Cohesion, separation and containment metrics",
       "NVIDIA Jetson Orin": "NVIDIA Jetson Orin",
       "Navegación principal": "Main navigation",
       "Notas y avances": "Notes and progress",
       "Nov. 2022 – feb. 2023": "Nov. 2022 – Feb. 2023",
       "OC-SORT · seguimiento de múltiples objetos": "OC-SORT · multiple object tracking",
       "ORCID": "ORCID",
+      "Oct. 2026 · estudio numérico": "Oct. 2026 · numerical study",
+      "Oct. 2026 · reconstrucción en simulación": "Oct. 2026 · reconstruction in simulation",
+      "Oct. 2026 · simulación / diseño": "Oct. 2026 · simulation / design",
+      "Odometría / EKF": "Odometry / EKF",
       "Odometría Visual-Inercial (VIO)": "Visual-Inertial Odometry (VIO)",
+      "Odometría — comparación de estimadores en Python": "Odometry — estimator comparison in Python",
       "OpenRocket": "OpenRocket",
       "PDF": "PDF",
       "PLC Siemens / Allen-Bradley / Delta": "PLC Siemens / Allen-Bradley / Delta",
@@ -1185,13 +1665,12 @@
       "PUBLICATIONS": "PUBLICATIONS",
       "PachaLab": "PachaLab",
       "PachaLab — robótica espacial": "PachaLab — space robotics",
-      "Participación desde el rol de practicante de Investigación y Desarrollo, integrando el desarrollo de prototipos con la investigación aplicada.": "Contributed as a Research and Development intern, combining prototype development with applied research.",
-      "Participación en el desarrollo de una extrusora para impresión 3D con biomateriales dentro de ESAN R&D Labs / FabLab.": "Participation in the development of a 3D printing extruder with biomaterials within ESAN R & D Labs / FabLab.",
       "Participación en el ensamblaje de un brazo robótico en ESAN R&D Labs.": "Participation in the assembly of a robotic arm in ESAN R & D Labs.",
       "Participación en el proyecto de visión por computadora mencionado en el CV. Alcance de la implementación y contribución individual: por completar.": "Participation in the computer vision project mentioned in the CV. Scope of implementation and individual contribution: to be completed.",
       "Participación en prototipos de visión por computadora mediante Roboflow y sistemas embebidos en ESAN.": "Participation in computer vision prototypes using Roboflow and systems embedded in ESAN.",
       "Participación en proyectos de robótica aplicada, incluyendo extrusión 3D con biomateriales, ensamblaje de brazo robótico y prototipos de visión por computadora mediante Roboflow y sistemas embebidos.": "Participation in applied robotics projects, including 3D extrusion with biomaterials, robotic arm assembly and computer vision prototypes through Roboflow and embedded systems.",
       "Participación en pruebas y actividades de integración del Sistema de Control de Actitud y Órbita (AOCS) del proyecto Chasqui 2. Verificación de datos, documentación técnica y soporte a actividades de investigación orientadas a la integración de subsistemas.": "Participation in tests and integration activities of the Attitude and Orbit Control System (AOCS) of the Chasqui 2 project. Data verification, technical documentation and support for research activities aimed at the integration of subsystems.",
+      "Pastoreo con odometría — animación de trayectorias": "Odometry-based shepherding — trajectory animation",
       "Phyto-G — agricultura espacial": "Phyto-G — space agriculture",
       "Platzi": "Platzi",
       "Power BI": "Power BI",
@@ -1214,7 +1693,6 @@
       "Prototipos de visión por computadora mediante Roboflow y sistemas embebidos.": "Computer vision prototypes using Roboflow and embedded systems.",
       "Proyecto": "Project",
       "Proyecto / Aeroespacial": "Project / Aerospace",
-      "Proyecto / Biomateriales": "Project / Biomaterials",
       "Proyecto / IA y control": "Project / AI and control",
       "Proyecto / Manufactura": "Project / Manufacturing",
       "Proyecto / Robótica": "Project / Robotics",
@@ -1228,31 +1706,47 @@
       "Proyectos en foco": "Projects in focus",
       "Proyectos y prácticas académicas de robótica, manufactura e integración de sistemas mecatrónicos.": "Projects and academic practices of robotics, manufacturing and integration of mechatronic systems.",
       "Proyectos y trabajo aplicado": "Projects and applied work",
+      "Prueba simulada de tres vueltas a un cuadrado de 1 m. Compara encoders, calibración, giróscopo y EKF autocalibrado de siete estados. El error medio de 0,016 m corresponde a los 20 ensayos de Python, no al robot real.": "Simulated test of three laps around a 1 m square. Compares encoders, calibration, gyroscope and a self-calibrating seven-state EKF. The mean error of 0.016 m refers to the 20 Python trials, not the real robot.",
       "Pruebas e integración de AOCS en Chasqui 2; investigación en robótica espacial y coordinación técnica de un proyecto UAV en PachaLab.": "AOCS tests and integration in Chasqui 2; research in space robotics and technical coordination of a UAV project in PachaLab.",
       "Prácticas de integración de PLC, HMI/SCADA y redes industriales; programación y simulación con TIA Portal/WinCC y comunicación de robots mediante Profinet.": "Integration practices of PLC, HMI / SCADA and industrial networks; programming and simulation with TIA Portal / WinCC and communication of robots by Profinet.",
       "Prótesis biónicas y exoesqueletos": "Bionic prostheses and exoskeletons",
       "Publicaciones": "Publications",
       "Python": "Python",
+      "Qué queda por validar": "What remains to be validated",
+      "Qué se desarrolló": "What was developed",
       "REGISTRO DEL TRABAJO": "PROJECT RECORD",
       "RESEARCH": "RESEARCH",
       "RESEARCH & ENGINEERING PORTFOLIO": "RESEARCH & ENGINEERING PORTFOLIO",
       "ROS 2": "ROS 2",
+      "ROS 2 Humble": "ROS 2 Humble",
       "Raspberry Pi": "Raspberry Pi",
       "Realidad Aumentada (AR)": "Augmented Reality (AR)",
+      "Reconstrucción y documentación del modelo del robot, el control de velocidad, la odometría y el comportamiento ovejas–lobo. Se reúnen código, registros y comparaciones de simulación; las fotografías del laboratorio aportan contexto de la plataforma física.": "Reconstruction and documentation of the robot model, speed control, odometry and sheep–wolf behavior. Includes code, logs and simulation comparisons; laboratory photographs provide context for the physical platform.",
+      "Recorrido de los cinco agentes y del pastor en Gazebo. Aunque el control utiliza odometría, la gráfica muestra las posiciones de referencia del simulador para evaluar el resultado.": "Paths of the five agents and the shepherd in Gazebo. Although control uses odometry, the plot shows the simulator’s reference positions to evaluate the outcome.",
+      "Referencia y atribución": "References and attribution",
+      "Referencias y recursos": "References and resources",
+      "Registro del mismo escenario de pastoreo con odometría: llegada a los 43,8 s, cero colisiones registradas y contención completa durante 60 s. Estos valores describen ese ensayo; no garantizan el comportamiento físico.": "Log from the same odometry-based shepherding scenario: arrival at 43.8 s, zero recorded collisions and full containment for 60 s. These values describe that trial; they do not guarantee physical behavior.",
       "Registro visual por incorporar": "Visual record to be incorporated",
       "Remoto": "Remote",
+      "Repositorio": "Repository",
       "Representación de estudiantes y apoyo en actividades de IEEE Perú Section, RNR e INTERCON.": "Student representation and support in IEEE Peru Section, RNR and INTERCON activities.",
       "Representación estudiantil y colaboración en robótica, sistemas aeroespaciales e ingeniería.": "Student representation and collaboration in robotics, aerospace systems and engineering.",
       "Research": "Research",
       "Research & Development": "Research & Development",
       "Research & Engineering Portfolio": "Research & Engineering Portfolio",
-      "Resultado recogido en el CV": "Result in CV",
+      "Respuesta simulada del lazo de velocidad, con las limitaciones del modelo de motor y encoder. Los scripts de cálculo fueron verificados en GNU Octave; no es una medición del motor físico.": "Simulated speed-loop response, including the limitations of the motor and encoder model. The calculation scripts were checked in GNU Octave; this is not a measurement of the physical motor.",
+      "Respuesta simulada del motor con control PI, saturación y cuantización.": "Simulated motor response with PI control, saturation and quantization.",
+      "Resultados con contexto": "Results in context",
+      "Resultados documentados": "Documented results",
+      "Resumen descriptivo: se presenta la geometría auxética, el conjunto mecánico y la electrónica; el motor mueve la transmisión y el husillo, el carro empuja el émbolo y la simulación muestra la deposición de pasta. Las magnitudes mostradas proceden del modelo numérico; el tiempo y la deformación visual están escalados.": "Descriptive summary: the auxetic geometry, mechanical assembly and electronics are introduced; the motor drives the transmission and lead screw, the carriage pushes the plunger and the simulation shows paste deposition. Displayed quantities come from the numerical model; time and visible deformation are scaled.",
       "Retrato de Anghello Eduardo Rodríguez Risco": "Portrait of Anghello Eduardo Rodríguez Risco",
+      "Revisión C — alternativa sin manguera": "Revision C — hose-free alternative",
       "Ricardo Barreto · Jose Cornejo · Mariela Vargas · Nicolas Gastello · Anghello Rodriguez": "Ricardo Barreto · Jose Cornejo · Mariela Vargas · Nicolas Gastello · Anghello Rodriguez",
       "Roboflow": "Roboflow",
       "Robot de servicio para estudiantes": "Service robot for students",
       "Robot guía de apoyo a nuevos estudiantes en el entorno universitario.": "Robot guide to support new students in the university environment.",
       "Robotics & Autonomous Systems": "Robotics & Autonomous Systems",
+      "Robots Yahboom MicroROS-Pi5 sobre mesas de laboratorio con sus periféricos.": "Yahboom MicroROS-Pi5 robots on laboratory tables with their peripherals.",
       "Robots manipuladores, móviles, UAV y ROV": "Robot manipulators, mobile robots, UAVs and ROVs",
       "Robótica": "Robotics",
       "Robótica de servicio": "Service robotics",
@@ -1261,11 +1755,14 @@
       "Robótica y Matemáticas": "Robotics and Mathematics",
       "Robótica y manufactura": "Robotics and manufacturing",
       "Robótica y navegación autónoma": "Robotics and autonomous navigation",
+      "Robótica y simulación": "Robotics and simulation",
+      "Robótica y simulación / Robótica": "Robotics and simulation / Robotics",
       "SEGUIR EXPLORANDO": "KEEP EXPLORING",
       "SELECTED WORK": "SELECTED WORK",
       "SIU": "SIU",
       "SKILLS": "SKILLS",
       "SLAM": "SLAM",
+      "SOLIDWORKS": "SOLIDWORKS",
       "STM32": "STM32",
       "Saildrone": "Saildrone",
       "Saltar al contenido": "Skip to content",
@@ -1299,19 +1796,26 @@
       "TRAYECTORIA": "BACKGROUND",
       "TRAYECTORIA / CV": "BACKGROUND / CV",
       "También en": "Also in",
+      "También se estudia la oscilación de rumbo del enjambre. Las correcciones incluyen separación continua y promediada, zona muerta y ajustes de marcha atrás, para reducir oscilaciones inducidas por fuerzas virtuales y retardo.": "Swarm heading oscillation is also studied. Corrections include continuous, averaged separation, a deadband and reverse-motion adjustments to reduce oscillations caused by virtual forces and delay.",
       "Tecnológico de Monterrey": "Tecnológico de Monterrey",
       "Todos": "All",
       "Todos los proyectos": "All projects",
       "Trabajo presentado en CITIIC 2023, según el CV.": "Work presented in CITIIC 2023, according to CV.",
       "Trabajo relacionado": "Related work",
+      "Transcripción": "Transcription",
       "Trayectoria / CV": "Background / CV",
       "Trayectoria y CV | Anghello Rodríguez": "Background and CV | Anghello Rodríguez",
+      "Trayectorias de cinco robots oveja y un pastor hacia el corral.": "Trajectories of five sheep robots and a shepherd toward the pen.",
+      "Trayectorias del ensayo de pastoreo": "Shepherding trial trajectories",
+      "Tu navegador no reproduce este video.": "Your browser does not play this video.",
       "UAV": "UAV",
       "USIL": "USIL",
       "USIL / IEEE": "USIL / IEEE",
       "USIL · SIU": "USIL · SIU",
       "Ubicación": "Location",
+      "Un comportamiento colectivo medible": "Measurable collective behavior",
       "Una trayectoria de construcción": "A path of learning and building",
+      "Unidad extrusora — vista explosionada": "Extrusion unit — exploded view",
       "Universidad Nacional Agraria La Molina": "Universidad Nacional Agraria La Molina",
       "Universidad San Ignacio de Loyola": "Universidad San Ignacio de Loyola",
       "Velero autónomo — Saildrone": "Autonomous sailboat — Saildrone",
@@ -1319,10 +1823,13 @@
       "Ver experiencia relacionada": "See related experience",
       "Ver ficha": "View project",
       "Ver trayectoria y CV": "View background and CV",
+      "Video de 1 min 36 s con diseño, mecanismo e impresión simulada de la revisión B. El tiempo está acelerado y la deformación del módulo se amplía ×10 para visualizarla. La cifra de factor de seguridad ≥ 7,5 de la lámina corresponde a las piezas de aluminio, no al módulo auxético. No es una grabación de un prototipo.": "A 1 min 36 s video showing the design, mechanism and simulated printing with Revision B. Time is accelerated and module deformation is magnified ×10 for visibility. The safety factor ≥ 7.5 shown on the slide applies to the aluminum parts, not the auxetic module. This is not footage of a prototype.",
       "Visión por computadora": "Computer vision",
       "Visión por computadora aplicada": "Applied computer vision",
       "Visión por computadora y sistemas embebidos": "Computer vision and embedded systems",
       "Visión por computadora — OC-SORT": "Computer vision — OC-SORT",
+      "Vista explosionada del conjunto mecánico con jeringa y módulo auxético.": "Exploded view of the mechanical assembly with syringe and auxetic module.",
+      "Visualización animada a partir del registro de Gazebo con cinco ovejas y un lobo guiados por odometría. Los trazos representan posiciones de referencia del simulador. Conversión del GIF original a video para reproducirlo en la web; no es filmación del laboratorio.": "Animated visualization from the Gazebo log with five sheep and one wolf controlled using odometry. Traces show the simulator’s reference positions. The original GIF was converted to video for web playback; this is not laboratory footage.",
       "Vol. 11 · N.º 5": "Vol. 11 · No. 5",
       "Volver al inicio ↑": "Back to home ↑",
       "WinCC": "WinCC",
@@ -1334,9 +1841,9 @@
       "Áreas que conectan mi trabajo": "Areas that connect my work",
       "Chasqui 2 — AOCS | Anghello Rodríguez": "Chasqui 2 — AOCS | Anghello Rodríguez",
       "Cuadrúpedo para terrenos complejos | Anghello Rodríguez": "Quadruped robot for challenging terrain | Anghello Rodríguez",
-      "Enjambre de robots | Anghello Rodríguez": "Robot swarm | Anghello Rodríguez",
+      "Enjambre de robots — ovejas y lobo | Anghello Rodríguez": "Robot swarm — sheep and wolf | Anghello Rodríguez",
       "Ensamblaje de brazo robótico | Anghello Rodríguez": "Robotic arm assembly | Anghello Rodríguez",
-      "Extrusora para impresión 3D con biomateriales | Anghello Rodríguez": "Extruder for 3D printing with biomaterials | Anghello Rodríguez",
+      "Extrusora 3D de pasta cerámica con módulo auxético | Anghello Rodríguez": "Ceramic paste 3D extruder with an auxetic module | Anghello Rodríguez",
       "PachaLab — robótica espacial | Anghello Rodríguez": "PachaLab — space robotics | Anghello Rodríguez",
       "Phyto-G — agricultura espacial | Anghello Rodríguez": "Phyto-G — space agriculture | Anghello Rodríguez",
       "Prototipo de perforadora minera | Anghello Rodríguez": "Mining drill prototype | Anghello Rodríguez",
@@ -1345,9 +1852,9 @@
       "Velero autónomo — Saildrone | Anghello Rodríguez": "Autonomous sailboat — Saildrone | Anghello Rodríguez",
       "Ver proyecto: Chasqui 2 — AOCS": "View project: Chasqui 2 — AOCS",
       "Ver proyecto: Cuadrúpedo para terrenos complejos": "View project: Quadruped robot for challenging terrain",
-      "Ver proyecto: Enjambre de robots": "View project: Robot swarm",
+      "Ver proyecto: Enjambre de robots — ovejas y lobo": "View project: Robot swarm — sheep and wolf",
       "Ver proyecto: Ensamblaje de brazo robótico": "View project: Robotic arm assembly",
-      "Ver proyecto: Extrusora para impresión 3D con biomateriales": "View project: Extruder for 3D printing with biomaterials",
+      "Ver proyecto: Extrusora 3D de pasta cerámica con módulo auxético": "View project: Ceramic paste 3D extruder with an auxetic module",
       "Ver proyecto: PachaLab — robótica espacial": "View project: PachaLab — space robotics",
       "Ver proyecto: Phyto-G — agricultura espacial": "View project: Phyto-G — space agriculture",
       "Ver proyecto: Prototipo de perforadora minera": "View project: Mining drill prototype",
