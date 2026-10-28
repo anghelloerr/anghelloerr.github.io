@@ -795,26 +795,104 @@
     {
       "id": "flanders",
       "code": "14 / MANUFACTURA",
-      "title": "Prototipo de perforadora minera",
+      "title": "Prototipo de perforadora minera y gemelo digital (Bucyrus 49HR)",
       "institution": "Flanders Electric Perú",
-      "period": "Dic. 2024 – mar. 2025",
+      "period": "Dic. 2024 – mar. 2025 · gemelo digital, 2026",
       "category": "Manufactura",
-      "description": "Prototipo a escala que integra diseño mecánico, manufactura y electrónica.",
-      "contribution": "Diseño y desarrollo de un prototipo para evaluar condiciones de operación y apoyar la optimización del diseño real, manteniendo la confidencialidad técnica.",
+      "description": "Prototipo a escala que integra diseño mecánico, manufactura y electrónica, ampliado con un prototipo virtual de gemelo digital de la perforadora eléctrica Bucyrus 49HR: ensamble CAD verificado, cinemática, análisis estructural y panel de monitoreo.",
+      "contribution": "Diseño y desarrollo de un prototipo para evaluar condiciones de operación y apoyar la optimización del diseño real, manteniendo la confidencialidad técnica. En 2026 amplié el trabajo con un gemelo digital virtual de la Bucyrus 49HR construido desde su manual de operación: verificación automática de datos, modelo CAD generado por script, cinemática del ciclo de operación, análisis estructural del mástil y monitoreo con datos sintéticos.",
       "tags": [
         "Diseño mecánico",
-        "Integración"
+        "Integración",
+        "Gemelo digital"
       ],
-      "result": "El prototipo se utilizó en demostraciones corporativas.",
-      "image": null,
+      "result": "El prototipo se utilizó en demostraciones corporativas. El gemelo digital reproduce 14 de 15 cotas verificables del fabricante dentro de ±2 cm; el análisis del mástil con dos solucionadores independientes (PyNite y CalculiX) coincide dentro del 0,6 % y da un factor de seguridad mínimo de 3,6; el monitoreo detecta un desgaste de broca simulado sin falsas alarmas. Es un prototipo virtual: no está conectado a una máquina real y su telemetría es sintética.",
+      "image": "assets/images/29d1105a9162a918996008fab35fda3294ddc40e4e698ac234b5445ba65e635c.webp",
+      "imageAlt": "Modelo CAD de la perforadora Bucyrus 49HR con el mástil vertical, vista isométrica",
       "url": null,
-      "repository": null,
-      "source": "CV, p. 2",
+      "repository": "https://github.com/anghelloerr/bucyrus-49hr-digital-twin",
+      "source": "CV, p. 2; repositorio del gemelo digital",
       "featured": false,
       "kind": "Proyecto",
       "cover": "manufacturing",
       "experienceId": "flanders",
-      "evidence": []
+      "body": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "El gemelo digital se construyó a partir del manual de operación y mantenimiento de la Bucyrus 49HR. Un script verifica cada cota del manual comparando pies con metros y registra las inconsistencias; los datos que el manual no trae se toman de referencias citadas o se marcan como supuestos. El modelo CAD se genera por código y se comprueba solo contra las cotas del fabricante. La cinemática reproduce el traslado sobre orugas, la nivelación con cuatro gatos, el levante del mástil con dos cilindros de 8 in, la perforación de un paso de 20 m y la inclinación de 65° a 90°. El mástil se analizó como reticulado de vigas con PyNite y se validó con CalculiX. Un panel compara la velocidad de penetración medida con la prevista por el modelo y alarma ante desgaste de broca. Todo el trabajo está documentado en el repositorio, con su bitácora y registro de supuestos."
+              }
+            ]
+          }
+        ]
+      },
+      "evidence": [
+        {
+          "title": "Ciclo de operación del gemelo digital",
+          "date": "Oct. 2026",
+          "description": "Animación generada desde el modelo CAD con la cinemática del gemelo: traslado con el mástil abatido, nivelación con gatos, levante del mástil, perforación de un paso de 20 m, retiro de la columna e inclinación a 65°. Las variables de cada cuadro salen del modelo, no de una máquina real.",
+          "alt": "",
+          "url": "https://github.com/anghelloerr/bucyrus-49hr-digital-twin",
+          "linkLabel": "Ver repositorio",
+          "embedUrl": "",
+          "video": "assets/videos/5da93c1c8164227c9ccc710baa4b13e38a59343edd7787e9fd031575a5e61e03.mp4",
+          "poster": "assets/images/29d1105a9162a918996008fab35fda3294ddc40e4e698ac234b5445ba65e635c.webp",
+          "transcript": "",
+          "body": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph"
+              }
+            ]
+          },
+          "sortOrder": 1
+        },
+        {
+          "title": "Análisis estructural del mástil",
+          "date": "Oct. 2026",
+          "description": "Deformada del mástil inclinado a 65° con 600 kN de empuje (escala ×50). Reticulado de vigas tubulares calibrado con el peso del manual (11,8 t), con cilindros de levante y tirantes. Resuelto con PyNite y validado con CalculiX: desplazamientos y fuerzas coinciden dentro del 0,6 %; factor de seguridad mínimo 3,6.",
+          "alt": "Gráfico del reticulado del mástil sin carga en gris y deformado en naranja",
+          "url": "",
+          "linkLabel": "",
+          "embedUrl": "",
+          "image": "assets/images/5c7afbc63a8f01c9d875124334c1bcea2db37b1320323d999e959304946454e2.webp",
+          "transcript": "",
+          "body": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph"
+              }
+            ]
+          },
+          "sortOrder": 2
+        },
+        {
+          "title": "Panel de monitoreo del gemelo",
+          "date": "Oct. 2026",
+          "description": "Panel del gemelo con datos sintéticos: profundidad, velocidad de penetración medida contra la prevista, energía específica por capa de roca y presión de los cilindros al levantar el mástil. En el escenario con desgaste de broca desde 12 m, el monitor da la alarma a 14,6 m; en el escenario normal no hay falsas alarmas.",
+          "alt": "Cuatro gráficos del panel del gemelo: profundidad, velocidad de penetración, energía específica y presión de cilindros",
+          "url": "",
+          "linkLabel": "",
+          "embedUrl": "",
+          "image": "assets/images/7afde19cf2356e5cbdeb8ba49aa254a641487cdcaaaf25cb51415da3f32a6435.webp",
+          "transcript": "",
+          "body": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph"
+              }
+            ]
+          },
+          "sortOrder": 3
+        }
+      ]
     }
   ],
   "experience": [
@@ -1303,6 +1381,7 @@
       "& Bionics": "& Bionics",
       "10.3390/biomimetics11050340": "10.3390/biomimetics11050340",
       "14 de mayo de 2026": "14 May 2026",
+      "2 imágenes · 1 videos · 0 audios": "2 images · 1 videos · 0 audios",
       "2022–2026 · investigación, docencia e industria": "2022-2026 · research, teaching and industry",
       "5 imágenes · 1 videos · 0 audios": "5 images · 1 videos · 0 audios",
       "6 imágenes · 1 videos · 0 audios": "6 images · 1 videos · 0 audios",
@@ -1323,6 +1402,7 @@
       "Alemán · CEFR A2": "German · CEFR A2",
       "Alternativa y siguientes pasos": "Alternative design and next steps",
       "Altium Designer": "Altium Designer",
+      "Ampliar: Análisis estructural del mástil": "Enlarge: Structural analysis of the mast",
       "Ampliar: Arranque y parada — configuración rígida frente a auxética": "Enlarge: Startup and shutdown — rigid versus auxetic configuration",
       "Ampliar: Celda oLCAM — reconstrucción geométrica": "Enlarge: oLCAM cell — geometric reconstruction",
       "Ampliar: Cinco variantes — comparación por elementos finitos": "Enlarge: Five variants — finite element comparison",
@@ -1331,12 +1411,15 @@
       "Ampliar: La plataforma física en el laboratorio": "Enlarge: The physical platform in the laboratory",
       "Ampliar: Métricas de cohesión, separación y contención": "Enlarge: Cohesion, separation and containment metrics",
       "Ampliar: Odometría — comparación de estimadores en Python": "Enlarge: Odometry — estimator comparison in Python",
+      "Ampliar: Panel de monitoreo del gemelo": "Enlarge: Digital twin monitoring dashboard",
       "Ampliar: Revisión C — alternativa sin manguera": "Enlarge: Revision C — hose-free alternative",
       "Ampliar: Trayectorias del ensayo de pastoreo": "Enlarge: Shepherding trial trajectories",
       "Ampliar: Unidad extrusora — vista explosionada": "Enlarge: Extrusion unit — exploded view",
       "Anghello Rodríguez": "Anghello Rodríguez",
       "Anghello Rodríguez | Research & Engineering Portfolio": "Anghello Rodríguez | Research & Engineering Portfolio",
       "Anghello Rodríguez, inicio": "Anghello Rodríguez, home",
+      "Animación generada desde el modelo CAD con la cinemática del gemelo: traslado con el mástil abatido, nivelación con gatos, levante del mástil, perforación de un paso de 20 m, retiro de la columna e inclinación a 65°. Las variables de cada cuadro salen del modelo, no de una máquina real.": "Animation generated from the CAD model with the twin kinematics: tramming with the mast lowered, leveling on jacks, raising the mast, drilling a 20 m single pass, pulling the drill string and inclining to 65°. The variables in each frame come from the model, not from a real machine.",
+      "Análisis estructural del mástil": "Structural analysis of the mast",
       "Aplicaciones en laboratorio": "Laboratory applications",
       "Applied AI / Computer Vision": "Applied AI / Computer Vision",
       "Arranque y parada — configuración rígida frente a auxética": "Startup and shutdown — rigid versus auxetic configuration",
@@ -1372,6 +1455,7 @@
       "Chair": "Chair",
       "Chasqui 2": "Chasqui 2",
       "Chasqui 2 — AOCS": "Chasqui 2 — AOCS",
+      "Ciclo de operación del gemelo digital": "Digital twin operating cycle",
       "Cinco agentes oveja combinan separación, cohesión, alineación y evasión. Un agente lobo alterna entre reunir, conducir y vigilar el rebaño dentro del corral. El objetivo es estudiar un comportamiento coordinado con límites de velocidad, retardo de actuación y errores de localización.": "Five sheep agents combine separation, cohesion, alignment and evasion. A wolf agent alternates between collecting, driving and guarding the flock inside the pen. The aim is to study coordinated behavior with speed limits, actuation delays and localization errors.",
       "Cinco agentes oveja se agrupan y avanzan hacia el corral verde mientras el agente pastor los conduce desde atrás. La animación representa las posiciones registradas en una simulación, no movimientos medidos en robots físicos.": "Five sheep agents group together and move toward the green pen as the shepherd agent drives them from behind. The animation shows positions logged in a simulation, not movements measured on physical robots.",
       "Cinco variantes — comparación por elementos finitos": "Five variants — finite element comparison",
@@ -1402,10 +1486,12 @@
       "Corte láser · Trotec": "Laser cut · Trotec",
       "Cuadrúpedo": "Quadruped",
       "Cuadrúpedo para terrenos complejos": "Quadruped robot for challenging terrain",
+      "Cuatro gráficos del panel del gemelo: profundidad, velocidad de penetración, energía específica y presión de cilindros": "Four dashboard plots: depth, penetration rate, specific energy and cylinder pressure",
       "Curso el 9.º ciclo de Ingeniería Mecatrónica en USIL, con mención en Robótica Industrial, y el doble grado en Business Administration en San Ignacio University. Mi formación se complementa con una especialización en Sistemas Mecatrónicos en TECSUP. Tengo experiencia en I+D, diseño y fabricación de prototipos, robótica, control, automatización y manufactura digital. Participo en investigación en robótica espacial y AOCS y soy coautor de un artículo científico en Biomimetics.": "I am in my ninth semester of Mechatronics Engineering at USIL, with a concentration in Industrial Robotics, while pursuing a dual degree in Business Administration at San Ignacio University. My education also includes a specialization in Mechatronic Systems at TECSUP. I have experience in R&D, prototype design and fabrication, robotics, control, automation and digital manufacturing. I participate in space robotics and AOCS research and am a co-author of a scientific article in Biomimetics.",
       "Curvas simuladas de caudal y fuerza durante el arranque y la parada de la extrusión.": "Simulated flow-rate and force curves during extrusion startup and shutdown.",
       "DOI:": "DOI:",
       "De la plataforma al simulador": "From the platform to the simulator",
+      "Deformada del mástil inclinado a 65° con 600 kN de empuje (escala ×50). Reticulado de vigas tubulares calibrado con el peso del manual (11,8 t), con cilindros de levante y tirantes. Resuelto con PyNite y validado con CalculiX: desplazamientos y fuerzas coinciden dentro del 0,6 %; factor de seguridad mínimo 3,6.": "Deformed shape of the mast inclined at 65° with 600 kN of pulldown (scale ×50). Tubular beam lattice calibrated to the manual weight (11.8 t), with lift cylinders and braces. Solved with PyNite and validated with CalculiX: displacements and forces agree within 0.6%; minimum safety factor 3.6.",
       "Del laboratorio al prototipo.": "From the lab to the prototype.",
       "Del problema al diseño": "From the problem to the design",
       "Del prototipado con biomateriales a la mecatrónica biomédica.": "From biomaterial prototyping to biomedical mechatronics.",
@@ -1421,6 +1507,7 @@
       "Descargar CV actualizado": "Download updated CV",
       "Descargar video": "Download video",
       "Dic. 2024 – mar. 2025": "Dec. 2024 – Mar. 2025",
+      "Dic. 2024 – mar. 2025 · gemelo digital, 2026": "Dec. 2024 – Mar. 2025 · digital twin, 2026",
       "Dic. 2025 – feb. 2026": "Dec. 2025 – Feb. 2026",
       "Dic. 2025 – mar. 2026": "Dec. 2025 – Mar. 2026",
       "Digital Manufacturing": "Digital Manufacturing",
@@ -1431,7 +1518,7 @@
       "Diseño mecatrónico de un clinostato y simulación de movimiento para agricultura espacial en un entorno hidropónico.": "Mechatronic design of a clinostat and motion simulation for space agriculture in a hydroponic environment.",
       "Diseño mecánico": "Mechanical design",
       "Diseño y desarrollo de un prototipo a escala de perforadora minera, integrando diseño mecánico, manufactura y electrónica para evaluar condiciones de operación y apoyar demostraciones corporativas.": "Design and development of a prototype at the scale of a mining drilling machine, integrating mechanical, manufacturing and electronic design to evaluate operating conditions and support corporate demonstrations.",
-      "Diseño y desarrollo de un prototipo para evaluar condiciones de operación y apoyar la optimización del diseño real, manteniendo la confidencialidad técnica.": "Design and development of a prototype to evaluate operating conditions and support the optimization of real design, maintaining technical confidentiality.",
+      "Diseño y desarrollo de un prototipo para evaluar condiciones de operación y apoyar la optimización del diseño real, manteniendo la confidencialidad técnica. En 2026 amplié el trabajo con un gemelo digital virtual de la Bucyrus 49HR construido desde su manual de operación: verificación automática de datos, modelo CAD generado por script, cinemática del ciclo de operación, análisis estructural del mástil y monitoreo con datos sintéticos.": "Design and development of a prototype to evaluate operating conditions and support the optimization of the real design, while maintaining technical confidentiality. In 2026 I extended the work with a virtual digital twin of the Bucyrus 49HR built from its operation manual: automated data verification, a script-generated CAD model, kinematics of the operating cycle, structural analysis of the mast and monitoring with synthetic data.",
       "Diseño y fabricación de prototipos": "Design and manufacture of prototypes",
       "Diseño y fabricación de prototipos mediante CAD/CAE/CAM, mecanizado CNC, corte láser e impresión 3D.": "Design and manufacture of prototypes using CAD / CAE / CAM, CNC machining, laser cutting and 3D printing.",
       "Diseño y simulación": "Design and simulation",
@@ -1457,8 +1544,9 @@
       "EXPERIENCIA / I+D": "EXPERIENCE / R&D",
       "Educación": "Education",
       "El análisis comprende las cinco variantes G0–G4, compresión, rigidez, pandeo y respuesta dinámica. La electrónica está diseñada en KiCad: el eje E de la Ender-3 acciona el motor y un Arduino Nano con HX711 registra la fuerza. El firmware del registrador está compilado; no está probado en hardware y los cambios de Marlin siguen planificados.": "The analysis covers five variants, G0–G4, compression, stiffness, buckling and dynamic response. The electronics are designed in KiCad: the Ender-3 E axis drives the motor, while an Arduino Nano with an HX711 records force. The logger firmware has been compiled but has not been tested on hardware; Marlin changes remain planned.",
+      "El gemelo digital se construyó a partir del manual de operación y mantenimiento de la Bucyrus 49HR. Un script verifica cada cota del manual comparando pies con metros y registra las inconsistencias; los datos que el manual no trae se toman de referencias citadas o se marcan como supuestos. El modelo CAD se genera por código y se comprueba solo contra las cotas del fabricante. La cinemática reproduce el traslado sobre orugas, la nivelación con cuatro gatos, el levante del mástil con dos cilindros de 8 in, la perforación de un paso de 20 m y la inclinación de 65° a 90°. El mástil se analizó como reticulado de vigas con PyNite y se validó con CalculiX. Un panel compara la velocidad de penetración medida con la prevista por el modelo y alarma ante desgaste de broca. Todo el trabajo está documentado en el repositorio, con su bitácora y registro de supuestos.": "The digital twin was built from the Bucyrus 49HR operation and maintenance manual. A script checks every dimension in the manual by comparing feet against meters and records the inconsistencies; data the manual does not provide come from cited references or are marked as assumptions. The CAD model is generated by code and checks itself against the manufacturer dimensions. The kinematics reproduce tramming on crawlers, leveling with four jacks, raising the mast with two 8 in cylinders, drilling a 20 m single pass and inclining the mast from 65° to 90°. The mast was analyzed as a beam lattice with PyNite and validated with CalculiX. A dashboard compares the measured penetration rate with the rate predicted by the model and raises an alarm on bit wear. All the work is documented in the repository, with its log and record of assumptions.",
       "El modelo representa un Yahboom MicroROS-Pi5 de cuatro ruedas con dirección por deslizamiento. Cada robot utiliza un nodo ROS 2, comandos de velocidad y estimación de pose. Gazebo Fortress aporta la física; Python y scripts compatibles con MATLAB, ejecutados en GNU Octave, permiten contrastar cálculos y escenarios.": "The model represents a four-wheel skid-steer Yahboom MicroROS-Pi5. Each robot uses a ROS 2 node, velocity commands and pose estimation. Gazebo Fortress provides the physics; Python and MATLAB-compatible scripts executed in GNU Octave support comparisons of calculations and scenarios.",
-      "El prototipo se utilizó en demostraciones corporativas.": "The prototype was used in corporate demonstrations.",
+      "El prototipo se utilizó en demostraciones corporativas. El gemelo digital reproduce 14 de 15 cotas verificables del fabricante dentro de ±2 cm; el análisis del mástil con dos solucionadores independientes (PyNite y CalculiX) coincide dentro del 0,6 % y da un factor de seguridad mínimo de 3,6; el monitoreo detecta un desgaste de broca simulado sin falsas alarmas. Es un prototipo virtual: no está conectado a una máquina real y su telemetría es sintética.": "The prototype was used in corporate demonstrations. The digital twin reproduces 14 of 15 verifiable manufacturer dimensions within ±2 cm; the mast analysis with two independent solvers (PyNite and CalculiX) agrees within 0.6% and gives a minimum safety factor of 3.6; the monitoring detects simulated bit wear without false alarms. It is a virtual prototype: it is not connected to a real machine and its telemetry is synthetic.",
       "El trabajo incluye cinemática, un lazo PI para el motor y estimación de posición mediante encoders y giróscopo. Los scripts para construir modelos de Simulink y Simscape están disponibles, pero esos modelos no se ejecutaron por falta de licencia.": "The work includes kinematics, a motor PI control loop and position estimation using encoders and a gyroscope. Scripts for building Simulink and Simscape models are available, but those models were not run because a license was unavailable.",
       "Electrónica de accionamiento y registro de fuerza": "Drive electronics and force logging",
       "Email": "Email",
@@ -1522,6 +1610,7 @@
       "Fuente de la descripción: CV, p. 1 y metadatos editoriales de la publicación ya verificados.": "Description source: CV, p. 1, and previously verified publication metadata.",
       "Fuente de la descripción: CV, p. 2": "Description source: CV, p. 2",
       "Fuente de la descripción: CV, p. 2. No se atribuye autoría del artículo OC-SORT.": "Description source: CV, p. 2. No authorship of the OC-SORT paper is claimed.",
+      "Fuente de la descripción: CV, p. 2; repositorio del gemelo digital": "Source of the description: CV, p. 2; digital twin repository",
       "Fuente de la descripción: Documentación técnica y modelos del proyecto, octubre de 2026. El plan de julio de 2026 en FabLab es el antecedente; no demuestra fabricación. La ficha anterior usaba el título general «biomateriales»; el estudio disponible se refiere específicamente a pasta cerámica.": "Description source: Project technical documentation and models, October 2026. The July 2026 FabLab plan is background material; it does not establish that fabrication took place. The previous page used the general title “biomaterials”; the available study specifically concerns ceramic paste.",
       "Fuente de la descripción: Repositorio enjambre-ovejas-lobo: documentación 00–08, registros CSV, figuras y fotografías aportadas. Reconstrucción de octubre de 2026 a partir de recursos de Yahboom. Las imágenes físicas no validan los resultados del simulador.": "Description source: The enjambre-ovejas-lobo repository: documentation 00–08, CSV logs, figures and supplied photographs. October 2026 reconstruction based on Yahboom resources. Photographs of the physical platform do not validate simulator results.",
       "Funcionamiento del extrusor — simulación visual": "Extruder operation — visual simulation",
@@ -1534,12 +1623,14 @@
       "GIIM · Saildrone": "GIIM · Saildrone",
       "GNU Octave": "GNU Octave",
       "Gazebo Fortress": "Gazebo Fortress",
+      "Gemelo digital": "Digital twin",
       "Gemelo digital del Yahboom MicroROS-Pi5 y comportamiento colectivo de cinco robots oveja guiados por un robot pastor. Integra ROS 2, Gazebo, control de motores y estimación de posición.": "Digital twin of the Yahboom MicroROS-Pi5 and collective behavior of five sheep robots guided by a shepherd robot. Combines ROS 2, Gazebo, motor control and position estimation.",
       "Gestión de eventos, recursos y networking; incremento documentado de participación y membresía durante la gestión.": "Event, resource and networking management; documented increase in participation and membership during management.",
       "GitHub": "GitHub",
       "Gmsh": "Gmsh",
       "Goethe-Institut Perú": "Goethe-Institut Perú",
       "Grupo de Investigación en Física": "Physics Research Group",
+      "Gráfico del reticulado del mástil sin carga en gris y deformado en naranja": "Plot of the mast lattice, unloaded in grey and deformed in orange",
       "Gráficos de métricas del pastoreo simulado con poses de odometría.": "Plots of simulated shepherding metrics using odometry poses.",
       "Gráficos de rigidez normalizada y coeficiente de Poisson para G0 a G4.": "Plots of normalized stiffness and Poisson’s ratio for G0 through G4.",
       "HMI / SCADA": "HMI / SCADA",
@@ -1640,6 +1731,7 @@
       "Modbus TCP/RTU": "Modbus TCP/RTU",
       "Modelado y documentación de la reconstrucción técnica: celdas auxéticas, dimensionamiento del extrusor, integración mecánica y electrónica, comparación numérica y comunicación visual del diseño. La geometría lozenge-chiral de referencia corresponde a Hou et al. (2024).": "Modeling and documentation of the technical reconstruction: auxetic cells, extruder sizing, mechanical and electronic integration, numerical comparison and visual communication of the design. The reference lozenge-chiral geometry is attributed to Hou et al. (2024).",
       "Modelo CAD de la Ender-3 con extrusora compacta instalada sobre el carro X.": "CAD model of the Ender-3 with a compact extruder on the X carriage.",
+      "Modelo CAD de la perforadora Bucyrus 49HR con el mástil vertical, vista isométrica": "CAD model of the Bucyrus 49HR drill with the mast vertical, isometric view",
       "Modelo CAD de la revisión B sobre una Creality Ender-3. Es un render, no una fotografía de un prototipo construido.": "CAD model of Revision B mounted on a Creality Ender-3. This is a rendering, not a photograph of a built prototype.",
       "Modelo CAD de la revisión B: jeringa, placas, guías, transmisión y módulo auxético. Documenta el ensamblaje diseñado; la fabricación está pendiente.": "Revision B CAD model: syringe, plates, guides, transmission and auxetic module. Documents the designed assembly; fabrication is pending.",
       "Modelo CAD de la variante G2, basado en la geometría lozenge-chiral de Hou et al. (2024). Se mantiene la atribución de la topología al artículo original.": "CAD model of variant G2, based on the lozenge-chiral geometry of Hou et al. (2024). The topology remains attributed to the original article.",
@@ -1652,6 +1744,7 @@
       "Nov. 2022 – feb. 2023": "Nov. 2022 – Feb. 2023",
       "OC-SORT · seguimiento de múltiples objetos": "OC-SORT · multiple object tracking",
       "ORCID": "ORCID",
+      "Oct. 2026": "Oct. 2026",
       "Oct. 2026 · estudio numérico": "Oct. 2026 · numerical study",
       "Oct. 2026 · reconstrucción en simulación": "Oct. 2026 · reconstruction in simulation",
       "Oct. 2026 · simulación / diseño": "Oct. 2026 · simulation / design",
@@ -1665,6 +1758,8 @@
       "PUBLICATIONS": "PUBLICATIONS",
       "PachaLab": "PachaLab",
       "PachaLab — robótica espacial": "PachaLab — space robotics",
+      "Panel de monitoreo del gemelo": "Digital twin monitoring dashboard",
+      "Panel del gemelo con datos sintéticos: profundidad, velocidad de penetración medida contra la prevista, energía específica por capa de roca y presión de los cilindros al levantar el mástil. En el escenario con desgaste de broca desde 12 m, el monitor da la alarma a 14,6 m; en el escenario normal no hay falsas alarmas.": "Twin dashboard with synthetic data: depth, measured versus predicted penetration rate, specific energy per rock layer and cylinder pressure while raising the mast. In the scenario with bit wear from 12 m, the monitor raises the alarm at 14.6 m; the normal scenario has no false alarms.",
       "Participación en el ensamblaje de un brazo robótico en ESAN R&D Labs.": "Participation in the assembly of a robotic arm in ESAN R & D Labs.",
       "Participación en el proyecto de visión por computadora mencionado en el CV. Alcance de la implementación y contribución individual: por completar.": "Participation in the computer vision project mentioned in the CV. Scope of implementation and individual contribution: to be completed.",
       "Participación en prototipos de visión por computadora mediante Roboflow y sistemas embebidos en ESAN.": "Participation in computer vision prototypes using Roboflow and systems embedded in ESAN.",
@@ -1686,8 +1781,8 @@
       "Programación": "Programming",
       "Programación y pruebas de PLC Siemens, Allen-Bradley y Delta; diseño básico HMI/SCADA y planos con EPLAN. Integración de variadores, instrumentación y redes Profinet, Modbus TCP/RTU, Ethernet/IP y Profibus. Documentación técnica y participación como co-instructor de capacitaciones PLC.": "Programming and testing of Siemens, Allen-Bradley and Delta PLCs; basic HMI/SCADA design and drawings in EPLAN. Integration of drives, instrumentation and Profinet, Modbus TCP/RTU, Ethernet/IP and Profibus networks. Technical documentation and participation as a co-instructor in PLC training.",
       "Prototipado": "Prototyping",
-      "Prototipo a escala que integra diseño mecánico, manufactura y electrónica.": "Prototype to scale that integrates mechanical, manufacturing and electronic design.",
-      "Prototipo de perforadora minera": "Mining drill prototype",
+      "Prototipo a escala que integra diseño mecánico, manufactura y electrónica, ampliado con un prototipo virtual de gemelo digital de la perforadora eléctrica Bucyrus 49HR: ensamble CAD verificado, cinemática, análisis estructural y panel de monitoreo.": "Scale prototype integrating mechanical, manufacturing and electronic design, extended with a virtual digital twin prototype of the Bucyrus 49HR electric blasthole drill: verified CAD assembly, kinematics, structural analysis and a monitoring dashboard.",
+      "Prototipo de perforadora minera y gemelo digital (Bucyrus 49HR)": "Mining drill prototype and digital twin (Bucyrus 49HR)",
       "Prototipos con sistemas embebidos": "Prototypes with embedded systems",
       "Prototipos de visión por computadora con Roboflow y sistemas embebidos en ESAN; proyectos de seguimiento de objetos en USIL.": "Computer vision prototypes with Roboflow and systems embedded in ESAN; object tracking projects in USIL.",
       "Prototipos de visión por computadora mediante Roboflow y sistemas embebidos.": "Computer vision prototypes using Roboflow and embedded systems.",
@@ -1822,6 +1917,7 @@
       "Ver experiencia completa": "See full experience",
       "Ver experiencia relacionada": "See related experience",
       "Ver ficha": "View project",
+      "Ver repositorio": "View repository",
       "Ver trayectoria y CV": "View background and CV",
       "Video de 1 min 36 s con diseño, mecanismo e impresión simulada de la revisión B. El tiempo está acelerado y la deformación del módulo se amplía ×10 para visualizarla. La cifra de factor de seguridad ≥ 7,5 de la lámina corresponde a las piezas de aluminio, no al módulo auxético. No es una grabación de un prototipo.": "A 1 min 36 s video showing the design, mechanism and simulated printing with Revision B. Time is accelerated and module deformation is magnified ×10 for visibility. The safety factor ≥ 7.5 shown on the slide applies to the aluminum parts, not the auxetic module. This is not footage of a prototype.",
       "Visión por computadora": "Computer vision",
@@ -1846,7 +1942,7 @@
       "Extrusora 3D de pasta cerámica con módulo auxético | Anghello Rodríguez": "Ceramic paste 3D extruder with an auxetic module | Anghello Rodríguez",
       "PachaLab — robótica espacial | Anghello Rodríguez": "PachaLab — space robotics | Anghello Rodríguez",
       "Phyto-G — agricultura espacial | Anghello Rodríguez": "Phyto-G — space agriculture | Anghello Rodríguez",
-      "Prototipo de perforadora minera | Anghello Rodríguez": "Mining drill prototype | Anghello Rodríguez",
+      "Prototipo de perforadora minera y gemelo digital (Bucyrus 49HR) | Anghello Rodríguez": "Mining drill prototype and digital twin (Bucyrus 49HR) | Anghello Rodríguez",
       "Proyectos | Anghello Rodríguez": "Projects | Anghello Rodríguez",
       "Robot de servicio para estudiantes | Anghello Rodríguez": "Service robot for students | Anghello Rodríguez",
       "Velero autónomo — Saildrone | Anghello Rodríguez": "Autonomous sailboat — Saildrone | Anghello Rodríguez",
@@ -1857,7 +1953,7 @@
       "Ver proyecto: Extrusora 3D de pasta cerámica con módulo auxético": "View project: Ceramic paste 3D extruder with an auxetic module",
       "Ver proyecto: PachaLab — robótica espacial": "View project: PachaLab — space robotics",
       "Ver proyecto: Phyto-G — agricultura espacial": "View project: Phyto-G — space agriculture",
-      "Ver proyecto: Prototipo de perforadora minera": "View project: Mining drill prototype",
+      "Ver proyecto: Prototipo de perforadora minera y gemelo digital (Bucyrus 49HR)": "View project: Mining drill prototype and digital twin (Bucyrus 49HR)",
       "Ver proyecto: Robot de servicio para estudiantes": "View project: Service robot for students",
       "Ver proyecto: Velero autónomo — Saildrone": "View project: Autonomous sailboat — Saildrone",
       "Ver proyecto: Visión por computadora y sistemas embebidos": "View project: Computer vision and embedded systems",
