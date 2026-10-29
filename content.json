@@ -73,14 +73,14 @@
     "article": "340",
     "doi": "10.3390/biomimetics11050340",
     "url": "https://doi.org/10.3390/biomimetics11050340",
-    "summary": "Investigación en agricultura espacial, biomimética y sistemas mecatrónicos, centrada en el diseño de un clinostato y la simulación computacional de movimiento en un entorno hidropónico.",
-    "contribution": "Colaboración de investigación en BETTA Tech: diseño CAD mecánico, documentación de ingeniería, soporte CAE/FEA relacionado con el movimiento y coordinación con un equipo multidisciplinario.",
+    "summary": "Diseño mecatrónico de un clinostato de tres ejes para estudiar organismos acuáticos bajo condiciones análogas de microgravedad. Integra rotación, circulación de agua y una arquitectura propuesta de control y sensado, con CAD y simulaciones publicadas en Biomimetics.",
+    "contribution": "Coautor del artículo. La sección de contribuciones de autor acredita mi participación en investigación, recursos, curación de datos, redacción inicial, revisión y edición, y visualización. El diseño y los resultados presentados corresponden al trabajo del equipo.",
     "tags": [
       "Agricultura espacial",
       "Biomimética",
       "Simulación"
     ],
-    "source": "Título, DOI y coautoría: CV, p. 1. Autores, volumen, número y fecha: índice editorial de MDPI Biomimetics, 11(5).",
+    "source": "Barreto et al. (2026), Biomimetics 11(5), 340, DOI 10.3390/biomimetics11050340; resumen, secciones 3.1–3.2 y contribuciones de autor.",
     "id": "publication"
   },
   "publications": [
@@ -102,14 +102,14 @@
       "article": "340",
       "doi": "10.3390/biomimetics11050340",
       "url": "https://doi.org/10.3390/biomimetics11050340",
-      "summary": "Investigación en agricultura espacial, biomimética y sistemas mecatrónicos, centrada en el diseño de un clinostato y la simulación computacional de movimiento en un entorno hidropónico.",
-      "contribution": "Colaboración de investigación en BETTA Tech: diseño CAD mecánico, documentación de ingeniería, soporte CAE/FEA relacionado con el movimiento y coordinación con un equipo multidisciplinario.",
+      "summary": "Diseño mecatrónico de un clinostato de tres ejes para estudiar organismos acuáticos bajo condiciones análogas de microgravedad. Integra rotación, circulación de agua y una arquitectura propuesta de control y sensado, con CAD y simulaciones publicadas en Biomimetics.",
+      "contribution": "Coautor del artículo. La sección de contribuciones de autor acredita mi participación en investigación, recursos, curación de datos, redacción inicial, revisión y edición, y visualización. El diseño y los resultados presentados corresponden al trabajo del equipo.",
       "tags": [
         "Agricultura espacial",
         "Biomimética",
         "Simulación"
       ],
-      "source": "Título, DOI y coautoría: CV, p. 1. Autores, volumen, número y fecha: índice editorial de MDPI Biomimetics, 11(5).",
+      "source": "Barreto et al. (2026), Biomimetics 11(5), 340, DOI 10.3390/biomimetics11050340; resumen, secciones 3.1–3.2 y contribuciones de autor.",
       "id": "publication"
     }
   ],
@@ -421,31 +421,222 @@
       "institution": "BETTA College / BETTA Tech",
       "period": "Feb. – may. 2026 · colaboración de investigación",
       "category": "Aeroespacial",
-      "description": "Diseño mecatrónico de un clinostato y simulación de movimiento para agricultura espacial en un entorno hidropónico.",
-      "contribution": "Colaboración de investigación en BETTA Tech: diseño CAD mecánico, documentación de ingeniería, soporte CAE/FEA relacionado con el movimiento y coordinación con un equipo multidisciplinario.",
+      "description": "Diseño mecatrónico de un clinostato de tres ejes para estudiar organismos acuáticos bajo condiciones análogas de microgravedad. Integra rotación, circulación de agua y una arquitectura propuesta de control y sensado, con CAD y simulaciones publicadas en Biomimetics.",
+      "contribution": "Coautor del artículo. La sección de contribuciones de autor acredita mi participación en investigación, recursos, curación de datos, redacción inicial, revisión y edición, y visualización. El diseño y los resultados presentados corresponden al trabajo del equipo.",
       "tags": [
-        "Biomimética",
-        "Simulación",
-        "Agricultura espacial"
+        "SOLIDWORKS",
+        "Clinostato de tres ejes",
+        "Agricultura espacial",
+        "CAD / FEA",
+        "Integración mecatrónica"
       ],
-      "result": "Coautor del artículo publicado en Biomimetics el 14 de mayo de 2026.",
-      "image": null,
+      "result": "Artículo publicado el 14 de mayo de 2026. El estudio cinemático impone 10 rpm al eje externo; el análisis estático simplificado con 294 N reporta 54,5 MPa de tensión máxima y 1,73 mm de desplazamiento máximo. Son resultados computacionales del diseño, no ensayos biológicos ni una validación en vuelo.",
+      "image": "assets/images/384fadf5651e4f9afbb0e3ce9aefee7b0ba4169eb1816c56e6605afc21bceba7.webp",
+      "imageAlt": "Vista isométrica del modelo CAD del clinostato; no es una fotografía de hardware. Figura 10 de Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.",
       "url": "https://doi.org/10.3390/biomimetics11050340",
       "repository": null,
-      "source": "CV, p. 1 y metadatos editoriales de la publicación ya verificados.",
+      "source": "Barreto, Cornejo, Vargas, Gastello y Rodriguez (2026), Biomimetics 11(5), 340. DOI: 10.3390/biomimetics11050340. Figuras del artículo bajo CC BY 4.0, optimizadas para web y con leyendas resumidas y traducidas.",
       "featured": true,
       "kind": "Investigación publicada",
       "cover": "phytog",
       "experienceId": "betta",
+      "body": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Una plataforma terrestre para investigación espacial"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Phyto-G propone reorientar una cámara acuática mediante tres marcos anidados, accionados por un solo motor. Las conexiones giratorias de agua y alimentación eléctrica buscan permitir experimentos prolongados sin interrumpir la rotación para reponer recursos."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Del concepto al modelo mecatrónico"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "El artículo documenta el ensamble en SOLIDWORKS 2025, la cámara de muestras, el suministro de agua y una arquitectura eléctrica de 24 V. Propone bombas de entrada y salida, temperatura, pH, oxígeno disuelto, IMU y observación con cámara. La integración electrónica se presenta como diseño para implementación futura."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Movimiento y respuesta estructural"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "El estudio de movimiento utiliza una velocidad constante de 10 rpm en el eje externo. El análisis por elementos finitos aplica una carga equivalente de 294 N, apoyos fijos y contactos unidos en un ensamble simplificado. Sus máximos de 54,5 MPa y 1,73 mm describen ese caso estático; no sustituyen una validación experimental del sistema completo."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Alcance y próximos ensayos"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Ulva, Pyropia, Chlorella y Arthrospira se discuten como candidatos de estudio, no como cultivos ensayados en este trabajo. La clinorrotación proporciona un análogo terrestre: no elimina la gravedad ni reproduce todas las condiciones espaciales. Quedan por caracterizar la respuesta biológica, la circulación de agua y el funcionamiento integrado en experimentos controlados."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Publicación y crédito de las figuras"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Las imágenes de esta ficha proceden del artículo de Ricardo Barreto, Jose Cornejo, Mariela Vargas, Nicolas Gastello y Anghello Rodriguez. Se conservan los números de figura y sus rótulos originales; las leyendas del portafolio son resúmenes bilingües. La portada reproduce la figura 10."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Licencia de las figuras: Creative Commons Attribution 4.0 (CC BY 4.0).",
+                "marks": [
+                  {
+                    "type": "link",
+                    "attrs": {
+                      "href": "https://creativecommons.org/licenses/by/4.0/"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
       "evidence": [
         {
-          "title": "Artículo en Biomimetics",
-          "date": "14 de mayo de 2026",
-          "description": "Mechatronics Design of a Clinostat Agriculture Space System for Biomimetic Phyto-Growth in Microgravity (Phyto-G) and 3D-Motion Computer Simulation on Hydroponic Environment",
-          "image": null,
-          "alt": "",
+          "title": "Arquitectura de Phyto-G y publicación",
+          "date": "Mayo 2026 · figura publicada",
+          "description": "Diagrama del sistema propuesto: marcos, cámara acuática, transmisión, suministro eléctrico y circuito de filtración. Representa el concepto integrado, no un montaje experimental. Figura 1 de Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.",
+          "alt": "Diagrama conceptual de Phyto-G con un motor, tres marcos, cámara y circuito de agua.",
           "url": "https://doi.org/10.3390/biomimetics11050340",
-          "linkLabel": "Leer publicación · DOI 10.3390/biomimetics11050340"
+          "linkLabel": "Ver artículo y figura original",
+          "image": "assets/images/0fb3165cd75c189e7df7ad649f6f25a09cedf37bdf8ced012e55f6e651fa7461.webp",
+          "sortOrder": 1
+        },
+        {
+          "title": "Unión giratoria para el suministro de agua",
+          "date": "Mayo 2026 · figura publicada",
+          "description": "Detalle conceptual de la unión del primer marco: entrada de agua, carcasa, sellos, rodamientos y eje hueco. Se propone mantener el suministro durante la rotación. Figura 2 de Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.",
+          "alt": "Sección de la unión giratoria del primer marco con conducto de agua y eje hueco.",
+          "url": "https://doi.org/10.3390/biomimetics11050340",
+          "linkLabel": "Ver artículo y figura original",
+          "image": "assets/images/b6b8393aa03b5878f6227ee0650ed0ac8e7b41aec68c7542c808e5eecdf007ec.webp",
+          "sortOrder": 2
+        },
+        {
+          "title": "Cámara acuática y distribución de muestras",
+          "date": "Mayo 2026 · figura publicada",
+          "description": "Modelo CAD del tanque: las columnas verdes representan soportes o portamuestras y las bases amarillas sus montajes. No es una fotografía de cultivos ni un resultado biológico. Figura 8 de Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.",
+          "alt": "Vista CAD del interior del tanque con portamuestras verdes y soportes amarillos.",
+          "url": "https://doi.org/10.3390/biomimetics11050340",
+          "linkLabel": "Ver artículo y figura original",
+          "image": "assets/images/3efe5777a67efb44161804ed05663898ceb3c18c7b9e575b1ead2413bf1c1b9d.webp",
+          "sortOrder": 8
+        },
+        {
+          "title": "Simulación de movimiento a 10 rpm",
+          "date": "Mayo 2026 · figura publicada",
+          "description": "Secuencia de posiciones del clinostato y perfil de velocidad impuesto al eje externo en SOLIDWORKS. Es una verificación cinemática preliminar por simulación. Figura 11 de Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.",
+          "alt": "Tres posiciones simuladas del clinostato y gráfica de velocidad angular constante.",
+          "url": "https://doi.org/10.3390/biomimetics11050340",
+          "linkLabel": "Ver artículo y figura original",
+          "image": "assets/images/833ac14077b757bb39ecf0da1b9bca98134ff0591d976c550f16dad6ae009684.webp",
+          "sortOrder": 11
+        },
+        {
+          "title": "FEA — distribución de tensiones",
+          "date": "Mayo 2026 · figura publicada",
+          "description": "Ensamble simplificado bajo la carga equivalente de 294 N. El artículo reporta un máximo de von Mises de 54,5 MPa; el modelo usa apoyos fijos y contactos unidos. Figura 13 de Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.",
+          "alt": "Mapa de tensión de von Mises del clinostato, con máximo de 5,45 × 10⁷ Pa.",
+          "url": "https://doi.org/10.3390/biomimetics11050340",
+          "linkLabel": "Ver artículo y figura original",
+          "image": "assets/images/c2c212368adeace59190ee0989ad4bf2db7a16de5ac861f59ce5990bfe3f4583.webp",
+          "sortOrder": 13
+        },
+        {
+          "title": "FEA — desplazamiento del ensamble",
+          "date": "Mayo 2026 · figura publicada",
+          "description": "El mismo caso estático alcanza un desplazamiento resultante máximo de 1,73 mm. La vista amplificada de la deformación sirve para interpretar el modelo; no muestra desplazamientos medidos en hardware. Figura 14 de Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.",
+          "alt": "Mapa de desplazamiento del modelo del clinostato con escala en milímetros.",
+          "url": "https://doi.org/10.3390/biomimetics11050340",
+          "linkLabel": "Ver artículo y figura original",
+          "image": "assets/images/e9431c478d3bc2e17624ac73bd96ac522496e886c6c38a827b6a8fcdeeb800b8.webp",
+          "sortOrder": 14
+        },
+        {
+          "title": "Arquitectura propuesta de control y sensado",
+          "date": "Mayo 2026 · figura publicada",
+          "description": "Distribución de 24 V, conversión DC–DC, controlador, motor, bombas y sensores de temperatura, pH y oxígeno disuelto, además de IMU y cámara. Es una propuesta de integración. Figura 15 de Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.",
+          "alt": "Diagrama de bloques de potencia, control, actuadores y sensores del clinostato.",
+          "url": "https://doi.org/10.3390/biomimetics11050340",
+          "linkLabel": "Ver artículo y figura original",
+          "image": "assets/images/b7a4bdb4d1320524bf494f2edee4d10d7fd0babd00b246294be3721f7675f296.webp",
+          "sortOrder": 15
         }
       ]
     },
@@ -799,19 +990,22 @@
       "institution": "Flanders Electric Perú",
       "period": "Dic. 2024 – mar. 2025 · gemelo digital, 2026",
       "category": "Manufactura",
-      "description": "Prototipo a escala que integra diseño mecánico, manufactura y electrónica, ampliado con un prototipo virtual de gemelo digital de la perforadora eléctrica Bucyrus 49HR: ensamble CAD verificado, cinemática, análisis estructural y panel de monitoreo.",
+      "description": "Prototipo a escala de perforadora minera, ampliado en 2026 con una reconstrucción virtual de la Bucyrus 49HR: CAD por subsistemas, cinemática, análisis del mástil y monitoreo con datos sintéticos.",
       "contribution": "Diseño y desarrollo de un prototipo para evaluar condiciones de operación y apoyar la optimización del diseño real, manteniendo la confidencialidad técnica. En 2026 amplié el trabajo con un gemelo digital virtual de la Bucyrus 49HR construido desde su manual de operación: verificación automática de datos, modelo CAD generado por script, cinemática del ciclo de operación, análisis estructural del mástil y monitoreo con datos sintéticos.",
       "tags": [
-        "Diseño mecánico",
-        "Integración",
-        "Gemelo digital"
+        "CadQuery",
+        "Python",
+        "PyNite",
+        "CalculiX",
+        "Gemelo digital",
+        "Cinemática"
       ],
-      "result": "El prototipo se utilizó en demostraciones corporativas. El gemelo digital reproduce 14 de 15 cotas verificables del fabricante dentro de ±2 cm; el análisis del mástil con dos solucionadores independientes (PyNite y CalculiX) coincide dentro del 0,6 % y da un factor de seguridad mínimo de 3,6; el monitoreo detecta un desgaste de broca simulado sin falsas alarmas. Es un prototipo virtual: no está conectado a una máquina real y su telemetría es sintética.",
+      "result": "El prototipo a escala se utilizó en demostraciones corporativas. En la extensión virtual, 14 de 15 cotas de entrada se reproducen dentro de ±2 cm: es una comprobación de consistencia. El extremo de 600 kN de un barrido hipotético a 65° da FS 3,6 con material y secciones supuestos (Fy = 345 MPa). El monitor detecta el desgaste inyectado en el escenario sintético, sin alarmas en el escenario nominal. No hay conexión ni telemetría de una máquina real.",
       "image": "assets/images/29d1105a9162a918996008fab35fda3294ddc40e4e698ac234b5445ba65e635c.webp",
-      "imageAlt": "Modelo CAD de la perforadora Bucyrus 49HR con el mástil vertical, vista isométrica",
+      "imageAlt": "Render del modelo CadQuery de la Bucyrus 49HR con altura adoptada de 31,22 m; representación envolvente, no fotografía del prototipo físico.",
       "url": null,
       "repository": "https://github.com/anghelloerr/bucyrus-49hr-digital-twin",
-      "source": "CV, p. 2; repositorio del gemelo digital",
+      "source": "CV para el prototipo a escala; documentación, CAD, CSV y resultados del proyecto Bucyrus 49HR para la extensión virtual de octubre de 2026. El manual se cita como fuente técnica, sin redistribuirlo.",
       "featured": false,
       "kind": "Proyecto",
       "cover": "manufacturing",
@@ -820,11 +1014,137 @@
         "type": "doc",
         "content": [
           {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Del prototipo a escala a la reconstrucción virtual"
+              }
+            ]
+          },
+          {
             "type": "paragraph",
             "content": [
               {
                 "type": "text",
-                "text": "El gemelo digital se construyó a partir del manual de operación y mantenimiento de la Bucyrus 49HR. Un script verifica cada cota del manual comparando pies con metros y registra las inconsistencias; los datos que el manual no trae se toman de referencias citadas o se marcan como supuestos. El modelo CAD se genera por código y se comprueba solo contra las cotas del fabricante. La cinemática reproduce el traslado sobre orugas, la nivelación con cuatro gatos, el levante del mástil con dos cilindros de 8 in, la perforación de un paso de 20 m y la inclinación de 65° a 90°. El mástil se analizó como reticulado de vigas con PyNite y se validó con CalculiX. Un panel compara la velocidad de penetración medida con la prevista por el modelo y alarma ante desgaste de broca. Todo el trabajo está documentado en el repositorio, con su bitácora y registro de supuestos."
+                "text": "La experiencia en Flanders Electric Perú de diciembre de 2024 a marzo de 2025 constituye el antecedente del prototipo a escala. La extensión de 2026 reconstruye digitalmente la Bucyrus 49HR y demuestra un flujo de modelado y monitoreo. Los renders y el video de esta ficha corresponden a esa extensión virtual."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Geometría con trazabilidad"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "El modelo vigente se genera en CadQuery y se visualiza con PyVista; conserva el trabajo previo realizado mediante la API de SOLIDWORKS. La comprobación compara 15 dimensiones con las tablas y referencias usadas para construir el modelo: 14 cumplen ±0,02 m. Comprueba consistencia geométrica, no una validación contra mediciones de la máquina. La longitud de transporte T no coincide y queda registrada como inconsistencia; la altura de 31,22 m procede de una referencia de otra 49HR."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Cinemática del ciclo de operación"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "La simulación integra traslado sobre orugas, nivelación con cuatro gatos, levante del mástil con dos cilindros, avance del cabezal y retiro de la columna. Representa un paso de 20 m y posiciones de perforación entre 65° y 90°. Son estados generados por el modelo, sin mediciones de campo."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Análisis estructural contrastado"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "El mástil se idealiza como reticulado de vigas tubulares. PyNite y CalculiX comparten geometría y cargas; los desplazamientos y fuerzas comparados difieren hasta un 0,6 %. En el extremo de 600 kN del barrido hipotético a 65°, el modelo alcanza unos 95,8 MPa y FS 3,6 con Fy = 345 MPa y secciones supuestas; esa carga no es un empuje medido ni especificado para esta máquina. La figura de deformación publicada aquí corresponde a otro caso: 65° y 400 kN."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "La concordancia entre solucionadores es una verificación numérica, no una certificación de la máquina. Las secciones, el material y parte de la geometría son supuestos; no se evalúan todos los mecanismos ni modos de fallo. El modelo de Ansys MAPDL está preparado, pero no se resolvió por falta de licencia vigente."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Monitoreo con datos sintéticos"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Los modelos de perforación emplean energía específica de Teale y Pessier–Fear. El panel compara señales generadas de velocidad de penetración con la predicción, además de profundidad, energía específica y presión de levante. En el escenario con desgaste inyectado desde 12 m, la alarma aparece a 14,6 m; el escenario nominal registrado no genera alarmas. Estos dos escenarios no demuestran fiabilidad en campo."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Documentación y siguiente validación"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "La siguiente validación requiere calibración con datos reales y mayor detalle de los subsistemas. El código y los supuestos están en el repositorio enlazado, cuyo acceso es privado. Las evidencias seleccionadas se pueden consultar directamente en esta ficha."
               }
             ]
           }
@@ -835,13 +1155,13 @@
           "title": "Ciclo de operación del gemelo digital",
           "date": "Oct. 2026",
           "description": "Animación generada desde el modelo CAD con la cinemática del gemelo: traslado con el mástil abatido, nivelación con gatos, levante del mástil, perforación de un paso de 20 m, retiro de la columna e inclinación a 65°. Las variables de cada cuadro salen del modelo, no de una máquina real.",
-          "alt": "",
+          "alt": "Animación del modelo virtual de la perforadora durante las fases de traslado, nivelación y perforación.",
           "url": "https://github.com/anghelloerr/bucyrus-49hr-digital-twin",
-          "linkLabel": "Ver repositorio",
+          "linkLabel": "Repositorio · acceso restringido",
           "embedUrl": "",
           "video": "assets/videos/5da93c1c8164227c9ccc710baa4b13e38a59343edd7787e9fd031575a5e61e03.mp4",
           "poster": "assets/images/29d1105a9162a918996008fab35fda3294ddc40e4e698ac234b5445ba65e635c.webp",
-          "transcript": "",
+          "transcript": "Resumen descriptivo: el modelo se traslada con el mástil abatido, se nivela sobre los gatos, eleva el mástil, avanza y retira la columna de perforación y cambia a una posición inclinada. La secuencia es una animación CAD; no es filmación de una máquina real.",
           "body": {
             "type": "doc",
             "content": [
@@ -853,9 +1173,25 @@
           "sortOrder": 1
         },
         {
+          "title": "Configuración de transporte",
+          "date": "Oct. 2026 · diseño y simulación",
+          "description": "Render CadQuery con el mástil abatido y geometría envolvente. La longitud de transporte es una de las discrepancias documentadas entre el modelo y la tabla de referencia; no se oculta como una cota validada.",
+          "alt": "Modelo CAD de la Bucyrus 49HR con mástil abatido para transporte.",
+          "image": "assets/images/d13db7118323ea7150def490a9ff24e0d60e10b6688834886f6fd569bbb0eed4.webp",
+          "sortOrder": 2
+        },
+        {
+          "title": "Configuración de perforación a 65°",
+          "date": "Oct. 2026 · diseño y simulación",
+          "description": "Vista del modelo vigente con el mástil inclinado. La representación cinemática posiciona los subsistemas; las formas de cabina, sala de máquinas y orugas permanecen simplificadas.",
+          "alt": "Modelo CadQuery de la perforadora con el mástil en posición inclinada a 65°.",
+          "image": "assets/images/a717526eb36573843052d051e94300e6d2f4aad7489ca2b5a53ae7d53561bac4.webp",
+          "sortOrder": 3
+        },
+        {
           "title": "Análisis estructural del mástil",
           "date": "Oct. 2026",
-          "description": "Deformada del mástil inclinado a 65° con 600 kN de empuje (escala ×50). Reticulado de vigas tubulares calibrado con el peso del manual (11,8 t), con cilindros de levante y tirantes. Resuelto con PyNite y validado con CalculiX: desplazamientos y fuerzas coinciden dentro del 0,6 %; factor de seguridad mínimo 3,6.",
+          "description": "Deformada del mástil a 65° y 400 kN de empuje, con el cabezal arriba; desplazamientos ampliados ×50. El FS 3,6 citado en el texto corresponde al caso distinto de 600 kN. La comparación PyNite–CalculiX verifica el modelo numérico; no es un ensayo físico.",
           "alt": "Gráfico del reticulado del mástil sin carga en gris y deformado en naranja",
           "url": "",
           "linkLabel": "",
@@ -870,12 +1206,20 @@
               }
             ]
           },
-          "sortOrder": 2
+          "sortOrder": 4
+        },
+        {
+          "title": "Levante del mástil — modelo estructural",
+          "date": "Oct. 2026 · diseño y simulación",
+          "description": "Deformación calculada al inicio del levante. El modelo FEA estima unos 561 kN por cilindro, frente a unos 683 kN de la estática simplificada del gemelo. La diferencia depende de la geometría de apoyos y del reparto de masas; no son mediciones de presión o fuerza en campo.",
+          "alt": "Reticulado del mástil y su deformación calculada al iniciar el levante.",
+          "image": "assets/images/19aa2bea89824c294eba0ddf5529411a13b862b6ebf8bedf48bb1206466662cb.webp",
+          "sortOrder": 5
         },
         {
           "title": "Panel de monitoreo del gemelo",
           "date": "Oct. 2026",
-          "description": "Panel del gemelo con datos sintéticos: profundidad, velocidad de penetración medida contra la prevista, energía específica por capa de roca y presión de los cilindros al levantar el mástil. En el escenario con desgaste de broca desde 12 m, el monitor da la alarma a 14,6 m; en el escenario normal no hay falsas alarmas.",
+          "description": "Panel con señales sintéticas de profundidad, velocidad de penetración, energía específica y presión. «Medida» identifica la señal generada para el ensayo del monitor, no un sensor real. El desgaste se inyecta desde 12 m y la alarma aparece a 14,6 m; el escenario nominal registrado no genera alarmas.",
           "alt": "Cuatro gráficos del panel del gemelo: profundidad, velocidad de penetración, energía específica y presión de cilindros",
           "url": "",
           "linkLabel": "",
@@ -890,7 +1234,7 @@
               }
             ]
           },
-          "sortOrder": 3
+          "sortOrder": 6
         }
       ]
     }
@@ -1381,10 +1725,10 @@
       "& Bionics": "& Bionics",
       "10.3390/biomimetics11050340": "10.3390/biomimetics11050340",
       "14 de mayo de 2026": "14 May 2026",
-      "2 imágenes · 1 videos · 0 audios": "2 images · 1 videos · 0 audios",
       "2022–2026 · investigación, docencia e industria": "2022-2026 · research, teaching and industry",
       "5 imágenes · 1 videos · 0 audios": "5 images · 1 videos · 0 audios",
       "6 imágenes · 1 videos · 0 audios": "6 images · 1 videos · 0 audios",
+      "7 imágenes · 0 videos · 0 audios": "7 images · 0 videos · 0 audios",
       "ANSYS": "ANSYS",
       "AOCS": "AOCS",
       "AUTOTEC Perú": "AUTOTEC Perú",
@@ -1399,32 +1743,46 @@
       "Aerospace": "Aerospace",
       "Ago. – oct. 2025": "Aug. – Oct. 2025",
       "Agricultura espacial": "Space agriculture",
+      "Alcance y próximos ensayos": "Scope and future testing",
       "Alemán · CEFR A2": "German · CEFR A2",
       "Alternativa y siguientes pasos": "Alternative design and next steps",
       "Altium Designer": "Altium Designer",
       "Ampliar: Análisis estructural del mástil": "Enlarge: Structural analysis of the mast",
+      "Ampliar: Arquitectura de Phyto-G y publicación": "Enlarge: Phyto-G architecture and publication",
+      "Ampliar: Arquitectura propuesta de control y sensado": "Enlarge: Proposed control and sensing architecture",
       "Ampliar: Arranque y parada — configuración rígida frente a auxética": "Enlarge: Startup and shutdown — rigid versus auxetic configuration",
       "Ampliar: Celda oLCAM — reconstrucción geométrica": "Enlarge: oLCAM cell — geometric reconstruction",
       "Ampliar: Cinco variantes — comparación por elementos finitos": "Enlarge: Five variants — finite element comparison",
+      "Ampliar: Configuración de perforación a 65°": "Enlarge: Drilling configuration at 65°",
+      "Ampliar: Configuración de transporte": "Enlarge: Transport configuration",
       "Ampliar: Control PI del motor — modelo no lineal": "Enlarge: Motor PI control — nonlinear model",
+      "Ampliar: Cámara acuática y distribución de muestras": "Enlarge: Aquatic chamber and sample layout",
       "Ampliar: Electrónica de accionamiento y registro de fuerza": "Enlarge: Drive electronics and force logging",
+      "Ampliar: FEA — desplazamiento del ensamble": "Enlarge: FEA — assembly displacement",
+      "Ampliar: FEA — distribución de tensiones": "Enlarge: FEA — stress distribution",
       "Ampliar: La plataforma física en el laboratorio": "Enlarge: The physical platform in the laboratory",
+      "Ampliar: Levante del mástil — modelo estructural": "Enlarge: Mast raising — structural model",
       "Ampliar: Métricas de cohesión, separación y contención": "Enlarge: Cohesion, separation and containment metrics",
       "Ampliar: Odometría — comparación de estimadores en Python": "Enlarge: Odometry — estimator comparison in Python",
       "Ampliar: Panel de monitoreo del gemelo": "Enlarge: Digital twin monitoring dashboard",
       "Ampliar: Revisión C — alternativa sin manguera": "Enlarge: Revision C — hose-free alternative",
+      "Ampliar: Simulación de movimiento a 10 rpm": "Enlarge: Motion simulation at 10 rpm",
       "Ampliar: Trayectorias del ensayo de pastoreo": "Enlarge: Shepherding trial trajectories",
       "Ampliar: Unidad extrusora — vista explosionada": "Enlarge: Extrusion unit — exploded view",
+      "Ampliar: Unión giratoria para el suministro de agua": "Enlarge: Rotary joint for water supply",
       "Anghello Rodríguez": "Anghello Rodríguez",
       "Anghello Rodríguez | Research & Engineering Portfolio": "Anghello Rodríguez | Research & Engineering Portfolio",
       "Anghello Rodríguez, inicio": "Anghello Rodríguez, home",
       "Animación generada desde el modelo CAD con la cinemática del gemelo: traslado con el mástil abatido, nivelación con gatos, levante del mástil, perforación de un paso de 20 m, retiro de la columna e inclinación a 65°. Las variables de cada cuadro salen del modelo, no de una máquina real.": "Animation generated from the CAD model with the twin kinematics: tramming with the mast lowered, leveling on jacks, raising the mast, drilling a 20 m single pass, pulling the drill string and inclining to 65°. The variables in each frame come from the model, not from a real machine.",
+      "Análisis estructural contrastado": "Cross-checked structural analysis",
       "Análisis estructural del mástil": "Structural analysis of the mast",
       "Aplicaciones en laboratorio": "Laboratory applications",
       "Applied AI / Computer Vision": "Applied AI / Computer Vision",
+      "Arquitectura de Phyto-G y publicación": "Phyto-G architecture and publication",
+      "Arquitectura propuesta de control y sensado": "Proposed control and sensing architecture",
       "Arranque y parada — configuración rígida frente a auxética": "Startup and shutdown — rigid versus auxetic configuration",
       "Artículo 340": "Article 340",
-      "Artículo en Biomimetics": "Article in Biomimetics",
+      "Artículo publicado el 14 de mayo de 2026. El estudio cinemático impone 10 rpm al eje externo; el análisis estático simplificado con 294 N reporta 54,5 MPa de tensión máxima y 1,73 mm de desplazamiento máximo. Son resultados computacionales del diseño, no ensayos biológicos ni una validación en vuelo.": "Article published on May 14, 2026. The kinematic study imposes 10 rpm on the outer axis; simplified static analysis with a 294 N load reports 54.5 MPa maximum stress and 1.73 mm maximum displacement. These are computational design results, not biological trials or flight validation.",
       "Automatización con PLC": "Automation with PLC",
       "Automatización e integración": "Automation and integration",
       "Automatización industrial": "Industrial automation",
@@ -1444,8 +1802,10 @@
       "Británico": "Británico",
       "C / C++": "C / C++",
       "CAD / CAE / CAM y electrónica": "CAD / CAE / CAM and electronics",
+      "CAD / FEA": "CAD / FEA",
       "CNC · Carvera / ShopBot": "CNC · Carvera / ShopBot",
       "CONTACT": "CONTACT",
+      "CadQuery": "CadQuery",
       "Cada ficha distingue fotografías, modelos CAD y simulaciones. Las portadas esquemáticas indican que aún falta material visual del proyecto.": "Each page distinguishes photographs, CAD models and simulations. Schematic covers indicate that project visuals are still pending.",
       "CalculiX": "Calculix",
       "Catálogo de proyectos": "Project catalogue",
@@ -1459,9 +1819,11 @@
       "Cinco agentes oveja combinan separación, cohesión, alineación y evasión. Un agente lobo alterna entre reunir, conducir y vigilar el rebaño dentro del corral. El objetivo es estudiar un comportamiento coordinado con límites de velocidad, retardo de actuación y errores de localización.": "Five sheep agents combine separation, cohesion, alignment and evasion. A wolf agent alternates between collecting, driving and guarding the flock inside the pen. The aim is to study coordinated behavior with speed limits, actuation delays and localization errors.",
       "Cinco agentes oveja se agrupan y avanzan hacia el corral verde mientras el agente pastor los conduce desde atrás. La animación representa las posiciones registradas en una simulación, no movimientos medidos en robots físicos.": "Five sheep agents group together and move toward the green pen as the shepherd agent drives them from behind. The animation shows positions logged in a simulation, not movements measured on physical robots.",
       "Cinco variantes — comparación por elementos finitos": "Five variants — finite element comparison",
+      "Cinemática": "Kinematics",
+      "Cinemática del ciclo de operación": "Operating-cycle kinematics",
+      "Clinostato de tres ejes": "Three-axis clinostat",
       "Co-instructor en capacitaciones de PLC Siemens S7-1200, LOGO! y Delta.": "Co-instructor in PLC training Siemens S7-1200, LOGO! and Delta.",
-      "Coautor del artículo publicado en Biomimetics el 14 de mayo de 2026.": "Co-author of the article published in Biomimetics on May 14, 2026.",
-      "Colaboración de investigación en BETTA Tech: diseño CAD mecánico, documentación de ingeniería, soporte CAE/FEA relacionado con el movimiento y coordinación con un equipo multidisciplinario.": "BETTA Tech research collaboration: mechanical CAD design, engineering documentation, CAE / FEA support related to movement and coordination with a multidisciplinary team.",
+      "Coautor del artículo. La sección de contribuciones de autor acredita mi participación en investigación, recursos, curación de datos, redacción inicial, revisión y edición, y visualización. El diseño y los resultados presentados corresponden al trabajo del equipo.": "Co-author of the article. The author-contributions section credits my participation in investigation, resources, data curation, original drafting, review and editing, and visualization. The design and results presented are the work of the research team.",
       "Colaborador de investigación · coautor": "Research collaborator · co-author",
       "Colegio Bilingüe Santa María de Fátima": "Colegio Bilingüe Santa María de Fátima",
       "Colegio de Economistas de Lima": "Colegio de Economistas de Lima",
@@ -1469,6 +1831,8 @@
       "Comparación de trayectorias simuladas con cuatro métodos de estimación de posición.": "Comparison of simulated trajectories using four position-estimation methods.",
       "Compartir lo que construyo": "Share what I build",
       "Conectemos ideas.": "Let's connect ideas.",
+      "Configuración de perforación a 65°": "Drilling configuration at 65°",
+      "Configuración de transporte": "Transport configuration",
       "Construyamos posibilidades.": "Let's build possibilities.",
       "Consultar certificados": "View certificates",
       "Consultar el artículo de referencia": "Read the reference article",
@@ -1489,12 +1853,16 @@
       "Cuatro gráficos del panel del gemelo: profundidad, velocidad de penetración, energía específica y presión de cilindros": "Four dashboard plots: depth, penetration rate, specific energy and cylinder pressure",
       "Curso el 9.º ciclo de Ingeniería Mecatrónica en USIL, con mención en Robótica Industrial, y el doble grado en Business Administration en San Ignacio University. Mi formación se complementa con una especialización en Sistemas Mecatrónicos en TECSUP. Tengo experiencia en I+D, diseño y fabricación de prototipos, robótica, control, automatización y manufactura digital. Participo en investigación en robótica espacial y AOCS y soy coautor de un artículo científico en Biomimetics.": "I am in my ninth semester of Mechatronics Engineering at USIL, with a concentration in Industrial Robotics, while pursuing a dual degree in Business Administration at San Ignacio University. My education also includes a specialization in Mechatronic Systems at TECSUP. I have experience in R&D, prototype design and fabrication, robotics, control, automation and digital manufacturing. I participate in space robotics and AOCS research and am a co-author of a scientific article in Biomimetics.",
       "Curvas simuladas de caudal y fuerza durante el arranque y la parada de la extrusión.": "Simulated flow-rate and force curves during extrusion startup and shutdown.",
+      "Cámara acuática y distribución de muestras": "Aquatic chamber and sample layout",
       "DOI:": "DOI:",
       "De la plataforma al simulador": "From the platform to the simulator",
-      "Deformada del mástil inclinado a 65° con 600 kN de empuje (escala ×50). Reticulado de vigas tubulares calibrado con el peso del manual (11,8 t), con cilindros de levante y tirantes. Resuelto con PyNite y validado con CalculiX: desplazamientos y fuerzas coinciden dentro del 0,6 %; factor de seguridad mínimo 3,6.": "Deformed shape of the mast inclined at 65° with 600 kN of pulldown (scale ×50). Tubular beam lattice calibrated to the manual weight (11.8 t), with lift cylinders and braces. Solved with PyNite and validated with CalculiX: displacements and forces agree within 0.6%; minimum safety factor 3.6.",
+      "Deformación calculada al inicio del levante. El modelo FEA estima unos 561 kN por cilindro, frente a unos 683 kN de la estática simplificada del gemelo. La diferencia depende de la geometría de apoyos y del reparto de masas; no son mediciones de presión o fuerza en campo.": "Calculated deformation at the start of mast raising. The FEA model estimates about 561 kN per cylinder, compared with about 683 kN from the twin’s simplified statics. The difference depends on support geometry and mass distribution; these are not field pressure or force measurements.",
+      "Deformada del mástil a 65° y 400 kN de empuje, con el cabezal arriba; desplazamientos ampliados ×50. El FS 3,6 citado en el texto corresponde al caso distinto de 600 kN. La comparación PyNite–CalculiX verifica el modelo numérico; no es un ensayo físico.": "Mast deformation at 65° and 400 kN pulldown, with the head at the top; displacements magnified ×50. The safety factor of 3.6 cited in the text belongs to the separate 600 kN case. The PyNite–CalculiX comparison checks the numerical model; it is not a physical test.",
+      "Del concepto al modelo mecatrónico": "From concept to mechatronic model",
       "Del laboratorio al prototipo.": "From the lab to the prototype.",
       "Del problema al diseño": "From the problem to the design",
       "Del prototipado con biomateriales a la mecatrónica biomédica.": "From biomaterial prototyping to biomedical mechatronics.",
+      "Del prototipo a escala a la reconstrucción virtual": "From scale prototype to virtual reconstruction",
       "Desarrollo de contenidos académicos y supervisión de proyectos de diseño de productos tecnológicos con enfoque ingenieril. Docencia en diseño electrónico y circuitos entre febrero y mayo de 2026.": "Development of academic content and monitoring of technological product design projects with an engineering approach. Teaching in electronic design and circuits between February and May 2026.",
       "Desarrollo de prototipos mecatrónicos para proyectos de I+D y servicios tecnológicos, investigación en robótica aplicada y acompañamiento técnico a estudiantes de pregrado y posgrado.": "Development of mechatronic prototypes for R&D projects and technology services, applied robotics research, and technical guidance for undergraduate and graduate students.",
       "Desarrollo de un robot de servicio guía como proyecto de robótica.": "Development of a guide service robot as a robotic project.",
@@ -1506,6 +1874,10 @@
       "Descargar BibTeX": "Download BibTeX",
       "Descargar CV actualizado": "Download updated CV",
       "Descargar video": "Download video",
+      "Detalle conceptual de la unión del primer marco: entrada de agua, carcasa, sellos, rodamientos y eje hueco. Se propone mantener el suministro durante la rotación. Figura 2 de Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.": "Conceptual detail of the first-frame joint: water inlet, housing, seals, bearings and hollow shaft. Intended to maintain supply during rotation. Figure 2 from Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.",
+      "Diagrama conceptual de Phyto-G con un motor, tres marcos, cámara y circuito de agua.": "Phyto-G conceptual diagram with one motor, three frames, a chamber and a water circuit.",
+      "Diagrama de bloques de potencia, control, actuadores y sensores del clinostato.": "Block diagram of clinostat power, control, actuators and sensors.",
+      "Diagrama del sistema propuesto: marcos, cámara acuática, transmisión, suministro eléctrico y circuito de filtración. Representa el concepto integrado, no un montaje experimental. Figura 1 de Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.": "Diagram of the proposed system: frames, aquatic chamber, transmission, electrical supply and filtration circuit. Represents the integrated concept, not an experimental setup. Figure 1 from Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.",
       "Dic. 2024 – mar. 2025": "Dec. 2024 – Mar. 2025",
       "Dic. 2024 – mar. 2025 · gemelo digital, 2026": "Dec. 2024 – Mar. 2025 · digital twin, 2026",
       "Dic. 2025 – feb. 2026": "Dec. 2025 – Feb. 2026",
@@ -1515,8 +1887,7 @@
       "Diseño de celdas con brazo robótico, prototipado mediante impresión 3D y corte láser, y programación CNC.": "Design of cells with robotic arm, prototyped by 3D printing and laser cutting, and CNC programming.",
       "Diseño de un extrusor de émbolo para una Ender-3 y estudio de un módulo auxético lozenge-chiral frente a un bloque rígido. Incluye CAD, análisis estructural, electrónica y animación del funcionamiento.": "Design of a plunger extruder for an Ender-3 and a study comparing a lozenge-chiral auxetic module with a rigid block. Includes CAD, structural analysis, electronics and an animated demonstration of the mechanism.",
       "Diseño electrónico y circuitos": "Electronic design and circuits",
-      "Diseño mecatrónico de un clinostato y simulación de movimiento para agricultura espacial en un entorno hidropónico.": "Mechatronic design of a clinostat and motion simulation for space agriculture in a hydroponic environment.",
-      "Diseño mecánico": "Mechanical design",
+      "Diseño mecatrónico de un clinostato de tres ejes para estudiar organismos acuáticos bajo condiciones análogas de microgravedad. Integra rotación, circulación de agua y una arquitectura propuesta de control y sensado, con CAD y simulaciones publicadas en Biomimetics.": "Mechatronic design of a three-axis clinostat for studying aquatic organisms under microgravity-analog conditions. Combines rotation, water circulation and a proposed control and sensing architecture, with CAD and simulations published in Biomimetics.",
       "Diseño y desarrollo de un prototipo a escala de perforadora minera, integrando diseño mecánico, manufactura y electrónica para evaluar condiciones de operación y apoyar demostraciones corporativas.": "Design and development of a prototype at the scale of a mining drilling machine, integrating mechanical, manufacturing and electronic design to evaluate operating conditions and support corporate demonstrations.",
       "Diseño y desarrollo de un prototipo para evaluar condiciones de operación y apoyar la optimización del diseño real, manteniendo la confidencialidad técnica. En 2026 amplié el trabajo con un gemelo digital virtual de la Bucyrus 49HR construido desde su manual de operación: verificación automática de datos, modelo CAD generado por script, cinemática del ciclo de operación, análisis estructural del mástil y monitoreo con datos sintéticos.": "Design and development of a prototype to evaluate operating conditions and support the optimization of the real design, while maintaining technical confidentiality. In 2026 I extended the work with a virtual digital twin of the Bucyrus 49HR built from its operation manual: automated data verification, a script-generated CAD model, kinematics of the operating cycle, structural analysis of the mast and monitoring with synthetic data.",
       "Diseño y fabricación de prototipos": "Design and manufacture of prototypes",
@@ -1525,13 +1896,14 @@
       "Diseño y simulación / Manufactura aditiva": "Design and simulation / Additive manufacturing",
       "Diseño, desarrollo y fabricación de prototipos mecatrónicos para investigación y servicios tecnológicos.": "Design, development and fabrication of mechatronic prototypes for research and technology services.",
       "Diseño, desarrollo y fabricación de prototipos mecatrónicos para proyectos de I+D y servicios tecnológicos, integrando CAD, impresión 3D, mecanizado CNC, corte láser, fabricación de PCBs e integración electrónico-mecánica.": "Design, development and fabrication of mechatronic prototypes for R&D projects and technology services, integrating CAD, 3D printing, CNC machining, laser cutting, PCB fabrication and electromechanical integration.",
+      "Distribución de 24 V, conversión DC–DC, controlador, motor, bombas y sensores de temperatura, pH y oxígeno disuelto, además de IMU y cámara. Es una propuesta de integración. Figura 15 de Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.": "24 V distribution, DC–DC conversion, controller, motor, pumps, temperature, pH and dissolved-oxygen sensing, plus an IMU and camera. This is an integration proposal. Figure 15 from Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.",
       "Docencia": "Teaching",
       "Docencia en primaria y secundaria, con proyectos tecnológicos y orientación STEM.": "Teaching in primary and secondary, with technological projects and STEM guidance.",
       "Docencia en primaria y secundaria, fomentando proyectos tecnológicos y el interés por las carreras STEM.": "Teaching in primary and secondary, promoting technological projects and interest in STEM careers.",
       "Docencia, asesoría y acompañamiento de proyectos tecnológicos.": "Teaching, consulting and accompanying technological projects.",
       "Docente de Robótica y Matemáticas": "Robotics and Mathematics Teacher",
       "Documentación del proyecto": "Project documentation",
-      "Documentación disponible": "Documentation available",
+      "Documentación y siguiente validación": "Documentation and next validation",
       "EDUCATION": "EDUCATION",
       "EPLAN": "EPLAN",
       "ESAN": "ESAN",
@@ -1544,9 +1916,13 @@
       "EXPERIENCIA / I+D": "EXPERIENCE / R&D",
       "Educación": "Education",
       "El análisis comprende las cinco variantes G0–G4, compresión, rigidez, pandeo y respuesta dinámica. La electrónica está diseñada en KiCad: el eje E de la Ender-3 acciona el motor y un Arduino Nano con HX711 registra la fuerza. El firmware del registrador está compilado; no está probado en hardware y los cambios de Marlin siguen planificados.": "The analysis covers five variants, G0–G4, compression, stiffness, buckling and dynamic response. The electronics are designed in KiCad: the Ender-3 E axis drives the motor, while an Arduino Nano with an HX711 records force. The logger firmware has been compiled but has not been tested on hardware; Marlin changes remain planned.",
-      "El gemelo digital se construyó a partir del manual de operación y mantenimiento de la Bucyrus 49HR. Un script verifica cada cota del manual comparando pies con metros y registra las inconsistencias; los datos que el manual no trae se toman de referencias citadas o se marcan como supuestos. El modelo CAD se genera por código y se comprueba solo contra las cotas del fabricante. La cinemática reproduce el traslado sobre orugas, la nivelación con cuatro gatos, el levante del mástil con dos cilindros de 8 in, la perforación de un paso de 20 m y la inclinación de 65° a 90°. El mástil se analizó como reticulado de vigas con PyNite y se validó con CalculiX. Un panel compara la velocidad de penetración medida con la prevista por el modelo y alarma ante desgaste de broca. Todo el trabajo está documentado en el repositorio, con su bitácora y registro de supuestos.": "The digital twin was built from the Bucyrus 49HR operation and maintenance manual. A script checks every dimension in the manual by comparing feet against meters and records the inconsistencies; data the manual does not provide come from cited references or are marked as assumptions. The CAD model is generated by code and checks itself against the manufacturer dimensions. The kinematics reproduce tramming on crawlers, leveling with four jacks, raising the mast with two 8 in cylinders, drilling a 20 m single pass and inclining the mast from 65° to 90°. The mast was analyzed as a beam lattice with PyNite and validated with CalculiX. A dashboard compares the measured penetration rate with the rate predicted by the model and raises an alarm on bit wear. All the work is documented in the repository, with its log and record of assumptions.",
+      "El artículo documenta el ensamble en SOLIDWORKS 2025, la cámara de muestras, el suministro de agua y una arquitectura eléctrica de 24 V. Propone bombas de entrada y salida, temperatura, pH, oxígeno disuelto, IMU y observación con cámara. La integración electrónica se presenta como diseño para implementación futura.": "The article documents the SOLIDWORKS 2025 assembly, sample chamber, water supply and a 24 V electrical architecture. It proposes inlet and outlet pumps, temperature, pH, dissolved-oxygen sensing, an IMU and camera observation. Electronic integration is presented as a design for future implementation.",
+      "El estudio de movimiento utiliza una velocidad constante de 10 rpm en el eje externo. El análisis por elementos finitos aplica una carga equivalente de 294 N, apoyos fijos y contactos unidos en un ensamble simplificado. Sus máximos de 54,5 MPa y 1,73 mm describen ese caso estático; no sustituyen una validación experimental del sistema completo.": "The motion study uses a constant speed of 10 rpm on the outer axis. Finite element analysis applies an equivalent 294 N load, fixed supports and bonded contacts to a simplified assembly. Its maxima of 54.5 MPa and 1.73 mm describe that static case; they do not replace experimental validation of the complete system.",
+      "El mismo caso estático alcanza un desplazamiento resultante máximo de 1,73 mm. La vista amplificada de la deformación sirve para interpretar el modelo; no muestra desplazamientos medidos en hardware. Figura 14 de Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.": "The same static case reaches a maximum resultant displacement of 1.73 mm. The amplified deformation view helps interpret the model; it does not show displacements measured on hardware. Figure 14 from Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.",
       "El modelo representa un Yahboom MicroROS-Pi5 de cuatro ruedas con dirección por deslizamiento. Cada robot utiliza un nodo ROS 2, comandos de velocidad y estimación de pose. Gazebo Fortress aporta la física; Python y scripts compatibles con MATLAB, ejecutados en GNU Octave, permiten contrastar cálculos y escenarios.": "The model represents a four-wheel skid-steer Yahboom MicroROS-Pi5. Each robot uses a ROS 2 node, velocity commands and pose estimation. Gazebo Fortress provides the physics; Python and MATLAB-compatible scripts executed in GNU Octave support comparisons of calculations and scenarios.",
-      "El prototipo se utilizó en demostraciones corporativas. El gemelo digital reproduce 14 de 15 cotas verificables del fabricante dentro de ±2 cm; el análisis del mástil con dos solucionadores independientes (PyNite y CalculiX) coincide dentro del 0,6 % y da un factor de seguridad mínimo de 3,6; el monitoreo detecta un desgaste de broca simulado sin falsas alarmas. Es un prototipo virtual: no está conectado a una máquina real y su telemetría es sintética.": "The prototype was used in corporate demonstrations. The digital twin reproduces 14 of 15 verifiable manufacturer dimensions within ±2 cm; the mast analysis with two independent solvers (PyNite and CalculiX) agrees within 0.6% and gives a minimum safety factor of 3.6; the monitoring detects simulated bit wear without false alarms. It is a virtual prototype: it is not connected to a real machine and its telemetry is synthetic.",
+      "El modelo vigente se genera en CadQuery y se visualiza con PyVista; conserva el trabajo previo realizado mediante la API de SOLIDWORKS. La comprobación compara 15 dimensiones con las tablas y referencias usadas para construir el modelo: 14 cumplen ±0,02 m. Comprueba consistencia geométrica, no una validación contra mediciones de la máquina. La longitud de transporte T no coincide y queda registrada como inconsistencia; la altura de 31,22 m procede de una referencia de otra 49HR.": "The current model is generated in CadQuery and visualized with PyVista; the earlier SOLIDWORKS API work is retained. The check compares 15 dimensions with the documented tables and references used to build the model: 14 meet ±0.02 m. It checks geometric consistency, not validation against machine measurements. Transport length T does not match and is recorded as an inconsistency; the 31.22 m height comes from a reference for another 49HR.",
+      "El mástil se idealiza como reticulado de vigas tubulares. PyNite y CalculiX comparten geometría y cargas; los desplazamientos y fuerzas comparados difieren hasta un 0,6 %. En el extremo de 600 kN del barrido hipotético a 65°, el modelo alcanza unos 95,8 MPa y FS 3,6 con Fy = 345 MPa y secciones supuestas; esa carga no es un empuje medido ni especificado para esta máquina. La figura de deformación publicada aquí corresponde a otro caso: 65° y 400 kN.": "The mast is idealized as a tubular beam lattice. PyNite and CalculiX share geometry and loads; compared displacements and forces differ by up to 0.6%. At the 600 kN endpoint of the hypothetical sweep at 65°, the model reaches about 95.8 MPa and a safety factor of 3.6 with Fy = 345 MPa and assumed sections; that load is not a measured or specified pulldown for this machine. The deformation figure shown here represents a different case: 65° and 400 kN.",
+      "El prototipo a escala se utilizó en demostraciones corporativas. En la extensión virtual, 14 de 15 cotas de entrada se reproducen dentro de ±2 cm: es una comprobación de consistencia. El extremo de 600 kN de un barrido hipotético a 65° da FS 3,6 con material y secciones supuestos (Fy = 345 MPa). El monitor detecta el desgaste inyectado en el escenario sintético, sin alarmas en el escenario nominal. No hay conexión ni telemetría de una máquina real.": "The scale prototype was used in corporate demonstrations. In the virtual extension, 14 of 15 input dimensions are reproduced within ±2 cm: this is a consistency check. The 600 kN endpoint of a hypothetical sweep at 65° gives a safety factor of 3.6 with assumed material and sections (Fy = 345 MPa). The monitor detects injected wear in the synthetic scenario, with no alarms in the nominal scenario. There is no connection to or telemetry from a real machine.",
       "El trabajo incluye cinemática, un lazo PI para el motor y estimación de posición mediante encoders y giróscopo. Los scripts para construir modelos de Simulink y Simscape están disponibles, pero esos modelos no se ejecutaron por falta de licencia.": "The work includes kinematics, a motor PI control loop and position estimation using encoders and a gyroscope. Scripts for building Simulink and Simscape models are available, but those models were not run because a license was unavailable.",
       "Electrónica de accionamiento y registro de fuerza": "Drive electronics and force logging",
       "Email": "Email",
@@ -1568,6 +1944,7 @@
       "Ensamblaje": "Assembly",
       "Ensamblaje de brazo robótico": "Robotic arm assembly",
       "Ensamblaje de un brazo robótico dentro de las actividades de investigación y robótica aplicada.": "Assembling a robotic arm within the applied research and robotic activities.",
+      "Ensamble simplificado bajo la carga equivalente de 294 N. El artículo reporta un máximo de von Mises de 54,5 MPa; el modelo usa apoyos fijos y contactos unidos. Figura 13 de Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.": "Simplified assembly under an equivalent 294 N load. The article reports a maximum von Mises stress of 54.5 MPa; the model uses fixed supports and bonded contacts. Figure 13 from Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.",
       "Enseñanza y asesoría en análisis, diseño y aplicación de circuitos electrónicos en proyectos académicos.": "Teaching and consulting in analysis, design and application of electronic circuits in academic projects.",
       "Especialización en Ciencia de Datos para el Mantenimiento Predictivo": "Specialization in Data Science for Predictive Maintenance",
       "Especialización en Gestión de Proyectos": "Project Management Specialization",
@@ -1588,6 +1965,8 @@
       "Explorar trabajos en ESAN": "Explore work at ESAN",
       "Extrusora 3D de pasta cerámica con módulo auxético": "Ceramic paste 3D extruder with an auxetic module",
       "FBD": "FBD",
+      "FEA — desplazamiento del ensamble": "FEA — assembly displacement",
+      "FEA — distribución de tensiones": "FEA — stress distribution",
       "FOCUS / 01": "FOCUS / 01",
       "FOCUS / 02": "FOCUS / 02",
       "FPGA": "FPGA",
@@ -1605,12 +1984,12 @@
       "Formación y experiencia": "Education and experience",
       "Fotografía original de la flota Yahboom MicroROS-Pi5. Documenta la plataforma de referencia y su entorno; las pruebas y métricas presentadas en esta ficha siguen siendo de simulación.": "Original photograph of the Yahboom MicroROS-Pi5 fleet. Documents the reference platform and its setting; the tests and metrics on this page remain simulation results.",
       "Fotografías, diseños y simulaciones documentados en cada ficha.": "Photographs, designs and simulations documented on each project page.",
+      "Fuente de la descripción: Barreto, Cornejo, Vargas, Gastello y Rodriguez (2026), Biomimetics 11(5), 340. DOI: 10.3390/biomimetics11050340. Figuras del artículo bajo CC BY 4.0, optimizadas para web y con leyendas resumidas y traducidas.": "Description source: Barreto, Cornejo, Vargas, Gastello and Rodriguez (2026), Biomimetics 11(5), 340. DOI: 10.3390/biomimetics11050340. Article figures under CC BY 4.0, optimized for the web with summarized and translated captions.",
       "Fuente de la descripción: CV actualizado, 22 de octubre de 2026, p. 1": "Description source: updated CV, 22 October 2026, p. 1",
       "Fuente de la descripción: CV maestro actualizado, p. 1. Periodo de vinculación institucional, no fecha exacta del proyecto.": "Description source: updated master CV, p. 1. The period refers to the institutional affiliation, not the exact project dates.",
-      "Fuente de la descripción: CV, p. 1 y metadatos editoriales de la publicación ya verificados.": "Description source: CV, p. 1, and previously verified publication metadata.",
+      "Fuente de la descripción: CV para el prototipo a escala; documentación, CAD, CSV y resultados del proyecto Bucyrus 49HR para la extensión virtual de octubre de 2026. El manual se cita como fuente técnica, sin redistribuirlo.": "Description source: CV for the scale prototype; project documentation, CAD, CSV logs and results for the October 2026 virtual extension. The manual is cited as a technical source without being redistributed.",
       "Fuente de la descripción: CV, p. 2": "Description source: CV, p. 2",
       "Fuente de la descripción: CV, p. 2. No se atribuye autoría del artículo OC-SORT.": "Description source: CV, p. 2. No authorship of the OC-SORT paper is claimed.",
-      "Fuente de la descripción: CV, p. 2; repositorio del gemelo digital": "Source of the description: CV, p. 2; digital twin repository",
       "Fuente de la descripción: Documentación técnica y modelos del proyecto, octubre de 2026. El plan de julio de 2026 en FabLab es el antecedente; no demuestra fabricación. La ficha anterior usaba el título general «biomateriales»; el estudio disponible se refiere específicamente a pasta cerámica.": "Description source: Project technical documentation and models, October 2026. The July 2026 FabLab plan is background material; it does not establish that fabrication took place. The previous page used the general title “biomaterials”; the available study specifically concerns ceramic paste.",
       "Fuente de la descripción: Repositorio enjambre-ovejas-lobo: documentación 00–08, registros CSV, figuras y fotografías aportadas. Reconstrucción de octubre de 2026 a partir de recursos de Yahboom. Las imágenes físicas no validan los resultados del simulador.": "Description source: The enjambre-ovejas-lobo repository: documentation 00–08, CSV logs, figures and supplied photographs. October 2026 reconstruction based on Yahboom resources. Photographs of the physical platform do not validate simulator results.",
       "Funcionamiento del extrusor — simulación visual": "Extruder operation — visual simulation",
@@ -1625,6 +2004,7 @@
       "Gazebo Fortress": "Gazebo Fortress",
       "Gemelo digital": "Digital twin",
       "Gemelo digital del Yahboom MicroROS-Pi5 y comportamiento colectivo de cinco robots oveja guiados por un robot pastor. Integra ROS 2, Gazebo, control de motores y estimación de posición.": "Digital twin of the Yahboom MicroROS-Pi5 and collective behavior of five sheep robots guided by a shepherd robot. Combines ROS 2, Gazebo, motor control and position estimation.",
+      "Geometría con trazabilidad": "Traceable geometry",
       "Gestión de eventos, recursos y networking; incremento documentado de participación y membresía durante la gestión.": "Event, resource and networking management; documented increase in participation and membership during management.",
       "GitHub": "GitHub",
       "Gmsh": "Gmsh",
@@ -1664,7 +2044,6 @@
       "Integración mecatrónica": "Mechatronic integration",
       "Interés en biomecánica, bioinstrumentación y biónica; investigación aplicada en impresión 3D con biomateriales.": "Interest in biomechanics, bioinstrumentation and bionics; applied research in 3D printing with biomaterials.",
       "Investigación académica y asesoría metodológica en proyectos de pregrado y posgrado, con énfasis en calidad metodológica y acompañamiento integral.": "Academic research and methodological advice in undergraduate and postgraduate projects, with emphasis on methodological quality and integral accompaniment.",
-      "Investigación en agricultura espacial, biomimética y sistemas mecatrónicos, centrada en el diseño de un clinostato y la simulación computacional de movimiento en un entorno hidropónico.": "Research in space agriculture, biomimetics and mechatronic systems, focusing on clinostat design and computational motion simulation in a hydroponic environment.",
       "Investigación en el Sistema de Control de Actitud y Órbita del proyecto Chasqui 2.": "Research in the Attitude and Orbit Control System of the Chasqui 2 project.",
       "Investigación mecatrónica-aeroespacial: diseño CAD mecánico, documentación, soporte CAE/FEA relacionado con el movimiento y colaboración multidisciplinaria. Coautor del artículo publicado en Biomimetics.": "Mechatronics and aerospace research: mechanical CAD design, documentation, motion-related CAE/FEA support and multidisciplinary collaboration. Co-author of the article published in Biomimetics.",
       "Investigación publicada": "Published research",
@@ -1684,7 +2063,9 @@
       "Jul. – ago. 2020 (fechas del CV)": "Jul. - Aug. 2020 (CV dates)",
       "Jun. 2023 – mar. 2024": "Jun. 2023 – Mar. 2024",
       "KiCad": "KiCad",
+      "La concordancia entre solucionadores es una verificación numérica, no una certificación de la máquina. Las secciones, el material y parte de la geometría son supuestos; no se evalúan todos los mecanismos ni modos de fallo. El modelo de Ansys MAPDL está preparado, pero no se resolvió por falta de licencia vigente.": "Agreement between solvers is a numerical check, not machine certification. Sections, material and parts of the geometry are assumed; not all mechanisms or failure modes are evaluated. The Ansys MAPDL model is prepared but was not solved because a valid license was unavailable.",
       "La experiencia detrás de los proyectos.": "The experience behind projects.",
+      "La experiencia en Flanders Electric Perú de diciembre de 2024 a marzo de 2025 constituye el antecedente del prototipo a escala. La extensión de 2026 reconstruye digitalmente la Bucyrus 49HR y demuestra un flujo de modelado y monitoreo. Los renders y el video de esta ficha corresponden a esa extensión virtual.": "The December 2024–March 2025 experience at Flanders Electric Perú provides the background for the scale prototype. The 2026 extension digitally reconstructs the Bucyrus 49HR and demonstrates a modeling and monitoring workflow. The renderings and video on this page belong to that virtual extension.",
       "La fabricación, la caracterización de la pasta y los ensayos comparativos quedan para un proyecto posterior. El informe y el artículo son borradores técnicos, no publicaciones científicas aceptadas.": "Fabrication, paste characterization and comparative testing are left for a subsequent project. The report and article are technical drafts, not accepted scientific publications.",
       "La investigación en impresión 3D con biomateriales en ESAN conecta mi experiencia de manufactura digital con este campo. Mi CV también recoge conocimientos en biomimética y fundamentos de biomecánica, bioinstrumentación y control biomolecular.": "The research in 3D printing with biomaterials in ESAN connects my digital manufacturing experience with this field. My CV also collects knowledge in biomimetics and biomechanics, bioinstrumentation and biomolecular control.",
       "La plataforma física en el laboratorio": "The physical platform in the laboratory",
@@ -1692,18 +2073,23 @@
       "La pregunta es cómo cambia el arranque y la detención del flujo al incorporar un módulo auxético en el tren de empuje. Se compara la configuración auxética (A) con un bloque rígido equivalente (R), manteniendo explícitos los supuestos de material y de pasta.": "The study asks how flow startup and shutdown change when an auxetic module is incorporated into the plunger drive. The auxetic configuration (A) is compared with an equivalent rigid block (R), with material and paste assumptions stated explicitly.",
       "La revisión B integra una jeringa de 30 mL, motor NEMA 17 con reductor, transmisión GT2 y husillo Tr8 × 2. La unidad queda fija en el travesaño superior y alimenta la boquilla mediante una manguera de PA12. El conjunto incluye piezas modeladas, vista explosionada, lista de materiales y planos EXT-00 a EXT-07.": "Revision B combines a 30 mL syringe, a geared NEMA 17 motor, a GT2 transmission and a Tr8 × 2 lead screw. The unit is fixed to the upper crossmember and feeds the nozzle through a PA12 hose. The assembly includes modeled parts, an exploded view, a bill of materials and drawings EXT-00 through EXT-07.",
       "La revisión C elimina la manguera y sitúa una jeringa de 10 mL sobre el carro X. Es un diseño preliminar sin planos; la masa calculada de 1,42 kg sobre el carro exige verificar el eje y el pórtico.": "Revision C removes the hose and places a 10 mL syringe on the X carriage. It is a preliminary design without drawings; the calculated carriage-mounted mass of 1.42 kg requires checks of the axis and gantry.",
+      "La siguiente validación requiere calibración con datos reales y mayor detalle de los subsistemas. El código y los supuestos están en el repositorio enlazado, cuyo acceso es privado. Las evidencias seleccionadas se pueden consultar directamente en esta ficha.": "Further validation requires calibration with real data and greater subsystem detail. Code and assumptions are in the linked repository, which requires private access. The selected evidence can be viewed directly on this page.",
+      "La simulación integra traslado sobre orugas, nivelación con cuatro gatos, levante del mástil con dos cilindros, avance del cabezal y retiro de la columna. Representa un paso de 20 m y posiciones de perforación entre 65° y 90°. Son estados generados por el modelo, sin mediciones de campo.": "The simulation combines crawler tramming, leveling on four jacks, mast raising with two cylinders, head feed and drill-string withdrawal. It represents a 20 m single pass and drilling positions between 65° and 90°. These are model-generated states without field measurements.",
       "Ladder (LAD)": "Ladder (LAD)",
       "Las fotografías, videos y documentos de este trabajo aún no están publicados. La descripción recoge mi participación según el CV; la portada es una ilustración conceptual.": "The photographs, videos and documents of this work are not yet published. The description shows my participation according to the CV; the cover is a conceptual illustration.",
+      "Las imágenes de esta ficha proceden del artículo de Ricardo Barreto, Jose Cornejo, Mariela Vargas, Nicolas Gastello y Anghello Rodriguez. Se conservan los números de figura y sus rótulos originales; las leyendas del portafolio son resúmenes bilingües. La portada reproduce la figura 10.": "The images on this page come from the article by Ricardo Barreto, Jose Cornejo, Mariela Vargas, Nicolas Gastello and Anghello Rodriguez. Figure numbers and original labels are preserved; portfolio captions are bilingual summaries. The cover reproduces Figure 10.",
       "Las topologías cLAM, LCAM-2R y oLCAM proceden de Hou et al. (2024), Materials & Design, 237, 112530. El CAD de referencia de la Ender-3 es de Creality. Las imágenes de esta ficha son modelos y gráficos del estudio; el video es una simulación visual con tiempo acelerado.": "The cLAM, LCAM-2R and oLCAM topologies are from Hou et al. (2024), Materials & Design, 237, 112530. The Ender-3 reference CAD is from Creality. The images on this page are models and plots from the study; the video is a visual simulation with accelerated time.",
       "Leer artículo": "Read article",
       "Leer el análisis de odometría": "Read the odometry analysis",
       "Leer el modelo y el diseño del control": "Read the model and control design",
-      "Leer publicación · DOI 10.3390/biomimetics11050340": "Read publication · DOI 10.3390 / biomimetics11050340",
+      "Levante del mástil — modelo estructural": "Mast raising — structural model",
+      "Licencia de las figuras: Creative Commons Attribution 4.0 (CC BY 4.0).": "Figure license: Creative Commons Attribution 4.0 (CC BY 4.0).",
       "Liderazgo y comunidad": "Leadership and community",
       "Lima · híbrido": "Lima · hybrid",
       "Lima, Perú": "Lima, Peru",
       "LinkedIn": "LinkedIn",
       "Lo que muestran las simulaciones": "What the simulations show",
+      "Los modelos de perforación emplean energía específica de Teale y Pessier–Fear. El panel compara señales generadas de velocidad de penetración con la predicción, además de profundidad, energía específica y presión de levante. En el escenario con desgaste inyectado desde 12 m, la alarma aparece a 14,6 m; el escenario nominal registrado no genera alarmas. Estos dos escenarios no demuestran fiabilidad en campo.": "The drilling models use Teale and Pessier–Fear specific energy. The dashboard compares generated penetration-rate signals with predictions, alongside depth, specific energy and mast-lifting pressure. In the scenario with wear injected from 12 m, the alarm occurs at 14.6 m; the recorded nominal scenario produces no alarms. These two scenarios do not establish field reliability.",
       "Línea de prototipado": "Prototyping line",
       "Línea de prototipado / IA y control": "Prototyping / IA line and control",
       "MATLAB": "MATLAB",
@@ -1713,10 +2099,13 @@
       "Manufactura": "Manufacturing",
       "Manufactura aditiva": "Additive manufacturing",
       "Manufactura y gestión": "Manufacturing and management",
+      "Mapa de desplazamiento del modelo del clinostato con escala en milímetros.": "Clinostat-model displacement map with a scale in millimeters.",
+      "Mapa de tensión de von Mises del clinostato, con máximo de 5,45 × 10⁷ Pa.": "Clinostat von Mises stress map, with a maximum of 5.45 × 10⁷ Pa.",
       "Mar. – jun. 2025": "Mar. – Jun. 2025",
       "Mar. – jun. 2025 · etapa en AUTOTEC": "Mar. – Jun. 2025 · role at AUTOTEC",
       "MasterCAM": "MasterCAM",
       "Material visual pendiente": "Visual material pending",
+      "Mayo 2026 · figura publicada": "May 2026 · published figure",
       "Mecatrónica. Investigación. Desarrollo.": "Mechatronics. Research. Development.",
       "Mechatronics Design of a Clinostat Agriculture Space System for Biomimetic Phyto-Growth in Microgravity (Phyto-G) and 3D-Motion Computer Simulation on Hydroponic Environment": "Mechatronics Design of a Clinostat Agriculture Space System for Biomimetic Phyto-Growth in Microgravity (Phyto-G) and 3D-Motion Computer Simulation on Hydroponic Environment",
       "Mecánica orbital": "Orbital mechanics",
@@ -1730,13 +2119,17 @@
       "Mi trayectoria y CV": "My background and CV",
       "Modbus TCP/RTU": "Modbus TCP/RTU",
       "Modelado y documentación de la reconstrucción técnica: celdas auxéticas, dimensionamiento del extrusor, integración mecánica y electrónica, comparación numérica y comunicación visual del diseño. La geometría lozenge-chiral de referencia corresponde a Hou et al. (2024).": "Modeling and documentation of the technical reconstruction: auxetic cells, extruder sizing, mechanical and electronic integration, numerical comparison and visual communication of the design. The reference lozenge-chiral geometry is attributed to Hou et al. (2024).",
+      "Modelo CAD de la Bucyrus 49HR con mástil abatido para transporte.": "Bucyrus 49HR CAD model with the mast lowered for transport.",
       "Modelo CAD de la Ender-3 con extrusora compacta instalada sobre el carro X.": "CAD model of the Ender-3 with a compact extruder on the X carriage.",
-      "Modelo CAD de la perforadora Bucyrus 49HR con el mástil vertical, vista isométrica": "CAD model of the Bucyrus 49HR drill with the mast vertical, isometric view",
       "Modelo CAD de la revisión B sobre una Creality Ender-3. Es un render, no una fotografía de un prototipo construido.": "CAD model of Revision B mounted on a Creality Ender-3. This is a rendering, not a photograph of a built prototype.",
       "Modelo CAD de la revisión B: jeringa, placas, guías, transmisión y módulo auxético. Documenta el ensamblaje diseñado; la fabricación está pendiente.": "Revision B CAD model: syringe, plates, guides, transmission and auxetic module. Documents the designed assembly; fabrication is pending.",
       "Modelo CAD de la variante G2, basado en la geometría lozenge-chiral de Hou et al. (2024). Se mantiene la atribución de la topología al artículo original.": "CAD model of variant G2, based on the lozenge-chiral geometry of Hou et al. (2024). The topology remains attributed to the original article.",
+      "Modelo CAD del tanque: las columnas verdes representan soportes o portamuestras y las bases amarillas sus montajes. No es una fotografía de cultivos ni un resultado biológico. Figura 8 de Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.": "Tank CAD model: green columns represent sample columns or culture holders, and yellow bases their mounts. This is not a photograph of cultures or a biological result. Figure 8 from Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.",
       "Modelo CAD preliminar con la unidad sobre el carro X. Reduce el recorrido de la pasta, pero añade una masa calculada de 1,42 kg; falta verificar su efecto en la impresora. No tiene todavía planos de fabricación.": "Preliminary CAD model with the unit on the X carriage. Shortens the paste path but adds a calculated mass of 1.42 kg; its effect on the printer remains to be checked. Manufacturing drawings are not yet available.",
+      "Modelo CadQuery de la perforadora con el mástil en posición inclinada a 65°.": "CadQuery drill model with the mast inclined at 65°.",
+      "Monitoreo con datos sintéticos": "Monitoring with synthetic data",
       "Movilidad": "Mobility",
+      "Movimiento y respuesta estructural": "Motion and structural response",
       "Métricas de cohesión, separación y contención": "Cohesion, separation and containment metrics",
       "NVIDIA Jetson Orin": "NVIDIA Jetson Orin",
       "Navegación principal": "Main navigation",
@@ -1745,6 +2138,7 @@
       "OC-SORT · seguimiento de múltiples objetos": "OC-SORT · multiple object tracking",
       "ORCID": "ORCID",
       "Oct. 2026": "Oct. 2026",
+      "Oct. 2026 · diseño y simulación": "Oct. 2026 · design and simulation",
       "Oct. 2026 · estudio numérico": "Oct. 2026 · numerical study",
       "Oct. 2026 · reconstrucción en simulación": "Oct. 2026 · reconstruction in simulation",
       "Oct. 2026 · simulación / diseño": "Oct. 2026 · simulation / design",
@@ -1758,14 +2152,15 @@
       "PUBLICATIONS": "PUBLICATIONS",
       "PachaLab": "PachaLab",
       "PachaLab — robótica espacial": "PachaLab — space robotics",
+      "Panel con señales sintéticas de profundidad, velocidad de penetración, energía específica y presión. «Medida» identifica la señal generada para el ensayo del monitor, no un sensor real. El desgaste se inyecta desde 12 m y la alarma aparece a 14,6 m; el escenario nominal registrado no genera alarmas.": "Dashboard with synthetic depth, penetration-rate, specific-energy and pressure signals. “Measured” denotes the signal generated to test the monitor, not a real sensor. Wear is injected from 12 m and the alarm occurs at 14.6 m; the recorded nominal scenario produces no alarms.",
       "Panel de monitoreo del gemelo": "Digital twin monitoring dashboard",
-      "Panel del gemelo con datos sintéticos: profundidad, velocidad de penetración medida contra la prevista, energía específica por capa de roca y presión de los cilindros al levantar el mástil. En el escenario con desgaste de broca desde 12 m, el monitor da la alarma a 14,6 m; en el escenario normal no hay falsas alarmas.": "Twin dashboard with synthetic data: depth, measured versus predicted penetration rate, specific energy per rock layer and cylinder pressure while raising the mast. In the scenario with bit wear from 12 m, the monitor raises the alarm at 14.6 m; the normal scenario has no false alarms.",
       "Participación en el ensamblaje de un brazo robótico en ESAN R&D Labs.": "Participation in the assembly of a robotic arm in ESAN R & D Labs.",
       "Participación en el proyecto de visión por computadora mencionado en el CV. Alcance de la implementación y contribución individual: por completar.": "Participation in the computer vision project mentioned in the CV. Scope of implementation and individual contribution: to be completed.",
       "Participación en prototipos de visión por computadora mediante Roboflow y sistemas embebidos en ESAN.": "Participation in computer vision prototypes using Roboflow and systems embedded in ESAN.",
       "Participación en proyectos de robótica aplicada, incluyendo extrusión 3D con biomateriales, ensamblaje de brazo robótico y prototipos de visión por computadora mediante Roboflow y sistemas embebidos.": "Participation in applied robotics projects, including 3D extrusion with biomaterials, robotic arm assembly and computer vision prototypes through Roboflow and embedded systems.",
       "Participación en pruebas y actividades de integración del Sistema de Control de Actitud y Órbita (AOCS) del proyecto Chasqui 2. Verificación de datos, documentación técnica y soporte a actividades de investigación orientadas a la integración de subsistemas.": "Participation in tests and integration activities of the Attitude and Orbit Control System (AOCS) of the Chasqui 2 project. Data verification, technical documentation and support for research activities aimed at the integration of subsystems.",
       "Pastoreo con odometría — animación de trayectorias": "Odometry-based shepherding — trajectory animation",
+      "Phyto-G propone reorientar una cámara acuática mediante tres marcos anidados, accionados por un solo motor. Las conexiones giratorias de agua y alimentación eléctrica buscan permitir experimentos prolongados sin interrumpir la rotación para reponer recursos.": "Phyto-G proposes reorienting an aquatic chamber through three nested frames driven by a single motor. Rotary water and electrical connections are intended to support extended experiments without interrupting rotation to replenish resources.",
       "Phyto-G — agricultura espacial": "Phyto-G — space agriculture",
       "Platzi": "Platzi",
       "Power BI": "Power BI",
@@ -1781,7 +2176,7 @@
       "Programación": "Programming",
       "Programación y pruebas de PLC Siemens, Allen-Bradley y Delta; diseño básico HMI/SCADA y planos con EPLAN. Integración de variadores, instrumentación y redes Profinet, Modbus TCP/RTU, Ethernet/IP y Profibus. Documentación técnica y participación como co-instructor de capacitaciones PLC.": "Programming and testing of Siemens, Allen-Bradley and Delta PLCs; basic HMI/SCADA design and drawings in EPLAN. Integration of drives, instrumentation and Profinet, Modbus TCP/RTU, Ethernet/IP and Profibus networks. Technical documentation and participation as a co-instructor in PLC training.",
       "Prototipado": "Prototyping",
-      "Prototipo a escala que integra diseño mecánico, manufactura y electrónica, ampliado con un prototipo virtual de gemelo digital de la perforadora eléctrica Bucyrus 49HR: ensamble CAD verificado, cinemática, análisis estructural y panel de monitoreo.": "Scale prototype integrating mechanical, manufacturing and electronic design, extended with a virtual digital twin prototype of the Bucyrus 49HR electric blasthole drill: verified CAD assembly, kinematics, structural analysis and a monitoring dashboard.",
+      "Prototipo a escala de perforadora minera, ampliado en 2026 con una reconstrucción virtual de la Bucyrus 49HR: CAD por subsistemas, cinemática, análisis del mástil y monitoreo con datos sintéticos.": "Scale mining-drill prototype, extended in 2026 with a virtual reconstruction of the Bucyrus 49HR: subsystem CAD, kinematics, mast analysis and monitoring with synthetic data.",
       "Prototipo de perforadora minera y gemelo digital (Bucyrus 49HR)": "Mining drill prototype and digital twin (Bucyrus 49HR)",
       "Prototipos con sistemas embebidos": "Prototypes with embedded systems",
       "Prototipos de visión por computadora con Roboflow y sistemas embebidos en ESAN; proyectos de seguimiento de objetos en USIL.": "Computer vision prototypes with Roboflow and systems embedded in ESAN; object tracking projects in USIL.",
@@ -1806,6 +2201,8 @@
       "Prácticas de integración de PLC, HMI/SCADA y redes industriales; programación y simulación con TIA Portal/WinCC y comunicación de robots mediante Profinet.": "Integration practices of PLC, HMI / SCADA and industrial networks; programming and simulation with TIA Portal / WinCC and communication of robots by Profinet.",
       "Prótesis biónicas y exoesqueletos": "Bionic prostheses and exoskeletons",
       "Publicaciones": "Publications",
+      "Publicación y crédito de las figuras": "Publication and figure credits",
+      "PyNite": "PyNite",
       "Python": "Python",
       "Qué queda por validar": "What remains to be validated",
       "Qué se desarrolló": "What was developed",
@@ -1823,7 +2220,10 @@
       "Registro del mismo escenario de pastoreo con odometría: llegada a los 43,8 s, cero colisiones registradas y contención completa durante 60 s. Estos valores describen ese ensayo; no garantizan el comportamiento físico.": "Log from the same odometry-based shepherding scenario: arrival at 43.8 s, zero recorded collisions and full containment for 60 s. These values describe that trial; they do not guarantee physical behavior.",
       "Registro visual por incorporar": "Visual record to be incorporated",
       "Remoto": "Remote",
+      "Render CadQuery con el mástil abatido y geometría envolvente. La longitud de transporte es una de las discrepancias documentadas entre el modelo y la tabla de referencia; no se oculta como una cota validada.": "CadQuery rendering with the mast lowered and envelope-level geometry. Transport length is one of the documented discrepancies between the model and the reference table; it is not presented as a validated dimension.",
+      "Render del modelo CadQuery de la Bucyrus 49HR con altura adoptada de 31,22 m; representación envolvente, no fotografía del prototipo físico.": "Rendering of the CadQuery Bucyrus 49HR model with an adopted height of 31.22 m; an envelope-level representation, not a photograph of the physical prototype.",
       "Repositorio": "Repository",
+      "Repositorio · acceso restringido": "Repository · restricted access",
       "Representación de estudiantes y apoyo en actividades de IEEE Perú Section, RNR e INTERCON.": "Student representation and support in IEEE Peru Section, RNR and INTERCON activities.",
       "Representación estudiantil y colaboración en robótica, sistemas aeroespaciales e ingeniería.": "Student representation and collaboration in robotics, aerospace systems and engineering.",
       "Research": "Research",
@@ -1833,7 +2233,9 @@
       "Respuesta simulada del motor con control PI, saturación y cuantización.": "Simulated motor response with PI control, saturation and quantization.",
       "Resultados con contexto": "Results in context",
       "Resultados documentados": "Documented results",
+      "Resumen descriptivo: el modelo se traslada con el mástil abatido, se nivela sobre los gatos, eleva el mástil, avanza y retira la columna de perforación y cambia a una posición inclinada. La secuencia es una animación CAD; no es filmación de una máquina real.": "Descriptive summary: the model moves with its mast lowered, levels on its jacks, raises the mast, advances and withdraws the drill string, and changes to an inclined position. The sequence is a CAD animation, not footage of a real machine.",
       "Resumen descriptivo: se presenta la geometría auxética, el conjunto mecánico y la electrónica; el motor mueve la transmisión y el husillo, el carro empuja el émbolo y la simulación muestra la deposición de pasta. Las magnitudes mostradas proceden del modelo numérico; el tiempo y la deformación visual están escalados.": "Descriptive summary: the auxetic geometry, mechanical assembly and electronics are introduced; the motor drives the transmission and lead screw, the carriage pushes the plunger and the simulation shows paste deposition. Displayed quantities come from the numerical model; time and visible deformation are scaled.",
+      "Reticulado del mástil y su deformación calculada al iniciar el levante.": "Mast lattice and its calculated deformation at the start of raising.",
       "Retrato de Anghello Eduardo Rodríguez Risco": "Portrait of Anghello Eduardo Rodríguez Risco",
       "Revisión C — alternativa sin manguera": "Revision C — hose-free alternative",
       "Ricardo Barreto · Jose Cornejo · Mariela Vargas · Nicolas Gastello · Anghello Rodriguez": "Ricardo Barreto · Jose Cornejo · Mariela Vargas · Nicolas Gastello · Anghello Rodriguez",
@@ -1864,13 +2266,16 @@
       "San Ignacio University": "San Ignacio University",
       "Santa María de Fátima": "Santa María de Fátima",
       "Secciones del CV": "CV sections",
+      "Sección de la unión giratoria del primer marco con conducto de agua y eje hueco.": "Cross-section of the first-frame rotary joint with water passage and hollow shaft.",
       "Section Student Representative (SSR)": "Section Student Representative (SSR)",
+      "Secuencia de posiciones del clinostato y perfil de velocidad impuesto al eje externo en SOLIDWORKS. Es una verificación cinemática preliminar por simulación. Figura 11 de Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.": "Clinostat position sequence and speed profile imposed on the outer axis in SOLIDWORKS. This is a preliminary kinematic check through simulation. Figure 11 from Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.",
       "Seguimiento de objetos": "Object tracking",
       "Sensores y actuadores": "Sensors and actuators",
       "Sensores, visión, control de procesos y movimiento, neumática y oleohidráulica en laboratorios de sistemas mecatrónicos.": "Sensors, vision, process and motion control, pneumatics and hydraulics in mechatronic systems laboratories.",
       "Señales EMG, ECG y EOG": "EMG, ECG and EOG signals",
       "Siemens NX": "Siemens NX",
       "Simulación": "Simulation",
+      "Simulación de movimiento a 10 rpm": "Motion simulation at 10 rpm",
       "Simulación de sistemas dinámicos no lineales aplicada a la investigación en física de partículas.": "Simulation of dynamic non-linear systems applied to particle physics research.",
       "Simulink": "Simulink",
       "Sistemas autónomos": "Autonomous systems",
@@ -1902,29 +2307,36 @@
       "Trayectoria y CV | Anghello Rodríguez": "Background and CV | Anghello Rodríguez",
       "Trayectorias de cinco robots oveja y un pastor hacia el corral.": "Trajectories of five sheep robots and a shepherd toward the pen.",
       "Trayectorias del ensayo de pastoreo": "Shepherding trial trajectories",
+      "Tres posiciones simuladas del clinostato y gráfica de velocidad angular constante.": "Three simulated clinostat positions and a constant angular-velocity plot.",
       "Tu navegador no reproduce este video.": "Your browser does not play this video.",
       "UAV": "UAV",
       "USIL": "USIL",
       "USIL / IEEE": "USIL / IEEE",
       "USIL · SIU": "USIL · SIU",
       "Ubicación": "Location",
+      "Ulva, Pyropia, Chlorella y Arthrospira se discuten como candidatos de estudio, no como cultivos ensayados en este trabajo. La clinorrotación proporciona un análogo terrestre: no elimina la gravedad ni reproduce todas las condiciones espaciales. Quedan por caracterizar la respuesta biológica, la circulación de agua y el funcionamiento integrado en experimentos controlados.": "Ulva, Pyropia, Chlorella and Arthrospira are discussed as study candidates, not as cultures tested in this work. Clinorotation provides an Earth-based analog: it does not eliminate gravity or reproduce all space conditions. Biological response, water circulation and integrated operation remain to be characterized in controlled experiments.",
       "Un comportamiento colectivo medible": "Measurable collective behavior",
+      "Una plataforma terrestre para investigación espacial": "An Earth-based platform for space research",
       "Una trayectoria de construcción": "A path of learning and building",
       "Unidad extrusora — vista explosionada": "Extrusion unit — exploded view",
       "Universidad Nacional Agraria La Molina": "Universidad Nacional Agraria La Molina",
       "Universidad San Ignacio de Loyola": "Universidad San Ignacio de Loyola",
+      "Unión giratoria para el suministro de agua": "Rotary joint for water supply",
       "Velero autónomo — Saildrone": "Autonomous sailboat — Saildrone",
+      "Ver artículo y figura original": "View article and original figure",
       "Ver experiencia completa": "See full experience",
       "Ver experiencia relacionada": "See related experience",
       "Ver ficha": "View project",
-      "Ver repositorio": "View repository",
       "Ver trayectoria y CV": "View background and CV",
       "Video de 1 min 36 s con diseño, mecanismo e impresión simulada de la revisión B. El tiempo está acelerado y la deformación del módulo se amplía ×10 para visualizarla. La cifra de factor de seguridad ≥ 7,5 de la lámina corresponde a las piezas de aluminio, no al módulo auxético. No es una grabación de un prototipo.": "A 1 min 36 s video showing the design, mechanism and simulated printing with Revision B. Time is accelerated and module deformation is magnified ×10 for visibility. The safety factor ≥ 7.5 shown on the slide applies to the aluminum parts, not the auxetic module. This is not footage of a prototype.",
       "Visión por computadora": "Computer vision",
       "Visión por computadora aplicada": "Applied computer vision",
       "Visión por computadora y sistemas embebidos": "Computer vision and embedded systems",
       "Visión por computadora — OC-SORT": "Computer vision — OC-SORT",
+      "Vista CAD del interior del tanque con portamuestras verdes y soportes amarillos.": "CAD view inside the tank with green sample holders and yellow supports.",
+      "Vista del modelo vigente con el mástil inclinado. La representación cinemática posiciona los subsistemas; las formas de cabina, sala de máquinas y orugas permanecen simplificadas.": "View of the current model with the mast inclined. The kinematic representation positions the subsystems; cab, machinery-house and crawler shapes remain simplified.",
       "Vista explosionada del conjunto mecánico con jeringa y módulo auxético.": "Exploded view of the mechanical assembly with syringe and auxetic module.",
+      "Vista isométrica del modelo CAD del clinostato; no es una fotografía de hardware. Figura 10 de Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.": "Isometric view of the clinostat CAD model; this is not a hardware photograph. Figure 10 from Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.",
       "Visualización animada a partir del registro de Gazebo con cinco ovejas y un lobo guiados por odometría. Los trazos representan posiciones de referencia del simulador. Conversión del GIF original a video para reproducirlo en la web; no es filmación del laboratorio.": "Animated visualization from the Gazebo log with five sheep and one wolf controlled using odometry. Traces show the simulator’s reference positions. The original GIF was converted to video for web playback; this is not laboratory footage.",
       "Vol. 11 · N.º 5": "Vol. 11 · No. 5",
       "Volver al inicio ↑": "Back to home ↑",
