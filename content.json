@@ -962,26 +962,350 @@
     {
       "id": "vision",
       "code": "13 / IA Y CONTROL",
-      "title": "Visión por computadora — OC-SORT",
+      "title": "Visión por computadora — seguimiento de peatones con OC-SORT",
       "institution": "USIL",
-      "period": "Etapa de investigación USIL · 2022–2025",
+      "period": "USIL 2022–2025 (trabajo grupal) · ampliación nov. 2026",
       "category": "IA y control",
-      "description": "Proyecto de visión por computadora referido en el CV como “Observation-Centric SORT: Rethinking SORT for Robust Multi-Object Tracking”.",
-      "contribution": "Participación en el proyecto de visión por computadora mencionado en el CV. Alcance de la implementación y contribución individual: por completar.",
+      "description": "Percepción de peatones para un robot móvil pequeño: detección con YOLOv8n, seguimiento multiobjeto con OC-SORT y una lógica de frenado que usa lo que ve la cámara. Verificación con datos reales de MOT17, oclusiones controladas y simulación en lazo cerrado, más la electrónica y el montaje sobre una Waveshare WAVE ROVER.",
+      "contribution": "Participé en la versión grupal del curso (Grupo 4, USIL), que propuso la arquitectura Raspberry Pi 5 + ESP32 con OC-SORT. En noviembre de 2026 la retomé: implementé y verifiqué el rastreador, diseñé los experimentos de oclusión y de lazo cerrado, rehice el dimensionamiento de la cámara y diseñé el esquemático, el firmware y el montaje mecánico. El método OC-SORT es de Cao et al. (2023); no se atribuye su autoría.",
       "tags": [
         "Visión por computadora",
-        "Seguimiento de objetos"
+        "Seguimiento multiobjeto",
+        "OC-SORT",
+        "YOLOv8",
+        "Python",
+        "Raspberry Pi 5",
+        "ESP32",
+        "KiCad",
+        "SOLIDWORKS"
       ],
-      "result": null,
-      "image": null,
+      "result": "Estudio numérico, sin prototipo ni ensayos físicos. Con una oclusión total de 1,5 s o más, OC-SORT conserva de 6 a 11 puntos más identidades que SORT (prueba de McNemar, p < 0,05). En 300 escenas simuladas, la lógica original choca en el 29–36 % de los casos; con una cámara de 110° y la nueva lógica de frenado, en el 0–0,7 %. Con las detecciones públicas de MOT17, OC-SORT no supera a SORT; se reporta tal cual.",
+      "image": "assets/images/bd0268455f99a16b0deb6d7acf335aa718271b22207c73840a9056d1a8fef914.webp",
+      "imageAlt": "Render del robot: cámara gran angular en un mástil y Raspberry Pi 5 bajo su tapa sobre la WAVE ROVER, con el campo de visión en azul. Es un render, no una fotografía.",
       "url": null,
       "repository": null,
-      "source": "CV, p. 2. No se atribuye autoría del artículo OC-SORT.",
+      "source": "Código, datos derivados, informe técnico y modelos del proyecto (noviembre de 2026). Versión grupal: manuscrito y presentación del Grupo 4 (USIL), conservados como antecedente. Método: Cao et al. (2023), CVPR. Datos: MOT17 (MOTChallenge, CC BY-NC-SA 3.0). Plataforma: planos oficiales de Waveshare.",
       "featured": false,
-      "kind": "Proyecto",
+      "kind": "Visión, simulación y diseño",
       "cover": "vision",
       "experienceId": "usil",
-      "evidence": []
+      "body": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Ver, seguir y decidir"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Un robot que circula entre personas necesita tres cosas: detectar a cada peatón en la imagen, saber que es la misma persona de un cuadro a otro aunque alguien la tape un momento, y decidir a tiempo si debe frenar. La cámara envía 30 cuadros por segundo; YOLOv8n encuentra las cajas de cada persona y el rastreador las une en trayectorias con identidad."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Cómo funciona OC-SORT"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "SORT predice el movimiento de cada persona con un filtro de Kalman de velocidad constante y asocia cada predicción con la detección que más se superpone. Cuando la persona desaparece, el filtro sigue extrapolando y el error crece. OC-SORT corrige eso con tres piezas: ORU vuelve a ajustar el filtro con una trayectoria virtual al reaparecer la persona; OCM añade al costo de asociación la coherencia de la dirección observada; y OCR intenta asociar las pistas perdidas con su última observación real. "
+              },
+              {
+                "type": "text",
+                "text": "Artículo original (CVPR 2023).",
+                "marks": [
+                  {
+                    "type": "link",
+                    "attrs": {
+                      "href": "https://doi.org/10.1109/CVPR52729.2023.00934"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Implementé SORT y OC-SORT con interruptores para cada pieza y comparé la implementación, salida por salida, con el código de los autores en las 21 secuencias de entrenamiento de MOT17: 174 362 salidas sin una sola diferencia."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Qué pasa cuando alguien queda oculto"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Tomé trayectorias reales de peatones de "
+              },
+              {
+                "type": "text",
+                "text": "MOT17",
+                "marks": [
+                  {
+                    "type": "link",
+                    "attrs": {
+                      "href": "https://motchallenge.net/data/MOT17/"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "text": ", las convertí en detecciones con ruido y, en cada ensayo, oculté por completo a una persona entre 0,5 y 3 s, a 30, 15 y 10 cuadros por segundo. Hasta 1 s no hay diferencia clara. Desde 1,5 s, OC-SORT recupera la identidad entre 6 y 11 puntos más que SORT, y casi toda la mejora viene de OCR. Aun así, a 1,5 s la recupera solo en el 68–76 % de los casos: el problema no está resuelto."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Con las detecciones públicas de MOT17, de 2017 y con muchos falsos negativos, OC-SORT no supera a SORT con la misma memoria de pista (HOTA 42,78 frente a 44,12). Es un resultado negativo y lo dejo visible."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "De la imagen a la distancia"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "La versión inicial frenaba cuando el área de la caja superaba 45 000 píxeles², suponiendo que eso ocurría a unos 2 m. Con la cámara a 1,6 m de altura, los pies del peatón salen de la imagen por debajo de 4 m y la caja se recorta: el umbral se dispara recién a 1,12 m, demasiado tarde para frenar con margen. Ahora la distancia se estima con el ancho de la caja, que no se recorta hasta 0,36 m."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Lazo cerrado: la cámara importa más que el rastreador"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Simulé 300 escenas en las que un peatón cruza delante del robot y pasa detrás de una columna. Con una cámara de 70°, el peatón que llega por el costado entra en la imagen cuando ya está a menos de un metro y ninguna lógica baja de 26 % de choques. La lógica original, que gira hacia el lado contrario, choca más que no hacer nada (29–36 %). Con una cámara de 110° y una lógica que estima la velocidad lateral de cada pista y frena si el peatón estará en el camino, los choques bajan a 0–0,7 %. SORT y OC-SORT dan el mismo resultado: la identidad cambia por el movimiento de la propia cámara, pero la nueva lógica frena igual."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Hardware"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "La Raspberry Pi 5 ejecuta la visión y envía órdenes con suma de verificación por UART a un ESP32, que genera el PWM de los motores y frena si pasan 150 ms sin mensajes. El esquemático en KiCad pasa la verificación eléctrica sin errores y el firmware compila con sus pruebas. La cámara va en un mástil a 350 mm del suelo, atornillado a los agujeros reales de la WAVE ROVER tomados de sus planos oficiales. En una CPU de portátil, YOLOv8n tarda unos 100 ms por cuadro; falta medirlo en la Pi 5."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "De la versión grupal a esta"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "El trabajo empezó en un curso de la USIL con J. Venegas, A. Hinojosa y W. Nina. Al retomarlo encontré cifras sin datos que las respaldaran (latencias, 24 h de autonomía, una recuperación de identidad de 96,5 % en el texto y de 98,4 % en la tabla) y cinco referencias con DOI inexistente. Mantuve la arquitectura y volví a obtener cada número con código y datos públicos."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Alcance y siguientes pasos"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Todo es simulación y diseño: no hay robot armado ni ensayos. Faltan medir la cadena completa en la Raspberry Pi 5 con un detector cuantizado, compensar el movimiento propio de la cámara, probar con varios peatones y validar en un pasillo real."
+              }
+            ]
+          }
+        ]
+      },
+      "evidence": [
+        {
+          "title": "Video del proyecto — simulaciones y diseño",
+          "date": "Nov. 2026 · simulación / diseño",
+          "description": "Recorrido de 82 s: punto de partida grupal, verificación del rastreador, oclusión, lazo cerrado, electrónica y render del montaje. Todo es simulación o render; no es una grabación del robot.",
+          "alt": "Video con láminas, animaciones de seguimiento y renders del robot.",
+          "video": "assets/videos/208d9f9a36fdf89d93a443caf4611c18282d73393f0096da8b8b933825b9e647.mp4",
+          "poster": "assets/images/891fe7e5555ca0457b1d0d31c1461cee4627df05b288eabe1070cd613d0512e8.webp",
+          "transcript": "Resumen descriptivo: láminas con el planteamiento y los resultados, una animación en la que SORT pierde y OC-SORT recupera la identidad de un peatón oculto 1,5 s, una vista en planta donde la lógica original choca y la nueva frena, el esquemático y un recorrido 3D del montaje sobre la WAVE ROVER.",
+          "sortOrder": 0
+        },
+        {
+          "title": "Oclusión de 1,5 s: SORT frente a OC-SORT",
+          "date": "Nov. 2026 · simulación / diseño",
+          "description": "Ensayo real del experimento sobre la secuencia MOT17-10: mismas detecciones para ambos rastreadores. Cuando el peatón reaparece, SORT le asigna un número nuevo y OC-SORT recupera el 4. Las cajas punteadas son las anotaciones de MOT17.",
+          "alt": "Dos vistas lado a lado con cajas de seguimiento; el peatón objetivo queda oculto y luego reaparece.",
+          "video": "assets/videos/c7e9cacb2f4528baae574173b68b6b91e35a78bdfca2d8cd925d3c919b83f52c.mp4",
+          "poster": "assets/images/8459c39a86c76d8529e26840391971f79afa95affac7b6f09977c408144de35c.webp",
+          "transcript": "Resumen descriptivo: a la izquierda SORT y a la derecha OC-SORT siguen a una multitud. El peatón marcado en ámbar deja de detectarse durante 1,5 s. Al volver, SORT muestra «identidad perdida» y OC-SORT «identidad recuperada». Trayectorias de MOT17 con detector simulado.",
+          "sortOrder": 1
+        },
+        {
+          "title": "Lazo cerrado: misma escena, dos diseños",
+          "date": "Nov. 2026 · simulación / diseño",
+          "description": "Vista en planta de una de las 300 escenas: con la cámara de 70° y la lógica original el robot choca; con 110° y la nueva lógica frena a 1,46 m del peatón.",
+          "alt": "Dos vistas en planta con el robot, su campo de visión, una columna y un peatón que cruza.",
+          "video": "assets/videos/9b16f02c64ded0cba7be5ed11770d803d1d05132e8e875a395a61aafe02f20f7.mp4",
+          "poster": "assets/images/76cd3d4353e03a1400f5832f5f301e4fb2513b2ba93ab3fb0591862f3614d07a.webp",
+          "transcript": "Resumen descriptivo: en ambos paneles el robot avanza a 1 m/s. A la izquierda el peatón entra tarde en la imagen y hay impacto. A la derecha el robot lo detecta, ordena frenar y se detiene sin impacto.",
+          "sortOrder": 2
+        },
+        {
+          "title": "Recuperación de identidad frente a la duración de la oclusión",
+          "date": "Nov. 2026 · simulación / diseño",
+          "description": "Unos 165 ensayos válidos por punto, con bandas de confianza del 95 %. Desde 1,5 s OC-SORT supera a SORT con significación estadística.",
+          "alt": "Tres gráficas, a 30, 15 y 10 FPS, con la recuperación de identidad de SORT y OC-SORT.",
+          "url": "https://doi.org/10.1109/CVPR52729.2023.00934",
+          "linkLabel": "Método OC-SORT (Cao et al., 2023)",
+          "image": "assets/images/840b4f61fa9f8caa7bce08e1df5ba89132aa814ecef5531d5fb8262fb0da641b.webp",
+          "sortOrder": 3
+        },
+        {
+          "title": "Qué parte de OC-SORT ayuda",
+          "date": "Nov. 2026 · simulación / diseño",
+          "description": "Ablación a 15 FPS: sin OCR, OC-SORT rinde igual que SORT; sin ORU o sin OCM, casi no cambia.",
+          "alt": "Curvas de recuperación de identidad para SORT, OC-SORT y OC-SORT sin cada componente.",
+          "image": "assets/images/27e77cfe602f5f401362ed3520b4f8560e2557f77bbceeedef1a172dab84ca93.webp",
+          "sortOrder": 4
+        },
+        {
+          "title": "Escenas con impacto según cámara y lógica",
+          "date": "Nov. 2026 · simulación / diseño",
+          "description": "300 escenas por barra. La lógica original choca igual o más que no reaccionar; con 110° y la lógica nueva los impactos caen a 0–0,7 %.",
+          "alt": "Gráfico de barras con el porcentaje de impactos a 10, 15 y 30 FPS para dos cámaras.",
+          "image": "assets/images/305beab218a2a8b6d5e98a0a84e6af2c71b8863e311204351b89dcaf46385bd9.webp",
+          "sortOrder": 5
+        },
+        {
+          "title": "Por qué el umbral de área fallaba",
+          "date": "Nov. 2026 · simulación / diseño",
+          "description": "Área de la caja frente a la distancia: cuando el peatón no cabe en la imagen, el área deja de crecer y el umbral de 45 000 px² se dispara a 1,12 m en lugar de 2 m.",
+          "alt": "Curvas de área de la caja frente a la distancia, con y sin recorte por el borde de la imagen.",
+          "image": "assets/images/eadc62a2c3a13b707187a125a8029ff79365efc559800dded09d5c214f428c5e.webp",
+          "sortOrder": 6
+        },
+        {
+          "title": "Campo de visión de 110°",
+          "date": "Nov. 2026 · simulación / diseño",
+          "description": "Render: el sector azul es lo que ve la cámara a 350 mm del suelo; un peatón cruza a 1,5 m. Modelo del chasis tomado del STL oficial de Waveshare.",
+          "alt": "Render del robot con un sector translúcido azul y un peatón esquemático delante.",
+          "image": "assets/images/aace04a508818aaed4e40f82c4557f858e7416fdfa9767ea17b9f4b5d21efa3a.webp",
+          "sortOrder": 7
+        },
+        {
+          "title": "Montaje sobre la WAVE ROVER",
+          "date": "Nov. 2026 · simulación / diseño",
+          "description": "Ensamblaje en SOLIDWORKS sin interferencias: mástil de perfil 2020 con soporte de cámara, y Raspberry Pi 5 con tapa de PETG sobre el patrón de agujeros del chasis.",
+          "alt": "Render isométrico del robot con el mástil de la cámara y la tapa de la Raspberry Pi.",
+          "image": "assets/images/d89a2a98a7f0cf8a3a20301a3c7032a5c97da902fe2272d9e640fe7841be7c6f.webp",
+          "sortOrder": 8
+        },
+        {
+          "title": "Electrónica: Pi 5, ESP32 y driver de motores",
+          "date": "Nov. 2026 · simulación / diseño",
+          "description": "Esquemático en KiCad 9 con bloques de alimentación, visión, control de tracción y motores. Verificación eléctrica sin errores; sin prueba en banco.",
+          "alt": "Esquemático con la Raspberry Pi 5, el ESP32, el driver TB6612FNG y dos motores.",
+          "image": "assets/images/c52eceb478ce1776bb0214e65c35c3fc572a2abaf9ad9315eb19604bedd4a5bf.webp",
+          "sortOrder": 9
+        },
+        {
+          "title": "Plano de conjunto",
+          "date": "Nov. 2026 · simulación / diseño",
+          "description": "Plano A3 con lista de materiales y globos; los planos de detalle de las piezas impresas están en el repositorio del proyecto.",
+          "alt": "Plano de conjunto del robot con lista de materiales.",
+          "image": "assets/images/552ea211f7a0083caf4a4ca520d2e7ca51d59fa20773e99cd9bb172477c975d0.webp",
+          "sortOrder": 10
+        }
+      ]
     },
     {
       "id": "flanders",
@@ -1723,15 +2047,19 @@
     "workerHash": "f42a14a0c10d0e72b7bb3131194353080dc169dfae19cf00d92c420f36a82619",
     "en": {
       "& Bionics": "& Bionics",
+      ", las convertí en detecciones con ruido y, en cada ensayo, oculté por completo a una persona entre 0,5 y 3 s, a 30, 15 y 10 cuadros por segundo. Hasta 1 s no hay diferencia clara. Desde 1,5 s, OC-SORT recupera la identidad entre 6 y 11 puntos más que SORT, y casi toda la mejora viene de OCR. Aun así, a 1,5 s la recupera solo en el 68–76 % de los casos: el problema no está resuelto.": ", turned them into noisy detections and, in each trial, fully hid one person for 0.5 to 3 s, at 30, 15 and 10 frames per second. Up to 1 s there is no clear difference. From 1.5 s on, OC-SORT recovers the identity 6 to 11 points more often than SORT, and almost all of the gain comes from OCR. Even so, at 1.5 s it recovers it in only 68–76% of cases: the problem is not solved.",
       "10.3390/biomimetics11050340": "10.3390/biomimetics11050340",
       "14 de mayo de 2026": "14 May 2026",
       "2022–2026 · investigación, docencia e industria": "2022-2026 · research, teaching and industry",
+      "300 escenas por barra. La lógica original choca igual o más que no reaccionar; con 110° y la lógica nueva los impactos caen a 0–0,7 %.": "300 scenes per bar. The original logic collides as much as or more than not reacting; with 110° and the new logic impacts fall to 0–0.7%.",
       "5 imágenes · 1 videos · 0 audios": "5 images · 1 videos · 0 audios",
       "6 imágenes · 1 videos · 0 audios": "6 images · 1 videos · 0 audios",
       "7 imágenes · 0 videos · 0 audios": "7 images · 0 videos · 0 audios",
+      "8 imágenes · 3 videos · 0 audios": "8 images · 3 videos · 0 audios",
       "ANSYS": "ANSYS",
       "AOCS": "AOCS",
       "AUTOTEC Perú": "AUTOTEC Perú",
+      "Ablación a 15 FPS: sin OCR, OC-SORT rinde igual que SORT; sin ORU o sin OCM, casi no cambia.": "Ablation at 15 FPS: without OCR, OC-SORT performs like SORT; without ORU or OCM, it barely changes.",
       "Abr. – oct. 2026": "Apr. – Oct. 2026",
       "Abr. – oct. 2026 · etapa en ESAN": "Apr. – Oct. 2026 · role at ESAN",
       "Abrir menú": "Open menu",
@@ -1744,6 +2072,7 @@
       "Ago. – oct. 2025": "Aug. – Oct. 2025",
       "Agricultura espacial": "Space agriculture",
       "Alcance y próximos ensayos": "Scope and future testing",
+      "Alcance y siguientes pasos": "Scope and next steps",
       "Alemán · CEFR A2": "German · CEFR A2",
       "Alternativa y siguientes pasos": "Alternative design and next steps",
       "Altium Designer": "Altium Designer",
@@ -1751,6 +2080,7 @@
       "Ampliar: Arquitectura de Phyto-G y publicación": "Enlarge: Phyto-G architecture and publication",
       "Ampliar: Arquitectura propuesta de control y sensado": "Enlarge: Proposed control and sensing architecture",
       "Ampliar: Arranque y parada — configuración rígida frente a auxética": "Enlarge: Startup and shutdown — rigid versus auxetic configuration",
+      "Ampliar: Campo de visión de 110°": "Enlarge: 110° field of view",
       "Ampliar: Celda oLCAM — reconstrucción geométrica": "Enlarge: oLCAM cell — geometric reconstruction",
       "Ampliar: Cinco variantes — comparación por elementos finitos": "Enlarge: Five variants — finite element comparison",
       "Ampliar: Configuración de perforación a 65°": "Enlarge: Drilling configuration at 65°",
@@ -1758,13 +2088,20 @@
       "Ampliar: Control PI del motor — modelo no lineal": "Enlarge: Motor PI control — nonlinear model",
       "Ampliar: Cámara acuática y distribución de muestras": "Enlarge: Aquatic chamber and sample layout",
       "Ampliar: Electrónica de accionamiento y registro de fuerza": "Enlarge: Drive electronics and force logging",
+      "Ampliar: Electrónica: Pi 5, ESP32 y driver de motores": "Enlarge: Electronics: Pi 5, ESP32 and motor driver",
+      "Ampliar: Escenas con impacto según cámara y lógica": "Enlarge: Scenes with impact by camera and logic",
       "Ampliar: FEA — desplazamiento del ensamble": "Enlarge: FEA — assembly displacement",
       "Ampliar: FEA — distribución de tensiones": "Enlarge: FEA — stress distribution",
       "Ampliar: La plataforma física en el laboratorio": "Enlarge: The physical platform in the laboratory",
       "Ampliar: Levante del mástil — modelo estructural": "Enlarge: Mast raising — structural model",
+      "Ampliar: Montaje sobre la WAVE ROVER": "Enlarge: Mounting on the WAVE ROVER",
       "Ampliar: Métricas de cohesión, separación y contención": "Enlarge: Cohesion, separation and containment metrics",
       "Ampliar: Odometría — comparación de estimadores en Python": "Enlarge: Odometry — estimator comparison in Python",
       "Ampliar: Panel de monitoreo del gemelo": "Enlarge: Digital twin monitoring dashboard",
+      "Ampliar: Plano de conjunto": "Enlarge: Assembly drawing",
+      "Ampliar: Por qué el umbral de área fallaba": "Enlarge: Why the area threshold failed",
+      "Ampliar: Qué parte de OC-SORT ayuda": "Enlarge: Which part of OC-SORT helps",
+      "Ampliar: Recuperación de identidad frente a la duración de la oclusión": "Enlarge: Identity recovery versus occlusion length",
       "Ampliar: Revisión C — alternativa sin manguera": "Enlarge: Revision C — hose-free alternative",
       "Ampliar: Simulación de movimiento a 10 rpm": "Enlarge: Motion simulation at 10 rpm",
       "Ampliar: Trayectorias del ensayo de pastoreo": "Enlarge: Shepherding trial trajectories",
@@ -1782,6 +2119,7 @@
       "Arquitectura propuesta de control y sensado": "Proposed control and sensing architecture",
       "Arranque y parada — configuración rígida frente a auxética": "Startup and shutdown — rigid versus auxetic configuration",
       "Artículo 340": "Article 340",
+      "Artículo original (CVPR 2023).": "Original paper (CVPR 2023).",
       "Artículo publicado el 14 de mayo de 2026. El estudio cinemático impone 10 rpm al eje externo; el análisis estático simplificado con 294 N reporta 54,5 MPa de tensión máxima y 1,73 mm de desplazamiento máximo. Son resultados computacionales del diseño, no ensayos biológicos ni una validación en vuelo.": "Article published on May 14, 2026. The kinematic study imposes 10 rpm on the outer axis; simplified static analysis with a 294 N load reports 54.5 MPa maximum stress and 1.73 mm maximum displacement. These are computational design results, not biological trials or flight validation.",
       "Automatización con PLC": "Automation with PLC",
       "Automatización e integración": "Automation and integration",
@@ -1808,6 +2146,7 @@
       "CadQuery": "CadQuery",
       "Cada ficha distingue fotografías, modelos CAD y simulaciones. Las portadas esquemáticas indican que aún falta material visual del proyecto.": "Each page distinguishes photographs, CAD models and simulations. Schematic covers indicate that project visuals are still pending.",
       "CalculiX": "Calculix",
+      "Campo de visión de 110°": "110° field of view",
       "Catálogo de proyectos": "Project catalogue",
       "Caudal y fuerza calculados para distintas mangueras y para el caso sin manguera. R representa el bloque rígido y A el módulo auxético. La flexibilidad añadida aumenta el retraso y el goteo en el modelo; las propiedades de la pasta son supuestos.": "Calculated flow rate and force for different hoses and for the hose-free case. R denotes the rigid block and A the auxetic module. Added compliance increases delay and oozing in the model; paste properties are assumed.",
       "Celda auxética oLCAM modelada en SOLIDWORKS.": "Auxetic oLCAM cell modeled in SOLIDWORKS.",
@@ -1830,6 +2169,7 @@
       "Comparación G0–G4 de rigidez relativa y coeficiente de Poisson efectivo. Simulación lineal en CalculiX con material normalizado; no son ensayos de probetas impresas.": "G0–G4 comparison of relative stiffness and effective Poisson’s ratio. Linear simulation in CalculiX with a normalized material; these are not tests of printed specimens.",
       "Comparación de trayectorias simuladas con cuatro métodos de estimación de posición.": "Comparison of simulated trajectories using four position-estimation methods.",
       "Compartir lo que construyo": "Share what I build",
+      "Con las detecciones públicas de MOT17, de 2017 y con muchos falsos negativos, OC-SORT no supera a SORT con la misma memoria de pista (HOTA 42,78 frente a 44,12). Es un resultado negativo y lo dejo visible.": "With the public MOT17 detections, from 2017 and with many false negatives, OC-SORT does not beat SORT with the same track memory (HOTA 42.78 versus 44.12). It is a negative result and I keep it visible.",
       "Conectemos ideas.": "Let's connect ideas.",
       "Configuración de perforación a 65°": "Drilling configuration at 65°",
       "Configuración de transporte": "Transport configuration",
@@ -1852,10 +2192,15 @@
       "Cuadrúpedo para terrenos complejos": "Quadruped robot for challenging terrain",
       "Cuatro gráficos del panel del gemelo: profundidad, velocidad de penetración, energía específica y presión de cilindros": "Four dashboard plots: depth, penetration rate, specific energy and cylinder pressure",
       "Curso el 9.º ciclo de Ingeniería Mecatrónica en USIL, con mención en Robótica Industrial, y el doble grado en Business Administration en San Ignacio University. Mi formación se complementa con una especialización en Sistemas Mecatrónicos en TECSUP. Tengo experiencia en I+D, diseño y fabricación de prototipos, robótica, control, automatización y manufactura digital. Participo en investigación en robótica espacial y AOCS y soy coautor de un artículo científico en Biomimetics.": "I am in my ninth semester of Mechatronics Engineering at USIL, with a concentration in Industrial Robotics, while pursuing a dual degree in Business Administration at San Ignacio University. My education also includes a specialization in Mechatronic Systems at TECSUP. I have experience in R&D, prototype design and fabrication, robotics, control, automation and digital manufacturing. I participate in space robotics and AOCS research and am a co-author of a scientific article in Biomimetics.",
+      "Curvas de recuperación de identidad para SORT, OC-SORT y OC-SORT sin cada componente.": "Identity recovery curves for SORT, OC-SORT and OC-SORT without each component.",
+      "Curvas de área de la caja frente a la distancia, con y sin recorte por el borde de la imagen.": "Box-area curves versus distance, with and without cropping at the image edge.",
       "Curvas simuladas de caudal y fuerza durante el arranque y la parada de la extrusión.": "Simulated flow-rate and force curves during extrusion startup and shutdown.",
       "Cámara acuática y distribución de muestras": "Aquatic chamber and sample layout",
+      "Cómo funciona OC-SORT": "How OC-SORT works",
       "DOI:": "DOI:",
+      "De la imagen a la distancia": "From the image to distance",
       "De la plataforma al simulador": "From the platform to the simulator",
+      "De la versión grupal a esta": "From the group version to this one",
       "Deformación calculada al inicio del levante. El modelo FEA estima unos 561 kN por cilindro, frente a unos 683 kN de la estática simplificada del gemelo. La diferencia depende de la geometría de apoyos y del reparto de masas; no son mediciones de presión o fuerza en campo.": "Calculated deformation at the start of mast raising. The FEA model estimates about 561 kN per cylinder, compared with about 683 kN from the twin’s simplified statics. The difference depends on support geometry and mass distribution; these are not field pressure or force measurements.",
       "Deformada del mástil a 65° y 400 kN de empuje, con el cabezal arriba; desplazamientos ampliados ×50. El FS 3,6 citado en el texto corresponde al caso distinto de 600 kN. La comparación PyNite–CalculiX verifica el modelo numérico; no es un ensayo físico.": "Mast deformation at 65° and 400 kN pulldown, with the head at the top; displacements magnified ×50. The safety factor of 3.6 cited in the text belongs to the separate 600 kN case. The PyNite–CalculiX comparison checks the numerical model; it is not a physical test.",
       "Del concepto al modelo mecatrónico": "From concept to mechatronic model",
@@ -1923,8 +2268,10 @@
       "El modelo vigente se genera en CadQuery y se visualiza con PyVista; conserva el trabajo previo realizado mediante la API de SOLIDWORKS. La comprobación compara 15 dimensiones con las tablas y referencias usadas para construir el modelo: 14 cumplen ±0,02 m. Comprueba consistencia geométrica, no una validación contra mediciones de la máquina. La longitud de transporte T no coincide y queda registrada como inconsistencia; la altura de 31,22 m procede de una referencia de otra 49HR.": "The current model is generated in CadQuery and visualized with PyVista; the earlier SOLIDWORKS API work is retained. The check compares 15 dimensions with the documented tables and references used to build the model: 14 meet ±0.02 m. It checks geometric consistency, not validation against machine measurements. Transport length T does not match and is recorded as an inconsistency; the 31.22 m height comes from a reference for another 49HR.",
       "El mástil se idealiza como reticulado de vigas tubulares. PyNite y CalculiX comparten geometría y cargas; los desplazamientos y fuerzas comparados difieren hasta un 0,6 %. En el extremo de 600 kN del barrido hipotético a 65°, el modelo alcanza unos 95,8 MPa y FS 3,6 con Fy = 345 MPa y secciones supuestas; esa carga no es un empuje medido ni especificado para esta máquina. La figura de deformación publicada aquí corresponde a otro caso: 65° y 400 kN.": "The mast is idealized as a tubular beam lattice. PyNite and CalculiX share geometry and loads; compared displacements and forces differ by up to 0.6%. At the 600 kN endpoint of the hypothetical sweep at 65°, the model reaches about 95.8 MPa and a safety factor of 3.6 with Fy = 345 MPa and assumed sections; that load is not a measured or specified pulldown for this machine. The deformation figure shown here represents a different case: 65° and 400 kN.",
       "El prototipo a escala se utilizó en demostraciones corporativas. En la extensión virtual, 14 de 15 cotas de entrada se reproducen dentro de ±2 cm: es una comprobación de consistencia. El extremo de 600 kN de un barrido hipotético a 65° da FS 3,6 con material y secciones supuestos (Fy = 345 MPa). El monitor detecta el desgaste inyectado en el escenario sintético, sin alarmas en el escenario nominal. No hay conexión ni telemetría de una máquina real.": "The scale prototype was used in corporate demonstrations. In the virtual extension, 14 of 15 input dimensions are reproduced within ±2 cm: this is a consistency check. The 600 kN endpoint of a hypothetical sweep at 65° gives a safety factor of 3.6 with assumed material and sections (Fy = 345 MPa). The monitor detects injected wear in the synthetic scenario, with no alarms in the nominal scenario. There is no connection to or telemetry from a real machine.",
+      "El trabajo empezó en un curso de la USIL con J. Venegas, A. Hinojosa y W. Nina. Al retomarlo encontré cifras sin datos que las respaldaran (latencias, 24 h de autonomía, una recuperación de identidad de 96,5 % en el texto y de 98,4 % en la tabla) y cinco referencias con DOI inexistente. Mantuve la arquitectura y volví a obtener cada número con código y datos públicos.": "The work started in a USIL course with J. Venegas, A. Hinojosa and W. Nina. When I picked it up again I found figures without supporting data (latencies, 24 h of battery life, an identity recovery of 96.5% in the text and 98.4% in the table) and five references with non-existent DOIs. I kept the architecture and re-derived every number with code and public data.",
       "El trabajo incluye cinemática, un lazo PI para el motor y estimación de posición mediante encoders y giróscopo. Los scripts para construir modelos de Simulink y Simscape están disponibles, pero esos modelos no se ejecutaron por falta de licencia.": "The work includes kinematics, a motor PI control loop and position estimation using encoders and a gyroscope. Scripts for building Simulink and Simscape models are available, but those models were not run because a license was unavailable.",
       "Electrónica de accionamiento y registro de fuerza": "Drive electronics and force logging",
+      "Electrónica: Pi 5, ESP32 y driver de motores": "Electronics: Pi 5, ESP32 and motor driver",
       "Email": "Email",
       "En curso": "In progress",
       "En el ensayo registrado de Gazebo con poses de odometría: llegada al corral en 43,8 s, cero colisiones registradas y contención del 100 % durante los 60 s siguientes. Son resultados de ese escenario simulado; falta validación en robots reales.": "In the recorded Gazebo trial using odometry poses: arrival at the pen in 43.8 s, zero recorded collisions and 100% containment for the following 60 s. These results apply to that simulated scenario; validation on real robots is pending.",
@@ -1944,15 +2291,21 @@
       "Ensamblaje": "Assembly",
       "Ensamblaje de brazo robótico": "Robotic arm assembly",
       "Ensamblaje de un brazo robótico dentro de las actividades de investigación y robótica aplicada.": "Assembling a robotic arm within the applied research and robotic activities.",
+      "Ensamblaje en SOLIDWORKS sin interferencias: mástil de perfil 2020 con soporte de cámara, y Raspberry Pi 5 con tapa de PETG sobre el patrón de agujeros del chasis.": "Interference-free SOLIDWORKS assembly: 2020 profile mast with camera bracket, and Raspberry Pi 5 with PETG cover on the chassis hole pattern.",
       "Ensamble simplificado bajo la carga equivalente de 294 N. El artículo reporta un máximo de von Mises de 54,5 MPa; el modelo usa apoyos fijos y contactos unidos. Figura 13 de Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.": "Simplified assembly under an equivalent 294 N load. The article reports a maximum von Mises stress of 54.5 MPa; the model uses fixed supports and bonded contacts. Figure 13 from Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.",
+      "Ensayo real del experimento sobre la secuencia MOT17-10: mismas detecciones para ambos rastreadores. Cuando el peatón reaparece, SORT le asigna un número nuevo y OC-SORT recupera el 4. Las cajas punteadas son las anotaciones de MOT17.": "Actual trial from the experiment on sequence MOT17-10: same detections for both trackers. When the pedestrian reappears, SORT gives them a new number and OC-SORT recovers number 4. Dotted boxes are MOT17 annotations.",
       "Enseñanza y asesoría en análisis, diseño y aplicación de circuitos electrónicos en proyectos académicos.": "Teaching and consulting in analysis, design and application of electronic circuits in academic projects.",
+      "Escenas con impacto según cámara y lógica": "Scenes with impact by camera and logic",
       "Especialización en Ciencia de Datos para el Mantenimiento Predictivo": "Specialization in Data Science for Predictive Maintenance",
       "Especialización en Gestión de Proyectos": "Project Management Specialization",
       "Especialización en Inteligencia Artificial y Data Science": "Specialization in Artificial Intelligence and Data Science",
       "Especialización en Sistemas Mecatrónicos": "Specialization in Mechatronic Systems",
       "Esquemático KiCad del motor conectado al eje E y del registrador Arduino Nano con HX711. Diseño electrónico, sin validación en hardware.": "KiCad schematic of the motor connected to the E axis and the Arduino Nano logger with HX711. Electronic design without hardware validation.",
+      "Esquemático con la Raspberry Pi 5, el ESP32, el driver TB6612FNG y dos motores.": "Schematic with the Raspberry Pi 5, the ESP32, the TB6612FNG driver and two motors.",
       "Esquemático eléctrico del motor, los finales de carrera y el registrador de fuerza.": "Electrical schematic of the motor, limit switches and force logger.",
+      "Esquemático en KiCad 9 con bloques de alimentación, visión, control de tracción y motores. Verificación eléctrica sin errores; sin prueba en banco.": "KiCad 9 schematic with power, vision, traction control and motor blocks. Electrical check with no errors; not bench tested.",
       "Estudio numérico cerrado; prototipo y ensayos físicos pendientes. En el modelo estudiado, el módulo auxético añade flexibilidad y aumenta el retraso de arranque y el goteo frente al bloque rígido: no se presenta como una mejora demostrada.": "Numerical study completed; fabrication and physical testing remain pending. In the model studied, the auxetic module adds compliance and increases startup delay and oozing compared with the rigid block. It is not presented as a demonstrated improvement.",
+      "Estudio numérico, sin prototipo ni ensayos físicos. Con una oclusión total de 1,5 s o más, OC-SORT conserva de 6 a 11 puntos más identidades que SORT (prueba de McNemar, p < 0,05). En 300 escenas simuladas, la lógica original choca en el 29–36 % de los casos; con una cámara de 110° y la nueva lógica de frenado, en el 0–0,7 %. Con las detecciones públicas de MOT17, OC-SORT no supera a SORT; se reporta tal cual.": "Numerical study, with no prototype or physical tests. With a full occlusion of 1.5 s or more, OC-SORT keeps 6 to 11 points more identities than SORT (McNemar test, p < 0.05). In 300 simulated scenes, the original logic collides in 29–36% of cases; with a 110° camera and the new braking logic, in 0–0.7%. With the public MOT17 detections, OC-SORT does not outperform SORT; this is reported as is.",
       "Etapa de investigación USIL · 2022–2025": "Research phase USIL · 2022-2025",
       "EtherNet/IP": "EtherNet/IP",
       "Evidencias y avances": "Evidence and progress",
@@ -1989,7 +2342,7 @@
       "Fuente de la descripción: CV maestro actualizado, p. 1. Periodo de vinculación institucional, no fecha exacta del proyecto.": "Description source: updated master CV, p. 1. The period refers to the institutional affiliation, not the exact project dates.",
       "Fuente de la descripción: CV para el prototipo a escala; documentación, CAD, CSV y resultados del proyecto Bucyrus 49HR para la extensión virtual de octubre de 2026. El manual se cita como fuente técnica, sin redistribuirlo.": "Description source: CV for the scale prototype; project documentation, CAD, CSV logs and results for the October 2026 virtual extension. The manual is cited as a technical source without being redistributed.",
       "Fuente de la descripción: CV, p. 2": "Description source: CV, p. 2",
-      "Fuente de la descripción: CV, p. 2. No se atribuye autoría del artículo OC-SORT.": "Description source: CV, p. 2. No authorship of the OC-SORT paper is claimed.",
+      "Fuente de la descripción: Código, datos derivados, informe técnico y modelos del proyecto (noviembre de 2026). Versión grupal: manuscrito y presentación del Grupo 4 (USIL), conservados como antecedente. Método: Cao et al. (2023), CVPR. Datos: MOT17 (MOTChallenge, CC BY-NC-SA 3.0). Plataforma: planos oficiales de Waveshare.": "Description source: Project code, derived data, technical report and models (November 2026). Group version: manuscript and presentation by Group 4 (USIL), kept as background. Method: Cao et al. (2023), CVPR. Data: MOT17 (MOTChallenge, CC BY-NC-SA 3.0). Platform: official Waveshare drawings.",
       "Fuente de la descripción: Documentación técnica y modelos del proyecto, octubre de 2026. El plan de julio de 2026 en FabLab es el antecedente; no demuestra fabricación. La ficha anterior usaba el título general «biomateriales»; el estudio disponible se refiere específicamente a pasta cerámica.": "Description source: Project technical documentation and models, October 2026. The July 2026 FabLab plan is background material; it does not establish that fabrication took place. The previous page used the general title “biomaterials”; the available study specifically concerns ceramic paste.",
       "Fuente de la descripción: Repositorio enjambre-ovejas-lobo: documentación 00–08, registros CSV, figuras y fotografías aportadas. Reconstrucción de octubre de 2026 a partir de recursos de Yahboom. Las imágenes físicas no validan los resultados del simulador.": "Description source: The enjambre-ovejas-lobo repository: documentation 00–08, CSV logs, figures and supplied photographs. October 2026 reconstruction based on Yahboom resources. Photographs of the physical platform do not validate simulator results.",
       "Funcionamiento del extrusor — simulación visual": "Extruder operation — visual simulation",
@@ -2010,11 +2363,13 @@
       "Gmsh": "Gmsh",
       "Goethe-Institut Perú": "Goethe-Institut Perú",
       "Grupo de Investigación en Física": "Physics Research Group",
+      "Gráfico de barras con el porcentaje de impactos a 10, 15 y 30 FPS para dos cámaras.": "Bar chart of impact percentage at 10, 15 and 30 FPS for two cameras.",
       "Gráfico del reticulado del mástil sin carga en gris y deformado en naranja": "Plot of the mast lattice, unloaded in grey and deformed in orange",
       "Gráficos de métricas del pastoreo simulado con poses de odometría.": "Plots of simulated shepherding metrics using odometry poses.",
       "Gráficos de rigidez normalizada y coeficiente de Poisson para G0 a G4.": "Plots of normalized stiffness and Poisson’s ratio for G0 through G4.",
       "HMI / SCADA": "HMI / SCADA",
       "Habilidades": "Skills",
+      "Hardware": "Hardware",
       "Herramientas para llevar ideas a prototipos": "Tools to bring ideas to prototypes",
       "I+D": "R&D",
       "IA y control": "AI and control",
@@ -2031,6 +2386,7 @@
       "INTINAUTA Research Center – PachaLab": "INTINAUTA Research Center – PachaLab",
       "Ilustración conceptual · foto pendiente": "Conceptual illustration · pending photo",
       "Ilustración conceptual · no es una fotografía del proyecto": "Conceptual illustration · is not a photograph of the project",
+      "Implementé SORT y OC-SORT con interruptores para cada pieza y comparé la implementación, salida por salida, con el código de los autores en las 21 secuencias de entrenamiento de MOT17: 174 362 salidas sin una sola diferencia.": "I implemented SORT and OC-SORT with switches for each piece and compared the implementation, output by output, with the authors’ code on the 21 MOT17 training sequences: 174,362 outputs without a single difference.",
       "Impresión 3D FDM": "FDM 3D Printing",
       "Impulso de eventos y proyectos aeroespaciales, alianzas académicas y representación en conferencias.": "Promotion of aerospace events and projects, academic alliances and conference representation.",
       "Impulso de proyectos y eventos de robótica, alianzas académicas y representación en conferencias.": "Promotion of robotics projects and events, academic alliances and conference representation.",
@@ -2063,6 +2419,7 @@
       "Jul. – ago. 2020 (fechas del CV)": "Jul. - Aug. 2020 (CV dates)",
       "Jun. 2023 – mar. 2024": "Jun. 2023 – Mar. 2024",
       "KiCad": "KiCad",
+      "La Raspberry Pi 5 ejecuta la visión y envía órdenes con suma de verificación por UART a un ESP32, que genera el PWM de los motores y frena si pasan 150 ms sin mensajes. El esquemático en KiCad pasa la verificación eléctrica sin errores y el firmware compila con sus pruebas. La cámara va en un mástil a 350 mm del suelo, atornillado a los agujeros reales de la WAVE ROVER tomados de sus planos oficiales. En una CPU de portátil, YOLOv8n tarda unos 100 ms por cuadro; falta medirlo en la Pi 5.": "The Raspberry Pi 5 runs the vision and sends checksummed commands over UART to an ESP32, which drives the motors’ PWM and brakes if 150 ms pass without messages. The KiCad schematic passes the electrical rules check with no errors and the firmware compiles with its tests. The camera sits on a mast 350 mm above the ground, bolted to the WAVE ROVER’s real holes taken from its official drawings. On a laptop CPU, YOLOv8n takes about 100 ms per frame; it still has to be measured on the Pi 5.",
       "La concordancia entre solucionadores es una verificación numérica, no una certificación de la máquina. Las secciones, el material y parte de la geometría son supuestos; no se evalúan todos los mecanismos ni modos de fallo. El modelo de Ansys MAPDL está preparado, pero no se resolvió por falta de licencia vigente.": "Agreement between solvers is a numerical check, not machine certification. Sections, material and parts of the geometry are assumed; not all mechanisms or failure modes are evaluated. The Ansys MAPDL model is prepared but was not solved because a valid license was unavailable.",
       "La experiencia detrás de los proyectos.": "The experience behind projects.",
       "La experiencia en Flanders Electric Perú de diciembre de 2024 a marzo de 2025 constituye el antecedente del prototipo a escala. La extensión de 2026 reconstruye digitalmente la Bucyrus 49HR y demuestra un flujo de modelado y monitoreo. Los renders y el video de esta ficha corresponden a esa extensión virtual.": "The December 2024–March 2025 experience at Flanders Electric Perú provides the background for the scale prototype. The 2026 extension digitally reconstructs the Bucyrus 49HR and demonstrates a modeling and monitoring workflow. The renderings and video on this page belong to that virtual extension.",
@@ -2075,10 +2432,13 @@
       "La revisión C elimina la manguera y sitúa una jeringa de 10 mL sobre el carro X. Es un diseño preliminar sin planos; la masa calculada de 1,42 kg sobre el carro exige verificar el eje y el pórtico.": "Revision C removes the hose and places a 10 mL syringe on the X carriage. It is a preliminary design without drawings; the calculated carriage-mounted mass of 1.42 kg requires checks of the axis and gantry.",
       "La siguiente validación requiere calibración con datos reales y mayor detalle de los subsistemas. El código y los supuestos están en el repositorio enlazado, cuyo acceso es privado. Las evidencias seleccionadas se pueden consultar directamente en esta ficha.": "Further validation requires calibration with real data and greater subsystem detail. Code and assumptions are in the linked repository, which requires private access. The selected evidence can be viewed directly on this page.",
       "La simulación integra traslado sobre orugas, nivelación con cuatro gatos, levante del mástil con dos cilindros, avance del cabezal y retiro de la columna. Representa un paso de 20 m y posiciones de perforación entre 65° y 90°. Son estados generados por el modelo, sin mediciones de campo.": "The simulation combines crawler tramming, leveling on four jacks, mast raising with two cylinders, head feed and drill-string withdrawal. It represents a 20 m single pass and drilling positions between 65° and 90°. These are model-generated states without field measurements.",
+      "La versión inicial frenaba cuando el área de la caja superaba 45 000 píxeles², suponiendo que eso ocurría a unos 2 m. Con la cámara a 1,6 m de altura, los pies del peatón salen de la imagen por debajo de 4 m y la caja se recorta: el umbral se dispara recién a 1,12 m, demasiado tarde para frenar con margen. Ahora la distancia se estima con el ancho de la caja, que no se recorta hasta 0,36 m.": "The initial version braked when the box area exceeded 45,000 pixels², assuming that happened at about 2 m. With the camera 1.6 m high, the pedestrian’s feet leave the image below 4 m and the box gets cropped: the threshold only fires at 1.12 m, too late to brake with margin. Distance is now estimated from the box width, which is not cropped until 0.36 m.",
       "Ladder (LAD)": "Ladder (LAD)",
       "Las fotografías, videos y documentos de este trabajo aún no están publicados. La descripción recoge mi participación según el CV; la portada es una ilustración conceptual.": "The photographs, videos and documents of this work are not yet published. The description shows my participation according to the CV; the cover is a conceptual illustration.",
       "Las imágenes de esta ficha proceden del artículo de Ricardo Barreto, Jose Cornejo, Mariela Vargas, Nicolas Gastello y Anghello Rodriguez. Se conservan los números de figura y sus rótulos originales; las leyendas del portafolio son resúmenes bilingües. La portada reproduce la figura 10.": "The images on this page come from the article by Ricardo Barreto, Jose Cornejo, Mariela Vargas, Nicolas Gastello and Anghello Rodriguez. Figure numbers and original labels are preserved; portfolio captions are bilingual summaries. The cover reproduces Figure 10.",
       "Las topologías cLAM, LCAM-2R y oLCAM proceden de Hou et al. (2024), Materials & Design, 237, 112530. El CAD de referencia de la Ender-3 es de Creality. Las imágenes de esta ficha son modelos y gráficos del estudio; el video es una simulación visual con tiempo acelerado.": "The cLAM, LCAM-2R and oLCAM topologies are from Hou et al. (2024), Materials & Design, 237, 112530. The Ender-3 reference CAD is from Creality. The images on this page are models and plots from the study; the video is a visual simulation with accelerated time.",
+      "Lazo cerrado: la cámara importa más que el rastreador": "Closed loop: the camera matters more than the tracker",
+      "Lazo cerrado: misma escena, dos diseños": "Closed loop: same scene, two designs",
       "Leer artículo": "Read article",
       "Leer el análisis de odometría": "Read the odometry analysis",
       "Leer el modelo y el diseño del control": "Read the model and control design",
@@ -2094,6 +2454,7 @@
       "Línea de prototipado / IA y control": "Prototyping / IA line and control",
       "MATLAB": "MATLAB",
       "MDPI · 2026": "MDPI · 2026",
+      "MOT17": "MOT17",
       "MS Project": "MS Project",
       "Manipuladores": "Manipulators",
       "Manufactura": "Manufacturing",
@@ -2128,15 +2489,20 @@
       "Modelo CAD preliminar con la unidad sobre el carro X. Reduce el recorrido de la pasta, pero añade una masa calculada de 1,42 kg; falta verificar su efecto en la impresora. No tiene todavía planos de fabricación.": "Preliminary CAD model with the unit on the X carriage. Shortens the paste path but adds a calculated mass of 1.42 kg; its effect on the printer remains to be checked. Manufacturing drawings are not yet available.",
       "Modelo CadQuery de la perforadora con el mástil en posición inclinada a 65°.": "CadQuery drill model with the mast inclined at 65°.",
       "Monitoreo con datos sintéticos": "Monitoring with synthetic data",
+      "Montaje sobre la WAVE ROVER": "Mounting on the WAVE ROVER",
       "Movilidad": "Mobility",
       "Movimiento y respuesta estructural": "Motion and structural response",
+      "Método OC-SORT (Cao et al., 2023)": "OC-SORT method (Cao et al., 2023)",
       "Métricas de cohesión, separación y contención": "Cohesion, separation and containment metrics",
       "NVIDIA Jetson Orin": "NVIDIA Jetson Orin",
       "Navegación principal": "Main navigation",
       "Notas y avances": "Notes and progress",
       "Nov. 2022 – feb. 2023": "Nov. 2022 – Feb. 2023",
+      "Nov. 2026 · simulación / diseño": "Nov. 2026 · simulation / design",
+      "OC-SORT": "OC-SORT",
       "OC-SORT · seguimiento de múltiples objetos": "OC-SORT · multiple object tracking",
       "ORCID": "ORCID",
+      "Oclusión de 1,5 s: SORT frente a OC-SORT": "1.5 s occlusion: SORT versus OC-SORT",
       "Oct. 2026": "Oct. 2026",
       "Oct. 2026 · diseño y simulación": "Oct. 2026 · design and simulation",
       "Oct. 2026 · estudio numérico": "Oct. 2026 · numerical study",
@@ -2155,14 +2521,19 @@
       "Panel con señales sintéticas de profundidad, velocidad de penetración, energía específica y presión. «Medida» identifica la señal generada para el ensayo del monitor, no un sensor real. El desgaste se inyecta desde 12 m y la alarma aparece a 14,6 m; el escenario nominal registrado no genera alarmas.": "Dashboard with synthetic depth, penetration-rate, specific-energy and pressure signals. “Measured” denotes the signal generated to test the monitor, not a real sensor. Wear is injected from 12 m and the alarm occurs at 14.6 m; the recorded nominal scenario produces no alarms.",
       "Panel de monitoreo del gemelo": "Digital twin monitoring dashboard",
       "Participación en el ensamblaje de un brazo robótico en ESAN R&D Labs.": "Participation in the assembly of a robotic arm in ESAN R & D Labs.",
-      "Participación en el proyecto de visión por computadora mencionado en el CV. Alcance de la implementación y contribución individual: por completar.": "Participation in the computer vision project mentioned in the CV. Scope of implementation and individual contribution: to be completed.",
       "Participación en prototipos de visión por computadora mediante Roboflow y sistemas embebidos en ESAN.": "Participation in computer vision prototypes using Roboflow and systems embedded in ESAN.",
       "Participación en proyectos de robótica aplicada, incluyendo extrusión 3D con biomateriales, ensamblaje de brazo robótico y prototipos de visión por computadora mediante Roboflow y sistemas embebidos.": "Participation in applied robotics projects, including 3D extrusion with biomaterials, robotic arm assembly and computer vision prototypes through Roboflow and embedded systems.",
       "Participación en pruebas y actividades de integración del Sistema de Control de Actitud y Órbita (AOCS) del proyecto Chasqui 2. Verificación de datos, documentación técnica y soporte a actividades de investigación orientadas a la integración de subsistemas.": "Participation in tests and integration activities of the Attitude and Orbit Control System (AOCS) of the Chasqui 2 project. Data verification, technical documentation and support for research activities aimed at the integration of subsystems.",
+      "Participé en la versión grupal del curso (Grupo 4, USIL), que propuso la arquitectura Raspberry Pi 5 + ESP32 con OC-SORT. En noviembre de 2026 la retomé: implementé y verifiqué el rastreador, diseñé los experimentos de oclusión y de lazo cerrado, rehice el dimensionamiento de la cámara y diseñé el esquemático, el firmware y el montaje mecánico. El método OC-SORT es de Cao et al. (2023); no se atribuye su autoría.": "I took part in the course group version (Group 4, USIL), which proposed the Raspberry Pi 5 + ESP32 architecture with OC-SORT. In November 2026 I picked it up again: I implemented and verified the tracker, designed the occlusion and closed-loop experiments, redid the camera sizing and designed the schematic, firmware and mechanical mounting. The OC-SORT method is by Cao et al. (2023); no authorship of it is claimed.",
       "Pastoreo con odometría — animación de trayectorias": "Odometry-based shepherding — trajectory animation",
+      "Percepción de peatones para un robot móvil pequeño: detección con YOLOv8n, seguimiento multiobjeto con OC-SORT y una lógica de frenado que usa lo que ve la cámara. Verificación con datos reales de MOT17, oclusiones controladas y simulación en lazo cerrado, más la electrónica y el montaje sobre una Waveshare WAVE ROVER.": "Pedestrian perception for a small mobile robot: YOLOv8n detection, OC-SORT multi-object tracking and a braking logic driven by what the camera sees. Verified with real MOT17 data, controlled occlusions and closed-loop simulation, plus the electronics and mounting on a Waveshare WAVE ROVER.",
       "Phyto-G propone reorientar una cámara acuática mediante tres marcos anidados, accionados por un solo motor. Las conexiones giratorias de agua y alimentación eléctrica buscan permitir experimentos prolongados sin interrumpir la rotación para reponer recursos.": "Phyto-G proposes reorienting an aquatic chamber through three nested frames driven by a single motor. Rotary water and electrical connections are intended to support extended experiments without interrupting rotation to replenish resources.",
       "Phyto-G — agricultura espacial": "Phyto-G — space agriculture",
+      "Plano A3 con lista de materiales y globos; los planos de detalle de las piezas impresas están en el repositorio del proyecto.": "A3 drawing with bill of materials and balloons; detail drawings of the printed parts are in the project repository.",
+      "Plano de conjunto": "Assembly drawing",
+      "Plano de conjunto del robot con lista de materiales.": "Robot assembly drawing with bill of materials.",
       "Platzi": "Platzi",
+      "Por qué el umbral de área fallaba": "Why the area threshold failed",
       "Power BI": "Power BI",
       "Practicante Integrador Industrial": "Industrial Integration Intern",
       "Practicante en Investigación y Desarrollo (I+D)": "Research and Development (R&D) Intern",
@@ -2183,10 +2554,8 @@
       "Prototipos de visión por computadora mediante Roboflow y sistemas embebidos.": "Computer vision prototypes using Roboflow and embedded systems.",
       "Proyecto": "Project",
       "Proyecto / Aeroespacial": "Project / Aerospace",
-      "Proyecto / IA y control": "Project / AI and control",
       "Proyecto / Manufactura": "Project / Manufacturing",
       "Proyecto / Robótica": "Project / Robotics",
-      "Proyecto de visión por computadora referido en el CV como “Observation-Centric SORT: Rethinking SORT for Robust Multi-Object Tracking”.": "Computer vision project referred to in the CV as \"Observation-Centric SORT: Rethinking SORT for Robust Multi-Object Tracking.\"",
       "Proyectos": "Projects",
       "Proyectos académicos de robótica, visión por computadora, control y simulación en USIL, IEEE USIL y grupos de investigación.": "Academic projects in robotics, computer vision, control and simulation in USIL, IEEE USIL and research groups.",
       "Proyectos aplicados de Sistemas Mecatrónicos": "Applied Mechatronic Systems Projects",
@@ -2204,6 +2573,8 @@
       "Publicación y crédito de las figuras": "Publication and figure credits",
       "PyNite": "PyNite",
       "Python": "Python",
+      "Qué parte de OC-SORT ayuda": "Which part of OC-SORT helps",
+      "Qué pasa cuando alguien queda oculto": "What happens when someone is occluded",
       "Qué queda por validar": "What remains to be validated",
       "Qué se desarrolló": "What was developed",
       "REGISTRO DEL TRABAJO": "PROJECT RECORD",
@@ -2212,9 +2583,12 @@
       "ROS 2": "ROS 2",
       "ROS 2 Humble": "ROS 2 Humble",
       "Raspberry Pi": "Raspberry Pi",
+      "Raspberry Pi 5": "Raspberry Pi 5",
       "Realidad Aumentada (AR)": "Augmented Reality (AR)",
       "Reconstrucción y documentación del modelo del robot, el control de velocidad, la odometría y el comportamiento ovejas–lobo. Se reúnen código, registros y comparaciones de simulación; las fotografías del laboratorio aportan contexto de la plataforma física.": "Reconstruction and documentation of the robot model, speed control, odometry and sheep–wolf behavior. Includes code, logs and simulation comparisons; laboratory photographs provide context for the physical platform.",
+      "Recorrido de 82 s: punto de partida grupal, verificación del rastreador, oclusión, lazo cerrado, electrónica y render del montaje. Todo es simulación o render; no es una grabación del robot.": "82 s walkthrough: group starting point, tracker verification, occlusion, closed loop, electronics and mounting render. Everything is simulation or render; it is not footage of the robot.",
       "Recorrido de los cinco agentes y del pastor en Gazebo. Aunque el control utiliza odometría, la gráfica muestra las posiciones de referencia del simulador para evaluar el resultado.": "Paths of the five agents and the shepherd in Gazebo. Although control uses odometry, the plot shows the simulator’s reference positions to evaluate the outcome.",
+      "Recuperación de identidad frente a la duración de la oclusión": "Identity recovery versus occlusion length",
       "Referencia y atribución": "References and attribution",
       "Referencias y recursos": "References and resources",
       "Registro del mismo escenario de pastoreo con odometría: llegada a los 43,8 s, cero colisiones registradas y contención completa durante 60 s. Estos valores describen ese ensayo; no garantizan el comportamiento físico.": "Log from the same odometry-based shepherding scenario: arrival at 43.8 s, zero recorded collisions and full containment for 60 s. These values describe that trial; they do not guarantee physical behavior.",
@@ -2222,6 +2596,10 @@
       "Remoto": "Remote",
       "Render CadQuery con el mástil abatido y geometría envolvente. La longitud de transporte es una de las discrepancias documentadas entre el modelo y la tabla de referencia; no se oculta como una cota validada.": "CadQuery rendering with the mast lowered and envelope-level geometry. Transport length is one of the documented discrepancies between the model and the reference table; it is not presented as a validated dimension.",
       "Render del modelo CadQuery de la Bucyrus 49HR con altura adoptada de 31,22 m; representación envolvente, no fotografía del prototipo físico.": "Rendering of the CadQuery Bucyrus 49HR model with an adopted height of 31.22 m; an envelope-level representation, not a photograph of the physical prototype.",
+      "Render del robot con un sector translúcido azul y un peatón esquemático delante.": "Robot render with a translucent blue sector and a schematic pedestrian in front.",
+      "Render del robot: cámara gran angular en un mástil y Raspberry Pi 5 bajo su tapa sobre la WAVE ROVER, con el campo de visión en azul. Es un render, no una fotografía.": "Robot render: wide-angle camera on a mast and Raspberry Pi 5 under its cover on the WAVE ROVER, with the field of view in blue. This is a render, not a photograph.",
+      "Render isométrico del robot con el mástil de la cámara y la tapa de la Raspberry Pi.": "Isometric render of the robot with the camera mast and the Raspberry Pi cover.",
+      "Render: el sector azul es lo que ve la cámara a 350 mm del suelo; un peatón cruza a 1,5 m. Modelo del chasis tomado del STL oficial de Waveshare.": "Render: the blue sector is what the camera sees from 350 mm above the ground; a pedestrian crosses at 1.5 m. Chassis model from the official Waveshare STL.",
       "Repositorio": "Repository",
       "Repositorio · acceso restringido": "Repository · restricted access",
       "Representación de estudiantes y apoyo en actividades de IEEE Perú Section, RNR e INTERCON.": "Student representation and support in IEEE Peru Section, RNR and INTERCON activities.",
@@ -2233,7 +2611,10 @@
       "Respuesta simulada del motor con control PI, saturación y cuantización.": "Simulated motor response with PI control, saturation and quantization.",
       "Resultados con contexto": "Results in context",
       "Resultados documentados": "Documented results",
+      "Resumen descriptivo: a la izquierda SORT y a la derecha OC-SORT siguen a una multitud. El peatón marcado en ámbar deja de detectarse durante 1,5 s. Al volver, SORT muestra «identidad perdida» y OC-SORT «identidad recuperada». Trayectorias de MOT17 con detector simulado.": "Descriptive summary: SORT on the left and OC-SORT on the right track a crowd. The amber-marked pedestrian stops being detected for 1.5 s. When they return, SORT shows “identity lost” and OC-SORT “identity recovered”. MOT17 trajectories with a simulated detector.",
       "Resumen descriptivo: el modelo se traslada con el mástil abatido, se nivela sobre los gatos, eleva el mástil, avanza y retira la columna de perforación y cambia a una posición inclinada. La secuencia es una animación CAD; no es filmación de una máquina real.": "Descriptive summary: the model moves with its mast lowered, levels on its jacks, raises the mast, advances and withdraws the drill string, and changes to an inclined position. The sequence is a CAD animation, not footage of a real machine.",
+      "Resumen descriptivo: en ambos paneles el robot avanza a 1 m/s. A la izquierda el peatón entra tarde en la imagen y hay impacto. A la derecha el robot lo detecta, ordena frenar y se detiene sin impacto.": "Descriptive summary: in both panels the robot moves at 1 m/s. On the left the pedestrian enters the image late and there is an impact. On the right the robot detects them, commands braking and stops without impact.",
+      "Resumen descriptivo: láminas con el planteamiento y los resultados, una animación en la que SORT pierde y OC-SORT recupera la identidad de un peatón oculto 1,5 s, una vista en planta donde la lógica original choca y la nueva frena, el esquemático y un recorrido 3D del montaje sobre la WAVE ROVER.": "Descriptive summary: slides with the approach and results, an animation in which SORT loses and OC-SORT recovers the identity of a pedestrian hidden for 1.5 s, a top view where the original logic collides and the new one brakes, the schematic and a 3D tour of the mounting on the WAVE ROVER.",
       "Resumen descriptivo: se presenta la geometría auxética, el conjunto mecánico y la electrónica; el motor mueve la transmisión y el husillo, el carro empuja el émbolo y la simulación muestra la deposición de pasta. Las magnitudes mostradas proceden del modelo numérico; el tiempo y la deformación visual están escalados.": "Descriptive summary: the auxetic geometry, mechanical assembly and electronics are introduced; the motor drives the transmission and lead screw, the carriage pushes the plunger and the simulation shows paste deposition. Displayed quantities come from the numerical model; time and visible deformation are scaled.",
       "Reticulado del mástil y su deformación calculada al iniciar el levante.": "Mast lattice and its calculated deformation at the start of raising.",
       "Retrato de Anghello Eduardo Rodríguez Risco": "Portrait of Anghello Eduardo Rodríguez Risco",
@@ -2260,6 +2641,7 @@
       "SKILLS": "SKILLS",
       "SLAM": "SLAM",
       "SOLIDWORKS": "SOLIDWORKS",
+      "SORT predice el movimiento de cada persona con un filtro de Kalman de velocidad constante y asocia cada predicción con la detección que más se superpone. Cuando la persona desaparece, el filtro sigue extrapolando y el error crece. OC-SORT corrige eso con tres piezas: ORU vuelve a ajustar el filtro con una trayectoria virtual al reaparecer la persona; OCM añade al costo de asociación la coherencia de la dirección observada; y OCR intenta asociar las pistas perdidas con su última observación real.": "SORT predicts the movement of each person with a constant speed Kalman filter and associates each prediction with the most overlapping detection. When the person disappears, the filter continues to extrapolate and the error grows. OC-SORT fixes that with three pieces: ORU readjusts the filter with a virtual path when the person reappears; COM adds to the cost of association the coherence of the observed direction; and OCR tries to associate the lost tracks with its last real observation.",
       "STM32": "STM32",
       "Saildrone": "Saildrone",
       "Saltar al contenido": "Skip to content",
@@ -2269,7 +2651,7 @@
       "Sección de la unión giratoria del primer marco con conducto de agua y eje hueco.": "Cross-section of the first-frame rotary joint with water passage and hollow shaft.",
       "Section Student Representative (SSR)": "Section Student Representative (SSR)",
       "Secuencia de posiciones del clinostato y perfil de velocidad impuesto al eje externo en SOLIDWORKS. Es una verificación cinemática preliminar por simulación. Figura 11 de Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.": "Clinostat position sequence and speed profile imposed on the outer axis in SOLIDWORKS. This is a preliminary kinematic check through simulation. Figure 11 from Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.",
-      "Seguimiento de objetos": "Object tracking",
+      "Seguimiento multiobjeto": "Multi-object tracking",
       "Sensores y actuadores": "Sensors and actuators",
       "Sensores, visión, control de procesos y movimiento, neumática y oleohidráulica en laboratorios de sistemas mecatrónicos.": "Sensors, vision, process and motion control, pneumatics and hydraulics in mechatronic systems laboratories.",
       "Señales EMG, ECG y EOG": "EMG, ECG and EOG signals",
@@ -2278,6 +2660,7 @@
       "Simulación de movimiento a 10 rpm": "Motion simulation at 10 rpm",
       "Simulación de sistemas dinámicos no lineales aplicada a la investigación en física de partículas.": "Simulation of dynamic non-linear systems applied to particle physics research.",
       "Simulink": "Simulink",
+      "Simulé 300 escenas en las que un peatón cruza delante del robot y pasa detrás de una columna. Con una cámara de 70°, el peatón que llega por el costado entra en la imagen cuando ya está a menos de un metro y ninguna lógica baja de 26 % de choques. La lógica original, que gira hacia el lado contrario, choca más que no hacer nada (29–36 %). Con una cámara de 110° y una lógica que estima la velocidad lateral de cada pista y frena si el peatón estará en el camino, los choques bajan a 0–0,7 %. SORT y OC-SORT dan el mismo resultado: la identidad cambia por el movimiento de la propia cámara, pero la nueva lógica frena igual.": "I simulated 300 scenes in which a pedestrian crosses in front of the robot and passes behind a column. With a 70° camera, a pedestrian approaching from the side enters the image when already less than a meter away and no logic gets below 26% collisions. The original logic, which steers to the opposite side, collides more than doing nothing (29–36%). With a 110° camera and a logic that estimates each track’s lateral speed and brakes if the pedestrian will be in the path, collisions drop to 0–0.7%. SORT and OC-SORT give the same result: identity changes due to the camera’s own motion, but the new logic brakes anyway.",
       "Sistemas autónomos": "Autonomous systems",
       "Sistemas bioinspirados": "Bioinspired systems",
       "Sistemas de control y robótica para aplicaciones espaciales.": "Control and robotic systems for space applications.",
@@ -2298,8 +2681,10 @@
       "También en": "Also in",
       "También se estudia la oscilación de rumbo del enjambre. Las correcciones incluyen separación continua y promediada, zona muerta y ajustes de marcha atrás, para reducir oscilaciones inducidas por fuerzas virtuales y retardo.": "Swarm heading oscillation is also studied. Corrections include continuous, averaged separation, a deadband and reverse-motion adjustments to reduce oscillations caused by virtual forces and delay.",
       "Tecnológico de Monterrey": "Tecnológico de Monterrey",
+      "Todo es simulación y diseño: no hay robot armado ni ensayos. Faltan medir la cadena completa en la Raspberry Pi 5 con un detector cuantizado, compensar el movimiento propio de la cámara, probar con varios peatones y validar en un pasillo real.": "Everything is simulation and design: there is no assembled robot and no tests. Still to do: measure the full pipeline on the Raspberry Pi 5 with a quantized detector, compensate for the camera’s own motion, test with several pedestrians and validate in a real hallway.",
       "Todos": "All",
       "Todos los proyectos": "All projects",
+      "Tomé trayectorias reales de peatones de": "I took real pedestrian trajectories from",
       "Trabajo presentado en CITIIC 2023, según el CV.": "Work presented in CITIIC 2023, according to CV.",
       "Trabajo relacionado": "Related work",
       "Transcripción": "Transcription",
@@ -2307,44 +2692,55 @@
       "Trayectoria y CV | Anghello Rodríguez": "Background and CV | Anghello Rodríguez",
       "Trayectorias de cinco robots oveja y un pastor hacia el corral.": "Trajectories of five sheep robots and a shepherd toward the pen.",
       "Trayectorias del ensayo de pastoreo": "Shepherding trial trajectories",
+      "Tres gráficas, a 30, 15 y 10 FPS, con la recuperación de identidad de SORT y OC-SORT.": "Three plots, at 30, 15 and 10 FPS, with SORT and OC-SORT identity recovery.",
       "Tres posiciones simuladas del clinostato y gráfica de velocidad angular constante.": "Three simulated clinostat positions and a constant angular-velocity plot.",
       "Tu navegador no reproduce este video.": "Your browser does not play this video.",
       "UAV": "UAV",
       "USIL": "USIL",
       "USIL / IEEE": "USIL / IEEE",
+      "USIL 2022–2025 (trabajo grupal) · ampliación nov. 2026": "USIL 2022–2025 (group work) · extended Nov. 2026",
       "USIL · SIU": "USIL · SIU",
       "Ubicación": "Location",
       "Ulva, Pyropia, Chlorella y Arthrospira se discuten como candidatos de estudio, no como cultivos ensayados en este trabajo. La clinorrotación proporciona un análogo terrestre: no elimina la gravedad ni reproduce todas las condiciones espaciales. Quedan por caracterizar la respuesta biológica, la circulación de agua y el funcionamiento integrado en experimentos controlados.": "Ulva, Pyropia, Chlorella and Arthrospira are discussed as study candidates, not as cultures tested in this work. Clinorotation provides an Earth-based analog: it does not eliminate gravity or reproduce all space conditions. Biological response, water circulation and integrated operation remain to be characterized in controlled experiments.",
       "Un comportamiento colectivo medible": "Measurable collective behavior",
+      "Un robot que circula entre personas necesita tres cosas: detectar a cada peatón en la imagen, saber que es la misma persona de un cuadro a otro aunque alguien la tape un momento, y decidir a tiempo si debe frenar. La cámara envía 30 cuadros por segundo; YOLOv8n encuentra las cajas de cada persona y el rastreador las une en trayectorias con identidad.": "A robot moving among people needs three things: detect each pedestrian in the image, know it is the same person from one frame to the next even when someone briefly blocks the view, and decide in time whether to brake. The camera delivers 30 frames per second; YOLOv8n finds each person’s bounding box and the tracker links them into trajectories with an identity.",
       "Una plataforma terrestre para investigación espacial": "An Earth-based platform for space research",
       "Una trayectoria de construcción": "A path of learning and building",
       "Unidad extrusora — vista explosionada": "Extrusion unit — exploded view",
       "Universidad Nacional Agraria La Molina": "Universidad Nacional Agraria La Molina",
       "Universidad San Ignacio de Loyola": "Universidad San Ignacio de Loyola",
       "Unión giratoria para el suministro de agua": "Rotary joint for water supply",
+      "Unos 165 ensayos válidos por punto, con bandas de confianza del 95 %. Desde 1,5 s OC-SORT supera a SORT con significación estadística.": "About 165 valid trials per point, with 95% confidence bands. From 1.5 s on, OC-SORT outperforms SORT with statistical significance.",
       "Velero autónomo — Saildrone": "Autonomous sailboat — Saildrone",
       "Ver artículo y figura original": "View article and original figure",
       "Ver experiencia completa": "See full experience",
       "Ver experiencia relacionada": "See related experience",
       "Ver ficha": "View project",
       "Ver trayectoria y CV": "View background and CV",
+      "Ver, seguir y decidir": "See, track and decide",
       "Video de 1 min 36 s con diseño, mecanismo e impresión simulada de la revisión B. El tiempo está acelerado y la deformación del módulo se amplía ×10 para visualizarla. La cifra de factor de seguridad ≥ 7,5 de la lámina corresponde a las piezas de aluminio, no al módulo auxético. No es una grabación de un prototipo.": "A 1 min 36 s video showing the design, mechanism and simulated printing with Revision B. Time is accelerated and module deformation is magnified ×10 for visibility. The safety factor ≥ 7.5 shown on the slide applies to the aluminum parts, not the auxetic module. This is not footage of a prototype.",
+      "Video del proyecto — simulaciones y diseño": "Project video — simulations and design",
       "Visión por computadora": "Computer vision",
       "Visión por computadora aplicada": "Applied computer vision",
       "Visión por computadora y sistemas embebidos": "Computer vision and embedded systems",
-      "Visión por computadora — OC-SORT": "Computer vision — OC-SORT",
+      "Visión por computadora — seguimiento de peatones con OC-SORT": "Computer vision — pedestrian tracking with OC-SORT",
+      "Visión, simulación y diseño": "Vision, simulation and design",
+      "Visión, simulación y diseño / IA y control": "Vision, simulation and design / AI and control",
       "Vista CAD del interior del tanque con portamuestras verdes y soportes amarillos.": "CAD view inside the tank with green sample holders and yellow supports.",
       "Vista del modelo vigente con el mástil inclinado. La representación cinemática posiciona los subsistemas; las formas de cabina, sala de máquinas y orugas permanecen simplificadas.": "View of the current model with the mast inclined. The kinematic representation positions the subsystems; cab, machinery-house and crawler shapes remain simplified.",
+      "Vista en planta de una de las 300 escenas: con la cámara de 70° y la lógica original el robot choca; con 110° y la nueva lógica frena a 1,46 m del peatón.": "Top view of one of the 300 scenes: with the 70° camera and the original logic the robot collides; with 110° and the new logic it brakes 1.46 m from the pedestrian.",
       "Vista explosionada del conjunto mecánico con jeringa y módulo auxético.": "Exploded view of the mechanical assembly with syringe and auxetic module.",
       "Vista isométrica del modelo CAD del clinostato; no es una fotografía de hardware. Figura 10 de Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.": "Isometric view of the clinostat CAD model; this is not a hardware photograph. Figure 10 from Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.",
       "Visualización animada a partir del registro de Gazebo con cinco ovejas y un lobo guiados por odometría. Los trazos representan posiciones de referencia del simulador. Conversión del GIF original a video para reproducirlo en la web; no es filmación del laboratorio.": "Animated visualization from the Gazebo log with five sheep and one wolf controlled using odometry. Traces show the simulator’s reference positions. The original GIF was converted to video for web playback; this is not laboratory footage.",
       "Vol. 11 · N.º 5": "Vol. 11 · No. 5",
       "Volver al inicio ↑": "Back to home ↑",
       "WinCC": "WinCC",
+      "YOLOv8": "YOLOV8",
       "anghello.rodriguez@ieee.org": "anghello.rodriguez@ieee.org",
       "anghellorodriguez@gmail.com": "anghellorodriguez@gmail.com",
       "© 2026 Anghello Rodríguez": "© 2026 Anghello Rodríguez",
       "Área de conocimientos e interés. Los proyectos específicos de prótesis, exoesqueletos o dispositivos biomédicos están pendientes de documentar.": "Area of knowledge and interest. Specific prostheses, exoskeletons or biomedical devices projects are pending documentation.",
+      "Área de la caja frente a la distancia: cuando el peatón no cabe en la imagen, el área deja de crecer y el umbral de 45 000 px² se dispara a 1,12 m en lugar de 2 m.": "Box area versus distance: when the pedestrian no longer fits in the image, the area stops growing and the 45,000 px² threshold fires at 1.12 m instead of 2 m.",
       "Áreas de especialización": "Areas of specialization",
       "Áreas que conectan mi trabajo": "Areas that connect my work",
       "Chasqui 2 — AOCS | Anghello Rodríguez": "Chasqui 2 — AOCS | Anghello Rodríguez",
@@ -2369,9 +2765,9 @@
       "Ver proyecto: Robot de servicio para estudiantes": "View project: Service robot for students",
       "Ver proyecto: Velero autónomo — Saildrone": "View project: Autonomous sailboat — Saildrone",
       "Ver proyecto: Visión por computadora y sistemas embebidos": "View project: Computer vision and embedded systems",
-      "Ver proyecto: Visión por computadora — OC-SORT": "View project: Computer vision — OC-SORT",
+      "Ver proyecto: Visión por computadora — seguimiento de peatones con OC-SORT": "View project: Computer vision — pedestrian tracking with OC-SORT",
       "Visión por computadora y sistemas embebidos | Anghello Rodríguez": "Computer vision and embedded systems | Anghello Rodríguez",
-      "Visión por computadora — OC-SORT | Anghello Rodríguez": "Computer vision — OC-SORT | Anghello Rodríguez"
+      "Visión por computadora — seguimiento de peatones con OC-SORT | Anghello Rodríguez": "Computer vision — pedestrian tracking with OC-SORT | Anghello Rodríguez"
     }
   }
 }
