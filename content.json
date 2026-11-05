@@ -914,26 +914,243 @@
     {
       "id": "saildrone",
       "code": "11 / ROBÓTICA",
-      "title": "Velero autónomo — Saildrone",
+      "title": "Velero autónomo «Belén» — Saildrone USIL",
       "institution": "GIIM / USIL",
-      "period": "Etapa de investigación USIL · 2022–2025",
+      "period": "USIL · 2023 (trabajo grupal)",
       "category": "Robótica",
-      "description": "Desarrollo y construcción de un velero autónomo no tripulado.",
-      "contribution": "Desarrollo y construcción en el Grupo de Investigación de Ingeniería Mecatrónica, para la primera regata de veleros autónomos no tripulados organizada por la Marina de Guerra del Perú.",
+      "description": "Velero autónomo no tripulado de 3,30 m construido en 2023 por estudiantes y docentes de Ingeniería de USIL para la Primera Regata de Veleros No Tripulados que promovió la Marina de Guerra del Perú. Casco hecho con piezas impresas en 3D y revestido con fibra de vidrio, vela rígida y paneles solares.",
+      "contribution": "Formé parte del equipo de construcción del Grupo de Investigación de Ingeniería Mecatrónica (GIIM): junto con mis compañeros imprimí en 3D piezas del casco, las armé y apoyé en la fabricación y el montaje del velero. El diseño naval, la electrónica y el control los desarrollaron otros integrantes y especialistas del equipo, que dirigió el docente Nain Ramos Álvarez. Estuve en la presentación en el Centro Naval y en la Expo Drone Tech 2023.",
       "tags": [
+        "Robótica marina",
         "Saildrone",
-        "Sistemas autónomos"
+        "Sistemas autónomos",
+        "Impresión 3D",
+        "Fabricación",
+        "Fibra de vidrio"
       ],
-      "result": null,
-      "image": null,
+      "result": "Velero terminado y presentado en el Centro Naval de San Borja ante la Marina de Guerra del Perú (agosto de 2023), como uno de los cinco prototipos universitarios seleccionados entre quince instituciones; exhibido después en la Expo Drone Tech 2023 (noviembre de 2023). Datos publicados por USIL: eslora de 3,30 m, vela rígida de 1,80 m, ancho de 0,50 m y carga de hasta 100 kg.",
+      "image": "assets/images/d4d9e4e7348ce2c8b4fd7830bf9f35f63b69a7ff592c6610b1d7d5dc3b8e5453.webp",
+      "imageAlt": "Render del modelo 3D del velero: casco claro, vela rígida gris con un alerón de cola en dos brazos, panel solar en la popa, orza y timón. Es un render, no una fotografía.",
       "url": null,
       "repository": null,
-      "source": "CV, p. 2",
+      "source": "Notas públicas de USIL del 25/08/2023 y del 24/11/2023 (fotos con crédito a USIL) y modelo 3D del equipo, renderizado en noviembre de 2026.",
       "featured": false,
-      "kind": "Proyecto",
+      "kind": "Construcción y fabricación",
       "cover": "robotics",
       "experienceId": "usil",
-      "evidence": []
+      "body": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Un velero que navega solo"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Un velero autónomo, o saildrone, es una embarcación sin tripulación que avanza con el viento y recarga sus baterías con el sol. Puede pasar días en el mar recogiendo datos para la investigación oceánica. En 2023 la Marina de Guerra del Perú promovió la construcción de estos veleros en universidades peruanas para una primera regata de veleros no tripulados, y USIL construyó el suyo: el velero «Belén»."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Cómo está hecho"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "El casco mide 3,30 m de eslora y 0,50 m de ancho. Se fabricó con unas 120 piezas impresas en 3D en los laboratorios de Ingeniería, que luego se unieron y se revistieron con fibra de vidrio para darle resistencia y un acabado liso. En lugar de una vela de tela lleva una vela rígida de 1,80 m, con un pequeño alerón de cola que la orienta respecto al viento. Debajo del casco van la orza, que da estabilidad, y el timón. En la cubierta hay un panel solar, y el sistema de navegación usa GPS y una brújula para seguir puntos de ruta."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Mi parte: imprimir y armar"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Trabajé en la construcción junto con mis compañeros. Imprimimos piezas del casco y de la popa en las impresoras 3D de la universidad, las armamos y apoyamos en la fabricación y el montaje hasta tener el velero completo. Un casco de más de tres metros no cabe en una impresora, así que se dividió en piezas pequeñas que había que imprimir con cuidado y unir con precisión."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "El diseño naval, la electrónica y el control los desarrollaron otros integrantes y especialistas del equipo. El proyecto lo hicieron 24 estudiantes de Ingeniería, de primero a octavo ciclo, dirigidos por el docente Nain Ramos Álvarez."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Presentación y exhibición"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "En agosto de 2023 el velero se presentó en el Centro Naval de San Borja ante el comandante general de la Marina de Guerra del Perú, junto con los prototipos de otras cuatro universidades seleccionadas. En noviembre se exhibió en el pabellón de Ingeniería Mecatrónica de la Expo Drone Tech 2023, en la base aérea Las Palmas. Estuve en los dos eventos. "
+              },
+              {
+                "type": "text",
+                "text": "Nota de USIL sobre la presentación.",
+                "marks": [
+                  {
+                    "type": "link",
+                    "attrs": {
+                      "href": "https://blogs.usil.edu.pe/novedades/usil-presenta-velero-autonomo-para-la-investigacion-marina"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "text": " "
+              },
+              {
+                "type": "text",
+                "text": "Nota de USIL sobre la Expo Drone Tech.",
+                "marks": [
+                  {
+                    "type": "link",
+                    "attrs": {
+                      "href": "https://blogs.usil.edu.pe/novedades/expo-drone-tech-2023-estudiantes-ingenieria"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Sobre las imágenes"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Las fotos son de USIL y se publicaron en sus notas. Las imágenes del velero completo son renders del modelo 3D del equipo, no fotografías del velero construido."
+              }
+            ]
+          }
+        ]
+      },
+      "evidence": [
+        {
+          "title": "Modelo 3D del velero",
+          "date": "2023 · modelo 3D del equipo, render de nov. 2026",
+          "description": "Giro completo alrededor del ensamblaje general del equipo: casco, vela rígida con alerón de cola, anemómetro en el tope, panel solar, orza y timón. Es un render del CAD, no una grabación.",
+          "alt": "Animación del modelo 3D del velero girando sobre fondo blanco.",
+          "video": "assets/videos/fdfc8292d22da95253752c5561155e9cb5cb59ac616a66620e4515a748964d91.mp4",
+          "poster": "assets/images/9ece69f29e8c8768f7b952b5e1d01c9c3a6098f526a9eb5689ce05f21c1dfbfe.webp",
+          "transcript": "Resumen descriptivo: la cámara da una vuelta completa alrededor del velero en 10 segundos. Se ven el casco claro, la vela rígida gris, el alerón de cola sostenido por dos brazos, el anemómetro en el tope de la vela, el panel solar en la popa y, bajo el casco, la orza y el timón. Video sin audio.",
+          "sortOrder": 0
+        },
+        {
+          "title": "Fabricación en los laboratorios de USIL",
+          "date": "Ago. 2023 · foto de USIL",
+          "description": "Parte del casco impreso en 3D sobre la mesa y una impresora CoLiDo al fondo, en los laboratorios de Ingeniería de USIL. Foto: USIL.",
+          "alt": "Sala de laboratorio con una sección de casco amarilla sobre la mesa, varias personas de pie y una impresora 3D al fondo.",
+          "url": "https://blogs.usil.edu.pe/novedades/usil-presenta-velero-autonomo-para-la-investigacion-marina",
+          "linkLabel": "Nota de USIL (25/08/2023)",
+          "image": "assets/images/94c1a0ed8015d499b5309977e242507095fdd86c370f3e05518b365217fdf32e.webp",
+          "sortOrder": 1
+        },
+        {
+          "title": "Presentación en el Centro Naval",
+          "date": "Ago. 2023 · foto de USIL",
+          "description": "Presentación del velero «Belén» ante oficiales de la Marina de Guerra del Perú en el Centro Naval de San Borja, agosto de 2023. Foto: USIL.",
+          "alt": "Exposición con el velero y su banderola de fondo, ante oficiales navales y asistentes.",
+          "url": "https://blogs.usil.edu.pe/novedades/usil-presenta-velero-autonomo-para-la-investigacion-marina",
+          "linkLabel": "Nota de USIL (25/08/2023)",
+          "image": "assets/images/113f961fbd266b958b2b48ba460c97a4ae7283af056c990fbfe7e09b540208e1.webp",
+          "sortOrder": 2
+        },
+        {
+          "title": "Expo Drone Tech 2023",
+          "date": "Nov. 2023 · foto de USIL",
+          "description": "Pabellón de USIL en la Expo Internacional Drone Tech 2023, base aérea Las Palmas (Surco), donde se exhibió el saildrone junto con otros proyectos de Ingeniería Mecatrónica. Foto: USIL.",
+          "alt": "Estand de USIL con banderines del velero «Belén», estudiantes y autoridades.",
+          "url": "https://blogs.usil.edu.pe/novedades/expo-drone-tech-2023-estudiantes-ingenieria",
+          "linkLabel": "Nota de USIL (24/11/2023)",
+          "image": "assets/images/a6f3135312d7be6e61c2addcb7a85c716da01a881573dc6add44b4b1c065426c.webp",
+          "sortOrder": 3
+        },
+        {
+          "title": "Vista lateral",
+          "date": "2023 · modelo 3D del equipo, render de nov. 2026",
+          "description": "Perfil del velero: casco de 3,2 m en el modelo, vela rígida, alerón de cola en dos brazos, orza bajo el centro del casco y timón a popa. Render del modelo 3D del equipo.",
+          "alt": "Render lateral del velero sobre fondo blanco.",
+          "image": "assets/images/f65f785b32dcea8abe74536eb63c852d8ff1bf822b24310a6c6190e36d045cdc.webp",
+          "sortOrder": 4
+        },
+        {
+          "title": "Vista en planta",
+          "date": "2023 · modelo 3D del equipo, render de nov. 2026",
+          "description": "Cubierta vista desde arriba: panel solar en la popa y base de la vela rígida. Render del modelo 3D del equipo.",
+          "alt": "Render del velero visto desde arriba, con el panel solar azul en la popa.",
+          "image": "assets/images/4b88df684a2875485a08902f53ca710403a5210bb327574739b7df92995b923d.webp",
+          "sortOrder": 5
+        },
+        {
+          "title": "Cubierta y panel solar",
+          "date": "2023 · modelo 3D del equipo, render de nov. 2026",
+          "description": "Detalle de la cubierta con el panel solar que recarga las baterías y la base de la vela. Render del modelo 3D del equipo.",
+          "alt": "Render de cerca de la cubierta con el panel solar y la vela.",
+          "image": "assets/images/0e3d8b8d7252ff2467f1bf7ee1daf26df3fc77a9ae11cc89b2ed25925ec1f6a7.webp",
+          "sortOrder": 6
+        }
+      ]
     },
     {
       "id": "service",
@@ -2051,6 +2268,7 @@
       "10.3390/biomimetics11050340": "10.3390/biomimetics11050340",
       "14 de mayo de 2026": "14 May 2026",
       "2022–2026 · investigación, docencia e industria": "2022-2026 · research, teaching and industry",
+      "2023 · modelo 3D del equipo, render de nov. 2026": "2023 · team 3D model, rendered Nov. 2026",
       "300 escenas por barra. La lógica original choca igual o más que no reaccionar; con 110° y la lógica nueva los impactos caen a 0–0,7 %.": "300 scenes per bar. The original logic collides as much as or more than not reacting; with 110° and the new logic impacts fall to 0–0.7%.",
       "5 imágenes · 1 videos · 0 audios": "5 images · 1 videos · 0 audios",
       "6 imágenes · 1 videos · 0 audios": "6 images · 1 videos · 0 audios",
@@ -2069,6 +2287,7 @@
       "Advanced Control Systems": "Advanced Control Systems",
       "Aeroespacial": "Aerospace",
       "Aerospace": "Aerospace",
+      "Ago. 2023 · foto de USIL": "Aug. 2023 · photo by USIL",
       "Ago. – oct. 2025": "Aug. – Oct. 2025",
       "Agricultura espacial": "Space agriculture",
       "Alcance y próximos ensayos": "Scope and future testing",
@@ -2086,12 +2305,15 @@
       "Ampliar: Configuración de perforación a 65°": "Enlarge: Drilling configuration at 65°",
       "Ampliar: Configuración de transporte": "Enlarge: Transport configuration",
       "Ampliar: Control PI del motor — modelo no lineal": "Enlarge: Motor PI control — nonlinear model",
+      "Ampliar: Cubierta y panel solar": "Enlarge: Deck and solar panel",
       "Ampliar: Cámara acuática y distribución de muestras": "Enlarge: Aquatic chamber and sample layout",
       "Ampliar: Electrónica de accionamiento y registro de fuerza": "Enlarge: Drive electronics and force logging",
       "Ampliar: Electrónica: Pi 5, ESP32 y driver de motores": "Enlarge: Electronics: Pi 5, ESP32 and motor driver",
       "Ampliar: Escenas con impacto según cámara y lógica": "Enlarge: Scenes with impact by camera and logic",
+      "Ampliar: Expo Drone Tech 2023": "Enlarge: Drone Tech 2023 Expo",
       "Ampliar: FEA — desplazamiento del ensamble": "Enlarge: FEA — assembly displacement",
       "Ampliar: FEA — distribución de tensiones": "Enlarge: FEA — stress distribution",
+      "Ampliar: Fabricación en los laboratorios de USIL": "Enlarge: Fabrication in the USIL labs",
       "Ampliar: La plataforma física en el laboratorio": "Enlarge: The physical platform in the laboratory",
       "Ampliar: Levante del mástil — modelo estructural": "Enlarge: Mast raising — structural model",
       "Ampliar: Montaje sobre la WAVE ROVER": "Enlarge: Mounting on the WAVE ROVER",
@@ -2100,6 +2322,7 @@
       "Ampliar: Panel de monitoreo del gemelo": "Enlarge: Digital twin monitoring dashboard",
       "Ampliar: Plano de conjunto": "Enlarge: Assembly drawing",
       "Ampliar: Por qué el umbral de área fallaba": "Enlarge: Why the area threshold failed",
+      "Ampliar: Presentación en el Centro Naval": "Enlarge: Presentation at the Naval Center",
       "Ampliar: Qué parte de OC-SORT ayuda": "Enlarge: Which part of OC-SORT helps",
       "Ampliar: Recuperación de identidad frente a la duración de la oclusión": "Enlarge: Identity recovery versus occlusion length",
       "Ampliar: Revisión C — alternativa sin manguera": "Enlarge: Revision C — hose-free alternative",
@@ -2107,6 +2330,8 @@
       "Ampliar: Trayectorias del ensayo de pastoreo": "Enlarge: Shepherding trial trajectories",
       "Ampliar: Unidad extrusora — vista explosionada": "Enlarge: Extrusion unit — exploded view",
       "Ampliar: Unión giratoria para el suministro de agua": "Enlarge: Rotary joint for water supply",
+      "Ampliar: Vista en planta": "Enlarge: Top view",
+      "Ampliar: Vista lateral": "Enlarge: Side view",
       "Anghello Rodríguez": "Anghello Rodríguez",
       "Anghello Rodríguez | Research & Engineering Portfolio": "Anghello Rodríguez | Research & Engineering Portfolio",
       "Anghello Rodríguez, inicio": "Anghello Rodríguez, home",
@@ -2173,6 +2398,8 @@
       "Conectemos ideas.": "Let's connect ideas.",
       "Configuración de perforación a 65°": "Drilling configuration at 65°",
       "Configuración de transporte": "Transport configuration",
+      "Construcción y fabricación": "Construction and fabrication",
+      "Construcción y fabricación / Robótica": "Construction and fabrication / Robotics",
       "Construyamos posibilidades.": "Let's build possibilities.",
       "Consultar certificados": "View certificates",
       "Consultar el artículo de referencia": "Read the reference article",
@@ -2191,11 +2418,14 @@
       "Cuadrúpedo": "Quadruped",
       "Cuadrúpedo para terrenos complejos": "Quadruped robot for challenging terrain",
       "Cuatro gráficos del panel del gemelo: profundidad, velocidad de penetración, energía específica y presión de cilindros": "Four dashboard plots: depth, penetration rate, specific energy and cylinder pressure",
+      "Cubierta vista desde arriba: panel solar en la popa y base de la vela rígida. Render del modelo 3D del equipo.": "Deck seen from above: solar panel at the stern and base of the rigid wing sail. Render of the team’s 3D model.",
+      "Cubierta y panel solar": "Deck and solar panel",
       "Curso el 9.º ciclo de Ingeniería Mecatrónica en USIL, con mención en Robótica Industrial, y el doble grado en Business Administration en San Ignacio University. Mi formación se complementa con una especialización en Sistemas Mecatrónicos en TECSUP. Tengo experiencia en I+D, diseño y fabricación de prototipos, robótica, control, automatización y manufactura digital. Participo en investigación en robótica espacial y AOCS y soy coautor de un artículo científico en Biomimetics.": "I am in my ninth semester of Mechatronics Engineering at USIL, with a concentration in Industrial Robotics, while pursuing a dual degree in Business Administration at San Ignacio University. My education also includes a specialization in Mechatronic Systems at TECSUP. I have experience in R&D, prototype design and fabrication, robotics, control, automation and digital manufacturing. I participate in space robotics and AOCS research and am a co-author of a scientific article in Biomimetics.",
       "Curvas de recuperación de identidad para SORT, OC-SORT y OC-SORT sin cada componente.": "Identity recovery curves for SORT, OC-SORT and OC-SORT without each component.",
       "Curvas de área de la caja frente a la distancia, con y sin recorte por el borde de la imagen.": "Box-area curves versus distance, with and without cropping at the image edge.",
       "Curvas simuladas de caudal y fuerza durante el arranque y la parada de la extrusión.": "Simulated flow-rate and force curves during extrusion startup and shutdown.",
       "Cámara acuática y distribución de muestras": "Aquatic chamber and sample layout",
+      "Cómo está hecho": "How it is built",
       "Cómo funciona OC-SORT": "How OC-SORT works",
       "DOI:": "DOI:",
       "De la imagen a la distancia": "From the image to distance",
@@ -2213,13 +2443,12 @@
       "Desarrollo de un robot de servicio guía como proyecto de robótica.": "Development of a guide service robot as a robotic project.",
       "Desarrollo de un robot de servicio para guiar y apoyar a nuevos estudiantes. Proyectos de visión por computadora basados en OC-SORT para el seguimiento de múltiples objetos.": "Development of a service robot to guide and support new students. Computer vision projects based on OC-SORT for multi-object tracking.",
       "Desarrollo e investigación de un cuadrúpedo orientado al transporte de objetos en terrenos desafiantes.": "Research and development of a quadruped robot for transporting objects over challenging terrain.",
-      "Desarrollo y construcción de un velero autónomo no tripulado.": "Development and construction of an autonomous unmanned sailboat.",
       "Desarrollo y construcción de un velero autónomo para la primera Regata de Veleros Autónomos No Tripulados, organizada por la Marina de Guerra del Perú.": "Development and construction of an autonomous sailboat for the first Unmanned Autonomous Sailboat Regatta, organized by the Peruvian Navy.",
-      "Desarrollo y construcción en el Grupo de Investigación de Ingeniería Mecatrónica, para la primera regata de veleros autónomos no tripulados organizada por la Marina de Guerra del Perú.": "Development and construction within the Mechatronics Engineering Research Group for the first unmanned autonomous sailboat regatta organized by the Peruvian Navy.",
       "Descargar BibTeX": "Download BibTeX",
       "Descargar CV actualizado": "Download updated CV",
       "Descargar video": "Download video",
       "Detalle conceptual de la unión del primer marco: entrada de agua, carcasa, sellos, rodamientos y eje hueco. Se propone mantener el suministro durante la rotación. Figura 2 de Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.": "Conceptual detail of the first-frame joint: water inlet, housing, seals, bearings and hollow shaft. Intended to maintain supply during rotation. Figure 2 from Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.",
+      "Detalle de la cubierta con el panel solar que recarga las baterías y la base de la vela. Render del modelo 3D del equipo.": "Detail of the deck with the solar panel that recharges the batteries and the base of the sail. Render of the team’s 3D model.",
       "Diagrama conceptual de Phyto-G con un motor, tres marcos, cámara y circuito de agua.": "Phyto-G conceptual diagram with one motor, three frames, a chamber and a water circuit.",
       "Diagrama de bloques de potencia, control, actuadores y sensores del clinostato.": "Block diagram of clinostat power, control, actuators and sensors.",
       "Diagrama del sistema propuesto: marcos, cámara acuática, transmisión, suministro eléctrico y circuito de filtración. Representa el concepto integrado, no un montaje experimental. Figura 1 de Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.": "Diagram of the proposed system: frames, aquatic chamber, transmission, electrical supply and filtration circuit. Represents the integrated concept, not an experimental setup. Figure 1 from Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.",
@@ -2262,6 +2491,8 @@
       "Educación": "Education",
       "El análisis comprende las cinco variantes G0–G4, compresión, rigidez, pandeo y respuesta dinámica. La electrónica está diseñada en KiCad: el eje E de la Ender-3 acciona el motor y un Arduino Nano con HX711 registra la fuerza. El firmware del registrador está compilado; no está probado en hardware y los cambios de Marlin siguen planificados.": "The analysis covers five variants, G0–G4, compression, stiffness, buckling and dynamic response. The electronics are designed in KiCad: the Ender-3 E axis drives the motor, while an Arduino Nano with an HX711 records force. The logger firmware has been compiled but has not been tested on hardware; Marlin changes remain planned.",
       "El artículo documenta el ensamble en SOLIDWORKS 2025, la cámara de muestras, el suministro de agua y una arquitectura eléctrica de 24 V. Propone bombas de entrada y salida, temperatura, pH, oxígeno disuelto, IMU y observación con cámara. La integración electrónica se presenta como diseño para implementación futura.": "The article documents the SOLIDWORKS 2025 assembly, sample chamber, water supply and a 24 V electrical architecture. It proposes inlet and outlet pumps, temperature, pH, dissolved-oxygen sensing, an IMU and camera observation. Electronic integration is presented as a design for future implementation.",
+      "El casco mide 3,30 m de eslora y 0,50 m de ancho. Se fabricó con unas 120 piezas impresas en 3D en los laboratorios de Ingeniería, que luego se unieron y se revistieron con fibra de vidrio para darle resistencia y un acabado liso. En lugar de una vela de tela lleva una vela rígida de 1,80 m, con un pequeño alerón de cola que la orienta respecto al viento. Debajo del casco van la orza, que da estabilidad, y el timón. En la cubierta hay un panel solar, y el sistema de navegación usa GPS y una brújula para seguir puntos de ruta.": "The hull is 3.30 m long and 0.50 m wide. It was made from about 120 3D-printed parts produced in the Engineering labs, which were then joined and covered with fiberglass for strength and a smooth finish. Instead of a fabric sail it carries a 1.80 m rigid wing sail, with a small tail flap that orients it to the wind. Below the hull are the keel, which provides stability, and the rudder. A solar panel sits on the deck, and the navigation system uses GPS and a compass to follow waypoints.",
+      "El diseño naval, la electrónica y el control los desarrollaron otros integrantes y especialistas del equipo. El proyecto lo hicieron 24 estudiantes de Ingeniería, de primero a octavo ciclo, dirigidos por el docente Nain Ramos Álvarez.": "The naval design, electronics and control were developed by other team members and specialists. The project was carried out by 24 Engineering students, from first to eighth semester, led by professor Nain Ramos Álvarez.",
       "El estudio de movimiento utiliza una velocidad constante de 10 rpm en el eje externo. El análisis por elementos finitos aplica una carga equivalente de 294 N, apoyos fijos y contactos unidos en un ensamble simplificado. Sus máximos de 54,5 MPa y 1,73 mm describen ese caso estático; no sustituyen una validación experimental del sistema completo.": "The motion study uses a constant speed of 10 rpm on the outer axis. Finite element analysis applies an equivalent 294 N load, fixed supports and bonded contacts to a simplified assembly. Its maxima of 54.5 MPa and 1.73 mm describe that static case; they do not replace experimental validation of the complete system.",
       "El mismo caso estático alcanza un desplazamiento resultante máximo de 1,73 mm. La vista amplificada de la deformación sirve para interpretar el modelo; no muestra desplazamientos medidos en hardware. Figura 14 de Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.": "The same static case reaches a maximum resultant displacement of 1.73 mm. The amplified deformation view helps interpret the model; it does not show displacements measured on hardware. Figure 14 from Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.",
       "El modelo representa un Yahboom MicroROS-Pi5 de cuatro ruedas con dirección por deslizamiento. Cada robot utiliza un nodo ROS 2, comandos de velocidad y estimación de pose. Gazebo Fortress aporta la física; Python y scripts compatibles con MATLAB, ejecutados en GNU Octave, permiten contrastar cálculos y escenarios.": "The model represents a four-wheel skid-steer Yahboom MicroROS-Pi5. Each robot uses a ROS 2 node, velocity commands and pose estimation. Gazebo Fortress provides the physics; Python and MATLAB-compatible scripts executed in GNU Octave support comparisons of calculations and scenarios.",
@@ -2304,6 +2535,7 @@
       "Esquemático con la Raspberry Pi 5, el ESP32, el driver TB6612FNG y dos motores.": "Schematic with the Raspberry Pi 5, the ESP32, the TB6612FNG driver and two motors.",
       "Esquemático eléctrico del motor, los finales de carrera y el registrador de fuerza.": "Electrical schematic of the motor, limit switches and force logger.",
       "Esquemático en KiCad 9 con bloques de alimentación, visión, control de tracción y motores. Verificación eléctrica sin errores; sin prueba en banco.": "KiCad 9 schematic with power, vision, traction control and motor blocks. Electrical check with no errors; not bench tested.",
+      "Estand de USIL con banderines del velero «Belén», estudiantes y autoridades.": "USIL booth with “Belén” sailboat pennants, students and officials.",
       "Estudio numérico cerrado; prototipo y ensayos físicos pendientes. En el modelo estudiado, el módulo auxético añade flexibilidad y aumenta el retraso de arranque y el goteo frente al bloque rígido: no se presenta como una mejora demostrada.": "Numerical study completed; fabrication and physical testing remain pending. In the model studied, the auxetic module adds compliance and increases startup delay and oozing compared with the rigid block. It is not presented as a demonstrated improvement.",
       "Estudio numérico, sin prototipo ni ensayos físicos. Con una oclusión total de 1,5 s o más, OC-SORT conserva de 6 a 11 puntos más identidades que SORT (prueba de McNemar, p < 0,05). En 300 escenas simuladas, la lógica original choca en el 29–36 % de los casos; con una cámara de 110° y la nueva lógica de frenado, en el 0–0,7 %. Con las detecciones públicas de MOT17, OC-SORT no supera a SORT; se reporta tal cual.": "Numerical study, with no prototype or physical tests. With a full occlusion of 1.5 s or more, OC-SORT keeps 6 to 11 points more identities than SORT (McNemar test, p < 0.05). In 300 simulated scenes, the original logic collides in 29–36% of cases; with a 110° camera and the new braking logic, in 0–0.7%. With the public MOT17 detections, OC-SORT does not outperform SORT; this is reported as is.",
       "Etapa de investigación USIL · 2022–2025": "Research phase USIL · 2022-2025",
@@ -2316,6 +2548,8 @@
       "Explorar proyectos": "Explore projects",
       "Explorar todo el portafolio": "Explore the entire portfolio",
       "Explorar trabajos en ESAN": "Explore work at ESAN",
+      "Expo Drone Tech 2023": "Drone Tech 2023 Expo",
+      "Exposición con el velero y su banderola de fondo, ante oficiales navales y asistentes.": "Exhibition with the sailboat and its banner in the background, in front of naval officers and attendees.",
       "Extrusora 3D de pasta cerámica con módulo auxético": "Ceramic paste 3D extruder with an auxetic module",
       "FBD": "FBD",
       "FEA — desplazamiento del ensamble": "FEA — assembly displacement",
@@ -2324,10 +2558,13 @@
       "FOCUS / 02": "FOCUS / 02",
       "FPGA": "FPGA",
       "FabLab": "FabLab",
+      "Fabricación": "Fabrication",
       "Fabricación digital y prototipado": "Digital manufacturing and prototyping",
+      "Fabricación en los laboratorios de USIL": "Fabrication in the USIL labs",
       "Feb. – may. 2026": "Feb. – May 2026",
       "Feb. – may. 2026 · colaboración de investigación": "Feb. – May 2026 · research collaboration",
       "Fecha no indicada en el CV": "Date not indicated in CV",
+      "Fibra de vidrio": "Fiberglass",
       "Filtrar proyectos": "Filter projects",
       "Filtros de Kalman": "Kalman filters",
       "Flanders Electric Perú": "Flanders Electric Perú",
@@ -2335,6 +2572,7 @@
       "Formación académica": "Education",
       "Formación complementaria": "Further training",
       "Formación y experiencia": "Education and experience",
+      "Formé parte del equipo de construcción del Grupo de Investigación de Ingeniería Mecatrónica (GIIM): junto con mis compañeros imprimí en 3D piezas del casco, las armé y apoyé en la fabricación y el montaje del velero. El diseño naval, la electrónica y el control los desarrollaron otros integrantes y especialistas del equipo, que dirigió el docente Nain Ramos Álvarez. Estuve en la presentación en el Centro Naval y en la Expo Drone Tech 2023.": "I was part of the construction team of the Mechatronics Engineering Research Group (GIIM): together with my classmates I 3D-printed hull parts, assembled them and helped fabricate and assemble the sailboat. The naval design, electronics and control were developed by other team members and specialists, under the direction of professor Nain Ramos Álvarez. I attended the presentation at the Naval Center and the Drone Tech 2023 Expo.",
       "Fotografía original de la flota Yahboom MicroROS-Pi5. Documenta la plataforma de referencia y su entorno; las pruebas y métricas presentadas en esta ficha siguen siendo de simulación.": "Original photograph of the Yahboom MicroROS-Pi5 fleet. Documents the reference platform and its setting; the tests and metrics on this page remain simulation results.",
       "Fotografías, diseños y simulaciones documentados en cada ficha.": "Photographs, designs and simulations documented on each project page.",
       "Fuente de la descripción: Barreto, Cornejo, Vargas, Gastello y Rodriguez (2026), Biomimetics 11(5), 340. DOI: 10.3390/biomimetics11050340. Figuras del artículo bajo CC BY 4.0, optimizadas para web y con leyendas resumidas y traducidas.": "Description source: Barreto, Cornejo, Vargas, Gastello and Rodriguez (2026), Biomimetics 11(5), 340. DOI: 10.3390/biomimetics11050340. Article figures under CC BY 4.0, optimized for the web with summarized and translated captions.",
@@ -2344,6 +2582,7 @@
       "Fuente de la descripción: CV, p. 2": "Description source: CV, p. 2",
       "Fuente de la descripción: Código, datos derivados, informe técnico y modelos del proyecto (noviembre de 2026). Versión grupal: manuscrito y presentación del Grupo 4 (USIL), conservados como antecedente. Método: Cao et al. (2023), CVPR. Datos: MOT17 (MOTChallenge, CC BY-NC-SA 3.0). Plataforma: planos oficiales de Waveshare.": "Description source: Project code, derived data, technical report and models (November 2026). Group version: manuscript and presentation by Group 4 (USIL), kept as background. Method: Cao et al. (2023), CVPR. Data: MOT17 (MOTChallenge, CC BY-NC-SA 3.0). Platform: official Waveshare drawings.",
       "Fuente de la descripción: Documentación técnica y modelos del proyecto, octubre de 2026. El plan de julio de 2026 en FabLab es el antecedente; no demuestra fabricación. La ficha anterior usaba el título general «biomateriales»; el estudio disponible se refiere específicamente a pasta cerámica.": "Description source: Project technical documentation and models, October 2026. The July 2026 FabLab plan is background material; it does not establish that fabrication took place. The previous page used the general title “biomaterials”; the available study specifically concerns ceramic paste.",
+      "Fuente de la descripción: Notas públicas de USIL del 25/08/2023 y del 24/11/2023 (fotos con crédito a USIL) y modelo 3D del equipo, renderizado en noviembre de 2026.": "Description source: USIL public news articles of 25/08/2023 and 24/11/2023 (photos credited to USIL) and the team’s 3D model, rendered in November 2026.",
       "Fuente de la descripción: Repositorio enjambre-ovejas-lobo: documentación 00–08, registros CSV, figuras y fotografías aportadas. Reconstrucción de octubre de 2026 a partir de recursos de Yahboom. Las imágenes físicas no validan los resultados del simulador.": "Description source: The enjambre-ovejas-lobo repository: documentation 00–08, CSV logs, figures and supplied photographs. October 2026 reconstruction based on Yahboom resources. Photographs of the physical platform do not validate simulator results.",
       "Funcionamiento del extrusor — simulación visual": "Extruder operation — visual simulation",
       "Fundamentos": "Fundamentals",
@@ -2359,6 +2598,7 @@
       "Gemelo digital del Yahboom MicroROS-Pi5 y comportamiento colectivo de cinco robots oveja guiados por un robot pastor. Integra ROS 2, Gazebo, control de motores y estimación de posición.": "Digital twin of the Yahboom MicroROS-Pi5 and collective behavior of five sheep robots guided by a shepherd robot. Combines ROS 2, Gazebo, motor control and position estimation.",
       "Geometría con trazabilidad": "Traceable geometry",
       "Gestión de eventos, recursos y networking; incremento documentado de participación y membresía durante la gestión.": "Event, resource and networking management; documented increase in participation and membership during management.",
+      "Giro completo alrededor del ensamblaje general del equipo: casco, vela rígida con alerón de cola, anemómetro en el tope, panel solar, orza y timón. Es un render del CAD, no una grabación.": "Full turn around the team’s general assembly: hull, rigid wing sail with tail flap, anemometer at the top, solar panel, keel and rudder. It is a CAD render, not footage.",
       "GitHub": "GitHub",
       "Gmsh": "Gmsh",
       "Goethe-Institut Perú": "Goethe-Institut Perú",
@@ -2387,6 +2627,7 @@
       "Ilustración conceptual · foto pendiente": "Conceptual illustration · pending photo",
       "Ilustración conceptual · no es una fotografía del proyecto": "Conceptual illustration · is not a photograph of the project",
       "Implementé SORT y OC-SORT con interruptores para cada pieza y comparé la implementación, salida por salida, con el código de los autores en las 21 secuencias de entrenamiento de MOT17: 174 362 salidas sin una sola diferencia.": "I implemented SORT and OC-SORT with switches for each piece and compared the implementation, output by output, with the authors’ code on the 21 MOT17 training sequences: 174,362 outputs without a single difference.",
+      "Impresión 3D": "3D printing",
       "Impresión 3D FDM": "FDM 3D Printing",
       "Impulso de eventos y proyectos aeroespaciales, alianzas académicas y representación en conferencias.": "Promotion of aerospace events and projects, academic alliances and conference representation.",
       "Impulso de proyectos y eventos de robótica, alianzas académicas y representación en conferencias.": "Promotion of robotics projects and events, academic alliances and conference representation.",
@@ -2435,6 +2676,7 @@
       "La versión inicial frenaba cuando el área de la caja superaba 45 000 píxeles², suponiendo que eso ocurría a unos 2 m. Con la cámara a 1,6 m de altura, los pies del peatón salen de la imagen por debajo de 4 m y la caja se recorta: el umbral se dispara recién a 1,12 m, demasiado tarde para frenar con margen. Ahora la distancia se estima con el ancho de la caja, que no se recorta hasta 0,36 m.": "The initial version braked when the box area exceeded 45,000 pixels², assuming that happened at about 2 m. With the camera 1.6 m high, the pedestrian’s feet leave the image below 4 m and the box gets cropped: the threshold only fires at 1.12 m, too late to brake with margin. Distance is now estimated from the box width, which is not cropped until 0.36 m.",
       "Ladder (LAD)": "Ladder (LAD)",
       "Las fotografías, videos y documentos de este trabajo aún no están publicados. La descripción recoge mi participación según el CV; la portada es una ilustración conceptual.": "The photographs, videos and documents of this work are not yet published. The description shows my participation according to the CV; the cover is a conceptual illustration.",
+      "Las fotos son de USIL y se publicaron en sus notas. Las imágenes del velero completo son renders del modelo 3D del equipo, no fotografías del velero construido.": "The photos are by USIL and were published in its news articles. The images of the complete sailboat are renders of the team’s 3D model, not photographs of the built sailboat.",
       "Las imágenes de esta ficha proceden del artículo de Ricardo Barreto, Jose Cornejo, Mariela Vargas, Nicolas Gastello y Anghello Rodriguez. Se conservan los números de figura y sus rótulos originales; las leyendas del portafolio son resúmenes bilingües. La portada reproduce la figura 10.": "The images on this page come from the article by Ricardo Barreto, Jose Cornejo, Mariela Vargas, Nicolas Gastello and Anghello Rodriguez. Figure numbers and original labels are preserved; portfolio captions are bilingual summaries. The cover reproduces Figure 10.",
       "Las topologías cLAM, LCAM-2R y oLCAM proceden de Hou et al. (2024), Materials & Design, 237, 112530. El CAD de referencia de la Ender-3 es de Creality. Las imágenes de esta ficha son modelos y gráficos del estudio; el video es una simulación visual con tiempo acelerado.": "The cLAM, LCAM-2R and oLCAM topologies are from Hou et al. (2024), Materials & Design, 237, 112530. The Ender-3 reference CAD is from Creality. The images on this page are models and plots from the study; the video is a visual simulation with accelerated time.",
       "Lazo cerrado: la cámara importa más que el rastreador": "Closed loop: the camera matters more than the tracker",
@@ -2477,9 +2719,11 @@
       "Mi contribución": "My contribution",
       "Mi contribución, el contexto y las evidencias de cada trabajo, en una ficha propia.": "My contribution, the context and supporting material for each project, on its own page.",
       "Mi experiencia reúne las pruebas e integración de AOCS en Chasqui 2, la investigación en robótica espacial y coordinación de un proyecto UAV en PachaLab, y la colaboración mecatrónica-aeroespacial en BETTA College.": "My experience includes AOCS testing and integration in Chasqui 2, space robotics research and UAV project coordination at PachaLab, and mechatronics and aerospace collaboration at BETTA College.",
+      "Mi parte: imprimir y armar": "My part: printing and assembling",
       "Mi trayectoria y CV": "My background and CV",
       "Modbus TCP/RTU": "Modbus TCP/RTU",
       "Modelado y documentación de la reconstrucción técnica: celdas auxéticas, dimensionamiento del extrusor, integración mecánica y electrónica, comparación numérica y comunicación visual del diseño. La geometría lozenge-chiral de referencia corresponde a Hou et al. (2024).": "Modeling and documentation of the technical reconstruction: auxetic cells, extruder sizing, mechanical and electronic integration, numerical comparison and visual communication of the design. The reference lozenge-chiral geometry is attributed to Hou et al. (2024).",
+      "Modelo 3D del velero": "Sailboat 3D model",
       "Modelo CAD de la Bucyrus 49HR con mástil abatido para transporte.": "Bucyrus 49HR CAD model with the mast lowered for transport.",
       "Modelo CAD de la Ender-3 con extrusora compacta instalada sobre el carro X.": "CAD model of the Ender-3 with a compact extruder on the X carriage.",
       "Modelo CAD de la revisión B sobre una Creality Ender-3. Es un render, no una fotografía de un prototipo construido.": "CAD model of Revision B mounted on a Creality Ender-3. This is a rendering, not a photograph of a built prototype.",
@@ -2496,8 +2740,13 @@
       "Métricas de cohesión, separación y contención": "Cohesion, separation and containment metrics",
       "NVIDIA Jetson Orin": "NVIDIA Jetson Orin",
       "Navegación principal": "Main navigation",
+      "Nota de USIL (24/11/2023)": "USIL article (24/11/2023)",
+      "Nota de USIL (25/08/2023)": "USIL article (25/08/2023)",
+      "Nota de USIL sobre la Expo Drone Tech.": "USIL article on the Drone Tech Expo.",
+      "Nota de USIL sobre la presentación.": "USIL article on the presentation.",
       "Notas y avances": "Notes and progress",
       "Nov. 2022 – feb. 2023": "Nov. 2022 – Feb. 2023",
+      "Nov. 2023 · foto de USIL": "Nov. 2023 · photo by USIL",
       "Nov. 2026 · simulación / diseño": "Nov. 2026 · simulation / design",
       "OC-SORT": "OC-SORT",
       "OC-SORT · seguimiento de múltiples objetos": "OC-SORT · multiple object tracking",
@@ -2516,10 +2765,12 @@
       "PLC Siemens / Allen-Bradley / Delta": "PLC Siemens / Allen-Bradley / Delta",
       "PORTAFOLIO": "PORTFOLIO",
       "PUBLICATIONS": "PUBLICATIONS",
+      "Pabellón de USIL en la Expo Internacional Drone Tech 2023, base aérea Las Palmas (Surco), donde se exhibió el saildrone junto con otros proyectos de Ingeniería Mecatrónica. Foto: USIL.": "USIL pavilion at the Drone Tech 2023 International Expo, Las Palmas air base (Surco), where the saildrone was exhibited with other Mechatronics Engineering projects. Photo: USIL.",
       "PachaLab": "PachaLab",
       "PachaLab — robótica espacial": "PachaLab — space robotics",
       "Panel con señales sintéticas de profundidad, velocidad de penetración, energía específica y presión. «Medida» identifica la señal generada para el ensayo del monitor, no un sensor real. El desgaste se inyecta desde 12 m y la alarma aparece a 14,6 m; el escenario nominal registrado no genera alarmas.": "Dashboard with synthetic depth, penetration-rate, specific-energy and pressure signals. “Measured” denotes the signal generated to test the monitor, not a real sensor. Wear is injected from 12 m and the alarm occurs at 14.6 m; the recorded nominal scenario produces no alarms.",
       "Panel de monitoreo del gemelo": "Digital twin monitoring dashboard",
+      "Parte del casco impreso en 3D sobre la mesa y una impresora CoLiDo al fondo, en los laboratorios de Ingeniería de USIL. Foto: USIL.": "Part of the 3D-printed hull on the table and a CoLiDo printer in the background, in the USIL Engineering labs. Photo: USIL.",
       "Participación en el ensamblaje de un brazo robótico en ESAN R&D Labs.": "Participation in the assembly of a robotic arm in ESAN R & D Labs.",
       "Participación en prototipos de visión por computadora mediante Roboflow y sistemas embebidos en ESAN.": "Participation in computer vision prototypes using Roboflow and systems embedded in ESAN.",
       "Participación en proyectos de robótica aplicada, incluyendo extrusión 3D con biomateriales, ensamblaje de brazo robótico y prototipos de visión por computadora mediante Roboflow y sistemas embebidos.": "Participation in applied robotics projects, including 3D extrusion with biomaterials, robotic arm assembly and computer vision prototypes through Roboflow and embedded systems.",
@@ -2527,6 +2778,7 @@
       "Participé en la versión grupal del curso (Grupo 4, USIL), que propuso la arquitectura Raspberry Pi 5 + ESP32 con OC-SORT. En noviembre de 2026 la retomé: implementé y verifiqué el rastreador, diseñé los experimentos de oclusión y de lazo cerrado, rehice el dimensionamiento de la cámara y diseñé el esquemático, el firmware y el montaje mecánico. El método OC-SORT es de Cao et al. (2023); no se atribuye su autoría.": "I took part in the course group version (Group 4, USIL), which proposed the Raspberry Pi 5 + ESP32 architecture with OC-SORT. In November 2026 I picked it up again: I implemented and verified the tracker, designed the occlusion and closed-loop experiments, redid the camera sizing and designed the schematic, firmware and mechanical mounting. The OC-SORT method is by Cao et al. (2023); no authorship of it is claimed.",
       "Pastoreo con odometría — animación de trayectorias": "Odometry-based shepherding — trajectory animation",
       "Percepción de peatones para un robot móvil pequeño: detección con YOLOv8n, seguimiento multiobjeto con OC-SORT y una lógica de frenado que usa lo que ve la cámara. Verificación con datos reales de MOT17, oclusiones controladas y simulación en lazo cerrado, más la electrónica y el montaje sobre una Waveshare WAVE ROVER.": "Pedestrian perception for a small mobile robot: YOLOv8n detection, OC-SORT multi-object tracking and a braking logic driven by what the camera sees. Verified with real MOT17 data, controlled occlusions and closed-loop simulation, plus the electronics and mounting on a Waveshare WAVE ROVER.",
+      "Perfil del velero: casco de 3,2 m en el modelo, vela rígida, alerón de cola en dos brazos, orza bajo el centro del casco y timón a popa. Render del modelo 3D del equipo.": "Sailboat profile: 3.2 m hull in the model, rigid wing sail, tail flap on two arms, keel under the middle of the hull and rudder at the stern. Render of the team’s 3D model.",
       "Phyto-G propone reorientar una cámara acuática mediante tres marcos anidados, accionados por un solo motor. Las conexiones giratorias de agua y alimentación eléctrica buscan permitir experimentos prolongados sin interrumpir la rotación para reponer recursos.": "Phyto-G proposes reorienting an aquatic chamber through three nested frames driven by a single motor. Rotary water and electrical connections are intended to support extended experiments without interrupting rotation to replenish resources.",
       "Phyto-G — agricultura espacial": "Phyto-G — space agriculture",
       "Plano A3 con lista de materiales y globos; los planos de detalle de las piezas impresas están en el repositorio del proyecto.": "A3 drawing with bill of materials and balloons; detail drawings of the printed parts are in the project repository.",
@@ -2537,6 +2789,9 @@
       "Power BI": "Power BI",
       "Practicante Integrador Industrial": "Industrial Integration Intern",
       "Practicante en Investigación y Desarrollo (I+D)": "Research and Development (R&D) Intern",
+      "Presentación del velero «Belén» ante oficiales de la Marina de Guerra del Perú en el Centro Naval de San Borja, agosto de 2023. Foto: USIL.": "Presentation of the sailboat “Belén” to Peruvian Navy officers at the San Borja Naval Center, August 2023. Photo: USIL.",
+      "Presentación en el Centro Naval": "Presentation at the Naval Center",
+      "Presentación y exhibición": "Presentation and exhibition",
       "Presentado en CITIIC 2023": "Presented at CITIIC 2023",
       "Profesor investigador · Ingeniería de diseño industrial": "Research Professor · Industrial design engineering",
       "Profibus": "Profibus",
@@ -2595,10 +2850,14 @@
       "Registro visual por incorporar": "Visual record to be incorporated",
       "Remoto": "Remote",
       "Render CadQuery con el mástil abatido y geometría envolvente. La longitud de transporte es una de las discrepancias documentadas entre el modelo y la tabla de referencia; no se oculta como una cota validada.": "CadQuery rendering with the mast lowered and envelope-level geometry. Transport length is one of the documented discrepancies between the model and the reference table; it is not presented as a validated dimension.",
+      "Render de cerca de la cubierta con el panel solar y la vela.": "Close-up render of the deck with the solar panel and the sail.",
+      "Render del modelo 3D del velero: casco claro, vela rígida gris con un alerón de cola en dos brazos, panel solar en la popa, orza y timón. Es un render, no una fotografía.": "Render of the sailboat 3D model: light hull, grey rigid wing sail with a tail flap on two arms, solar panel at the stern, keel and rudder. This is a render, not a photograph.",
       "Render del modelo CadQuery de la Bucyrus 49HR con altura adoptada de 31,22 m; representación envolvente, no fotografía del prototipo físico.": "Rendering of the CadQuery Bucyrus 49HR model with an adopted height of 31.22 m; an envelope-level representation, not a photograph of the physical prototype.",
       "Render del robot con un sector translúcido azul y un peatón esquemático delante.": "Robot render with a translucent blue sector and a schematic pedestrian in front.",
       "Render del robot: cámara gran angular en un mástil y Raspberry Pi 5 bajo su tapa sobre la WAVE ROVER, con el campo de visión en azul. Es un render, no una fotografía.": "Robot render: wide-angle camera on a mast and Raspberry Pi 5 under its cover on the WAVE ROVER, with the field of view in blue. This is a render, not a photograph.",
+      "Render del velero visto desde arriba, con el panel solar azul en la popa.": "Top render of the sailboat, with the blue solar panel at the stern.",
       "Render isométrico del robot con el mástil de la cámara y la tapa de la Raspberry Pi.": "Isometric render of the robot with the camera mast and the Raspberry Pi cover.",
+      "Render lateral del velero sobre fondo blanco.": "Side render of the sailboat on a white background.",
       "Render: el sector azul es lo que ve la cámara a 350 mm del suelo; un peatón cruza a 1,5 m. Modelo del chasis tomado del STL oficial de Waveshare.": "Render: the blue sector is what the camera sees from 350 mm above the ground; a pedestrian crosses at 1.5 m. Chassis model from the official Waveshare STL.",
       "Repositorio": "Repository",
       "Repositorio · acceso restringido": "Repository · restricted access",
@@ -2614,6 +2873,7 @@
       "Resumen descriptivo: a la izquierda SORT y a la derecha OC-SORT siguen a una multitud. El peatón marcado en ámbar deja de detectarse durante 1,5 s. Al volver, SORT muestra «identidad perdida» y OC-SORT «identidad recuperada». Trayectorias de MOT17 con detector simulado.": "Descriptive summary: SORT on the left and OC-SORT on the right track a crowd. The amber-marked pedestrian stops being detected for 1.5 s. When they return, SORT shows “identity lost” and OC-SORT “identity recovered”. MOT17 trajectories with a simulated detector.",
       "Resumen descriptivo: el modelo se traslada con el mástil abatido, se nivela sobre los gatos, eleva el mástil, avanza y retira la columna de perforación y cambia a una posición inclinada. La secuencia es una animación CAD; no es filmación de una máquina real.": "Descriptive summary: the model moves with its mast lowered, levels on its jacks, raises the mast, advances and withdraws the drill string, and changes to an inclined position. The sequence is a CAD animation, not footage of a real machine.",
       "Resumen descriptivo: en ambos paneles el robot avanza a 1 m/s. A la izquierda el peatón entra tarde en la imagen y hay impacto. A la derecha el robot lo detecta, ordena frenar y se detiene sin impacto.": "Descriptive summary: in both panels the robot moves at 1 m/s. On the left the pedestrian enters the image late and there is an impact. On the right the robot detects them, commands braking and stops without impact.",
+      "Resumen descriptivo: la cámara da una vuelta completa alrededor del velero en 10 segundos. Se ven el casco claro, la vela rígida gris, el alerón de cola sostenido por dos brazos, el anemómetro en el tope de la vela, el panel solar en la popa y, bajo el casco, la orza y el timón. Video sin audio.": "Descriptive summary: the camera makes a full turn around the sailboat in 10 seconds. It shows the light hull, the grey rigid wing sail, the tail flap held by two arms, the anemometer at the top of the sail, the solar panel at the stern and, below the hull, the keel and rudder. Video without audio.",
       "Resumen descriptivo: láminas con el planteamiento y los resultados, una animación en la que SORT pierde y OC-SORT recupera la identidad de un peatón oculto 1,5 s, una vista en planta donde la lógica original choca y la nueva frena, el esquemático y un recorrido 3D del montaje sobre la WAVE ROVER.": "Descriptive summary: slides with the approach and results, an animation in which SORT loses and OC-SORT recovers the identity of a pedestrian hidden for 1.5 s, a top view where the original logic collides and the new one brakes, the schematic and a 3D tour of the mounting on the WAVE ROVER.",
       "Resumen descriptivo: se presenta la geometría auxética, el conjunto mecánico y la electrónica; el motor mueve la transmisión y el husillo, el carro empuja el émbolo y la simulación muestra la deposición de pasta. Las magnitudes mostradas proceden del modelo numérico; el tiempo y la deformación visual están escalados.": "Descriptive summary: the auxetic geometry, mechanical assembly and electronics are introduced; the motor drives the transmission and lead screw, the carriage pushes the plunger and the simulation shows paste deposition. Displayed quantities come from the numerical model; time and visible deformation are scaled.",
       "Reticulado del mástil y su deformación calculada al iniciar el levante.": "Mast lattice and its calculated deformation at the start of raising.",
@@ -2630,6 +2890,7 @@
       "Robótica de servicio": "Service robotics",
       "Robótica de servicio y visión": "Service and vision robotics",
       "Robótica espacial": "Space robotics",
+      "Robótica marina": "Marine robotics",
       "Robótica y Matemáticas": "Robotics and Mathematics",
       "Robótica y manufactura": "Robotics and manufacturing",
       "Robótica y navegación autónoma": "Robotics and autonomous navigation",
@@ -2644,6 +2905,7 @@
       "SORT predice el movimiento de cada persona con un filtro de Kalman de velocidad constante y asocia cada predicción con la detección que más se superpone. Cuando la persona desaparece, el filtro sigue extrapolando y el error crece. OC-SORT corrige eso con tres piezas: ORU vuelve a ajustar el filtro con una trayectoria virtual al reaparecer la persona; OCM añade al costo de asociación la coherencia de la dirección observada; y OCR intenta asociar las pistas perdidas con su última observación real.": "SORT predicts the movement of each person with a constant speed Kalman filter and associates each prediction with the most overlapping detection. When the person disappears, the filter continues to extrapolate and the error grows. OC-SORT fixes that with three pieces: ORU readjusts the filter with a virtual path when the person reappears; COM adds to the cost of association the coherence of the observed direction; and OCR tries to associate the lost tracks with its last real observation.",
       "STM32": "STM32",
       "Saildrone": "Saildrone",
+      "Sala de laboratorio con una sección de casco amarilla sobre la mesa, varias personas de pie y una impresora 3D al fondo.": "Lab room with a yellow hull section on the table, several people standing and a 3D printer in the background.",
       "Saltar al contenido": "Skip to content",
       "San Ignacio University": "San Ignacio University",
       "Santa María de Fátima": "Santa María de Fátima",
@@ -2667,6 +2929,7 @@
       "Sistemas embebidos": "Embedded systems",
       "Sistemas embebidos y hardware": "Embedded systems and hardware",
       "Sistemas satelitales": "Satellite systems",
+      "Sobre las imágenes": "About the images",
       "SolidWorks": "SolidWorks",
       "Soporte técnico y formación": "Technical support and training",
       "Soporte técnico, asesoría y capacitaciones en diseño mecánico, Arduino y aplicaciones de visión por computadora para estudiantes de pregrado y posgrado.": "Technical support, advice and training in mechanical design, Arduino and computer vision applications for undergraduate and graduate students.",
@@ -2687,6 +2950,7 @@
       "Tomé trayectorias reales de peatones de": "I took real pedestrian trajectories from",
       "Trabajo presentado en CITIIC 2023, según el CV.": "Work presented in CITIIC 2023, according to CV.",
       "Trabajo relacionado": "Related work",
+      "Trabajé en la construcción junto con mis compañeros. Imprimimos piezas del casco y de la popa en las impresoras 3D de la universidad, las armamos y apoyamos en la fabricación y el montaje hasta tener el velero completo. Un casco de más de tres metros no cabe en una impresora, así que se dividió en piezas pequeñas que había que imprimir con cuidado y unir con precisión.": "I worked on the construction together with my classmates. We printed hull and stern parts on the university’s 3D printers, assembled them and helped with fabrication and assembly until the sailboat was complete. A hull more than three meters long does not fit in a printer, so it was split into small parts that had to be printed carefully and joined precisely.",
       "Transcripción": "Transcription",
       "Trayectoria / CV": "Background / CV",
       "Trayectoria y CV | Anghello Rodríguez": "Background and CV | Anghello Rodríguez",
@@ -2699,11 +2963,14 @@
       "USIL": "USIL",
       "USIL / IEEE": "USIL / IEEE",
       "USIL 2022–2025 (trabajo grupal) · ampliación nov. 2026": "USIL 2022–2025 (group work) · extended Nov. 2026",
+      "USIL · 2023 (trabajo grupal)": "USIL · 2023 (group project)",
       "USIL · SIU": "USIL · SIU",
       "Ubicación": "Location",
       "Ulva, Pyropia, Chlorella y Arthrospira se discuten como candidatos de estudio, no como cultivos ensayados en este trabajo. La clinorrotación proporciona un análogo terrestre: no elimina la gravedad ni reproduce todas las condiciones espaciales. Quedan por caracterizar la respuesta biológica, la circulación de agua y el funcionamiento integrado en experimentos controlados.": "Ulva, Pyropia, Chlorella and Arthrospira are discussed as study candidates, not as cultures tested in this work. Clinorotation provides an Earth-based analog: it does not eliminate gravity or reproduce all space conditions. Biological response, water circulation and integrated operation remain to be characterized in controlled experiments.",
       "Un comportamiento colectivo medible": "Measurable collective behavior",
       "Un robot que circula entre personas necesita tres cosas: detectar a cada peatón en la imagen, saber que es la misma persona de un cuadro a otro aunque alguien la tape un momento, y decidir a tiempo si debe frenar. La cámara envía 30 cuadros por segundo; YOLOv8n encuentra las cajas de cada persona y el rastreador las une en trayectorias con identidad.": "A robot moving among people needs three things: detect each pedestrian in the image, know it is the same person from one frame to the next even when someone briefly blocks the view, and decide in time whether to brake. The camera delivers 30 frames per second; YOLOv8n finds each person’s bounding box and the tracker links them into trajectories with an identity.",
+      "Un velero autónomo, o saildrone, es una embarcación sin tripulación que avanza con el viento y recarga sus baterías con el sol. Puede pasar días en el mar recogiendo datos para la investigación oceánica. En 2023 la Marina de Guerra del Perú promovió la construcción de estos veleros en universidades peruanas para una primera regata de veleros no tripulados, y USIL construyó el suyo: el velero «Belén».": "An autonomous sailboat, or saildrone, is an uncrewed vessel that moves with the wind and recharges its batteries with the sun. It can spend days at sea collecting data for ocean research. In 2023 the Peruvian Navy promoted the construction of these sailboats at Peruvian universities for a first uncrewed sailboat regatta, and USIL built its own: the sailboat “Belén”.",
+      "Un velero que navega solo": "A sailboat that sails by itself",
       "Una plataforma terrestre para investigación espacial": "An Earth-based platform for space research",
       "Una trayectoria de construcción": "A path of learning and building",
       "Unidad extrusora — vista explosionada": "Extrusion unit — exploded view",
@@ -2711,7 +2978,9 @@
       "Universidad San Ignacio de Loyola": "Universidad San Ignacio de Loyola",
       "Unión giratoria para el suministro de agua": "Rotary joint for water supply",
       "Unos 165 ensayos válidos por punto, con bandas de confianza del 95 %. Desde 1,5 s OC-SORT supera a SORT con significación estadística.": "About 165 valid trials per point, with 95% confidence bands. From 1.5 s on, OC-SORT outperforms SORT with statistical significance.",
-      "Velero autónomo — Saildrone": "Autonomous sailboat — Saildrone",
+      "Velero autónomo no tripulado de 3,30 m construido en 2023 por estudiantes y docentes de Ingeniería de USIL para la Primera Regata de Veleros No Tripulados que promovió la Marina de Guerra del Perú. Casco hecho con piezas impresas en 3D y revestido con fibra de vidrio, vela rígida y paneles solares.": "A 3.30 m uncrewed autonomous sailboat built in 2023 by USIL Engineering students and faculty for the First Uncrewed Sailboat Regatta promoted by the Peruvian Navy. Its hull is made of 3D-printed parts covered with fiberglass, with a rigid wing sail and solar panels.",
+      "Velero autónomo «Belén» — Saildrone USIL": "Autonomous sailboat “Belén” — USIL Saildrone",
+      "Velero terminado y presentado en el Centro Naval de San Borja ante la Marina de Guerra del Perú (agosto de 2023), como uno de los cinco prototipos universitarios seleccionados entre quince instituciones; exhibido después en la Expo Drone Tech 2023 (noviembre de 2023). Datos publicados por USIL: eslora de 3,30 m, vela rígida de 1,80 m, ancho de 0,50 m y carga de hasta 100 kg.": "Sailboat completed and presented at the San Borja Naval Center to the Peruvian Navy (August 2023), as one of the five university prototypes selected from fifteen institutions; later exhibited at the Drone Tech 2023 Expo (November 2023). Figures published by USIL: 3.30 m length, 1.80 m rigid sail, 0.50 m beam and up to 100 kg of payload.",
       "Ver artículo y figura original": "View article and original figure",
       "Ver experiencia completa": "See full experience",
       "Ver experiencia relacionada": "See related experience",
@@ -2728,9 +2997,11 @@
       "Visión, simulación y diseño / IA y control": "Vision, simulation and design / AI and control",
       "Vista CAD del interior del tanque con portamuestras verdes y soportes amarillos.": "CAD view inside the tank with green sample holders and yellow supports.",
       "Vista del modelo vigente con el mástil inclinado. La representación cinemática posiciona los subsistemas; las formas de cabina, sala de máquinas y orugas permanecen simplificadas.": "View of the current model with the mast inclined. The kinematic representation positions the subsystems; cab, machinery-house and crawler shapes remain simplified.",
+      "Vista en planta": "Top view",
       "Vista en planta de una de las 300 escenas: con la cámara de 70° y la lógica original el robot choca; con 110° y la nueva lógica frena a 1,46 m del peatón.": "Top view of one of the 300 scenes: with the 70° camera and the original logic the robot collides; with 110° and the new logic it brakes 1.46 m from the pedestrian.",
       "Vista explosionada del conjunto mecánico con jeringa y módulo auxético.": "Exploded view of the mechanical assembly with syringe and auxetic module.",
       "Vista isométrica del modelo CAD del clinostato; no es una fotografía de hardware. Figura 10 de Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.": "Isometric view of the clinostat CAD model; this is not a hardware photograph. Figure 10 from Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.",
+      "Vista lateral": "Side view",
       "Visualización animada a partir del registro de Gazebo con cinco ovejas y un lobo guiados por odometría. Los trazos representan posiciones de referencia del simulador. Conversión del GIF original a video para reproducirlo en la web; no es filmación del laboratorio.": "Animated visualization from the Gazebo log with five sheep and one wolf controlled using odometry. Traces show the simulator’s reference positions. The original GIF was converted to video for web playback; this is not laboratory footage.",
       "Vol. 11 · N.º 5": "Vol. 11 · No. 5",
       "Volver al inicio ↑": "Back to home ↑",
@@ -2743,6 +3014,7 @@
       "Área de la caja frente a la distancia: cuando el peatón no cabe en la imagen, el área deja de crecer y el umbral de 45 000 px² se dispara a 1,12 m en lugar de 2 m.": "Box area versus distance: when the pedestrian no longer fits in the image, the area stops growing and the 45,000 px² threshold fires at 1.12 m instead of 2 m.",
       "Áreas de especialización": "Areas of specialization",
       "Áreas que conectan mi trabajo": "Areas that connect my work",
+      "En agosto de 2023 el velero se presentó en el Centro Naval de San Borja ante el comandante general de la Marina de Guerra del Perú, junto con los prototipos de otras cuatro universidades seleccionadas. En noviembre se exhibió en el pabellón de Ingeniería Mecatrónica de la Expo Drone Tech 2023, en la base aérea Las Palmas. Estuve en los dos eventos.": "In August 2023 the sailboat was presented at the San Borja Naval Center to the general commander of the Peruvian Navy, along with the prototypes of four other selected universities. In November it was exhibited in the mechanical engineering pavilion of the Expo Drone Tech 2023, at the air base Las Palmas. I was at both events.",
       "Chasqui 2 — AOCS | Anghello Rodríguez": "Chasqui 2 — AOCS | Anghello Rodríguez",
       "Cuadrúpedo para terrenos complejos | Anghello Rodríguez": "Quadruped robot for challenging terrain | Anghello Rodríguez",
       "Enjambre de robots — ovejas y lobo | Anghello Rodríguez": "Robot swarm — sheep and wolf | Anghello Rodríguez",
@@ -2753,7 +3025,7 @@
       "Prototipo de perforadora minera y gemelo digital (Bucyrus 49HR) | Anghello Rodríguez": "Mining drill prototype and digital twin (Bucyrus 49HR) | Anghello Rodríguez",
       "Proyectos | Anghello Rodríguez": "Projects | Anghello Rodríguez",
       "Robot de servicio para estudiantes | Anghello Rodríguez": "Service robot for students | Anghello Rodríguez",
-      "Velero autónomo — Saildrone | Anghello Rodríguez": "Autonomous sailboat — Saildrone | Anghello Rodríguez",
+      "Velero autónomo «Belén» — Saildrone USIL | Anghello Rodríguez": "Autonomous sailboat “Belén” — USIL Saildrone | Anghello Rodríguez",
       "Ver proyecto: Chasqui 2 — AOCS": "View project: Chasqui 2 — AOCS",
       "Ver proyecto: Cuadrúpedo para terrenos complejos": "View project: Quadruped robot for challenging terrain",
       "Ver proyecto: Enjambre de robots — ovejas y lobo": "View project: Robot swarm — sheep and wolf",
@@ -2763,7 +3035,7 @@
       "Ver proyecto: Phyto-G — agricultura espacial": "View project: Phyto-G — space agriculture",
       "Ver proyecto: Prototipo de perforadora minera y gemelo digital (Bucyrus 49HR)": "View project: Mining drill prototype and digital twin (Bucyrus 49HR)",
       "Ver proyecto: Robot de servicio para estudiantes": "View project: Service robot for students",
-      "Ver proyecto: Velero autónomo — Saildrone": "View project: Autonomous sailboat — Saildrone",
+      "Ver proyecto: Velero autónomo «Belén» — Saildrone USIL": "View project: Autonomous sailboat “Belén” — USIL Saildrone",
       "Ver proyecto: Visión por computadora y sistemas embebidos": "View project: Computer vision and embedded systems",
       "Ver proyecto: Visión por computadora — seguimiento de peatones con OC-SORT": "View project: Computer vision — pedestrian tracking with OC-SORT",
       "Visión por computadora y sistemas embebidos | Anghello Rodríguez": "Computer vision and embedded systems | Anghello Rodríguez",
