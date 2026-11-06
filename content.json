@@ -393,26 +393,256 @@
     {
       "id": "esan-vision",
       "code": "05 / IA Y CONTROL",
-      "title": "Visión por computadora y sistemas embebidos",
+      "title": "Detección y conteo de frutas con visión embebida",
       "institution": "ESAN – R&D Labs / FabLab",
-      "period": "Abr. – oct. 2026 · etapa en ESAN",
+      "period": "2026 · prototipo en ESAN; estudio reconstruido en nov. 2026",
       "category": "IA y control",
-      "description": "Prototipos de visión por computadora mediante Roboflow y sistemas embebidos.",
-      "contribution": "Participación en prototipos de visión por computadora mediante Roboflow y sistemas embebidos en ESAN.",
+      "description": "Detección de fresas y arándanos con YOLO y conteo en una faja con filtros de Kalman e IMM, pensado para una cámara XIAO ESP32S3 Sense que envía imágenes a una Raspberry Pi. Incluye la evaluación de cuatro detectores, la calidad de imagen que necesita la cámara, la latencia en INT8 y el firmware de la cámara.",
+      "contribution": "En ESAN R&D Labs / FabLab trabajé en un prototipo que reconocía fresa, arándano y aguaymanto con la XIAO, una Raspberry Pi y Roboflow. No conservo su código ni su modelo, así que rehíce el estudio desde cero con datos públicos: preparé los datos, entrené y evalué los detectores, programé los filtros de Kalman e IMM, el rastreador y el simulador de la faja, y escribí el firmware de la cámara y el contador de la Pi. Los datos son de StrawDI (Universidad de Huelva) y BlueberryDCM; los detectores, de Ultralytics.",
       "tags": [
-        "Roboflow",
-        "Sistemas embebidos"
+        "Visión por computadora",
+        "YOLO",
+        "Filtro de Kalman",
+        "IMM",
+        "ESP32-S3",
+        "Raspberry Pi",
+        "ONNX"
       ],
-      "result": null,
-      "image": null,
+      "result": "YOLO11s alcanza un AP de 0,58 en las imágenes de prueba y YOLOv8n en INT8, 0,53 en unos 48 ms en la CPU de un portátil. La fresa se detecta bien (AP 0,83); el arándano, pequeño y en racimos, es el difícil (0,25). La cámara debe enviar VGA en JPEG: QVGA pierde el arándano. En la faja simulada, a 15 fps y con paradas, el IMM acierta el conteo exacto en el 39 % de las escenas frente al 16 % de un Kalman simple. Con el detector real en esa faja, en cambio, se pierden unas 3 de cada 25 frutas con cualquier filtro, porque el detector se entrenó con fotos de campo. Todo es simulación y evaluación con datos públicos; falta probarlo con las placas.",
+      "image": "assets/images/701c0c5249efb2aaa4485ff71b38b1e91530a555a1d2e5de7146c7576dc099bb.webp",
+      "imageAlt": "Faja gris vista desde arriba con fresas y un arándano. Es un cuadro de la simulación, no una fotografía.",
       "url": null,
       "repository": null,
-      "source": "CV maestro actualizado, p. 1. Periodo de vinculación institucional, no fecha exacta del proyecto.",
+      "source": "Repositorio propio del proyecto (noviembre de 2026), con datos públicos de StrawDI y BlueberryDCM.",
       "featured": true,
       "kind": "Línea de prototipado",
       "cover": "vision",
       "experienceId": "esan",
-      "evidence": []
+      "body": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "De la imagen al conteo"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "La cámara XIAO ESP32S3 Sense, sobre una faja, captura cuadros en JPEG y los envía por Wi-Fi a una Raspberry Pi. La Pi detecta cada fruta con un modelo YOLO, le asigna una identidad con un filtro de movimiento y la cuenta cuando cruza una línea. Cada etapa tiene su pregunta: qué detector cabe en la Pi, qué imagen tiene que mandar la cámara y qué filtro evita contar dos veces la misma fruta."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Detectores"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Entrené cuatro modelos con 3240 imágenes públicas de fresa y arándano y los evalué con el evaluador oficial de COCO. YOLO11s es el más preciso (AP 0,58); YOLO11n y YOLOv8n a 640 px quedan en 0,54 y 0,55. Al cuantizarlos a INT8 descubrí que la cabeza del detector no se puede cuantizar: su salida mezcla coordenadas en píxeles con probabilidades y el AP caía a cero. Dejándola en FP32, YOLOv8n conserva 0,53 y ahorra un 22 % de tiempo."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "El arándano es el caso difícil. Si pego cada fruta sobre un fondo gris, la fresa se sigue detectando casi igual, pero el arándano baja del 86 % al 50 %: el modelo usa el arbusto para encontrarlo."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Qué tiene que enviar la cámara"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Reduje las imágenes de prueba a las resoluciones del sensor y las comprimí en JPEG antes de detectar. En VGA con calidad 30 cada cuadro pesa 29 kB y el AP baja solo de 0,53 a 0,48, lo que da para unos 17 cuadros por segundo con un enlace de 4 Mbit/s. En QVGA el arándano prácticamente desaparece. Con la lente estándar, la cámara debe ir a menos de 48 cm de la faja para que un arándano de 12 mm ocupe 16 píxeles."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Kalman o IMM en una faja que se detiene"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Una faja de clasificación arranca y se detiene. Un filtro de Kalman de velocidad constante sigue de largo cuando la faja frena, y la pista se parte. Un IMM combina dos modelos, «detenida» y «velocidad constante», y pasa de uno a otro según las detecciones. Verifiqué mis filtros contra la biblioteca filterpy (coinciden hasta 5·10⁻¹²) y los comparé en 7200 escenas simuladas pareadas. A 15 fps con paradas, el IMM acierta el conteo exacto en el 39 % de las escenas y el Kalman simple en el 16 %."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Al cerrar el lazo con el detector real sobre una faja renderizada con frutas de las imágenes de prueba, el resultado cambió: el detector, entrenado con fotos de campo, baja a AP 0,35 y se pierden unas 3 de cada 25 frutas con cualquier filtro. El siguiente paso es entrenar con imágenes de la faja, no afinar el filtro."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Firmware"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "El firmware de la XIAO captura VGA en JPEG con doble búfer en PSRAM y sirve un flujo MJPEG en el que cada cuadro lleva su número y un CRC-32, para que la Pi descarte cuadros dañados y cuente los perdidos. Compila y pasa sus pruebas en la PC, pero aún no se ha cargado en la placa."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Sobre las imágenes y los datos"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Las imágenes y el video son simulaciones y gráficas de resultados. Las frutas de la faja son recortes de las imágenes de prueba de "
+              },
+              {
+                "type": "text",
+                "text": "StrawDI",
+                "marks": [
+                  {
+                    "type": "link",
+                    "attrs": {
+                      "href": "https://strawdi.github.io"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "text": " (Universidad de Huelva) y "
+              },
+              {
+                "type": "text",
+                "text": "BlueberryDCM",
+                "marks": [
+                  {
+                    "type": "link",
+                    "attrs": {
+                      "href": "https://doi.org/10.5281/zenodo.14002517"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "text": ", usados con fines académicos. El aguaymanto del prototipo original queda pendiente."
+              }
+            ]
+          }
+        ]
+      },
+      "evidence": [
+        {
+          "title": "Faja simulada: Kalman frente a IMM",
+          "date": "Nov. 2026 · simulación",
+          "description": "La misma escena con dos rastreadores: arriba un filtro de Kalman de velocidad constante y abajo un IMM. El detector YOLO11n encuentra cada fruta, el rastreador le pone un número y la cuenta al cruzar la línea blanca. Simulación.",
+          "alt": "Video de dos paneles con una faja gris, fresas y arándanos con cajas de colores y una línea vertical blanca.",
+          "video": "assets/videos/55606a2a71dd1766c43fda31933185339b5bef1400d15b710b8fc54638d0c74d.mp4",
+          "poster": "assets/images/60a3ca90881c6543bed897269db8f72381a7e0c37d284ade7ce5439071e13b3e.webp",
+          "transcript": "Resumen descriptivo: una faja gris avanza de izquierda a derecha, se detiene y vuelve a arrancar. Las fresas y los arándanos llevan una caja de color con un número. Cuando cruzan la línea blanca vertical, la línea se vuelve verde y sube el contador de cada panel. Abajo se indican la velocidad de la faja y los cuadros por segundo. Video sin audio.",
+          "sortOrder": 0
+        },
+        {
+          "title": "Conteo exacto con cuatro filtros",
+          "date": "Nov. 2026 · simulación",
+          "description": "Porcentaje de escenas en que el conteo es exacto, con Kalman de velocidad constante (CV), de aceleración constante (CA) e IMM, a 5, 10 y 15 fps, con la faja con paradas y continua. 300 escenas por barra, las mismas para todos. Simulación con un modelo de error del detector.",
+          "alt": "Gráfica de barras con intervalos de confianza para cuatro filtros en dos paneles.",
+          "image": "assets/images/7d74f46885e86a9c45cd1c5f2767cd2b4b6f8a63263e2d4a2544f585d8bde223.webp",
+          "sortOrder": 1
+        },
+        {
+          "title": "Precisión y latencia de los detectores",
+          "date": "Nov. 2026 · evaluación con datos públicos",
+          "description": "AP en las imágenes de prueba frente a la latencia en la CPU de un portátil, en FP32 y en INT8. No es la Raspberry Pi: sirve para comparar modelos entre sí.",
+          "alt": "Gráfica de dispersión con flechas de FP32 a INT8 para cuatro modelos.",
+          "image": "assets/images/cf97bd21bc7ee583e6d0be6484f03c03806b50cc903c7a6a5ed5d020ec1cdce6.webp",
+          "sortOrder": 2
+        },
+        {
+          "title": "Resolución y calidad JPEG de la cámara",
+          "date": "Nov. 2026 · evaluación con datos públicos",
+          "description": "AP del detector cuando la imagen pasa por la resolución y la compresión de la cámara: QVGA, VGA y SVGA con calidades de 10 a 90.",
+          "alt": "Dos gráficas de líneas: AP frente a kilobytes por cuadro y AP frente a la calidad JPEG.",
+          "image": "assets/images/3f5a94ed0fb926c79da32a67f5a6ff2c54ccdd59e45d41064ba5fa3765d07b65.webp",
+          "sortOrder": 3
+        },
+        {
+          "title": "Altura de la cámara",
+          "date": "Nov. 2026 · cálculo",
+          "description": "Tamaño en píxeles de un arándano de 12 mm según la altura de la cámara y la resolución de entrada del detector. Cálculo geométrico.",
+          "alt": "Gráfica de tres curvas decrecientes con una línea horizontal en 16 píxeles.",
+          "image": "assets/images/eb1bcc501e50d1dd53855af961d448cc82bf31d29d0a09e2dd312095da8023c5.webp",
+          "sortOrder": 4
+        }
+      ]
     },
     {
       "id": "phyto-g",
@@ -2789,6 +3019,7 @@
       "& Bionics": "& Bionics",
       ", con licencia MIT.": ", under the MIT license.",
       ", las convertí en detecciones con ruido y, en cada ensayo, oculté por completo a una persona entre 0,5 y 3 s, a 30, 15 y 10 cuadros por segundo. Hasta 1 s no hay diferencia clara. Desde 1,5 s, OC-SORT recupera la identidad entre 6 y 11 puntos más que SORT, y casi toda la mejora viene de OCR. Aun así, a 1,5 s la recupera solo en el 68–76 % de los casos: el problema no está resuelto.": ", turned them into noisy detections and, in each trial, fully hid one person for 0.5 to 3 s, at 30, 15 and 10 frames per second. Up to 1 s there is no clear difference. From 1.5 s on, OC-SORT recovers the identity 6 to 11 points more often than SORT, and almost all of the gain comes from OCR. Even so, at 1.5 s it recovers it in only 68–76% of cases: the problem is not solved.",
+      ", usados con fines académicos. El aguaymanto del prototipo original queda pendiente.": ", used for academic purposes. The goldenberry from the original prototype is still pending.",
       ". Antes hubo un primer prototipo, que sirvió para probar una pata y fijar la geometría.": " model. Before that there was a first prototype, used to test one leg and settle the geometry.",
       ". Con eso el robot caminó con un mando de PS4 y también solo.": ". With that the robot walked with a PS4 controller and also on its own.",
       "10.3390/biomimetics11050340": "10.3390/biomimetics11050340",
@@ -2801,6 +3032,7 @@
       "2023 · render del CAD": "2023 · CAD render",
       "2026 · ESAN R&D Labs / FabLab": "2026 · ESAN R&D Labs / FabLab",
       "2026 · fotografía": "2026 · photograph",
+      "2026 · prototipo en ESAN; estudio reconstruido en nov. 2026": "2026 · prototype at ESAN; study rebuilt in Nov. 2026",
       "300 escenas por barra. La lógica original choca igual o más que no reaccionar; con 110° y la lógica nueva los impactos caen a 0–0,7 %.": "300 scenes per bar. The original logic collides as much as or more than not reacting; with 110° and the new logic impacts fall to 0–0.7%.",
       "5 imágenes · 1 videos · 0 audios": "5 images · 1 videos · 0 audios",
       "6 imágenes · 1 videos · 0 audios": "6 images · 1 videos · 0 audios",
@@ -2810,6 +3042,8 @@
       "A la izquierda, el video original de 2023 con el robot caminando solo sobre piso de madera. A la derecha, el modelo MuJoCo del robot con la misma marcha de Bézier, reescrita en 2026. La parte derecha es una simulación.": "On the left, the original 2023 video of the robot walking on its own on a wooden floor. On the right, the MuJoCo model of the robot with the same Bézier gait, rewritten in 2026. The right side is a simulation.",
       "ANSYS": "ANSYS",
       "AOCS": "AOCS",
+      "AP del detector cuando la imagen pasa por la resolución y la compresión de la cámara: QVGA, VGA y SVGA con calidades de 10 a 90.": "Detector AP when the image goes through the camera resolution and compression: QVGA, VGA and SVGA with qualities from 10 to 90.",
+      "AP en las imágenes de prueba frente a la latencia en la CPU de un portátil, en FP32 y en INT8. No es la Raspberry Pi: sirve para comparar modelos entre sí.": "AP on the test images versus latency on a laptop CPU, in FP32 and INT8. This is not the Raspberry Pi: it serves to compare models with each other.",
       "AUTOTEC Perú": "AUTOTEC Perú",
       "Ablación a 15 FPS: sin OCR, OC-SORT rinde igual que SORT; sin ORU o sin OCM, casi no cambia.": "Ablation at 15 FPS: without OCR, OC-SORT performs like SORT; without ORU or OCM, it barely changes.",
       "Abr. – oct. 2026": "Apr. – Oct. 2026",
@@ -2825,6 +3059,7 @@
       "Ago. 2023 · foto de USIL": "Aug. 2023 · photo by USIL",
       "Ago. – oct. 2025": "Aug. – Oct. 2025",
       "Agricultura espacial": "Space agriculture",
+      "Al cerrar el lazo con el detector real sobre una faja renderizada con frutas de las imágenes de prueba, el resultado cambió: el detector, entrenado con fotos de campo, baja a AP 0,35 y se pierden unas 3 de cada 25 frutas con cualquier filtro. El siguiente paso es entrenar con imágenes de la faja, no afinar el filtro.": "When I closed the loop with the real detector on a conveyor rendered with fruits from the test images, the result changed: the detector, trained on field photos, drops to AP 0.35 and about 3 out of 25 fruits are missed with any filter. The next step is training on conveyor images, not tuning the filter.",
       "Al inclinar la boquilla aparece un problema: si queda alineada con el antebrazo, el giro de la muñeca tendría que ser infinito. Barriendo la posición de la pieza vi que, sobre la mesa, la muñeca pasa cerca de ese punto y tendría que girar a más de 400 °/s. Con la cama elevada unos 24 cm el margen es de 35° y la muñeca no pasa de 35 °/s.": "Tilting the nozzle brings a problem: if it lines up with the forearm, the wrist would have to spin infinitely fast. Sweeping the part position I found that on the table the wrist gets close to that point and would need over 400 °/s. With the bed raised about 24 cm the margin is 35° and the wrist stays below 35 °/s.",
       "Alcance y próximos ensayos": "Scope and future testing",
       "Alcance y siguientes pasos": "Scope and next steps",
@@ -2832,7 +3067,9 @@
       "Alternativa y siguientes pasos": "Alternative design and next steps",
       "Altium Designer": "Altium Designer",
       "Altura de la cama y singularidad de muñeca": "Bed height and wrist singularity",
+      "Altura de la cámara": "Camera height",
       "Ampliar: Altura de la cama y singularidad de muñeca": "Enlarge: Bed height and wrist singularity",
+      "Ampliar: Altura de la cámara": "Enlarge: Camera height",
       "Ampliar: Análisis estructural del mástil": "Enlarge: Structural analysis of the mast",
       "Ampliar: Arquitectura de Phyto-G y publicación": "Enlarge: Phyto-G architecture and publication",
       "Ampliar: Arquitectura propuesta de control y sensado": "Enlarge: Proposed control and sensing architecture",
@@ -2843,6 +3080,7 @@
       "Ampliar: Comparación de controladores": "Enlarge: Controller comparison",
       "Ampliar: Configuración de perforación a 65°": "Enlarge: Drilling configuration at 65°",
       "Ampliar: Configuración de transporte": "Enlarge: Transport configuration",
+      "Ampliar: Conteo exacto con cuatro filtros": "Enlarge: Exact count with four filters",
       "Ampliar: Control PI del motor — modelo no lineal": "Enlarge: Motor PI control — nonlinear model",
       "Ampliar: Cubierta y panel solar": "Enlarge: Deck and solar panel",
       "Ampliar: Cámara acuática y distribución de muestras": "Enlarge: Aquatic chamber and sample layout",
@@ -2866,10 +3104,12 @@
       "Ampliar: Panel de monitoreo del gemelo": "Enlarge: Digital twin monitoring dashboard",
       "Ampliar: Plano de conjunto": "Enlarge: Assembly drawing",
       "Ampliar: Por qué el umbral de área fallaba": "Enlarge: Why the area threshold failed",
+      "Ampliar: Precisión y latencia de los detectores": "Enlarge: Detector accuracy and latency",
       "Ampliar: Presentación en el Centro Naval": "Enlarge: Presentation at the Naval Center",
       "Ampliar: Primer prototipo": "Enlarge: First prototype",
       "Ampliar: Qué parte de OC-SORT ayuda": "Enlarge: Which part of OC-SORT helps",
       "Ampliar: Recuperación de identidad frente a la duración de la oclusión": "Enlarge: Identity recovery versus occlusion length",
+      "Ampliar: Resolución y calidad JPEG de la cámara": "Enlarge: Camera resolution and JPEG quality",
       "Ampliar: Revisión C — alternativa sin manguera": "Enlarge: Revision C — hose-free alternative",
       "Ampliar: Robot final": "Enlarge: Final robot",
       "Ampliar: Seguimiento de la rodilla": "Enlarge: Knee tracking",
@@ -2967,6 +3207,7 @@
       "Consultar los datos del ensayo simulado": "View the simulated trial data",
       "Contacto": "Contact",
       "Contenidos académicos y supervisión de proyectos de diseño de productos tecnológicos.": "Academic content and monitoring of technological product design projects.",
+      "Conteo exacto con cuatro filtros": "Exact count with four filters",
       "Control": "Control",
       "Control PI del motor — modelo no lineal": "Motor PI control — nonlinear model",
       "Control avanzado": "Advanced control",
@@ -2996,6 +3237,7 @@
       "Cómo funciona OC-SORT": "How OC-SORT works",
       "DOI:": "DOI:",
       "De la imagen a la distancia": "From the image to distance",
+      "De la imagen al conteo": "From image to count",
       "De la plataforma al simulador": "From the platform to the simulator",
       "De la versión grupal a esta": "From the group version to this one",
       "Deformación calculada al inicio del levante. El modelo FEA estima unos 561 kN por cilindro, frente a unos 683 kN de la estática simplificada del gemelo. La diferencia depende de la geometría de apoyos y del reparto de masas; no son mediciones de presión o fuerza en campo.": "Calculated deformation at the start of mast raising. The FEA model estimates about 561 kN per cylinder, compared with about 683 kN from the twin’s simplified statics. The difference depends on support geometry and mass distribution; these are not field pressure or force measurements.",
@@ -3017,6 +3259,9 @@
       "Despiece del modelo de Fusion 360 de 2023: cuerpo, caderas y patas. El diseño parte del modelo público SpotMicro. Es un render, no una foto.": "Exploded view of the 2023 Fusion 360 model: body, hips and legs. The design is based on the public SpotMicro model. It is a render, not a photo.",
       "Detalle conceptual de la unión del primer marco: entrada de agua, carcasa, sellos, rodamientos y eje hueco. Se propone mantener el suministro durante la rotación. Figura 2 de Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.": "Conceptual detail of the first-frame joint: water inlet, housing, seals, bearings and hollow shaft. Intended to maintain supply during rotation. Figure 2 from Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.",
       "Detalle de la cubierta con el panel solar que recarga las baterías y la base de la vela. Render del modelo 3D del equipo.": "Detail of the deck with the solar panel that recharges the batteries and the base of the sail. Render of the team’s 3D model.",
+      "Detección de fresas y arándanos con YOLO y conteo en una faja con filtros de Kalman e IMM, pensado para una cámara XIAO ESP32S3 Sense que envía imágenes a una Raspberry Pi. Incluye la evaluación de cuatro detectores, la calidad de imagen que necesita la cámara, la latencia en INT8 y el firmware de la cámara.": "Strawberry and blueberry detection with YOLO and counting on a conveyor with Kalman and IMM filters, designed for an XIAO ESP32S3 Sense camera that sends images to a Raspberry Pi. It includes the evaluation of four detectors, the image quality the camera needs, INT8 latency and the camera firmware.",
+      "Detección y conteo de frutas con visión embebida": "Fruit detection and counting with embedded vision",
+      "Detectores": "Detectors",
       "Diagrama conceptual de Phyto-G con un motor, tres marcos, cámara y circuito de agua.": "Phyto-G conceptual diagram with one motor, three frames, a chamber and a water circuit.",
       "Diagrama de bloques con servos a los lados, dos controladores en el centro y las baterías abajo.": "Block diagram with servos on the sides, two controllers in the middle and batteries at the bottom.",
       "Diagrama de bloques de 2023: 12 servos repartidos en dos PCA9685 por I²C, Raspberry Pi, pantalla LCD, dos baterías LiPo de 7,4 V, interruptor y convertidores de 5 V y 6 V.": "2023 block diagram: 12 servos split across two PCA9685 boards over I²C, Raspberry Pi, LCD screen, two 7.4 V LiPo batteries, switch and 5 V and 6 V converters.",
@@ -3049,6 +3294,7 @@
       "Docente de Robótica y Matemáticas": "Robotics and Mathematics Teacher",
       "Documentación del proyecto": "Project documentation",
       "Documentación y siguiente validación": "Documentation and next validation",
+      "Dos gráficas de líneas: AP frente a kilobytes por cuadro y AP frente a la calidad JPEG.": "Two line charts: AP versus kilobytes per frame and AP versus JPEG quality.",
       "Dos mapas de color con una estrella en la posición elegida.": "Two color maps with a star at the chosen position.",
       "Dos mapas de colores: el de la izquierda casi todo con cruces, el de la derecha con una zona amplia de colores.": "Two color maps: the left one almost all crosses, the right one with a wide colored region.",
       "Dónde poner la cama": "Where to put the bed",
@@ -3066,12 +3312,14 @@
       "El Moveo impreso en PLA y armado en el FabLab de ESAN, con los motores NEMA 23 de la base, las correas y el cableado, antes de terminar el montaje. Fotografía.": "The Moveo printed in PLA and assembled at the ESAN FabLab, with the base NEMA 23 motors, belts and wiring, before finishing assembly. Photograph.",
       "El análisis comprende las cinco variantes G0–G4, compresión, rigidez, pandeo y respuesta dinámica. La electrónica está diseñada en KiCad: el eje E de la Ender-3 acciona el motor y un Arduino Nano con HX711 registra la fuerza. El firmware del registrador está compilado; no está probado en hardware y los cambios de Marlin siguen planificados.": "The analysis covers five variants, G0–G4, compression, stiffness, buckling and dynamic response. The electronics are designed in KiCad: the Ender-3 E axis drives the motor, while an Arduino Nano with an HX711 records force. The logger firmware has been compiled but has not been tested on hardware; Marlin changes remain planned.",
       "El artículo documenta el ensamble en SOLIDWORKS 2025, la cámara de muestras, el suministro de agua y una arquitectura eléctrica de 24 V. Propone bombas de entrada y salida, temperatura, pH, oxígeno disuelto, IMU y observación con cámara. La integración electrónica se presenta como diseño para implementación futura.": "The article documents the SOLIDWORKS 2025 assembly, sample chamber, water supply and a 24 V electrical architecture. It proposes inlet and outlet pumps, temperature, pH, dissolved-oxygen sensing, an IMU and camera observation. Electronic integration is presented as a design for future implementation.",
+      "El arándano es el caso difícil. Si pego cada fruta sobre un fondo gris, la fresa se sigue detectando casi igual, pero el arándano baja del 86 % al 50 %: el modelo usa el arbusto para encontrarlo.": "Blueberries are the hard case. If I paste each fruit on a gray background, strawberries are still detected almost as well, but blueberries drop from 86 % to 50 %: the model uses the bush to find them.",
       "El brazo en RViz siguiendo la misma trayectoria; el filamento naranja se dibuja con la posición de la boquilla que da el modelo URDF, que coincide con la de la aplicación en 0,007 mm. Simulación.": "The arm in RViz following the same path; the orange filament is drawn from the nozzle position given by the URDF model, which matches the application within 0.007 mm. Simulation.",
       "El casco mide 3,30 m de eslora y 0,50 m de ancho. Se fabricó con unas 120 piezas impresas en 3D en los laboratorios de Ingeniería, que luego se unieron y se revistieron con fibra de vidrio para darle resistencia y un acabado liso. En lugar de una vela de tela lleva una vela rígida de 1,80 m, con un pequeño alerón de cola que la orienta respecto al viento. Debajo del casco van la orza, que da estabilidad, y el timón. En la cubierta hay un panel solar, y el sistema de navegación usa GPS y una brújula para seguir puntos de ruta.": "The hull is 3.30 m long and 0.50 m wide. It was made from about 120 3D-printed parts produced in the Engineering labs, which were then joined and covered with fiberglass for strength and a smooth finish. Instead of a fabric sail it carries a 1.80 m rigid wing sail, with a small tail flap that orients it to the wind. Below the hull are the keel, which provides stability, and the rudder. A solar panel sits on the deck, and the navigation system uses GPS and a compass to follow waypoints.",
       "El código de 2023 no se conservó, así que reescribí la cinemática y la marcha y las comparé con el código de referencia: no hay diferencias en 8000 posturas de la pata ni en 12 escenarios de mando. En los videos originales medí, con flujo óptico, que el robot daba una zancada cada 1,4 a 1,6 s. Después armé un modelo del robot en MuJoCo y probé la misma marcha en simulación.": "The 2023 code was not kept, so I rewrote the kinematics and the gait and compared them with the reference code: there are no differences in 8000 leg poses or in 12 command scenarios. In the original videos I measured, with optical flow, that the robot took a stride every 1.4 to 1.6 s. Then I built a MuJoCo model of the robot and tested the same gait in simulation.",
       "El diseño naval, la electrónica y el control los desarrollaron otros integrantes y especialistas del equipo. El proyecto lo hicieron 24 estudiantes de Ingeniería, de primero a octavo ciclo, dirigidos por el docente Nain Ramos Álvarez.": "The naval design, electronics and control were developed by other team members and specialists. The project was carried out by 24 Engineering students, from first to eighth semester, led by professor Nain Ramos Álvarez.",
       "El estudio de movimiento utiliza una velocidad constante de 10 rpm en el eje externo. El análisis por elementos finitos aplica una carga equivalente de 294 N, apoyos fijos y contactos unidos en un ensamble simplificado. Sus máximos de 54,5 MPa y 1,73 mm describen ese caso estático; no sustituyen una validación experimental del sistema completo.": "The motion study uses a constant speed of 10 rpm on the outer axis. Finite element analysis applies an equivalent 294 N load, fixed supports and bonded contacts to a simplified assembly. Its maxima of 54.5 MPa and 1.73 mm describe that static case; they do not replace experimental validation of the complete system.",
       "El estudio también mostró que la muñeca original del Moveo se queda sin par con un extrusor: el error sube a 2,1 mm. Con reductores 5:1 en las dos últimas articulaciones baja a 0,063 mm. Es la modificación que recomiendo para la versión 2.": "The study also showed that the original Moveo wrist runs out of torque with an extruder: the error rises to 2.1 mm. With 5:1 gearboxes on the last two joints it drops to 0.063 mm. That is the change I recommend for version 2.",
+      "El firmware de la XIAO captura VGA en JPEG con doble búfer en PSRAM y sirve un flujo MJPEG en el que cada cuadro lleva su número y un CRC-32, para que la Pi descarte cuadros dañados y cuente los perdidos. Compila y pasa sus pruebas en la PC, pero aún no se ha cargado en la placa.": "The XIAO firmware captures VGA JPEG with double buffering in PSRAM and serves an MJPEG stream in which each frame carries its number and a CRC-32, so the Pi can drop damaged frames and count lost ones. It compiles and passes its tests on the PC, but has not been loaded onto the board yet.",
       "El gemelo digital es un paquete de ROS 2 con el modelo del brazo, el extrusor y la cama: reproduce la trayectoria y dibuja en RViz el filamento que va depositando. La aplicación de escritorio abre un G-code plano o de cinco ejes, resuelve la cinemática inversa de toda la pieza, avisa de los puntos fuera de alcance, simula la dinámica con el controlador elegido y muestra un panel con el error, los pares y la capa en curso.": "The digital twin is a ROS 2 package with the arm, the extruder and the bed: it replays the path and draws in RViz the filament being deposited. The desktop application opens planar or five-axis G-code, solves the inverse kinematics of the whole part, flags unreachable points, simulates the dynamics with the selected controller and shows a dashboard with error, torques and the current layer.",
       "El mismo caso estático alcanza un desplazamiento resultante máximo de 1,73 mm. La vista amplificada de la deformación sirve para interpretar el modelo; no muestra desplazamientos medidos en hardware. Figura 14 de Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.": "The same static case reaches a maximum resultant displacement of 1.73 mm. The amplified deformation view helps interpret the model; it does not show displacements measured on hardware. Figure 14 from Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.",
       "El modelo representa un Yahboom MicroROS-Pi5 de cuatro ruedas con dirección por deslizamiento. Cada robot utiliza un nodo ROS 2, comandos de velocidad y estimación de pose. Gazebo Fortress aporta la física; Python y scripts compatibles con MATLAB, ejecutados en GNU Octave, permiten contrastar cálculos y escenarios.": "The model represents a four-wheel skid-steer Yahboom MicroROS-Pi5. Each robot uses a ROS 2 node, velocity commands and pose estimation. Gazebo Fortress provides the physics; Python and MATLAB-compatible scripts executed in GNU Octave support comparisons of calculations and scenarios.",
@@ -3086,6 +3334,7 @@
       "Electrónica: Pi 5, ESP32 y driver de motores": "Electronics: Pi 5, ESP32 and motor driver",
       "Email": "Email",
       "En 2023 el robot caminó sobre piso plano con un mando de PS4 y en modo autónomo; en sus videos medí una zancada cada 1,4 a 1,6 s. En la revisión de 2026, hecha solo en simulación: la marcha reescrita coincide con la de referencia sin diferencias; con servos de 15 kg·cm el trote camina en 24 de 45 combinaciones de parámetros y con el MG996R solo en 2; la corrección con la IMU ayuda poco en terreno irregular, y para llevar 0,5 kg de carga hace falta un servo de unos 20 kg·cm.": "In 2023 the robot walked on flat ground with a PS4 controller and autonomously; in its videos I measured one stride every 1.4 to 1.6 s. In the 2026 review, done only in simulation: the rewritten gait matches the reference with no differences; with 15 kg·cm servos the trot walks in 24 of 45 parameter combinations and with the MG996R in only 2; IMU correction helps little on rough terrain, and carrying a 0.5 kg load needs a servo of about 20 kg·cm.",
+      "En ESAN R&D Labs / FabLab trabajé en un prototipo que reconocía fresa, arándano y aguaymanto con la XIAO, una Raspberry Pi y Roboflow. No conservo su código ni su modelo, así que rehíce el estudio desde cero con datos públicos: preparé los datos, entrené y evalué los detectores, programé los filtros de Kalman e IMM, el rastreador y el simulador de la faja, y escribí el firmware de la cámara y el contador de la Pi. Los datos son de StrawDI (Universidad de Huelva) y BlueberryDCM; los detectores, de Ultralytics.": "At ESAN R&D Labs / FabLab I worked on a prototype that recognized strawberries, blueberries and goldenberries with the XIAO, a Raspberry Pi and Roboflow. I no longer have its code or model, so I rebuilt the study from scratch with public data: I prepared the data, trained and evaluated the detectors, programmed the Kalman and IMM filters, the tracker and the conveyor simulator, and wrote the camera firmware and the Pi counter. The data come from StrawDI (University of Huelva) and BlueberryDCM; the detectors are by Ultralytics.",
       "En agosto de 2023 el velero se presentó en el Centro Naval de San Borja ante el comandante general de la Marina de Guerra del Perú, junto con los prototipos de otras cuatro universidades seleccionadas. En noviembre se exhibió en el pabellón de Ingeniería Mecatrónica de la Expo Drone Tech 2023, en la base aérea Las Palmas. Estuve en los dos eventos.": "In August 2023 the sailboat was presented at the San Borja Naval Center to the general commander of the Peruvian Navy, along with the prototypes of four other selected universities. In November it was exhibited in the mechanical engineering pavilion of the Expo Drone Tech 2023, at the air base Las Palmas. I was at both events.",
       "En curso": "In progress",
       "En el ensayo registrado de Gazebo con poses de odometría: llegada al corral en 43,8 s, cero colisiones registradas y contención del 100 % durante los 60 s siguientes. Son resultados de ese escenario simulado; falta validación en robots reales.": "In the recorded Gazebo trial using odometry poses: arrival at the pen in 43.8 s, zero recorded collisions and 100% containment for the following 60 s. These results apply to that simulated scenario; validation on real robots is pending.",
@@ -3108,6 +3357,7 @@
       "Ensamble simplificado bajo la carga equivalente de 294 N. El artículo reporta un máximo de von Mises de 54,5 MPa; el modelo usa apoyos fijos y contactos unidos. Figura 13 de Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.": "Simplified assembly under an equivalent 294 N load. The article reports a maximum von Mises stress of 54.5 MPa; the model uses fixed supports and bonded contacts. Figure 13 from Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.",
       "Ensayo real del experimento sobre la secuencia MOT17-10: mismas detecciones para ambos rastreadores. Cuando el peatón reaparece, SORT le asigna un número nuevo y OC-SORT recupera el 4. Las cajas punteadas son las anotaciones de MOT17.": "Actual trial from the experiment on sequence MOT17-10: same detections for both trackers. When the pedestrian reappears, SORT gives them a new number and OC-SORT recovers number 4. Dotted boxes are MOT17 annotations.",
       "Enseñanza y asesoría en análisis, diseño y aplicación de circuitos electrónicos en proyectos académicos.": "Teaching and consulting in analysis, design and application of electronic circuits in academic projects.",
+      "Entrené cuatro modelos con 3240 imágenes públicas de fresa y arándano y los evalué con el evaluador oficial de COCO. YOLO11s es el más preciso (AP 0,58); YOLO11n y YOLOv8n a 640 px quedan en 0,54 y 0,55. Al cuantizarlos a INT8 descubrí que la cabeza del detector no se puede cuantizar: su salida mezcla coordenadas en píxeles con probabilidades y el AP caía a cero. Dejándola en FP32, YOLOv8n conserva 0,53 y ahorra un 22 % de tiempo.": "I trained four models on 3,240 public strawberry and blueberry images and evaluated them with the official COCO evaluator. YOLO11s is the most accurate (AP 0.58); YOLO11n and YOLOv8n at 640 px reach 0.54 and 0.55. When quantizing to INT8 I found that the detector head cannot be quantized: its output mixes pixel coordinates with probabilities and AP dropped to zero. Keeping it in FP32, YOLOv8n keeps 0.53 and saves 22 % of the time.",
       "Error de la boquilla en el domo de cinco ejes: RMS, máximo y peor RMS entre 8 brazos con masas aleatorias. Solo el par calculado con integral cumple 0,1 mm. Simulación en MATLAB.": "Nozzle error on the five-axis dome: RMS, maximum and worst RMS across 8 arms with random masses. Only computed torque with integral action meets 0.1 mm. MATLAB simulation.",
       "Escenas con impacto según cámara y lógica": "Scenes with impact by camera and logic",
       "Espacio de trabajo": "Workspace",
@@ -3147,12 +3397,16 @@
       "Fabricación": "Fabrication",
       "Fabricación digital y prototipado": "Digital manufacturing and prototyping",
       "Fabricación en los laboratorios de USIL": "Fabrication in the USIL labs",
+      "Faja gris vista desde arriba con fresas y un arándano. Es un cuadro de la simulación, no una fotografía.": "Gray conveyor seen from above with strawberries and a blueberry. This is a frame from the simulation, not a photograph.",
+      "Faja simulada: Kalman frente a IMM": "Simulated conveyor: Kalman versus IMM",
       "Feb. – may. 2026": "Feb. – May 2026",
       "Feb. – may. 2026 · colaboración de investigación": "Feb. – May 2026 · research collaboration",
       "Fecha no indicada en el CV": "Date not indicated in CV",
       "Fibra de vidrio": "Fiberglass",
       "Filtrar proyectos": "Filter projects",
+      "Filtro de Kalman": "Kalman filter",
       "Filtros de Kalman": "Kalman filters",
+      "Firmware": "Firmware",
       "Flanders Electric Perú": "Flanders Electric Perú",
       "Flota Yahboom MicroROS-Pi5 en el laboratorio. Fotografía de la plataforma física; no documenta un ensayo del algoritmo ovejas–lobo.": "Yahboom MicroROS-Pi5 fleet in the laboratory. Photograph of the physical platform; it does not document a trial of the sheep–wolf algorithm.",
       "Formación académica": "Education",
@@ -3164,7 +3418,6 @@
       "Fotografías, diseños y simulaciones documentados en cada ficha.": "Photographs, designs and simulations documented on each project page.",
       "Fuente de la descripción: Barreto, Cornejo, Vargas, Gastello y Rodriguez (2026), Biomimetics 11(5), 340. DOI: 10.3390/biomimetics11050340. Figuras del artículo bajo CC BY 4.0, optimizadas para web y con leyendas resumidas y traducidas.": "Description source: Barreto, Cornejo, Vargas, Gastello and Rodriguez (2026), Biomimetics 11(5), 340. DOI: 10.3390/biomimetics11050340. Article figures under CC BY 4.0, optimized for the web with summarized and translated captions.",
       "Fuente de la descripción: CV actualizado, 22 de octubre de 2026, p. 1": "Description source: updated CV, 22 October 2026, p. 1",
-      "Fuente de la descripción: CV maestro actualizado, p. 1. Periodo de vinculación institucional, no fecha exacta del proyecto.": "Description source: updated master CV, p. 1. The period refers to the institutional affiliation, not the exact project dates.",
       "Fuente de la descripción: CV para el prototipo a escala; documentación, CAD, CSV y resultados del proyecto Bucyrus 49HR para la extensión virtual de octubre de 2026. El manual se cita como fuente técnica, sin redistribuirlo.": "Description source: CV for the scale prototype; project documentation, CAD, CSV logs and results for the October 2026 virtual extension. The manual is cited as a technical source without being redistributed.",
       "Fuente de la descripción: CV, p. 2": "Description source: CV, p. 2",
       "Fuente de la descripción: Código, datos derivados, informe técnico y modelos del proyecto (noviembre de 2026). Versión grupal: manuscrito y presentación del Grupo 4 (USIL), conservados como antecedente. Método: Cao et al. (2023), CVPR. Datos: MOT17 (MOTChallenge, CC BY-NC-SA 3.0). Plataforma: planos oficiales de Waveshare.": "Description source: Project code, derived data, technical report and models (November 2026). Group version: manuscript and presentation by Group 4 (USIL), kept as background. Method: Cao et al. (2023), CVPR. Data: MOT17 (MOTChallenge, CC BY-NC-SA 3.0). Platform: official Waveshare drawings.",
@@ -3173,6 +3426,7 @@
       "Fuente de la descripción: Notas públicas de USIL del 25/08/2023 y del 24/11/2023 (fotos con crédito a USIL) y modelo 3D del equipo, renderizado en noviembre de 2026.": "Description source: USIL public news articles of 25/08/2023 and 24/11/2023 (photos credited to USIL) and the team’s 3D model, rendered in November 2026.",
       "Fuente de la descripción: Repositorio enjambre-ovejas-lobo: documentación 00–08, registros CSV, figuras y fotografías aportadas. Reconstrucción de octubre de 2026 a partir de recursos de Yahboom. Las imágenes físicas no validan los resultados del simulador.": "Description source: The enjambre-ovejas-lobo repository: documentation 00–08, CSV logs, figures and supplied photographs. October 2026 reconstruction based on Yahboom resources. Photographs of the physical platform do not validate simulator results.",
       "Fuente de la descripción: Repositorio propio del proyecto (noviembre de 2026) y fotografía de la versión 1 en el FabLab de ESAN.": "Description source: The project’s own repository (November 2026) and a photograph of version 1 at the ESAN FabLab.",
+      "Fuente de la descripción: Repositorio propio del proyecto (noviembre de 2026), con datos públicos de StrawDI y BlueberryDCM.": "Description source: The project’s own repository (November 2026), with public data from StrawDI and BlueberryDCM.",
       "Funcionamiento del extrusor — simulación visual": "Extruder operation — visual simulation",
       "Fundamentos": "Fundamentals",
       "Fundamentos de GNC": "GNC fundamentals",
@@ -3196,8 +3450,11 @@
       "Grupo de Investigación en Física": "Physics Research Group",
       "Gráfica 3D de una espiral sobre una cúpula con flechas de dirección.": "3D plot of a spiral over a dome with direction arrows.",
       "Gráfica con la referencia de la rodilla en línea discontinua y dos curvas que la siguen con un pequeño retraso.": "Plot with the knee reference as a dashed line and two curves following it with a small lag.",
+      "Gráfica de barras con intervalos de confianza para cuatro filtros en dos paneles.": "Bar chart with confidence intervals for four filters in two panels.",
       "Gráfica de barras en escala logarítmica del error de cinco controladores.": "Log-scale bar chart of the error of five controllers.",
       "Gráfica de barras grises y naranjas que bajan al aumentar la amplitud del terreno; el panel de la derecha casi vacío.": "Bar chart of grey and orange bars that drop as terrain amplitude grows; the right panel almost empty.",
+      "Gráfica de dispersión con flechas de FP32 a INT8 para cuatro modelos.": "Scatter plot with arrows from FP32 to INT8 for four models.",
+      "Gráfica de tres curvas decrecientes con una línea horizontal en 16 píxeles.": "Chart with three decreasing curves and a horizontal line at 16 pixels.",
       "Gráfico de barras con el porcentaje de impactos a 10, 15 y 30 FPS para dos cámaras.": "Bar chart of impact percentage at 10, 15 and 30 FPS for two cameras.",
       "Gráfico del reticulado del mástil sin carga en gris y deformado en naranja": "Plot of the mast lattice, unloaded in grey and deformed in orange",
       "Gráficos de métricas del pastoreo simulado con poses de odometría.": "Plots of simulated shepherding metrics using odometry poses.",
@@ -3262,17 +3519,20 @@
       "Jul. 2026 – actualidad": "Jul. 2026 – present",
       "Jul. – ago. 2020 (fechas del CV)": "Jul. - Aug. 2020 (CV dates)",
       "Jun. 2023 – mar. 2024": "Jun. 2023 – Mar. 2024",
+      "Kalman o IMM en una faja que se detiene": "Kalman or IMM on a conveyor that stops",
       "KiCad": "KiCad",
       "La Raspberry Pi 5 ejecuta la visión y envía órdenes con suma de verificación por UART a un ESP32, que genera el PWM de los motores y frena si pasan 150 ms sin mensajes. El esquemático en KiCad pasa la verificación eléctrica sin errores y el firmware compila con sus pruebas. La cámara va en un mástil a 350 mm del suelo, atornillado a los agujeros reales de la WAVE ROVER tomados de sus planos oficiales. En una CPU de portátil, YOLOv8n tarda unos 100 ms por cuadro; falta medirlo en la Pi 5.": "The Raspberry Pi 5 runs the vision and sends checksummed commands over UART to an ESP32, which drives the motors’ PWM and brakes if 150 ms pass without messages. The KiCad schematic passes the electrical rules check with no errors and the firmware compiles with its tests. The camera sits on a mast 350 mm above the ground, bolted to the WAVE ROVER’s real holes taken from its official drawings. On a laptop CPU, YOLOv8n takes about 100 ms per frame; it still has to be measured on the Pi 5.",
       "La aplicación reproduce un G-code de tres capas sobre un domo con la boquilla inclinada hasta 30°, con la dinámica del brazo simulada con par calculado. A la derecha, el panel con el error de la boquilla, los pares y los ángulos. Simulación acelerada.": "The application replays a three-layer G-code over a dome with the nozzle tilted up to 30°, with the arm dynamics simulated under computed torque. On the right, the dashboard with nozzle error, torques and joint angles. Accelerated simulation.",
       "La aplicación también lee G-code de un laminador normal: aquí el brazo imprime un vaso de 30 mm con la boquilla vertical. Simulación acelerada.": "The application also reads standard slicer G-code: here the arm prints a 30 mm vase with a vertical nozzle. Accelerated simulation.",
       "La concordancia entre solucionadores es una verificación numérica, no una certificación de la máquina. Las secciones, el material y parte de la geometría son supuestos; no se evalúan todos los mecanismos ni modos de fallo. El modelo de Ansys MAPDL está preparado, pero no se resolvió por falta de licencia vigente.": "Agreement between solvers is a numerical check, not machine certification. Sections, material and parts of the geometry are assumed; not all mechanisms or failure modes are evaluated. The Ansys MAPDL model is prepared but was not solved because a valid license was unavailable.",
+      "La cámara XIAO ESP32S3 Sense, sobre una faja, captura cuadros en JPEG y los envía por Wi-Fi a una Raspberry Pi. La Pi detecta cada fruta con un modelo YOLO, le asigna una identidad con un filtro de movimiento y la cuenta cuando cruza una línea. Cada etapa tiene su pregunta: qué detector cabe en la Pi, qué imagen tiene que mandar la cámara y qué filtro evita contar dos veces la misma fruta.": "The XIAO ESP32S3 Sense camera, above a conveyor, captures JPEG frames and sends them over Wi-Fi to a Raspberry Pi. The Pi detects each fruit with a YOLO model, gives it an identity with a motion filter and counts it when it crosses a line. Each stage has its question: which detector fits on the Pi, what image the camera must send and which filter avoids counting the same fruit twice.",
       "La experiencia detrás de los proyectos.": "The experience behind projects.",
       "La experiencia en Flanders Electric Perú de diciembre de 2024 a marzo de 2025 constituye el antecedente del prototipo a escala. La extensión de 2026 reconstruye digitalmente la Bucyrus 49HR y demuestra un flujo de modelado y monitoreo. Los renders y el video de esta ficha corresponden a esa extensión virtual.": "The December 2024–March 2025 experience at Flanders Electric Perú provides the background for the scale prototype. The 2026 extension digitally reconstructs the Bucyrus 49HR and demonstrates a modeling and monitoring workflow. The renderings and video on this page belong to that virtual extension.",
       "La fabricación, la caracterización de la pasta y los ensayos comparativos quedan para un proyecto posterior. El informe y el artículo son borradores técnicos, no publicaciones científicas aceptadas.": "Fabrication, paste characterization and comparative testing are left for a subsequent project. The report and article are technical drafts, not accepted scientific publications.",
       "La foto muestra la versión 1 real. Las demás imágenes y los videos son simulaciones. El diseño mecánico del brazo es el": "The photo shows the real version 1. The other images and videos are simulations. The mechanical design of the arm is the",
       "La idea partió de un problema real: en las minas y en zonas de derrumbe el terreno es irregular y peligroso para las personas. Un robot con patas puede pasar por donde no pasa uno con ruedas. En 2023 me propuse construir un cuadrúpedo pequeño y barato para estudiar su estabilidad y su movilidad, con la idea de que llegue a transportar objetos. Lo presenté en el III Congreso Internacional en Tecnología e Innovación en Ingeniería y Computación (CITIIC 2023) de la USIL, con la asesoría de Sergio Gonzales Lecaros y Nain Ramos Álvarez.": "The idea came from a real problem: in mines and collapse zones the ground is uneven and dangerous for people. A legged robot can go where a wheeled one cannot. In 2023 I set out to build a small, low-cost quadruped to study its stability and mobility, with the aim of eventually carrying objects. I presented it at the 3rd International Congress on Technology and Innovation in Engineering and Computing (CITIIC 2023) at USIL, advised by Sergio Gonzales Lecaros and Nain Ramos Álvarez.",
       "La investigación en impresión 3D con biomateriales en ESAN conecta mi experiencia de manufactura digital con este campo. Mi CV también recoge conocimientos en biomimética y fundamentos de biomecánica, bioinstrumentación y control biomolecular.": "The research in 3D printing with biomaterials in ESAN connects my digital manufacturing experience with this field. My CV also collects knowledge in biomimetics and biomechanics, bioinstrumentation and biomolecular control.",
+      "La misma escena con dos rastreadores: arriba un filtro de Kalman de velocidad constante y abajo un IMM. El detector YOLO11n encuentra cada fruta, el rastreador le pone un número y la cuenta al cruzar la línea blanca. Simulación.": "The same scene with two trackers: a constant-velocity Kalman filter on top and an IMM below. The YOLO11n detector finds each fruit, the tracker numbers it and counts it when it crosses the white line. Simulation.",
       "La plataforma física en el laboratorio": "The physical platform in the laboratory",
       "La plataforma, mallas y firmware de referencia son de Yahboom Technology. El comportamiento se basa en reglas de Reynolds y en el pastoreo de Strömbom et al. (2014). El repositorio público incluye código, documentación, datos y créditos.": "The reference platform, meshes and firmware are from Yahboom Technology. The behavior draws on Reynolds’ rules and the shepherding work of Strömbom et al. (2014). The public repository includes code, documentation, data and credits.",
       "La pregunta es cómo cambia el arranque y la detención del flujo al incorporar un módulo auxético en el tren de empuje. Se compara la configuración auxética (A) con un bloque rígido equivalente (R), manteniendo explícitos los supuestos de material y de pasta.": "The study asks how flow startup and shutdown change when an auxetic module is incorporated into the plunger drive. The auxetic configuration (A) is compared with an equivalent rigid block (R), with material and paste assumptions stated explicitly.",
@@ -3363,6 +3623,8 @@
       "Nov. 2023 · foto de USIL": "Nov. 2023 · photo by USIL",
       "Nov. 2023 · foto del robot real": "Nov. 2023 · photo of the real robot",
       "Nov. 2023 · video del robot real": "Nov. 2023 · video of the real robot",
+      "Nov. 2026 · cálculo": "Nov. 2026 · calculation",
+      "Nov. 2026 · evaluación con datos públicos": "Nov. 2026 · evaluation on public data",
       "Nov. 2026 · simulación": "Nov. 2026 · simulation",
       "Nov. 2026 · simulación / diseño": "Nov. 2026 · simulation / design",
       "Nube de puntos semiesférica, una sección con contornos de colores y un gráfico de barras.": "Hemispherical point cloud, a section with colored contours and a bar chart.",
@@ -3390,7 +3652,6 @@
       "Panel de monitoreo del gemelo": "Digital twin monitoring dashboard",
       "Para que el robot camine hay que decirle a cada pie dónde estar en cada instante y convertir eso en ángulos de los servos. Lo segundo es la cinemática inversa: con la geometría de la pata calculé, en forma cerrada, los tres ángulos que llevan el pie a un punto. Lo primero lo hace la marcha. Usé un trote, en el que se mueven a la vez las patas en diagonal. Cuando una pata está apoyada, el pie retrocede en línea recta y empuja el cuerpo. Cuando está en el aire, sigue una curva de Bézier de 12 puntos de control que lo levanta y lo lleva adelante sin golpes. El método viene de": "To make the robot walk, each foot has to be told where to be at every instant, and that has to be turned into servo angles. The second part is inverse kinematics: from the leg geometry I computed, in closed form, the three angles that bring the foot to a point. The first part is the gait. I used a trot, where diagonal legs move together. While a leg is on the ground, the foot moves back in a straight line and pushes the body. While it is in the air, it follows a 12-control-point Bézier curve that lifts it and brings it forward smoothly. The method comes from",
       "Parte del casco impreso en 3D sobre la mesa y una impresora CoLiDo al fondo, en los laboratorios de Ingeniería de USIL. Foto: USIL.": "Part of the 3D-printed hull on the table and a CoLiDo printer in the background, in the USIL Engineering labs. Photo: USIL.",
-      "Participación en prototipos de visión por computadora mediante Roboflow y sistemas embebidos en ESAN.": "Participation in computer vision prototypes using Roboflow and systems embedded in ESAN.",
       "Participación en proyectos de robótica aplicada, incluyendo extrusión 3D con biomateriales, ensamblaje de brazo robótico y prototipos de visión por computadora mediante Roboflow y sistemas embebidos.": "Participation in applied robotics projects, including 3D extrusion with biomaterials, robotic arm assembly and computer vision prototypes through Roboflow and embedded systems.",
       "Participación en pruebas y actividades de integración del Sistema de Control de Actitud y Órbita (AOCS) del proyecto Chasqui 2. Verificación de datos, documentación técnica y soporte a actividades de investigación orientadas a la integración de subsistemas.": "Participation in tests and integration activities of the Attitude and Orbit Control System (AOCS) of the Chasqui 2 project. Data verification, technical documentation and support for research activities aimed at the integration of subsystems.",
       "Participé en la versión grupal del curso (Grupo 4, USIL), que propuso la arquitectura Raspberry Pi 5 + ESP32 con OC-SORT. En noviembre de 2026 la retomé: implementé y verifiqué el rastreador, diseñé los experimentos de oclusión y de lazo cerrado, rehice el dimensionamiento de la cámara y diseñé el esquemático, el firmware y el montaje mecánico. El método OC-SORT es de Cao et al. (2023); no se atribuye su autoría.": "I took part in the course group version (Group 4, USIL), which proposed the Raspberry Pi 5 + ESP32 architecture with OC-SORT. In November 2026 I picked it up again: I implemented and verified the tracker, designed the occlusion and closed-loop experiments, redid the camera sizing and designed the schematic, firmware and mechanical mounting. The OC-SORT method is by Cao et al. (2023); no authorship of it is claimed.",
@@ -3405,9 +3666,11 @@
       "Plano de conjunto del robot con lista de materiales.": "Robot assembly drawing with bill of materials.",
       "Platzi": "Platzi",
       "Por qué el umbral de área fallaba": "Why the area threshold failed",
+      "Porcentaje de escenas en que el conteo es exacto, con Kalman de velocidad constante (CV), de aceleración constante (CA) e IMM, a 5, 10 y 15 fps, con la faja con paradas y continua. 300 escenas por barra, las mismas para todos. Simulación con un modelo de error del detector.": "Share of scenes with an exact count, with constant-velocity (CV) and constant-acceleration (CA) Kalman filters and IMM, at 5, 10 and 15 fps, with the conveyor stopping and continuous. 300 scenes per bar, the same for all. Simulation with a detector error model.",
       "Power BI": "Power BI",
       "Practicante Integrador Industrial": "Industrial Integration Intern",
       "Practicante en Investigación y Desarrollo (I+D)": "Research and Development (R&D) Intern",
+      "Precisión y latencia de los detectores": "Detector accuracy and latency",
       "Presentación del velero «Belén» ante oficiales de la Marina de Guerra del Perú en el Centro Naval de San Borja, agosto de 2023. Foto: USIL.": "Presentation of the sailboat “Belén” to Peruvian Navy officers at the San Borja Naval Center, August 2023. Photo: USIL.",
       "Presentación en el Centro Naval": "Presentation at the Naval Center",
       "Presentación y exhibición": "Presentation and exhibition",
@@ -3426,7 +3689,6 @@
       "Prototipo de perforadora minera y gemelo digital (Bucyrus 49HR)": "Mining drill prototype and digital twin (Bucyrus 49HR)",
       "Prototipos con sistemas embebidos": "Prototypes with embedded systems",
       "Prototipos de visión por computadora con Roboflow y sistemas embebidos en ESAN; proyectos de seguimiento de objetos en USIL.": "Computer vision prototypes with Roboflow and systems embedded in ESAN; object tracking projects in USIL.",
-      "Prototipos de visión por computadora mediante Roboflow y sistemas embebidos.": "Computer vision prototypes using Roboflow and embedded systems.",
       "Proyecto": "Project",
       "Proyecto / Aeroespacial": "Project / Aerospace",
       "Proyecto / Manufactura": "Project / Manufacturing",
@@ -3454,6 +3716,7 @@
       "Qué pasa cuando alguien queda oculto": "What happens when someone is occluded",
       "Qué queda por validar": "What remains to be validated",
       "Qué se desarrolló": "What was developed",
+      "Qué tiene que enviar la cámara": "What the camera has to send",
       "REGISTRO DEL TRABAJO": "PROJECT RECORD",
       "RESEARCH": "RESEARCH",
       "RESEARCH & ENGINEERING PORTFOLIO": "RESEARCH & ENGINEERING PORTFOLIO",
@@ -3467,6 +3730,7 @@
       "Recorrido de 82 s: punto de partida grupal, verificación del rastreador, oclusión, lazo cerrado, electrónica y render del montaje. Todo es simulación o render; no es una grabación del robot.": "82 s walkthrough: group starting point, tracker verification, occlusion, closed loop, electronics and mounting render. Everything is simulation or render; it is not footage of the robot.",
       "Recorrido de los cinco agentes y del pastor en Gazebo. Aunque el control utiliza odometría, la gráfica muestra las posiciones de referencia del simulador para evaluar el resultado.": "Paths of the five agents and the shepherd in Gazebo. Although control uses odometry, the plot shows the simulator’s reference positions to evaluate the outcome.",
       "Recuperación de identidad frente a la duración de la oclusión": "Identity recovery versus occlusion length",
+      "Reduje las imágenes de prueba a las resoluciones del sensor y las comprimí en JPEG antes de detectar. En VGA con calidad 30 cada cuadro pesa 29 kB y el AP baja solo de 0,53 a 0,48, lo que da para unos 17 cuadros por segundo con un enlace de 4 Mbit/s. En QVGA el arándano prácticamente desaparece. Con la lente estándar, la cámara debe ir a menos de 48 cm de la faja para que un arándano de 12 mm ocupe 16 píxeles.": "I scaled the test images down to the sensor resolutions and compressed them as JPEG before detection. At VGA with quality 30 each frame is 29 kB and AP drops only from 0.53 to 0.48, enough for about 17 frames per second over a 4 Mbit/s link. At QVGA blueberries practically disappear. With the standard lens, the camera must sit less than 48 cm above the conveyor for a 12 mm blueberry to cover 16 pixels.",
       "Referencia y atribución": "References and attribution",
       "Referencias y recursos": "References and resources",
       "Registro del mismo escenario de pastoreo con odometría: llegada a los 43,8 s, cero colisiones registradas y contención completa durante 60 s. Estos valores describen ese ensayo; no garantizan el comportamiento físico.": "Log from the same odometry-based shepherding scenario: arrival at 43.8 s, zero recorded collisions and full containment for 60 s. These values describe that trial; they do not guarantee physical behavior.",
@@ -3490,6 +3754,7 @@
       "Research": "Research",
       "Research & Development": "Research & Development",
       "Research & Engineering Portfolio": "Research & Engineering Portfolio",
+      "Resolución y calidad JPEG de la cámara": "Camera resolution and JPEG quality",
       "Respuesta simulada del lazo de velocidad, con las limitaciones del modelo de motor y encoder. Los scripts de cálculo fueron verificados en GNU Octave; no es una medición del motor físico.": "Simulated speed-loop response, including the limitations of the motor and encoder model. The calculation scripts were checked in GNU Octave; this is not a measurement of the physical motor.",
       "Respuesta simulada del motor con control PI, saturación y cuantización.": "Simulated motor response with PI control, saturation and quantization.",
       "Resultados con contexto": "Results in context",
@@ -3505,6 +3770,7 @@
       "Resumen descriptivo: la cámara sigue al robot desde arriba mientras camina sobre un piso de madera durante unos 17 segundos. Se ven las patas moverse en trote y los cables de alimentación y de red que salen del cuerpo. Video sin audio.": "Descriptive summary: the camera follows the robot from above as it walks on a wooden floor for about 17 seconds. The legs move in a trot and the power and network cables leave the body. Video without audio.",
       "Resumen descriptivo: láminas con el planteamiento y los resultados, una animación en la que SORT pierde y OC-SORT recupera la identidad de un peatón oculto 1,5 s, una vista en planta donde la lógica original choca y la nueva frena, el esquemático y un recorrido 3D del montaje sobre la WAVE ROVER.": "Descriptive summary: slides with the approach and results, an animation in which SORT loses and OC-SORT recovers the identity of a pedestrian hidden for 1.5 s, a top view where the original logic collides and the new one brakes, the schematic and a 3D tour of the mounting on the WAVE ROVER.",
       "Resumen descriptivo: se presenta la geometría auxética, el conjunto mecánico y la electrónica; el motor mueve la transmisión y el husillo, el carro empuja el émbolo y la simulación muestra la deposición de pasta. Las magnitudes mostradas proceden del modelo numérico; el tiempo y la deformación visual están escalados.": "Descriptive summary: the auxetic geometry, mechanical assembly and electronics are introduced; the motor drives the transmission and lead screw, the carriage pushes the plunger and the simulation shows paste deposition. Displayed quantities come from the numerical model; time and visible deformation are scaled.",
+      "Resumen descriptivo: una faja gris avanza de izquierda a derecha, se detiene y vuelve a arrancar. Las fresas y los arándanos llevan una caja de color con un número. Cuando cruzan la línea blanca vertical, la línea se vuelve verde y sube el contador de cada panel. Abajo se indican la velocidad de la faja y los cuadros por segundo. Video sin audio.": "Descriptive summary: a gray conveyor moves left to right, stops and starts again. Strawberries and blueberries carry a colored box with a number. When they cross the white vertical line, the line turns green and each panel’s counter goes up. The conveyor speed and frame rate are shown at the bottom. Video without audio.",
       "Reticulado del mástil y su deformación calculada al iniciar el levante.": "Mast lattice and its calculated deformation at the start of raising.",
       "Retrato de Anghello Eduardo Rodríguez Risco": "Portrait of Anghello Eduardo Rodríguez Risco",
       "Revisión C — alternativa sin manguera": "Revision C — hose-free alternative",
@@ -3562,10 +3828,10 @@
       "Sistemas autónomos": "Autonomous systems",
       "Sistemas bioinspirados": "Bioinspired systems",
       "Sistemas de control y robótica para aplicaciones espaciales.": "Control and robotic systems for space applications.",
-      "Sistemas embebidos": "Embedded systems",
       "Sistemas embebidos y hardware": "Embedded systems and hardware",
       "Sistemas satelitales": "Satellite systems",
       "Sobre las imágenes": "About the images",
+      "Sobre las imágenes y los datos": "About the images and data",
       "SolidWorks": "SolidWorks",
       "Soporte técnico y formación": "Technical support and training",
       "Soporte técnico, asesoría y capacitaciones en diseño mecánico, Arduino y aplicaciones de visión por computadora para estudiantes de pregrado y posgrado.": "Technical support, advice and training in mechanical design, Arduino and computer vision applications for undergraduate and graduate students.",
@@ -3577,6 +3843,7 @@
       "TIA Portal": "TIA Portal",
       "TRAYECTORIA": "BACKGROUND",
       "TRAYECTORIA / CV": "BACKGROUND / CV",
+      "Tamaño en píxeles de un arándano de 12 mm según la altura de la cámara y la resolución de entrada del detector. Cálculo geométrico.": "Pixel size of a 12 mm blueberry versus camera height and detector input resolution. Geometric calculation.",
       "También en": "Also in",
       "También se estudia la oscilación de rumbo del enjambre. Las correcciones incluyen separación continua y promediada, zona muerta y ajustes de marcha atrás, para reducir oscilaciones inducidas por fuerzas virtuales y retardo.": "Swarm heading oscillation is also studied. Corrections include continuous, averaged separation, a deadband and reverse-motion adjustments to reduce oscillations caused by virtual forces and delay.",
       "Tasa de éxito en 20 terrenos con empuje lateral por barra, con y sin corrección de la IMU. Sin carga la IMU ayuda poco; con 0,5 kg el robot casi nunca termina el recorrido con servos de 15 kg·cm. Simulación.": "Success rate on 20 terrains with a side push per bar, with and without IMU correction. Without load the IMU helps little; with 0.5 kg the robot almost never finishes the course with 15 kg·cm servos. Simulation.",
@@ -3610,6 +3877,7 @@
       "Un robot que circula entre personas necesita tres cosas: detectar a cada peatón en la imagen, saber que es la misma persona de un cuadro a otro aunque alguien la tape un momento, y decidir a tiempo si debe frenar. La cámara envía 30 cuadros por segundo; YOLOv8n encuentra las cajas de cada persona y el rastreador las une en trayectorias con identidad.": "A robot moving among people needs three things: detect each pedestrian in the image, know it is the same person from one frame to the next even when someone briefly blocks the view, and decide in time whether to brake. The camera delivers 30 frames per second; YOLOv8n finds each person’s bounding box and the tracker links them into trajectories with an identity.",
       "Un velero autónomo, o saildrone, es una embarcación sin tripulación que avanza con el viento y recarga sus baterías con el sol. Puede pasar días en el mar recogiendo datos para la investigación oceánica. En 2023 la Marina de Guerra del Perú promovió la construcción de estos veleros en universidades peruanas para una primera regata de veleros no tripulados, y USIL construyó el suyo: el velero «Belén».": "An autonomous sailboat, or saildrone, is an uncrewed vessel that moves with the wind and recharges its batteries with the sun. It can spend days at sea collecting data for ocean research. In 2023 the Peruvian Navy promoted the construction of these sailboats at Peruvian universities for a first uncrewed sailboat regatta, and USIL built its own: the sailboat “Belén”.",
       "Un velero que navega solo": "A sailboat that sails by itself",
+      "Una faja de clasificación arranca y se detiene. Un filtro de Kalman de velocidad constante sigue de largo cuando la faja frena, y la pista se parte. Un IMM combina dos modelos, «detenida» y «velocidad constante», y pasa de uno a otro según las detecciones. Verifiqué mis filtros contra la biblioteca filterpy (coinciden hasta 5·10⁻¹²) y los comparé en 7200 escenas simuladas pareadas. A 15 fps con paradas, el IMM acierta el conteo exacto en el 39 % de las escenas y el Kalman simple en el 16 %.": "A sorting conveyor starts and stops. A constant-velocity Kalman filter overshoots when the conveyor brakes, and the track splits. An IMM combines two models, “stopped” and “constant velocity”, and switches between them according to the detections. I verified my filters against the filterpy library (they match to 5·10⁻¹²) and compared them on 7,200 paired simulated scenes. At 15 fps with stops, the IMM gets the exact count in 39 % of the scenes and the plain Kalman filter in 16 %.",
       "Una impresora 3D común deposita capas planas con la boquilla siempre vertical. Un brazo robótico puede inclinar la boquilla y seguir superficies curvas, y así imprimir cúpulas, voladizos o recubrimientos sin soportes. Para eso tomé el BCN3D Moveo, un brazo de código abierto de cinco grados de libertad, lo imprimí y lo armé en el FabLab de ESAN, y desarrollé todo lo que necesita para imprimir con un extrusor en su último eslabón.": "A common 3D printer lays down flat layers with the nozzle always vertical. A robot arm can tilt the nozzle and follow curved surfaces, printing domes, overhangs or coatings without supports. To do that I took the BCN3D Moveo, an open-source five-degree-of-freedom arm, printed and assembled it at the ESAN FabLab, and developed everything it needs to print with an extruder on its last link.",
       "Una plataforma terrestre para investigación espacial": "An Earth-based platform for space research",
       "Una trayectoria de construcción": "A path of learning and building",
@@ -3635,7 +3903,6 @@
       "Video original del robot caminando solo sobre piso de madera, con la Raspberry Pi 4, las dos PCA9685 y los servos a la vista.": "Original video of the robot walking on its own on a wooden floor, with the Raspberry Pi 4, the two PCA9685 boards and the servos in view.",
       "Visión por computadora": "Computer vision",
       "Visión por computadora aplicada": "Applied computer vision",
-      "Visión por computadora y sistemas embebidos": "Computer vision and embedded systems",
       "Visión por computadora — seguimiento de peatones con OC-SORT": "Computer vision — pedestrian tracking with OC-SORT",
       "Visión, simulación y diseño": "Vision, simulation and design",
       "Visión, simulación y diseño / IA y control": "Vision, simulation and design / AI and control",
@@ -3651,6 +3918,7 @@
       "Vol. 11 · N.º 5": "Vol. 11 · No. 5",
       "Volver al inicio ↑": "Back to home ↑",
       "WinCC": "WinCC",
+      "YOLO11s alcanza un AP de 0,58 en las imágenes de prueba y YOLOv8n en INT8, 0,53 en unos 48 ms en la CPU de un portátil. La fresa se detecta bien (AP 0,83); el arándano, pequeño y en racimos, es el difícil (0,25). La cámara debe enviar VGA en JPEG: QVGA pierde el arándano. En la faja simulada, a 15 fps y con paradas, el IMM acierta el conteo exacto en el 39 % de las escenas frente al 16 % de un Kalman simple. Con el detector real en esa faja, en cambio, se pierden unas 3 de cada 25 frutas con cualquier filtro, porque el detector se entrenó con fotos de campo. Todo es simulación y evaluación con datos públicos; falta probarlo con las placas.": "YOLO11s reaches an AP of 0.58 on the test images, and YOLOv8n in INT8 reaches 0.53 in about 48 ms on a laptop CPU. Strawberries are detected well (AP 0.83); blueberries, small and clustered, are the hard case (0.25). The camera should send VGA JPEG: QVGA loses the blueberries. On the simulated conveyor, at 15 fps with stops, the IMM gets the exact count in 39 % of scenes versus 16 % for a plain Kalman filter. With the real detector on that conveyor, however, about 3 out of 25 fruits are missed with any filter, because the detector was trained on field photos. Everything is simulation and evaluation on public data; testing on the boards is still pending.",
       "YOLOv8": "YOLOV8",
       "anghello.rodriguez@ieee.org": "anghello.rodriguez@ieee.org",
       "anghellorodriguez@gmail.com": "anghellorodriguez@gmail.com",
@@ -3661,9 +3929,19 @@
       "Área de la caja frente a la distancia: cuando el peatón no cabe en la imagen, el área deja de crecer y el umbral de 45 000 px² se dispara a 1,12 m en lugar de 2 m.": "Box area versus distance: when the pedestrian no longer fits in the image, the area stops growing and the 45,000 px² threshold fires at 1.12 m instead of 2 m.",
       "Áreas de especialización": "Areas of specialization",
       "Áreas que conectan mi trabajo": "Areas that connect my work",
+      "(Universidad de Huelva) y": "(University of Huelva) and",
+      "4 imágenes · 1 videos · 0 audios": "4 images · 1 videos · 0 audios",
+      "BlueberryDCM": "BlueberryDCM",
+      "ESP32-S3": "ESP32-S3",
+      "IMM": "IMM",
+      "Las imágenes y el video son simulaciones y gráficas de resultados. Las frutas de la faja son recortes de las imágenes de prueba de": "The images and video are simulations and results graphics. The fruits of the raja are cuts of the test images of",
+      "ONNX": "ONNX",
+      "StrawDI": "StrawDI",
+      "YOLO": "YOLO",
       "Brazo robótico Moveo para impresión 3D multieje | Anghello Rodríguez": "Moveo robotic arm for multi-axis 3D printing | Anghello Rodríguez",
       "Chasqui 2 — AOCS | Anghello Rodríguez": "Chasqui 2 — AOCS | Anghello Rodríguez",
       "Cuadrúpedo para terrenos complejos | Anghello Rodríguez": "Quadruped robot for challenging terrain | Anghello Rodríguez",
+      "Detección y conteo de frutas con visión embebida | Anghello Rodríguez": "Fruit detection and counting with embedded vision | Anghello Rodríguez",
       "Enjambre de robots — ovejas y lobo | Anghello Rodríguez": "Robot swarm — sheep and wolf | Anghello Rodríguez",
       "Extrusora 3D de pasta cerámica con módulo auxético | Anghello Rodríguez": "Ceramic paste 3D extruder with an auxetic module | Anghello Rodríguez",
       "PachaLab — robótica espacial | Anghello Rodríguez": "PachaLab — space robotics | Anghello Rodríguez",
@@ -3675,6 +3953,7 @@
       "Ver proyecto: Brazo robótico Moveo para impresión 3D multieje": "View project: Moveo robotic arm for multi-axis 3D printing",
       "Ver proyecto: Chasqui 2 — AOCS": "View project: Chasqui 2 — AOCS",
       "Ver proyecto: Cuadrúpedo para terrenos complejos": "View project: Quadruped robot for challenging terrain",
+      "Ver proyecto: Detección y conteo de frutas con visión embebida": "View project: Fruit detection and counting with embedded vision",
       "Ver proyecto: Enjambre de robots — ovejas y lobo": "View project: Robot swarm — sheep and wolf",
       "Ver proyecto: Extrusora 3D de pasta cerámica con módulo auxético": "View project: Ceramic paste 3D extruder with an auxetic module",
       "Ver proyecto: PachaLab — robótica espacial": "View project: PachaLab — space robotics",
@@ -3682,9 +3961,7 @@
       "Ver proyecto: Prototipo de perforadora minera y gemelo digital (Bucyrus 49HR)": "View project: Mining drill prototype and digital twin (Bucyrus 49HR)",
       "Ver proyecto: Robot de servicio para estudiantes": "View project: Service robot for students",
       "Ver proyecto: Velero autónomo «Belén» — Saildrone USIL": "View project: Autonomous sailboat “Belén” — USIL Saildrone",
-      "Ver proyecto: Visión por computadora y sistemas embebidos": "View project: Computer vision and embedded systems",
       "Ver proyecto: Visión por computadora — seguimiento de peatones con OC-SORT": "View project: Computer vision — pedestrian tracking with OC-SORT",
-      "Visión por computadora y sistemas embebidos | Anghello Rodríguez": "Computer vision and embedded systems | Anghello Rodríguez",
       "Visión por computadora — seguimiento de peatones con OC-SORT | Anghello Rodríguez": "Computer vision — pedestrian tracking with OC-SORT | Anghello Rodríguez"
     }
   }
