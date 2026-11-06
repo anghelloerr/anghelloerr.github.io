@@ -408,7 +408,7 @@
         "Raspberry Pi",
         "ONNX"
       ],
-      "result": "YOLO11s alcanza un AP de 0,58 en las imágenes de prueba y YOLOv8n en INT8, 0,53 en unos 48 ms en la CPU de un portátil. La fresa se detecta bien (AP 0,83); el arándano, pequeño y en racimos, es el difícil (0,25). La cámara debe enviar VGA en JPEG: QVGA pierde el arándano. En la faja simulada, a 15 fps y con paradas, el IMM acierta el conteo exacto en el 39 % de las escenas frente al 16 % de un Kalman simple. Con el detector real en esa faja, en cambio, se pierden unas 3 de cada 25 frutas con cualquier filtro, porque el detector se entrenó con fotos de campo. Todo es simulación y evaluación con datos públicos; falta probarlo con las placas.",
+      "result": "YOLO11s alcanza un AP de 0,58 en las imágenes de prueba y YOLOv8n en INT8, 0,53 en unos 48 ms en la CPU de un portátil. La fresa se detecta bien (AP 0,83); el arándano, pequeño y en racimos, es el difícil (0,25). La cámara debe enviar VGA en JPEG: QVGA pierde el arándano. En la faja simulada, a 15 fps y con paradas, el IMM acierta el conteo exacto en el 39 % de las escenas frente al 16 % de un Kalman simple. Con el detector real en esa faja, en cambio, se pierden unas 3 de cada 25 frutas con cualquier filtro, porque el detector se entrenó con fotos de campo; al afinarlo con imágenes de faja, el conteo exacto sube del 5 % al 67 %. Todo es simulación y evaluación con datos públicos; falta probarlo con las placas.",
       "image": "assets/images/701c0c5249efb2aaa4485ff71b38b1e91530a555a1d2e5de7146c7576dc099bb.webp",
       "imageAlt": "Faja gris vista desde arriba con fresas y un arándano. Es un cuadro de la simulación, no una fotografía.",
       "url": null,
@@ -520,6 +520,15 @@
               {
                 "type": "text",
                 "text": "Al cerrar el lazo con el detector real sobre una faja renderizada con frutas de las imágenes de prueba, el resultado cambió: el detector, entrenado con fotos de campo, baja a AP 0,35 y se pierden unas 3 de cada 25 frutas con cualquier filtro. El siguiente paso es entrenar con imágenes de la faja, no afinar el filtro."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Eso hice: afiné el detector con 1500 cuadros de faja armados con fruta de las imágenes de entrenamiento. En la faja el AP subió de 0,35 a 0,83 y el conteo exacto pasó del 5 % al 67 % de las escenas, sin perder precisión en las fotos de campo. Con ese detector, el Kalman simple y el IMM quedan empatados. Es una mejora optimista, porque la faja de entrenamiento y la de prueba salen del mismo simulador: para una faja real hay que grabar y etiquetar imágenes propias."
               }
             ]
           },
@@ -3017,6 +3026,7 @@
     "workerHash": "f42a14a0c10d0e72b7bb3131194353080dc169dfae19cf00d92c420f36a82619",
     "en": {
       "& Bionics": "& Bionics",
+      "(Universidad de Huelva) y": "(University of Huelva) and",
       ", con licencia MIT.": ", under the MIT license.",
       ", las convertí en detecciones con ruido y, en cada ensayo, oculté por completo a una persona entre 0,5 y 3 s, a 30, 15 y 10 cuadros por segundo. Hasta 1 s no hay diferencia clara. Desde 1,5 s, OC-SORT recupera la identidad entre 6 y 11 puntos más que SORT, y casi toda la mejora viene de OCR. Aun así, a 1,5 s la recupera solo en el 68–76 % de los casos: el problema no está resuelto.": ", turned them into noisy detections and, in each trial, fully hid one person for 0.5 to 3 s, at 30, 15 and 10 frames per second. Up to 1 s there is no clear difference. From 1.5 s on, OC-SORT recovers the identity 6 to 11 points more often than SORT, and almost all of the gain comes from OCR. Even so, at 1.5 s it recovers it in only 68–76% of cases: the problem is not solved.",
       ", usados con fines académicos. El aguaymanto del prototipo original queda pendiente.": ", used for academic purposes. The goldenberry from the original prototype is still pending.",
@@ -3034,6 +3044,7 @@
       "2026 · fotografía": "2026 · photograph",
       "2026 · prototipo en ESAN; estudio reconstruido en nov. 2026": "2026 · prototype at ESAN; study rebuilt in Nov. 2026",
       "300 escenas por barra. La lógica original choca igual o más que no reaccionar; con 110° y la lógica nueva los impactos caen a 0–0,7 %.": "300 scenes per bar. The original logic collides as much as or more than not reacting; with 110° and the new logic impacts fall to 0–0.7%.",
+      "4 imágenes · 1 videos · 0 audios": "4 images · 1 videos · 0 audios",
       "5 imágenes · 1 videos · 0 audios": "5 images · 1 videos · 0 audios",
       "6 imágenes · 1 videos · 0 audios": "6 images · 1 videos · 0 audios",
       "6 imágenes · 2 videos · 0 audios": "6 images · 2 videos · 0 audios",
@@ -3155,6 +3166,7 @@
       "Biomimetics": "Biomimetics",
       "Biomimética": "Biomimetics",
       "Bitácora | Anghello Rodríguez": "Journal | Anghello Rodríguez",
+      "BlueberryDCM": "BlueberryDCM",
       "Brazo de código abierto BCN3D Moveo, impreso y armado en el FabLab de ESAN, preparado para imprimir en 3D con un extrusor en el último eslabón y la boquilla inclinada. Incluye su modelo cinemático y dinámico, la comparación de cinco controladores, un gemelo digital en ROS 2 y una aplicación que convierte un G-code en el movimiento del brazo.": "Open-source BCN3D Moveo arm, printed and assembled at the ESAN FabLab, prepared for 3D printing with an extruder on the last link and a tilted nozzle. It includes its kinematic and dynamic model, a comparison of five controllers, a ROS 2 digital twin and an application that turns G-code into arm motion.",
       "Brazo robótico Moveo para impresión 3D multieje": "Moveo robotic arm for multi-axis 3D printing",
       "Brazo robótico rojo y crema sobre un tablero de madera, con cables y piezas sueltas, en un laboratorio con impresoras 3D al fondo.": "Red and cream robot arm on a wooden board, with cables and loose parts, in a lab with 3D printers in the background.",
@@ -3306,6 +3318,7 @@
       "ESAN R&D Labs / FabLab": "ESAN R&D Labs / FabLab",
       "ESAN – R&D Labs / FabLab": "ESAN – R&D Labs / FabLab",
       "ESP32": "ESP32",
+      "ESP32-S3": "ESP32-S3",
       "EXPERIENCE": "EXPERIENCE",
       "EXPERIENCIA / I+D": "EXPERIENCE / R&D",
       "Educación": "Education",
@@ -3360,6 +3373,7 @@
       "Entrené cuatro modelos con 3240 imágenes públicas de fresa y arándano y los evalué con el evaluador oficial de COCO. YOLO11s es el más preciso (AP 0,58); YOLO11n y YOLOv8n a 640 px quedan en 0,54 y 0,55. Al cuantizarlos a INT8 descubrí que la cabeza del detector no se puede cuantizar: su salida mezcla coordenadas en píxeles con probabilidades y el AP caía a cero. Dejándola en FP32, YOLOv8n conserva 0,53 y ahorra un 22 % de tiempo.": "I trained four models on 3,240 public strawberry and blueberry images and evaluated them with the official COCO evaluator. YOLO11s is the most accurate (AP 0.58); YOLO11n and YOLOv8n at 640 px reach 0.54 and 0.55. When quantizing to INT8 I found that the detector head cannot be quantized: its output mixes pixel coordinates with probabilities and AP dropped to zero. Keeping it in FP32, YOLOv8n keeps 0.53 and saves 22 % of the time.",
       "Error de la boquilla en el domo de cinco ejes: RMS, máximo y peor RMS entre 8 brazos con masas aleatorias. Solo el par calculado con integral cumple 0,1 mm. Simulación en MATLAB.": "Nozzle error on the five-axis dome: RMS, maximum and worst RMS across 8 arms with random masses. Only computed torque with integral action meets 0.1 mm. MATLAB simulation.",
       "Escenas con impacto según cámara y lógica": "Scenes with impact by camera and logic",
+      "Eso hice: afiné el detector con 1500 cuadros de faja armados con fruta de las imágenes de entrenamiento. En la faja el AP subió de 0,35 a 0,83 y el conteo exacto pasó del 5 % al 67 % de las escenas, sin perder precisión en las fotos de campo. Con ese detector, el Kalman simple y el IMM quedan empatados. Es una mejora optimista, porque la faja de entrenamiento y la de prueba salen del mismo simulador: para una faja real hay que grabar y etiquetar imágenes propias.": "That is what I did: I fine-tuned the detector with 1,500 conveyor frames built from fruits in the training images. On the conveyor AP rose from 0.35 to 0.83 and the exact count went from 5 % to 67 % of scenes, with no loss of accuracy on the field photos. With that detector, the plain Kalman filter and the IMM are tied. It is an optimistic gain, because the training and test conveyors come from the same simulator: a real conveyor needs its own recorded and labeled images.",
       "Espacio de trabajo": "Workspace",
       "Especialización en Ciencia de Datos para el Mantenimiento Predictivo": "Specialization in Data Science for Predictive Maintenance",
       "Especialización en Gestión de Proyectos": "Project Management Specialization",
@@ -3474,6 +3488,7 @@
       "IEEE USIL RAS SBC": "IEEE USIL RAS SBC",
       "IEEE USIL Student Branch": "IEEE USIL Student Branch",
       "IEEE USIL · robótica cuadrúpeda": "IEEE USIL · quadruped robotics",
+      "IMM": "IMM",
       "INBESTIGA": "INBESTIGA",
       "INTINAUTA / PachaLab": "INTINAUTA / PachaLab",
       "INTINAUTA Research Center": "INTINAUTA Research Center",
@@ -3547,6 +3562,7 @@
       "Las fotos son de USIL y se publicaron en sus notas. Las imágenes del velero completo son renders del modelo 3D del equipo, no fotografías del velero construido.": "The photos are by USIL and were published in its news articles. The images of the complete sailboat are renders of the team’s 3D model, not photographs of the built sailboat.",
       "Las fotos y los videos de 2023 son del robot real. Las gráficas, el modelo amarillo con fondo de tablero y el diagrama de la revisión son de simulación o de diseño, y así se indica en cada uno.": "The 2023 photos and videos show the real robot. The plots, the yellow model on a checkered floor and the review diagram come from simulation or design, and each one says so.",
       "Las imágenes de esta ficha proceden del artículo de Ricardo Barreto, Jose Cornejo, Mariela Vargas, Nicolas Gastello y Anghello Rodriguez. Se conservan los números de figura y sus rótulos originales; las leyendas del portafolio son resúmenes bilingües. La portada reproduce la figura 10.": "The images on this page come from the article by Ricardo Barreto, Jose Cornejo, Mariela Vargas, Nicolas Gastello and Anghello Rodriguez. Figure numbers and original labels are preserved; portfolio captions are bilingual summaries. The cover reproduces Figure 10.",
+      "Las imágenes y el video son simulaciones y gráficas de resultados. Las frutas de la faja son recortes de las imágenes de prueba de": "The images and video are simulations and results graphics. The fruits of the raja are cuts of the test images of",
       "Las topologías cLAM, LCAM-2R y oLCAM proceden de Hou et al. (2024), Materials & Design, 237, 112530. El CAD de referencia de la Ender-3 es de Creality. Las imágenes de esta ficha son modelos y gráficos del estudio; el video es una simulación visual con tiempo acelerado.": "The cLAM, LCAM-2R and oLCAM topologies are from Hou et al. (2024), Materials & Design, 237, 112530. The Ender-3 reference CAD is from Creality. The images on this page are models and plots from the study; the video is a visual simulation with accelerated time.",
       "Lazo cerrado: la cámara importa más que el rastreador": "Closed loop: the camera matters more than the tracker",
       "Lazo cerrado: misma escena, dos diseños": "Closed loop: same scene, two designs",
@@ -3630,6 +3646,7 @@
       "Nube de puntos semiesférica, una sección con contornos de colores y un gráfico de barras.": "Hemispherical point cloud, a section with colored contours and a bar chart.",
       "OC-SORT": "OC-SORT",
       "OC-SORT · seguimiento de múltiples objetos": "OC-SORT · multiple object tracking",
+      "ONNX": "ONNX",
       "ORCID": "ORCID",
       "Oclusión de 1,5 s: SORT frente a OC-SORT": "1.5 s occlusion: SORT versus OC-SORT",
       "Oct. 2026": "Oct. 2026",
@@ -3838,6 +3855,7 @@
       "Soporte técnico, mantenimiento y formación a estudiantes en fabricación digital, prototipado, diseño mecánico, Arduino y aplicaciones de visión por computadora para programas de pregrado y posgrado.": "Technical support, maintenance and training for students in digital manufacturing, prototyping, mechanical design, Arduino and computer vision applications for undergraduate and postgraduate programs.",
       "Space Robotics & AOCS": "Space Robotics & AOCS",
       "SpotMicro": "SpotMicro",
+      "StrawDI": "StrawDI",
       "TEACHING": "TEACHING",
       "TECSUP": "TECSUP",
       "TIA Portal": "TIA Portal",
@@ -3918,7 +3936,8 @@
       "Vol. 11 · N.º 5": "Vol. 11 · No. 5",
       "Volver al inicio ↑": "Back to home ↑",
       "WinCC": "WinCC",
-      "YOLO11s alcanza un AP de 0,58 en las imágenes de prueba y YOLOv8n en INT8, 0,53 en unos 48 ms en la CPU de un portátil. La fresa se detecta bien (AP 0,83); el arándano, pequeño y en racimos, es el difícil (0,25). La cámara debe enviar VGA en JPEG: QVGA pierde el arándano. En la faja simulada, a 15 fps y con paradas, el IMM acierta el conteo exacto en el 39 % de las escenas frente al 16 % de un Kalman simple. Con el detector real en esa faja, en cambio, se pierden unas 3 de cada 25 frutas con cualquier filtro, porque el detector se entrenó con fotos de campo. Todo es simulación y evaluación con datos públicos; falta probarlo con las placas.": "YOLO11s reaches an AP of 0.58 on the test images, and YOLOv8n in INT8 reaches 0.53 in about 48 ms on a laptop CPU. Strawberries are detected well (AP 0.83); blueberries, small and clustered, are the hard case (0.25). The camera should send VGA JPEG: QVGA loses the blueberries. On the simulated conveyor, at 15 fps with stops, the IMM gets the exact count in 39 % of scenes versus 16 % for a plain Kalman filter. With the real detector on that conveyor, however, about 3 out of 25 fruits are missed with any filter, because the detector was trained on field photos. Everything is simulation and evaluation on public data; testing on the boards is still pending.",
+      "YOLO": "YOLO",
+      "YOLO11s alcanza un AP de 0,58 en las imágenes de prueba y YOLOv8n en INT8, 0,53 en unos 48 ms en la CPU de un portátil. La fresa se detecta bien (AP 0,83); el arándano, pequeño y en racimos, es el difícil (0,25). La cámara debe enviar VGA en JPEG: QVGA pierde el arándano. En la faja simulada, a 15 fps y con paradas, el IMM acierta el conteo exacto en el 39 % de las escenas frente al 16 % de un Kalman simple. Con el detector real en esa faja, en cambio, se pierden unas 3 de cada 25 frutas con cualquier filtro, porque el detector se entrenó con fotos de campo; al afinarlo con imágenes de faja, el conteo exacto sube del 5 % al 67 %. Todo es simulación y evaluación con datos públicos; falta probarlo con las placas.": "YOLO11s reaches an AP of 0.58 on the test images, and YOLOv8n in INT8 reaches 0.53 in about 48 ms on a laptop CPU. Strawberries are detected well (AP 0.83); blueberries, small and clustered, are the hard case (0.25). The camera should send VGA JPEG: QVGA loses the blueberries. On the simulated conveyor, at 15 fps with stops, the IMM gets the exact count in 39 % of scenes versus 16 % for a plain Kalman filter. With the real detector on that conveyor, however, about 3 out of 25 fruits are missed with any filter, because the detector was trained on field photos; after fine-tuning it on conveyor images, the exact count rises from 5 % to 67 %. Everything is simulation and evaluation on public data; testing on the boards is still pending.",
       "YOLOv8": "YOLOV8",
       "anghello.rodriguez@ieee.org": "anghello.rodriguez@ieee.org",
       "anghellorodriguez@gmail.com": "anghellorodriguez@gmail.com",
@@ -3929,15 +3948,6 @@
       "Área de la caja frente a la distancia: cuando el peatón no cabe en la imagen, el área deja de crecer y el umbral de 45 000 px² se dispara a 1,12 m en lugar de 2 m.": "Box area versus distance: when the pedestrian no longer fits in the image, the area stops growing and the 45,000 px² threshold fires at 1.12 m instead of 2 m.",
       "Áreas de especialización": "Areas of specialization",
       "Áreas que conectan mi trabajo": "Areas that connect my work",
-      "(Universidad de Huelva) y": "(University of Huelva) and",
-      "4 imágenes · 1 videos · 0 audios": "4 images · 1 videos · 0 audios",
-      "BlueberryDCM": "BlueberryDCM",
-      "ESP32-S3": "ESP32-S3",
-      "IMM": "IMM",
-      "Las imágenes y el video son simulaciones y gráficas de resultados. Las frutas de la faja son recortes de las imágenes de prueba de": "The images and video are simulations and results graphics. The fruits of the raja are cuts of the test images of",
-      "ONNX": "ONNX",
-      "StrawDI": "StrawDI",
-      "YOLO": "YOLO",
       "Brazo robótico Moveo para impresión 3D multieje | Anghello Rodríguez": "Moveo robotic arm for multi-axis 3D printing | Anghello Rodríguez",
       "Chasqui 2 — AOCS | Anghello Rodríguez": "Chasqui 2 — AOCS | Anghello Rodríguez",
       "Cuadrúpedo para terrenos complejos | Anghello Rodríguez": "Quadruped robot for challenging terrain | Anghello Rodríguez",
