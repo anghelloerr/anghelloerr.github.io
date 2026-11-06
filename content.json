@@ -643,26 +643,257 @@
     {
       "id": "arm",
       "code": "07 / ROBÓTICA",
-      "title": "Ensamblaje de brazo robótico",
+      "title": "Brazo robótico Moveo para impresión 3D multieje",
       "institution": "ESAN – R&D Labs / FabLab",
-      "period": "Abr. – oct. 2026 · etapa en ESAN",
+      "period": "2026 · ESAN R&D Labs / FabLab",
       "category": "Robótica",
-      "description": "Ensamblaje de un brazo robótico dentro de las actividades de investigación y robótica aplicada.",
-      "contribution": "Participación en el ensamblaje de un brazo robótico en ESAN R&D Labs.",
+      "description": "Brazo de código abierto BCN3D Moveo, impreso y armado en el FabLab de ESAN, preparado para imprimir en 3D con un extrusor en el último eslabón y la boquilla inclinada. Incluye su modelo cinemático y dinámico, la comparación de cinco controladores, un gemelo digital en ROS 2 y una aplicación que convierte un G-code en el movimiento del brazo.",
+      "contribution": "Imprimí y armé la versión 1 del brazo en PLA y preparé la versión 2 en PLA con fibra de carbono, que se está imprimiendo. Extraje el modelo del brazo de su CAD oficial, programé en MATLAB la cinemática, la dinámica, el espacio de trabajo y los cinco controladores, armé el gemelo digital en ROS 2 y escribí la aplicación de escritorio. El diseño mecánico es de BCN3D Technologies (licencia MIT), basado en el BetaBots de Andreas Hölldorfer; el extrusor se modela como una carga, no es un diseño propio.",
       "tags": [
-        "Ensamblaje",
-        "Manipuladores"
+        "Robótica",
+        "Control avanzado",
+        "MATLAB",
+        "ROS 2",
+        "Gemelo digital",
+        "Impresión 3D multieje",
+        "Python"
       ],
-      "result": null,
-      "image": null,
+      "result": "En simulación, el par calculado con acción integral sigue una trayectoria de cinco ejes sobre un domo con 0,063 mm de error RMS, dentro del objetivo de 0,1 mm, aun con masas reales hasta 50 % distintas de las del modelo. El PID sintonizado con enjambre de partículas queda en 0,20 mm, el modo deslizante en 0,26 mm, el adaptativo en 0,28 mm y el PID en 0,44 mm. Dos hallazgos para el brazo real: la cama debe ir unos 24 cm por encima de la mesa para alejar la muñeca de su singularidad, y con un extrusor la muñeca original se queda sin par (2,1 mm de error), lo que se corrige con reductores 5:1 en las dos últimas articulaciones. La puesta en marcha física queda como trabajo futuro.",
+      "image": "assets/images/80ede329a2e638022a8785bbc2ce599653144e3a6213878cbb0ecde7b30f4f42.webp",
+      "imageAlt": "Simulación del brazo Moveo, rojo y crema, imprimiendo un domo sobre una cama elevada con un pedestal. Es una captura de la aplicación, no una fotografía.",
       "url": null,
       "repository": null,
-      "source": "CV maestro actualizado, p. 1. Periodo de vinculación institucional, no fecha exacta del proyecto.",
+      "source": "Repositorio propio del proyecto (noviembre de 2026) y fotografía de la versión 1 en el FabLab de ESAN.",
       "featured": false,
-      "kind": "Proyecto",
+      "kind": "Control y simulación",
       "cover": "robotics",
       "experienceId": "esan",
-      "evidence": []
+      "body": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Imprimir sin capas planas"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Una impresora 3D común deposita capas planas con la boquilla siempre vertical. Un brazo robótico puede inclinar la boquilla y seguir superficies curvas, y así imprimir cúpulas, voladizos o recubrimientos sin soportes. Para eso tomé el BCN3D Moveo, un brazo de código abierto de cinco grados de libertad, lo imprimí y lo armé en el FabLab de ESAN, y desarrollé todo lo que necesita para imprimir con un extrusor en su último eslabón."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "El modelo sale del CAD"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Abrí el ensamblaje oficial en SOLIDWORKS por programa y medí los ejes de las cinco articulaciones con sus rodamientos: 231,5 mm del tablero al hombro, 221,1 mm de brazo y 223,0 mm de antebrazo. Con las masas de las piezas impresas y de los motores armé el modelo dinámico en MATLAB. La cinemática y la dinámica coinciden con el Robotics System Toolbox con errores del orden de 1e-15. Cinco grados de libertad bastan para imprimir en cinco ejes: la boquilla necesita tres coordenadas de posición y dos de dirección, y la cinemática inversa sale analítica."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Dónde poner la cama"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Al inclinar la boquilla aparece un problema: si queda alineada con el antebrazo, el giro de la muñeca tendría que ser infinito. Barriendo la posición de la pieza vi que, sobre la mesa, la muñeca pasa cerca de ese punto y tendría que girar a más de 400 °/s. Con la cama elevada unos 24 cm el margen es de 35° y la muñeca no pasa de 35 °/s."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Cinco controladores frente a frente"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Comparé un PID por articulación, un PID sintonizado con enjambre de partículas, el par calculado, el modo deslizante y el control adaptativo de Slotine-Li. Los probé sobre una espiral de cinco ejes con la boquilla inclinada, con masas reales distintas de las del modelo, la fuerza del tubo del filamento, el rizado de par de los motores paso a paso y encoders reales. El par calculado con acción integral fue el único que cumplió el objetivo de 0,1 mm. El adaptativo aprende la masa del extrusor, pero la fuerza del tubo es aleatoria y la sigue con retraso."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "El estudio también mostró que la muñeca original del Moveo se queda sin par con un extrusor: el error sube a 2,1 mm. Con reductores 5:1 en las dos últimas articulaciones baja a 0,063 mm. Es la modificación que recomiendo para la versión 2."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Gemelo digital y aplicación"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "El gemelo digital es un paquete de ROS 2 con el modelo del brazo, el extrusor y la cama: reproduce la trayectoria y dibuja en RViz el filamento que va depositando. La aplicación de escritorio abre un G-code plano o de cinco ejes, resuelve la cinemática inversa de toda la pieza, avisa de los puntos fuera de alcance, simula la dinámica con el controlador elegido y muestra un panel con el error, los pares y la capa en curso."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Sobre las imágenes"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "La foto muestra la versión 1 real. Las demás imágenes y los videos son simulaciones. El diseño mecánico del brazo es el "
+              },
+              {
+                "type": "text",
+                "text": "BCN3D Moveo de BCN3D Technologies",
+                "marks": [
+                  {
+                    "type": "link",
+                    "attrs": {
+                      "href": "https://github.com/BCN3D/BCN3D-Moveo"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "text": ", con licencia MIT."
+              }
+            ]
+          }
+        ]
+      },
+      "evidence": [
+        {
+          "title": "Impresión de un domo en cinco ejes",
+          "date": "Nov. 2026 · simulación",
+          "description": "La aplicación reproduce un G-code de tres capas sobre un domo con la boquilla inclinada hasta 30°, con la dinámica del brazo simulada con par calculado. A la derecha, el panel con el error de la boquilla, los pares y los ángulos. Simulación acelerada.",
+          "alt": "Captura de video de la aplicación: brazo rojo y crema imprimiendo un domo y un panel con gráficas.",
+          "video": "assets/videos/c2a8c9d05bf60644d8286ecd188d382dde85129ec06fd374668d089896b8c788.mp4",
+          "poster": "assets/images/080fd0b6e6226360e7c4e9556c64b3abfec327794c591a9e1620c67f9c368ece.webp",
+          "transcript": "Resumen descriptivo: la cámara gira lentamente alrededor del brazo mientras la boquilla recorre en espiral la superficie de un domo sobre una cama elevada. El filamento depositado cambia de color con cada capa. El panel de la derecha muestra el tiempo, la capa, la inclinación de la boquilla, el error en milímetros y las gráficas de par y ángulos. Video sin audio.",
+          "sortOrder": 0
+        },
+        {
+          "title": "Versión 1 armada en el FabLab",
+          "date": "2026 · fotografía",
+          "description": "El Moveo impreso en PLA y armado en el FabLab de ESAN, con los motores NEMA 23 de la base, las correas y el cableado, antes de terminar el montaje. Fotografía.",
+          "alt": "Brazo robótico rojo y crema sobre un tablero de madera, con cables y piezas sueltas, en un laboratorio con impresoras 3D al fondo.",
+          "image": "assets/images/02c81fa16c8f200d5f77eb49063e1c36919c73dcb49c2002d6244604d564e449.webp",
+          "sortOrder": 1
+        },
+        {
+          "title": "Gemelo digital en ROS 2",
+          "date": "Nov. 2026 · simulación",
+          "description": "El brazo en RViz siguiendo la misma trayectoria; el filamento naranja se dibuja con la posición de la boquilla que da el modelo URDF, que coincide con la de la aplicación en 0,007 mm. Simulación.",
+          "alt": "Ventana de RViz con el brazo, la cama elevada y un domo naranja impreso.",
+          "image": "assets/images/1d31d26c4deabe7a5b54653d56e6baa936bfe32dda849a7e36dada23df80e93a.webp",
+          "sortOrder": 2
+        },
+        {
+          "title": "Comparación de controladores",
+          "date": "Nov. 2026 · simulación",
+          "description": "Error de la boquilla en el domo de cinco ejes: RMS, máximo y peor RMS entre 8 brazos con masas aleatorias. Solo el par calculado con integral cumple 0,1 mm. Simulación en MATLAB.",
+          "alt": "Gráfica de barras en escala logarítmica del error de cinco controladores.",
+          "image": "assets/images/ea2dda71c869c9e55d2867e9f6686798eff5eda58a2dc421eea3aa28eed8af78.webp",
+          "sortOrder": 3
+        },
+        {
+          "title": "Trayectoria conformal",
+          "date": "Nov. 2026 · simulación",
+          "description": "Espiral sobre el domo con la dirección de la boquilla en cada tramo y el recorrido real de tres controladores. Simulación en MATLAB.",
+          "alt": "Gráfica 3D de una espiral sobre una cúpula con flechas de dirección.",
+          "image": "assets/images/304183bd88641ccd4cf3ac52ce4b98194770f1d69ee9b21dab8040de32166b4b.webp",
+          "sortOrder": 4
+        },
+        {
+          "title": "Altura de la cama y singularidad de muñeca",
+          "date": "Nov. 2026 · simulación",
+          "description": "Margen a la singularidad de muñeca y velocidad máxima de la articulación 4 según la posición de la pieza. La estrella marca la cama elegida, a 280 mm del eje y 240 mm de altura. Simulación en MATLAB.",
+          "alt": "Dos mapas de color con una estrella en la posición elegida.",
+          "image": "assets/images/de7fe43a691afb8c9db885cabe1c022fe8798debc8eeb153e3327ae4440835b8.webp",
+          "sortOrder": 5
+        },
+        {
+          "title": "Espacio de trabajo",
+          "date": "Nov. 2026 · simulación",
+          "description": "Puntos que alcanza la boquilla y zonas donde puede apuntar con 0, 15, 30 y 45° de inclinación en cualquier dirección. Simulación en MATLAB.",
+          "alt": "Nube de puntos semiesférica, una sección con contornos de colores y un gráfico de barras.",
+          "image": "assets/images/fe2a1e6e2fe0acb8faec7b1bd15063e6d0efddedd024f869236752b17f460022.webp",
+          "sortOrder": 6
+        },
+        {
+          "title": "Pieza plana desde un G-code común",
+          "date": "Nov. 2026 · simulación",
+          "description": "La aplicación también lee G-code de un laminador normal: aquí el brazo imprime un vaso de 30 mm con la boquilla vertical. Simulación acelerada.",
+          "alt": "Captura de video de la aplicación con el brazo imprimiendo un cilindro pequeño.",
+          "video": "assets/videos/c8ef3f8df4e5bfaf16f454de675e15c6dbb6a96448d0c422e10faa56edbdfb5c.mp4",
+          "poster": "assets/images/ea42838711c5edc1ca7fab098131cb982ca3880182afa1f3f8816873d2339015.webp",
+          "transcript": "Resumen descriptivo: el brazo se acerca a la cama y recorre un círculo capa por capa hasta formar un vaso pequeño. El panel muestra el avance, la capa y el error de la boquilla. Video sin audio.",
+          "sortOrder": 7
+        }
+      ]
     },
     {
       "id": "swarm",
@@ -2556,6 +2787,7 @@
     "workerHash": "f42a14a0c10d0e72b7bb3131194353080dc169dfae19cf00d92c420f36a82619",
     "en": {
       "& Bionics": "& Bionics",
+      ", con licencia MIT.": ", under the MIT license.",
       ", las convertí en detecciones con ruido y, en cada ensayo, oculté por completo a una persona entre 0,5 y 3 s, a 30, 15 y 10 cuadros por segundo. Hasta 1 s no hay diferencia clara. Desde 1,5 s, OC-SORT recupera la identidad entre 6 y 11 puntos más que SORT, y casi toda la mejora viene de OCR. Aun así, a 1,5 s la recupera solo en el 68–76 % de los casos: el problema no está resuelto.": ", turned them into noisy detections and, in each trial, fully hid one person for 0.5 to 3 s, at 30, 15 and 10 frames per second. Up to 1 s there is no clear difference. From 1.5 s on, OC-SORT recovers the identity 6 to 11 points more often than SORT, and almost all of the gain comes from OCR. Even so, at 1.5 s it recovers it in only 68–76% of cases: the problem is not solved.",
       ". Antes hubo un primer prototipo, que sirvió para probar una pata y fijar la geometría.": " model. Before that there was a first prototype, used to test one leg and settle the geometry.",
       ". Con eso el robot caminó con un mando de PS4 y también solo.": ". With that the robot walked with a PS4 controller and also on its own.",
@@ -2567,9 +2799,12 @@
       "2023 · foto del prototipo": "2023 · photo of the prototype",
       "2023 · modelo 3D del equipo, render de nov. 2026": "2023 · team 3D model, rendered Nov. 2026",
       "2023 · render del CAD": "2023 · CAD render",
+      "2026 · ESAN R&D Labs / FabLab": "2026 · ESAN R&D Labs / FabLab",
+      "2026 · fotografía": "2026 · photograph",
       "300 escenas por barra. La lógica original choca igual o más que no reaccionar; con 110° y la lógica nueva los impactos caen a 0–0,7 %.": "300 scenes per bar. The original logic collides as much as or more than not reacting; with 110° and the new logic impacts fall to 0–0.7%.",
       "5 imágenes · 1 videos · 0 audios": "5 images · 1 videos · 0 audios",
       "6 imágenes · 1 videos · 0 audios": "6 images · 1 videos · 0 audios",
+      "6 imágenes · 2 videos · 0 audios": "6 images · 2 videos · 0 audios",
       "7 imágenes · 0 videos · 0 audios": "7 images · 0 videos · 0 audios",
       "8 imágenes · 3 videos · 0 audios": "8 images · 3 videos · 0 audios",
       "A la izquierda, el video original de 2023 con el robot caminando solo sobre piso de madera. A la derecha, el modelo MuJoCo del robot con la misma marcha de Bézier, reescrita en 2026. La parte derecha es una simulación.": "On the left, the original 2023 video of the robot walking on its own on a wooden floor. On the right, the MuJoCo model of the robot with the same Bézier gait, rewritten in 2026. The right side is a simulation.",
@@ -2580,6 +2815,7 @@
       "Abr. – oct. 2026": "Apr. – Oct. 2026",
       "Abr. – oct. 2026 · etapa en ESAN": "Apr. – Oct. 2026 · role at ESAN",
       "Abrir menú": "Open menu",
+      "Abrí el ensamblaje oficial en SOLIDWORKS por programa y medí los ejes de las cinco articulaciones con sus rodamientos: 231,5 mm del tablero al hombro, 221,1 mm de brazo y 223,0 mm de antebrazo. Con las masas de las piezas impresas y de los motores armé el modelo dinámico en MATLAB. La cinemática y la dinámica coinciden con el Robotics System Toolbox con errores del orden de 1e-15. Cinco grados de libertad bastan para imprimir en cinco ejes: la boquilla necesita tres coordenadas de posición y dos de dirección, y la cinemática inversa sale analítica.": "I opened the official assembly in SOLIDWORKS through its API and measured the axes of the five joints from their bearings: 231.5 mm from the board to the shoulder, 221.1 mm upper arm and 223.0 mm forearm. With the masses of the printed parts and the motors I built the dynamic model in MATLAB. Kinematics and dynamics match the Robotics System Toolbox with errors around 1e-15. Five degrees of freedom are enough for five-axis printing: the nozzle needs three position and two direction coordinates, and the inverse kinematics is analytical.",
       "Activar modo oscuro": "Activate Dark Mode",
       "Actividad actual": "Current role",
       "Actualmente en": "Currently at",
@@ -2589,11 +2825,14 @@
       "Ago. 2023 · foto de USIL": "Aug. 2023 · photo by USIL",
       "Ago. – oct. 2025": "Aug. – Oct. 2025",
       "Agricultura espacial": "Space agriculture",
+      "Al inclinar la boquilla aparece un problema: si queda alineada con el antebrazo, el giro de la muñeca tendría que ser infinito. Barriendo la posición de la pieza vi que, sobre la mesa, la muñeca pasa cerca de ese punto y tendría que girar a más de 400 °/s. Con la cama elevada unos 24 cm el margen es de 35° y la muñeca no pasa de 35 °/s.": "Tilting the nozzle brings a problem: if it lines up with the forearm, the wrist would have to spin infinitely fast. Sweeping the part position I found that on the table the wrist gets close to that point and would need over 400 °/s. With the bed raised about 24 cm the margin is 35° and the wrist stays below 35 °/s.",
       "Alcance y próximos ensayos": "Scope and future testing",
       "Alcance y siguientes pasos": "Scope and next steps",
       "Alemán · CEFR A2": "German · CEFR A2",
       "Alternativa y siguientes pasos": "Alternative design and next steps",
       "Altium Designer": "Altium Designer",
+      "Altura de la cama y singularidad de muñeca": "Bed height and wrist singularity",
+      "Ampliar: Altura de la cama y singularidad de muñeca": "Enlarge: Bed height and wrist singularity",
       "Ampliar: Análisis estructural del mástil": "Enlarge: Structural analysis of the mast",
       "Ampliar: Arquitectura de Phyto-G y publicación": "Enlarge: Phyto-G architecture and publication",
       "Ampliar: Arquitectura propuesta de control y sensado": "Enlarge: Proposed control and sensing architecture",
@@ -2601,6 +2840,7 @@
       "Ampliar: Campo de visión de 110°": "Enlarge: 110° field of view",
       "Ampliar: Celda oLCAM — reconstrucción geométrica": "Enlarge: oLCAM cell — geometric reconstruction",
       "Ampliar: Cinco variantes — comparación por elementos finitos": "Enlarge: Five variants — finite element comparison",
+      "Ampliar: Comparación de controladores": "Enlarge: Controller comparison",
       "Ampliar: Configuración de perforación a 65°": "Enlarge: Drilling configuration at 65°",
       "Ampliar: Configuración de transporte": "Enlarge: Transport configuration",
       "Ampliar: Control PI del motor — modelo no lineal": "Enlarge: Motor PI control — nonlinear model",
@@ -2612,10 +2852,12 @@
       "Ampliar: Electrónica de accionamiento y registro de fuerza": "Enlarge: Drive electronics and force logging",
       "Ampliar: Electrónica: Pi 5, ESP32 y driver de motores": "Enlarge: Electronics: Pi 5, ESP32 and motor driver",
       "Ampliar: Escenas con impacto según cámara y lógica": "Enlarge: Scenes with impact by camera and logic",
+      "Ampliar: Espacio de trabajo": "Enlarge: Workspace",
       "Ampliar: Expo Drone Tech 2023": "Enlarge: Drone Tech 2023 Expo",
       "Ampliar: FEA — desplazamiento del ensamble": "Enlarge: FEA — assembly displacement",
       "Ampliar: FEA — distribución de tensiones": "Enlarge: FEA — stress distribution",
       "Ampliar: Fabricación en los laboratorios de USIL": "Enlarge: Fabrication in the USIL labs",
+      "Ampliar: Gemelo digital en ROS 2": "Enlarge: ROS 2 digital twin",
       "Ampliar: La plataforma física en el laboratorio": "Enlarge: The physical platform in the laboratory",
       "Ampliar: Levante del mástil — modelo estructural": "Enlarge: Mast raising — structural model",
       "Ampliar: Montaje sobre la WAVE ROVER": "Enlarge: Mounting on the WAVE ROVER",
@@ -2633,9 +2875,11 @@
       "Ampliar: Seguimiento de la rodilla": "Enlarge: Knee tracking",
       "Ampliar: Simulación de movimiento a 10 rpm": "Enlarge: Motion simulation at 10 rpm",
       "Ampliar: Terreno irregular y carga": "Enlarge: Rough terrain and load",
+      "Ampliar: Trayectoria conformal": "Enlarge: Conformal path",
       "Ampliar: Trayectorias del ensayo de pastoreo": "Enlarge: Shepherding trial trajectories",
       "Ampliar: Unidad extrusora — vista explosionada": "Enlarge: Extrusion unit — exploded view",
       "Ampliar: Unión giratoria para el suministro de agua": "Enlarge: Rotary joint for water supply",
+      "Ampliar: Versión 1 armada en el FabLab": "Enlarge: Version 1 assembled at the FabLab",
       "Ampliar: Vista en planta": "Enlarge: Top view",
       "Ampliar: Vista lateral": "Enlarge: Side view",
       "Ampliar: ¿Con qué parámetros camina?": "Enlarge: Which parameters let it walk?",
@@ -2657,6 +2901,7 @@
       "Automatización e integración": "Automation and integration",
       "Automatización industrial": "Industrial automation",
       "Aviónica": "Avionics",
+      "BCN3D Moveo de BCN3D Technologies": "BCN3D Moveo by BCN3D Technologies",
       "BETTA College": "BETTA College",
       "BETTA College / BETTA Tech": "BETTA College / BETTA Tech",
       "BETTA College of Science and Technology": "BETTA College of Science and Technology",
@@ -2670,6 +2915,9 @@
       "Biomimetics": "Biomimetics",
       "Biomimética": "Biomimetics",
       "Bitácora | Anghello Rodríguez": "Journal | Anghello Rodríguez",
+      "Brazo de código abierto BCN3D Moveo, impreso y armado en el FabLab de ESAN, preparado para imprimir en 3D con un extrusor en el último eslabón y la boquilla inclinada. Incluye su modelo cinemático y dinámico, la comparación de cinco controladores, un gemelo digital en ROS 2 y una aplicación que convierte un G-code en el movimiento del brazo.": "Open-source BCN3D Moveo arm, printed and assembled at the ESAN FabLab, prepared for 3D printing with an extruder on the last link and a tilted nozzle. It includes its kinematic and dynamic model, a comparison of five controllers, a ROS 2 digital twin and an application that turns G-code into arm motion.",
+      "Brazo robótico Moveo para impresión 3D multieje": "Moveo robotic arm for multi-axis 3D printing",
+      "Brazo robótico rojo y crema sobre un tablero de madera, con cables y piezas sueltas, en un laboratorio con impresoras 3D al fondo.": "Red and cream robot arm on a wooden board, with cables and loose parts, in a lab with 3D printers in the background.",
       "Británico": "Británico",
       "C / C++": "C / C++",
       "CAD / CAE / CAM y electrónica": "CAD / CAE / CAM and electronics",
@@ -2692,6 +2940,7 @@
       "Ciclo de operación del gemelo digital": "Digital twin operating cycle",
       "Cinco agentes oveja combinan separación, cohesión, alineación y evasión. Un agente lobo alterna entre reunir, conducir y vigilar el rebaño dentro del corral. El objetivo es estudiar un comportamiento coordinado con límites de velocidad, retardo de actuación y errores de localización.": "Five sheep agents combine separation, cohesion, alignment and evasion. A wolf agent alternates between collecting, driving and guarding the flock inside the pen. The aim is to study coordinated behavior with speed limits, actuation delays and localization errors.",
       "Cinco agentes oveja se agrupan y avanzan hacia el corral verde mientras el agente pastor los conduce desde atrás. La animación representa las posiciones registradas en una simulación, no movimientos medidos en robots físicos.": "Five sheep agents group together and move toward the green pen as the shepherd agent drives them from behind. The animation shows positions logged in a simulation, not movements measured on physical robots.",
+      "Cinco controladores frente a frente": "Five controllers head to head",
       "Cinco variantes — comparación por elementos finitos": "Five variants — finite element comparison",
       "Cinemática": "Kinematics",
       "Cinemática del ciclo de operación": "Operating-cycle kinematics",
@@ -2702,8 +2951,10 @@
       "Colegio Bilingüe Santa María de Fátima": "Colegio Bilingüe Santa María de Fátima",
       "Colegio de Economistas de Lima": "Colegio de Economistas de Lima",
       "Comparación G0–G4 de rigidez relativa y coeficiente de Poisson efectivo. Simulación lineal en CalculiX con material normalizado; no son ensayos de probetas impresas.": "G0–G4 comparison of relative stiffness and effective Poisson’s ratio. Linear simulation in CalculiX with a normalized material; these are not tests of printed specimens.",
+      "Comparación de controladores": "Controller comparison",
       "Comparación de trayectorias simuladas con cuatro métodos de estimación de posición.": "Comparison of simulated trajectories using four position-estimation methods.",
       "Compartir lo que construyo": "Share what I build",
+      "Comparé un PID por articulación, un PID sintonizado con enjambre de partículas, el par calculado, el modo deslizante y el control adaptativo de Slotine-Li. Los probé sobre una espiral de cinco ejes con la boquilla inclinada, con masas reales distintas de las del modelo, la fuerza del tubo del filamento, el rizado de par de los motores paso a paso y encoders reales. El par calculado con acción integral fue el único que cumplió el objetivo de 0,1 mm. El adaptativo aprende la masa del extrusor, pero la fuerza del tubo es aleatoria y la sigue con retraso.": "I compared a per-joint PID, a PID tuned by particle swarm, computed torque, sliding mode and Slotine-Li adaptive control. I tested them on a five-axis spiral with a tilted nozzle, with real masses different from the model, filament tube force, stepper torque ripple and realistic encoders. Computed torque with integral action was the only one that met the 0.1 mm target. The adaptive controller learns the extruder mass, but the tube force is random and it follows it with a lag.",
       "Con las detecciones públicas de MOT17, de 2017 y con muchos falsos negativos, OC-SORT no supera a SORT con la misma memoria de pista (HOTA 42,78 frente a 44,12). Es un resultado negativo y lo dejo visible.": "With the public MOT17 detections, from 2017 and with many false negatives, OC-SORT does not beat SORT with the same track memory (HOTA 42.78 versus 44.12). It is a negative result and I keep it visible.",
       "Conectemos ideas.": "Let's connect ideas.",
       "Configuración de perforación a 65°": "Drilling configuration at 65°",
@@ -2718,11 +2969,13 @@
       "Contenidos académicos y supervisión de proyectos de diseño de productos tecnológicos.": "Academic content and monitoring of technological product design projects.",
       "Control": "Control",
       "Control PI del motor — modelo no lineal": "Motor PI control — nonlinear model",
+      "Control avanzado": "Advanced control",
       "Control clásico, moderno, avanzado e inteligente": "Classical, modern, advanced and intelligent control",
       "Control de marcha": "Gait control",
       "Control multiagente": "Multi-agent control",
       "Control y manipuladores": "Control and manipulators",
       "Control y simulación": "Control and simulation",
+      "Control y simulación / Robótica": "Control and simulation / Robotics",
       "Coordinación técnica de un proyecto UAV: equipo de mecánica, electrónica, control y software; planificación, integración mecatrónica y seguimiento de avances. Participación inicial en control.": "Technical coordination of a UAV project across the mechanical, electronics, control and software team: planning, mechatronic integration and progress tracking. Initial involvement in control.",
       "Coordinación técnica e integración mecatrónica de un proyecto UAV en PachaLab.": "Technical coordination and mechatronic integration of a UAV project at PachaLab.",
       "Corte láser · Trotec": "Laser cut · Trotec",
@@ -2796,7 +3049,9 @@
       "Docente de Robótica y Matemáticas": "Robotics and Mathematics Teacher",
       "Documentación del proyecto": "Project documentation",
       "Documentación y siguiente validación": "Documentation and next validation",
+      "Dos mapas de color con una estrella en la posición elegida.": "Two color maps with a star at the chosen position.",
       "Dos mapas de colores: el de la izquierda casi todo con cruces, el de la derecha con una zona amplia de colores.": "Two color maps: the left one almost all crosses, the right one with a wide colored region.",
+      "Dónde poner la cama": "Where to put the bed",
       "EDUCATION": "EDUCATION",
       "EPLAN": "EPLAN",
       "ESAN": "ESAN",
@@ -2808,14 +3063,19 @@
       "EXPERIENCE": "EXPERIENCE",
       "EXPERIENCIA / I+D": "EXPERIENCE / R&D",
       "Educación": "Education",
+      "El Moveo impreso en PLA y armado en el FabLab de ESAN, con los motores NEMA 23 de la base, las correas y el cableado, antes de terminar el montaje. Fotografía.": "The Moveo printed in PLA and assembled at the ESAN FabLab, with the base NEMA 23 motors, belts and wiring, before finishing assembly. Photograph.",
       "El análisis comprende las cinco variantes G0–G4, compresión, rigidez, pandeo y respuesta dinámica. La electrónica está diseñada en KiCad: el eje E de la Ender-3 acciona el motor y un Arduino Nano con HX711 registra la fuerza. El firmware del registrador está compilado; no está probado en hardware y los cambios de Marlin siguen planificados.": "The analysis covers five variants, G0–G4, compression, stiffness, buckling and dynamic response. The electronics are designed in KiCad: the Ender-3 E axis drives the motor, while an Arduino Nano with an HX711 records force. The logger firmware has been compiled but has not been tested on hardware; Marlin changes remain planned.",
       "El artículo documenta el ensamble en SOLIDWORKS 2025, la cámara de muestras, el suministro de agua y una arquitectura eléctrica de 24 V. Propone bombas de entrada y salida, temperatura, pH, oxígeno disuelto, IMU y observación con cámara. La integración electrónica se presenta como diseño para implementación futura.": "The article documents the SOLIDWORKS 2025 assembly, sample chamber, water supply and a 24 V electrical architecture. It proposes inlet and outlet pumps, temperature, pH, dissolved-oxygen sensing, an IMU and camera observation. Electronic integration is presented as a design for future implementation.",
+      "El brazo en RViz siguiendo la misma trayectoria; el filamento naranja se dibuja con la posición de la boquilla que da el modelo URDF, que coincide con la de la aplicación en 0,007 mm. Simulación.": "The arm in RViz following the same path; the orange filament is drawn from the nozzle position given by the URDF model, which matches the application within 0.007 mm. Simulation.",
       "El casco mide 3,30 m de eslora y 0,50 m de ancho. Se fabricó con unas 120 piezas impresas en 3D en los laboratorios de Ingeniería, que luego se unieron y se revistieron con fibra de vidrio para darle resistencia y un acabado liso. En lugar de una vela de tela lleva una vela rígida de 1,80 m, con un pequeño alerón de cola que la orienta respecto al viento. Debajo del casco van la orza, que da estabilidad, y el timón. En la cubierta hay un panel solar, y el sistema de navegación usa GPS y una brújula para seguir puntos de ruta.": "The hull is 3.30 m long and 0.50 m wide. It was made from about 120 3D-printed parts produced in the Engineering labs, which were then joined and covered with fiberglass for strength and a smooth finish. Instead of a fabric sail it carries a 1.80 m rigid wing sail, with a small tail flap that orients it to the wind. Below the hull are the keel, which provides stability, and the rudder. A solar panel sits on the deck, and the navigation system uses GPS and a compass to follow waypoints.",
       "El código de 2023 no se conservó, así que reescribí la cinemática y la marcha y las comparé con el código de referencia: no hay diferencias en 8000 posturas de la pata ni en 12 escenarios de mando. En los videos originales medí, con flujo óptico, que el robot daba una zancada cada 1,4 a 1,6 s. Después armé un modelo del robot en MuJoCo y probé la misma marcha en simulación.": "The 2023 code was not kept, so I rewrote the kinematics and the gait and compared them with the reference code: there are no differences in 8000 leg poses or in 12 command scenarios. In the original videos I measured, with optical flow, that the robot took a stride every 1.4 to 1.6 s. Then I built a MuJoCo model of the robot and tested the same gait in simulation.",
       "El diseño naval, la electrónica y el control los desarrollaron otros integrantes y especialistas del equipo. El proyecto lo hicieron 24 estudiantes de Ingeniería, de primero a octavo ciclo, dirigidos por el docente Nain Ramos Álvarez.": "The naval design, electronics and control were developed by other team members and specialists. The project was carried out by 24 Engineering students, from first to eighth semester, led by professor Nain Ramos Álvarez.",
       "El estudio de movimiento utiliza una velocidad constante de 10 rpm en el eje externo. El análisis por elementos finitos aplica una carga equivalente de 294 N, apoyos fijos y contactos unidos en un ensamble simplificado. Sus máximos de 54,5 MPa y 1,73 mm describen ese caso estático; no sustituyen una validación experimental del sistema completo.": "The motion study uses a constant speed of 10 rpm on the outer axis. Finite element analysis applies an equivalent 294 N load, fixed supports and bonded contacts to a simplified assembly. Its maxima of 54.5 MPa and 1.73 mm describe that static case; they do not replace experimental validation of the complete system.",
+      "El estudio también mostró que la muñeca original del Moveo se queda sin par con un extrusor: el error sube a 2,1 mm. Con reductores 5:1 en las dos últimas articulaciones baja a 0,063 mm. Es la modificación que recomiendo para la versión 2.": "The study also showed that the original Moveo wrist runs out of torque with an extruder: the error rises to 2.1 mm. With 5:1 gearboxes on the last two joints it drops to 0.063 mm. That is the change I recommend for version 2.",
+      "El gemelo digital es un paquete de ROS 2 con el modelo del brazo, el extrusor y la cama: reproduce la trayectoria y dibuja en RViz el filamento que va depositando. La aplicación de escritorio abre un G-code plano o de cinco ejes, resuelve la cinemática inversa de toda la pieza, avisa de los puntos fuera de alcance, simula la dinámica con el controlador elegido y muestra un panel con el error, los pares y la capa en curso.": "The digital twin is a ROS 2 package with the arm, the extruder and the bed: it replays the path and draws in RViz the filament being deposited. The desktop application opens planar or five-axis G-code, solves the inverse kinematics of the whole part, flags unreachable points, simulates the dynamics with the selected controller and shows a dashboard with error, torques and the current layer.",
       "El mismo caso estático alcanza un desplazamiento resultante máximo de 1,73 mm. La vista amplificada de la deformación sirve para interpretar el modelo; no muestra desplazamientos medidos en hardware. Figura 14 de Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.": "The same static case reaches a maximum resultant displacement of 1.73 mm. The amplified deformation view helps interpret the model; it does not show displacements measured on hardware. Figure 14 from Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.",
       "El modelo representa un Yahboom MicroROS-Pi5 de cuatro ruedas con dirección por deslizamiento. Cada robot utiliza un nodo ROS 2, comandos de velocidad y estimación de pose. Gazebo Fortress aporta la física; Python y scripts compatibles con MATLAB, ejecutados en GNU Octave, permiten contrastar cálculos y escenarios.": "The model represents a four-wheel skid-steer Yahboom MicroROS-Pi5. Each robot uses a ROS 2 node, velocity commands and pose estimation. Gazebo Fortress provides the physics; Python and MATLAB-compatible scripts executed in GNU Octave support comparisons of calculations and scenarios.",
+      "El modelo sale del CAD": "The model comes from the CAD",
       "El modelo vigente se genera en CadQuery y se visualiza con PyVista; conserva el trabajo previo realizado mediante la API de SOLIDWORKS. La comprobación compara 15 dimensiones con las tablas y referencias usadas para construir el modelo: 14 cumplen ±0,02 m. Comprueba consistencia geométrica, no una validación contra mediciones de la máquina. La longitud de transporte T no coincide y queda registrada como inconsistencia; la altura de 31,22 m procede de una referencia de otra 49HR.": "The current model is generated in CadQuery and visualized with PyVista; the earlier SOLIDWORKS API work is retained. The check compares 15 dimensions with the documented tables and references used to build the model: 14 meet ±0.02 m. It checks geometric consistency, not validation against machine measurements. Transport length T does not match and is recorded as an inconsistency; the 31.22 m height comes from a reference for another 49HR.",
       "El mástil se idealiza como reticulado de vigas tubulares. PyNite y CalculiX comparten geometría y cargas; los desplazamientos y fuerzas comparados difieren hasta un 0,6 %. En el extremo de 600 kN del barrido hipotético a 65°, el modelo alcanza unos 95,8 MPa y FS 3,6 con Fy = 345 MPa y secciones supuestas; esa carga no es un empuje medido ni especificado para esta máquina. La figura de deformación publicada aquí corresponde a otro caso: 65° y 400 kN.": "The mast is idealized as a tubular beam lattice. PyNite and CalculiX share geometry and loads; compared displacements and forces differ by up to 0.6%. At the 600 kN endpoint of the hypothetical sweep at 65°, the model reaches about 95.8 MPa and a safety factor of 3.6 with Fy = 345 MPa and assumed sections; that load is not a measured or specified pulldown for this machine. The deformation figure shown here represents a different case: 65° and 400 kN.",
       "El prototipo a escala se utilizó en demostraciones corporativas. En la extensión virtual, 14 de 15 cotas de entrada se reproducen dentro de ±2 cm: es una comprobación de consistencia. El extremo de 600 kN de un barrido hipotético a 65° da FS 3,6 con material y secciones supuestos (Fy = 345 MPa). El monitor detecta el desgaste inyectado en el escenario sintético, sin alarmas en el escenario nominal. No hay conexión ni telemetría de una máquina real.": "The scale prototype was used in corporate demonstrations. In the virtual extension, 14 of 15 input dimensions are reproduced within ±2 cm: this is a consistency check. The 600 kN endpoint of a hypothetical sweep at 65° gives a safety factor of 3.6 with assumed material and sections (Fy = 345 MPa). The monitor detects injected wear in the synthetic scenario, with no alarms in the nominal scenario. There is no connection to or telemetry from a real machine.",
@@ -2834,6 +3094,7 @@
       "En la prueba simulada de odometría de un cuadrado de 1 m repetido tres veces, el error final medio en Python pasa de 0,94 m con encoders a 0,11 m con encoders y giróscopo, y a 0,016 m con un EKF autocalibrado de siete estados (20 ensayos). Este último estimador es el experimento de Python; no se atribuye ese error al EKF de Gazebo ni a hardware.": "In the simulated odometry test consisting of three laps around a 1 m square, the mean final position error in Python decreases from 0.94 m with encoders to 0.11 m with encoders and a gyroscope, and to 0.016 m with a self-calibrating seven-state EKF (20 trials). The last estimator belongs to the Python experiment; that error is not attributed to the Gazebo EKF or to hardware.",
       "En la revisión B, el módulo de PETG se acorta aproximadamente 0,60 mm a 740 N, con rigidez de unos 1226 N/mm. Son predicciones numéricas con propiedades de material supuestas, no mediciones.": "In Revision B, the PETG module shortens by approximately 0.60 mm at 740 N, with a stiffness of about 1226 N/mm. These are numerical predictions using assumed material properties, not measurements.",
       "En qué sigo trabajando": "What I am still working on",
+      "En simulación, el par calculado con acción integral sigue una trayectoria de cinco ejes sobre un domo con 0,063 mm de error RMS, dentro del objetivo de 0,1 mm, aun con masas reales hasta 50 % distintas de las del modelo. El PID sintonizado con enjambre de partículas queda en 0,20 mm, el modo deslizante en 0,26 mm, el adaptativo en 0,28 mm y el PID en 0,44 mm. Dos hallazgos para el brazo real: la cama debe ir unos 24 cm por encima de la mesa para alejar la muñeca de su singularidad, y con un extrusor la muñeca original se queda sin par (2,1 mm de error), lo que se corrige con reductores 5:1 en las dos últimas articulaciones. La puesta en marcha física queda como trabajo futuro.": "In simulation, computed-torque control with integral action tracks a five-axis path over a dome with 0.063 mm RMS error, within the 0.1 mm target, even with real masses up to 50 % different from the model. The PID tuned by particle swarm reaches 0.20 mm, sliding mode 0.26 mm, adaptive 0.28 mm and PID 0.44 mm. Two findings for the real arm: the bed must sit about 24 cm above the table to keep the wrist away from its singularity, and with an extruder the original wrist runs out of torque (2.1 mm error), which 5:1 gearboxes on the last two joints fix. Physical commissioning is future work.",
       "Ene. 2022 – 2025": "Jan. 2022 – 2025",
       "Ene. 2025": "Jan. 2025",
       "Ene. 2025 – actualidad": "Jan. 2025 – present",
@@ -2843,18 +3104,18 @@
       "Ene. – feb. 2023": "Jan. – Feb. 2023",
       "Enjambre de robots — ovejas y lobo": "Robot swarm — sheep and wolf",
       "Enjambre de robots, robótica móvil y de servicio; experiencia en cuadrúpedos, veleros autónomos y manipuladores.": "Robot swarms, mobile and service robotics; experience with quadrupeds, autonomous sailboats and manipulators.",
-      "Ensamblaje": "Assembly",
-      "Ensamblaje de brazo robótico": "Robotic arm assembly",
-      "Ensamblaje de un brazo robótico dentro de las actividades de investigación y robótica aplicada.": "Assembling a robotic arm within the applied research and robotic activities.",
       "Ensamblaje en SOLIDWORKS sin interferencias: mástil de perfil 2020 con soporte de cámara, y Raspberry Pi 5 con tapa de PETG sobre el patrón de agujeros del chasis.": "Interference-free SOLIDWORKS assembly: 2020 profile mast with camera bracket, and Raspberry Pi 5 with PETG cover on the chassis hole pattern.",
       "Ensamble simplificado bajo la carga equivalente de 294 N. El artículo reporta un máximo de von Mises de 54,5 MPa; el modelo usa apoyos fijos y contactos unidos. Figura 13 de Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.": "Simplified assembly under an equivalent 294 N load. The article reports a maximum von Mises stress of 54.5 MPa; the model uses fixed supports and bonded contacts. Figure 13 from Barreto et al. (2026), Biomimetics 11(5), 340; CC BY 4.0.",
       "Ensayo real del experimento sobre la secuencia MOT17-10: mismas detecciones para ambos rastreadores. Cuando el peatón reaparece, SORT le asigna un número nuevo y OC-SORT recupera el 4. Las cajas punteadas son las anotaciones de MOT17.": "Actual trial from the experiment on sequence MOT17-10: same detections for both trackers. When the pedestrian reappears, SORT gives them a new number and OC-SORT recovers number 4. Dotted boxes are MOT17 annotations.",
       "Enseñanza y asesoría en análisis, diseño y aplicación de circuitos electrónicos en proyectos académicos.": "Teaching and consulting in analysis, design and application of electronic circuits in academic projects.",
+      "Error de la boquilla en el domo de cinco ejes: RMS, máximo y peor RMS entre 8 brazos con masas aleatorias. Solo el par calculado con integral cumple 0,1 mm. Simulación en MATLAB.": "Nozzle error on the five-axis dome: RMS, maximum and worst RMS across 8 arms with random masses. Only computed torque with integral action meets 0.1 mm. MATLAB simulation.",
       "Escenas con impacto según cámara y lógica": "Scenes with impact by camera and logic",
+      "Espacio de trabajo": "Workspace",
       "Especialización en Ciencia de Datos para el Mantenimiento Predictivo": "Specialization in Data Science for Predictive Maintenance",
       "Especialización en Gestión de Proyectos": "Project Management Specialization",
       "Especialización en Inteligencia Artificial y Data Science": "Specialization in Artificial Intelligence and Data Science",
       "Especialización en Sistemas Mecatrónicos": "Specialization in Mechatronic Systems",
+      "Espiral sobre el domo con la dirección de la boquilla en cada tramo y el recorrido real de tres controladores. Simulación en MATLAB.": "Spiral over the dome with the nozzle direction along the path and the actual path of three controllers. MATLAB simulation.",
       "Esquemático KiCad del motor conectado al eje E y del registrador Arduino Nano con HX711. Diseño electrónico, sin validación en hardware.": "KiCad schematic of the motor connected to the E axis and the Arduino Nano logger with HX711. Electronic design without hardware validation.",
       "Esquemático con la Raspberry Pi 5, el ESP32, el driver TB6612FNG y dos motores.": "Schematic with the Raspberry Pi 5, the ESP32, the TB6612FNG driver and two motors.",
       "Esquemático eléctrico del motor, los finales de carrera y el registrador de fuerza.": "Electrical schematic of the motor, limit switches and force logger.",
@@ -2911,6 +3172,7 @@
       "Fuente de la descripción: Fotos, videos, CAD y presentación originales de 2023; simulaciones y análisis de la revisión de noviembre de 2026.": "Description source: Original 2023 photos, videos, CAD and presentation; simulations and analysis from the November 2026 review.",
       "Fuente de la descripción: Notas públicas de USIL del 25/08/2023 y del 24/11/2023 (fotos con crédito a USIL) y modelo 3D del equipo, renderizado en noviembre de 2026.": "Description source: USIL public news articles of 25/08/2023 and 24/11/2023 (photos credited to USIL) and the team’s 3D model, rendered in November 2026.",
       "Fuente de la descripción: Repositorio enjambre-ovejas-lobo: documentación 00–08, registros CSV, figuras y fotografías aportadas. Reconstrucción de octubre de 2026 a partir de recursos de Yahboom. Las imágenes físicas no validan los resultados del simulador.": "Description source: The enjambre-ovejas-lobo repository: documentation 00–08, CSV logs, figures and supplied photographs. October 2026 reconstruction based on Yahboom resources. Photographs of the physical platform do not validate simulator results.",
+      "Fuente de la descripción: Repositorio propio del proyecto (noviembre de 2026) y fotografía de la versión 1 en el FabLab de ESAN.": "Description source: The project’s own repository (November 2026) and a photograph of version 1 at the ESAN FabLab.",
       "Funcionamiento del extrusor — simulación visual": "Extruder operation — visual simulation",
       "Fundamentos": "Fundamentals",
       "Fundamentos de GNC": "GNC fundamentals",
@@ -2923,6 +3185,8 @@
       "Gazebo Fortress": "Gazebo Fortress",
       "Gemelo digital": "Digital twin",
       "Gemelo digital del Yahboom MicroROS-Pi5 y comportamiento colectivo de cinco robots oveja guiados por un robot pastor. Integra ROS 2, Gazebo, control de motores y estimación de posición.": "Digital twin of the Yahboom MicroROS-Pi5 and collective behavior of five sheep robots guided by a shepherd robot. Combines ROS 2, Gazebo, motor control and position estimation.",
+      "Gemelo digital en ROS 2": "ROS 2 digital twin",
+      "Gemelo digital y aplicación": "Digital twin and application",
       "Geometría con trazabilidad": "Traceable geometry",
       "Gestión de eventos, recursos y networking; incremento documentado de participación y membresía durante la gestión.": "Event, resource and networking management; documented increase in participation and membership during management.",
       "Giro completo alrededor del ensamblaje general del equipo: casco, vela rígida con alerón de cola, anemómetro en el tope, panel solar, orza y timón. Es un render del CAD, no una grabación.": "Full turn around the team’s general assembly: hull, rigid wing sail with tail flap, anemometer at the top, solar panel, keel and rudder. It is a CAD render, not footage.",
@@ -2930,7 +3194,9 @@
       "Gmsh": "Gmsh",
       "Goethe-Institut Perú": "Goethe-Institut Perú",
       "Grupo de Investigación en Física": "Physics Research Group",
+      "Gráfica 3D de una espiral sobre una cúpula con flechas de dirección.": "3D plot of a spiral over a dome with direction arrows.",
       "Gráfica con la referencia de la rodilla en línea discontinua y dos curvas que la siguen con un pequeño retraso.": "Plot with the knee reference as a dashed line and two curves following it with a small lag.",
+      "Gráfica de barras en escala logarítmica del error de cinco controladores.": "Log-scale bar chart of the error of five controllers.",
       "Gráfica de barras grises y naranjas que bajan al aumentar la amplitud del terreno; el panel de la derecha casi vacío.": "Bar chart of grey and orange bars that drop as terrain amplitude grows; the right panel almost empty.",
       "Gráfico de barras con el porcentaje de impactos a 10, 15 y 30 FPS para dos cámaras.": "Bar chart of impact percentage at 10, 15 and 30 FPS for two cameras.",
       "Gráfico del reticulado del mástil sin carga en gris y deformado en naranja": "Plot of the mast lattice, unloaded in grey and deformed in orange",
@@ -2960,6 +3226,10 @@
       "Implementé SORT y OC-SORT con interruptores para cada pieza y comparé la implementación, salida por salida, con el código de los autores en las 21 secuencias de entrenamiento de MOT17: 174 362 salidas sin una sola diferencia.": "I implemented SORT and OC-SORT with switches for each piece and compared the implementation, output by output, with the authors’ code on the 21 MOT17 training sequences: 174,362 outputs without a single difference.",
       "Impresión 3D": "3D printing",
       "Impresión 3D FDM": "FDM 3D Printing",
+      "Impresión 3D multieje": "Multi-axis 3D printing",
+      "Impresión de un domo en cinco ejes": "Five-axis dome printing",
+      "Imprimir sin capas planas": "Printing without flat layers",
+      "Imprimí y armé la versión 1 del brazo en PLA y preparé la versión 2 en PLA con fibra de carbono, que se está imprimiendo. Extraje el modelo del brazo de su CAD oficial, programé en MATLAB la cinemática, la dinámica, el espacio de trabajo y los cinco controladores, armé el gemelo digital en ROS 2 y escribí la aplicación de escritorio. El diseño mecánico es de BCN3D Technologies (licencia MIT), basado en el BetaBots de Andreas Hölldorfer; el extrusor se modela como una carga, no es un diseño propio.": "I printed and assembled version 1 of the arm in PLA and prepared version 2 in carbon-fiber PLA, which is being printed. I extracted the arm model from its official CAD, programmed the kinematics, dynamics, workspace and the five controllers in MATLAB, built the ROS 2 digital twin and wrote the desktop application. The mechanical design is by BCN3D Technologies (MIT license), based on Andreas Hölldorfer’s BetaBots; the extruder is modeled as a load and is not my own design.",
       "Impulso de eventos y proyectos aeroespaciales, alianzas académicas y representación en conferencias.": "Promotion of aerospace events and projects, academic alliances and conference representation.",
       "Impulso de proyectos y eventos de robótica, alianzas académicas y representación en conferencias.": "Promotion of robotics projects and events, academic alliances and conference representation.",
       "Ingeniería Mecatrónica": "Mechatronics Engineering",
@@ -2994,10 +3264,13 @@
       "Jun. 2023 – mar. 2024": "Jun. 2023 – Mar. 2024",
       "KiCad": "KiCad",
       "La Raspberry Pi 5 ejecuta la visión y envía órdenes con suma de verificación por UART a un ESP32, que genera el PWM de los motores y frena si pasan 150 ms sin mensajes. El esquemático en KiCad pasa la verificación eléctrica sin errores y el firmware compila con sus pruebas. La cámara va en un mástil a 350 mm del suelo, atornillado a los agujeros reales de la WAVE ROVER tomados de sus planos oficiales. En una CPU de portátil, YOLOv8n tarda unos 100 ms por cuadro; falta medirlo en la Pi 5.": "The Raspberry Pi 5 runs the vision and sends checksummed commands over UART to an ESP32, which drives the motors’ PWM and brakes if 150 ms pass without messages. The KiCad schematic passes the electrical rules check with no errors and the firmware compiles with its tests. The camera sits on a mast 350 mm above the ground, bolted to the WAVE ROVER’s real holes taken from its official drawings. On a laptop CPU, YOLOv8n takes about 100 ms per frame; it still has to be measured on the Pi 5.",
+      "La aplicación reproduce un G-code de tres capas sobre un domo con la boquilla inclinada hasta 30°, con la dinámica del brazo simulada con par calculado. A la derecha, el panel con el error de la boquilla, los pares y los ángulos. Simulación acelerada.": "The application replays a three-layer G-code over a dome with the nozzle tilted up to 30°, with the arm dynamics simulated under computed torque. On the right, the dashboard with nozzle error, torques and joint angles. Accelerated simulation.",
+      "La aplicación también lee G-code de un laminador normal: aquí el brazo imprime un vaso de 30 mm con la boquilla vertical. Simulación acelerada.": "The application also reads standard slicer G-code: here the arm prints a 30 mm vase with a vertical nozzle. Accelerated simulation.",
       "La concordancia entre solucionadores es una verificación numérica, no una certificación de la máquina. Las secciones, el material y parte de la geometría son supuestos; no se evalúan todos los mecanismos ni modos de fallo. El modelo de Ansys MAPDL está preparado, pero no se resolvió por falta de licencia vigente.": "Agreement between solvers is a numerical check, not machine certification. Sections, material and parts of the geometry are assumed; not all mechanisms or failure modes are evaluated. The Ansys MAPDL model is prepared but was not solved because a valid license was unavailable.",
       "La experiencia detrás de los proyectos.": "The experience behind projects.",
       "La experiencia en Flanders Electric Perú de diciembre de 2024 a marzo de 2025 constituye el antecedente del prototipo a escala. La extensión de 2026 reconstruye digitalmente la Bucyrus 49HR y demuestra un flujo de modelado y monitoreo. Los renders y el video de esta ficha corresponden a esa extensión virtual.": "The December 2024–March 2025 experience at Flanders Electric Perú provides the background for the scale prototype. The 2026 extension digitally reconstructs the Bucyrus 49HR and demonstrates a modeling and monitoring workflow. The renderings and video on this page belong to that virtual extension.",
       "La fabricación, la caracterización de la pasta y los ensayos comparativos quedan para un proyecto posterior. El informe y el artículo son borradores técnicos, no publicaciones científicas aceptadas.": "Fabrication, paste characterization and comparative testing are left for a subsequent project. The report and article are technical drafts, not accepted scientific publications.",
+      "La foto muestra la versión 1 real. Las demás imágenes y los videos son simulaciones. El diseño mecánico del brazo es el": "The photo shows the real version 1. The other images and videos are simulations. The mechanical design of the arm is the",
       "La idea partió de un problema real: en las minas y en zonas de derrumbe el terreno es irregular y peligroso para las personas. Un robot con patas puede pasar por donde no pasa uno con ruedas. En 2023 me propuse construir un cuadrúpedo pequeño y barato para estudiar su estabilidad y su movilidad, con la idea de que llegue a transportar objetos. Lo presenté en el III Congreso Internacional en Tecnología e Innovación en Ingeniería y Computación (CITIIC 2023) de la USIL, con la asesoría de Sergio Gonzales Lecaros y Nain Ramos Álvarez.": "The idea came from a real problem: in mines and collapse zones the ground is uneven and dangerous for people. A legged robot can go where a wheeled one cannot. In 2023 I set out to build a small, low-cost quadruped to study its stability and mobility, with the aim of eventually carrying objects. I presented it at the 3rd International Congress on Technology and Innovation in Engineering and Computing (CITIIC 2023) at USIL, advised by Sergio Gonzales Lecaros and Nain Ramos Álvarez.",
       "La investigación en impresión 3D con biomateriales en ESAN conecta mi experiencia de manufactura digital con este campo. Mi CV también recoge conocimientos en biomimética y fundamentos de biomecánica, bioinstrumentación y control biomolecular.": "The research in 3D printing with biomaterials in ESAN connects my digital manufacturing experience with this field. My CV also collects knowledge in biomimetics and biomechanics, bioinstrumentation and biomolecular control.",
       "La plataforma física en el laboratorio": "The physical platform in the laboratory",
@@ -3035,7 +3308,6 @@
       "MDPI · 2026": "MDPI · 2026",
       "MOT17": "MOT17",
       "MS Project": "MS Project",
-      "Manipuladores": "Manipulators",
       "Manufactura": "Manufacturing",
       "Manufactura aditiva": "Additive manufacturing",
       "Manufactura y gestión": "Manufacturing and management",
@@ -3044,6 +3316,7 @@
       "Mar. – jun. 2025": "Mar. – Jun. 2025",
       "Mar. – jun. 2025 · etapa en AUTOTEC": "Mar. – Jun. 2025 · role at AUTOTEC",
       "Marcha autónoma, 2023": "Autonomous walking, 2023",
+      "Margen a la singularidad de muñeca y velocidad máxima de la articulación 4 según la posición de la pieza. La estrella marca la cama elegida, a 280 mm del eje y 240 mm de altura. Simulación en MATLAB.": "Wrist singularity margin and maximum joint 4 speed versus part position. The star marks the chosen bed, 280 mm from the axis and 240 mm high. MATLAB simulation.",
       "MasterCAM": "MasterCAM",
       "Material visual pendiente": "Visual material pending",
       "Mayo 2026 · figura publicada": "May 2026 · published figure",
@@ -3092,6 +3365,7 @@
       "Nov. 2023 · video del robot real": "Nov. 2023 · video of the real robot",
       "Nov. 2026 · simulación": "Nov. 2026 · simulation",
       "Nov. 2026 · simulación / diseño": "Nov. 2026 · simulation / design",
+      "Nube de puntos semiesférica, una sección con contornos de colores y un gráfico de barras.": "Hemispherical point cloud, a section with colored contours and a bar chart.",
       "OC-SORT": "OC-SORT",
       "OC-SORT · seguimiento de múltiples objetos": "OC-SORT · multiple object tracking",
       "ORCID": "ORCID",
@@ -3116,7 +3390,6 @@
       "Panel de monitoreo del gemelo": "Digital twin monitoring dashboard",
       "Para que el robot camine hay que decirle a cada pie dónde estar en cada instante y convertir eso en ángulos de los servos. Lo segundo es la cinemática inversa: con la geometría de la pata calculé, en forma cerrada, los tres ángulos que llevan el pie a un punto. Lo primero lo hace la marcha. Usé un trote, en el que se mueven a la vez las patas en diagonal. Cuando una pata está apoyada, el pie retrocede en línea recta y empuja el cuerpo. Cuando está en el aire, sigue una curva de Bézier de 12 puntos de control que lo levanta y lo lleva adelante sin golpes. El método viene de": "To make the robot walk, each foot has to be told where to be at every instant, and that has to be turned into servo angles. The second part is inverse kinematics: from the leg geometry I computed, in closed form, the three angles that bring the foot to a point. The first part is the gait. I used a trot, where diagonal legs move together. While a leg is on the ground, the foot moves back in a straight line and pushes the body. While it is in the air, it follows a 12-control-point Bézier curve that lifts it and brings it forward smoothly. The method comes from",
       "Parte del casco impreso en 3D sobre la mesa y una impresora CoLiDo al fondo, en los laboratorios de Ingeniería de USIL. Foto: USIL.": "Part of the 3D-printed hull on the table and a CoLiDo printer in the background, in the USIL Engineering labs. Photo: USIL.",
-      "Participación en el ensamblaje de un brazo robótico en ESAN R&D Labs.": "Participation in the assembly of a robotic arm in ESAN R & D Labs.",
       "Participación en prototipos de visión por computadora mediante Roboflow y sistemas embebidos en ESAN.": "Participation in computer vision prototypes using Roboflow and systems embedded in ESAN.",
       "Participación en proyectos de robótica aplicada, incluyendo extrusión 3D con biomateriales, ensamblaje de brazo robótico y prototipos de visión por computadora mediante Roboflow y sistemas embebidos.": "Participation in applied robotics projects, including 3D extrusion with biomaterials, robotic arm assembly and computer vision prototypes through Roboflow and embedded systems.",
       "Participación en pruebas y actividades de integración del Sistema de Control de Actitud y Órbita (AOCS) del proyecto Chasqui 2. Verificación de datos, documentación técnica y soporte a actividades de investigación orientadas a la integración de subsistemas.": "Participation in tests and integration activities of the Attitude and Orbit Control System (AOCS) of the Chasqui 2 project. Data verification, technical documentation and support for research activities aimed at the integration of subsystems.",
@@ -3126,6 +3399,7 @@
       "Perfil del velero: casco de 3,2 m en el modelo, vela rígida, alerón de cola en dos brazos, orza bajo el centro del casco y timón a popa. Render del modelo 3D del equipo.": "Sailboat profile: 3.2 m hull in the model, rigid wing sail, tail flap on two arms, keel under the middle of the hull and rudder at the stern. Render of the team’s 3D model.",
       "Phyto-G propone reorientar una cámara acuática mediante tres marcos anidados, accionados por un solo motor. Las conexiones giratorias de agua y alimentación eléctrica buscan permitir experimentos prolongados sin interrumpir la rotación para reponer recursos.": "Phyto-G proposes reorienting an aquatic chamber through three nested frames driven by a single motor. Rotary water and electrical connections are intended to support extended experiments without interrupting rotation to replenish resources.",
       "Phyto-G — agricultura espacial": "Phyto-G — space agriculture",
+      "Pieza plana desde un G-code común": "Planar part from a standard G-code",
       "Plano A3 con lista de materiales y globos; los planos de detalle de las piezas impresas están en el repositorio del proyecto.": "A3 drawing with bill of materials and balloons; detail drawings of the printed parts are in the project repository.",
       "Plano de conjunto": "Assembly drawing",
       "Plano de conjunto del robot con lista de materiales.": "Robot assembly drawing with bill of materials.",
@@ -3173,6 +3447,7 @@
       "Prótesis biónicas y exoesqueletos": "Bionic prostheses and exoskeletons",
       "Publicaciones": "Publications",
       "Publicación y crédito de las figuras": "Publication and figure credits",
+      "Puntos que alcanza la boquilla y zonas donde puede apuntar con 0, 15, 30 y 45° de inclinación en cualquier dirección. Simulación en MATLAB.": "Points the nozzle can reach and zones where it can point with 0, 15, 30 and 45° of tilt in any direction. MATLAB simulation.",
       "PyNite": "PyNite",
       "Python": "Python",
       "Qué parte de OC-SORT ayuda": "Which part of OC-SORT helps",
@@ -3221,10 +3496,12 @@
       "Resultados documentados": "Documented results",
       "Resumen descriptivo: a la izquierda SORT y a la derecha OC-SORT siguen a una multitud. El peatón marcado en ámbar deja de detectarse durante 1,5 s. Al volver, SORT muestra «identidad perdida» y OC-SORT «identidad recuperada». Trayectorias de MOT17 con detector simulado.": "Descriptive summary: SORT on the left and OC-SORT on the right track a crowd. The amber-marked pedestrian stops being detected for 1.5 s. When they return, SORT shows “identity lost” and OC-SORT “identity recovered”. MOT17 trajectories with a simulated detector.",
       "Resumen descriptivo: durante 12 segundos se ven dos vistas lado a lado. A la izquierda, el robot real de 2023 avanza sobre un piso de madera con la cámara en mano, conectado por un cable de red. A la derecha, el modelo simulado da pasos de trote, con las patas en diagonal moviéndose juntas, y avanza a unos 0,17 m/s. Video sin audio.": "Descriptive summary: for 12 seconds two views are shown side by side. On the left, the real 2023 robot moves across a wooden floor, filmed handheld, connected by a network cable. On the right, the simulated model takes trot steps, with diagonal legs moving together, and moves forward at about 0.17 m/s. Video without audio.",
+      "Resumen descriptivo: el brazo se acerca a la cama y recorre un círculo capa por capa hasta formar un vaso pequeño. El panel muestra el avance, la capa y el error de la boquilla. Video sin audio.": "Descriptive summary: the arm approaches the bed and traces a circle layer by layer until a small vase forms. The dashboard shows progress, layer and nozzle error. Video without audio.",
       "Resumen descriptivo: el modelo se traslada con el mástil abatido, se nivela sobre los gatos, eleva el mástil, avanza y retira la columna de perforación y cambia a una posición inclinada. La secuencia es una animación CAD; no es filmación de una máquina real.": "Descriptive summary: the model moves with its mast lowered, levels on its jacks, raises the mast, advances and withdraws the drill string, and changes to an inclined position. The sequence is a CAD animation, not footage of a real machine.",
       "Resumen descriptivo: el robot está sobre un soporte en el escritorio, con un monitor al fondo. Una persona usa un mando de PS4 y las patas se mueven en el aire siguiendo los mandos. Dura unos 57 segundos. Video sin audio.": "Descriptive summary: the robot sits on a stand on the desk, with a monitor in the background. A person uses a PS4 controller and the legs move in the air following the commands. It lasts about 57 seconds. Video without audio.",
       "Resumen descriptivo: en ambos paneles el robot avanza a 1 m/s. A la izquierda el peatón entra tarde en la imagen y hay impacto. A la derecha el robot lo detecta, ordena frenar y se detiene sin impacto.": "Descriptive summary: in both panels the robot moves at 1 m/s. On the left the pedestrian enters the image late and there is an impact. On the right the robot detects them, commands braking and stops without impact.",
       "Resumen descriptivo: la cámara da una vuelta completa alrededor del velero en 10 segundos. Se ven el casco claro, la vela rígida gris, el alerón de cola sostenido por dos brazos, el anemómetro en el tope de la vela, el panel solar en la popa y, bajo el casco, la orza y el timón. Video sin audio.": "Descriptive summary: the camera makes a full turn around the sailboat in 10 seconds. It shows the light hull, the grey rigid wing sail, the tail flap held by two arms, the anemometer at the top of the sail, the solar panel at the stern and, below the hull, the keel and rudder. Video without audio.",
+      "Resumen descriptivo: la cámara gira lentamente alrededor del brazo mientras la boquilla recorre en espiral la superficie de un domo sobre una cama elevada. El filamento depositado cambia de color con cada capa. El panel de la derecha muestra el tiempo, la capa, la inclinación de la boquilla, el error en milímetros y las gráficas de par y ángulos. Video sin audio.": "Descriptive summary: the camera slowly orbits the arm while the nozzle spirals over a dome on a raised bed. The deposited filament changes color with each layer. The right-hand dashboard shows time, layer, nozzle tilt, error in millimeters and torque and angle plots. Video without audio.",
       "Resumen descriptivo: la cámara sigue al robot desde arriba mientras camina sobre un piso de madera durante unos 17 segundos. Se ven las patas moverse en trote y los cables de alimentación y de red que salen del cuerpo. Video sin audio.": "Descriptive summary: the camera follows the robot from above as it walks on a wooden floor for about 17 seconds. The legs move in a trot and the power and network cables leave the body. Video without audio.",
       "Resumen descriptivo: láminas con el planteamiento y los resultados, una animación en la que SORT pierde y OC-SORT recupera la identidad de un peatón oculto 1,5 s, una vista en planta donde la lógica original choca y la nueva frena, el esquemático y un recorrido 3D del montaje sobre la WAVE ROVER.": "Descriptive summary: slides with the approach and results, an animation in which SORT loses and OC-SORT recovers the identity of a pedestrian hidden for 1.5 s, a top view where the original logic collides and the new one brakes, the schematic and a 3D tour of the mounting on the WAVE ROVER.",
       "Resumen descriptivo: se presenta la geometría auxética, el conjunto mecánico y la electrónica; el motor mueve la transmisión y el husillo, el carro empuja el émbolo y la simulación muestra la deposición de pasta. Las magnitudes mostradas proceden del modelo numérico; el tiempo y la deformación visual están escalados.": "Descriptive summary: the auxetic geometry, mechanical assembly and electronics are introduced; the motor drives the transmission and lead screw, the carriage pushes the plunger and the simulation shows paste deposition. Displayed quantities come from the numerical model; time and visible deformation are scaled.",
@@ -3279,6 +3556,7 @@
       "Simulación": "Simulation",
       "Simulación de movimiento a 10 rpm": "Motion simulation at 10 rpm",
       "Simulación de sistemas dinámicos no lineales aplicada a la investigación en física de partículas.": "Simulation of dynamic non-linear systems applied to particle physics research.",
+      "Simulación del brazo Moveo, rojo y crema, imprimiendo un domo sobre una cama elevada con un pedestal. Es una captura de la aplicación, no una fotografía.": "Simulation of the red and cream Moveo arm printing a dome on a raised bed with a pedestal. This is a screenshot of the application, not a photograph.",
       "Simulink": "Simulink",
       "Simulé 300 escenas en las que un peatón cruza delante del robot y pasa detrás de una columna. Con una cámara de 70°, el peatón que llega por el costado entra en la imagen cuando ya está a menos de un metro y ninguna lógica baja de 26 % de choques. La lógica original, que gira hacia el lado contrario, choca más que no hacer nada (29–36 %). Con una cámara de 110° y una lógica que estima la velocidad lateral de cada pista y frena si el peatón estará en el camino, los choques bajan a 0–0,7 %. SORT y OC-SORT dan el mismo resultado: la identidad cambia por el movimiento de la propia cámara, pero la nueva lógica frena igual.": "I simulated 300 scenes in which a pedestrian crosses in front of the robot and passes behind a column. With a 70° camera, a pedestrian approaching from the side enters the image when already less than a meter away and no logic gets below 26% collisions. The original logic, which steers to the opposite side, collides more than doing nothing (29–36%). With a 110° camera and a logic that estimates each track’s lateral speed and brakes if the pedestrian will be in the path, collisions drop to 0–0.7%. SORT and OC-SORT give the same result: identity changes due to the camera’s own motion, but the new logic brakes anyway.",
       "Sistemas autónomos": "Autonomous systems",
@@ -3312,6 +3590,7 @@
       "Trabajé en la construcción junto con mis compañeros. Imprimimos piezas del casco y de la popa en las impresoras 3D de la universidad, las armamos y apoyamos en la fabricación y el montaje hasta tener el velero completo. Un casco de más de tres metros no cabe en una impresora, así que se dividió en piezas pequeñas que había que imprimir con cuidado y unir con precisión.": "I worked on the construction together with my classmates. We printed hull and stern parts on the university’s 3D printers, assembled them and helped with fabrication and assembly until the sailboat was complete. A hull more than three meters long does not fit in a printer, so it was split into small parts that had to be printed carefully and joined precisely.",
       "Transcripción": "Transcription",
       "Trayectoria / CV": "Background / CV",
+      "Trayectoria conformal": "Conformal path",
       "Trayectoria y CV | Anghello Rodríguez": "Background and CV | Anghello Rodríguez",
       "Trayectorias de cinco robots oveja y un pastor hacia el corral.": "Trajectories of five sheep robots and a shepherd toward the pen.",
       "Trayectorias del ensayo de pastoreo": "Shepherding trial trajectories",
@@ -3331,6 +3610,7 @@
       "Un robot que circula entre personas necesita tres cosas: detectar a cada peatón en la imagen, saber que es la misma persona de un cuadro a otro aunque alguien la tape un momento, y decidir a tiempo si debe frenar. La cámara envía 30 cuadros por segundo; YOLOv8n encuentra las cajas de cada persona y el rastreador las une en trayectorias con identidad.": "A robot moving among people needs three things: detect each pedestrian in the image, know it is the same person from one frame to the next even when someone briefly blocks the view, and decide in time whether to brake. The camera delivers 30 frames per second; YOLOv8n finds each person’s bounding box and the tracker links them into trajectories with an identity.",
       "Un velero autónomo, o saildrone, es una embarcación sin tripulación que avanza con el viento y recarga sus baterías con el sol. Puede pasar días en el mar recogiendo datos para la investigación oceánica. En 2023 la Marina de Guerra del Perú promovió la construcción de estos veleros en universidades peruanas para una primera regata de veleros no tripulados, y USIL construyó el suyo: el velero «Belén».": "An autonomous sailboat, or saildrone, is an uncrewed vessel that moves with the wind and recharges its batteries with the sun. It can spend days at sea collecting data for ocean research. In 2023 the Peruvian Navy promoted the construction of these sailboats at Peruvian universities for a first uncrewed sailboat regatta, and USIL built its own: the sailboat “Belén”.",
       "Un velero que navega solo": "A sailboat that sails by itself",
+      "Una impresora 3D común deposita capas planas con la boquilla siempre vertical. Un brazo robótico puede inclinar la boquilla y seguir superficies curvas, y así imprimir cúpulas, voladizos o recubrimientos sin soportes. Para eso tomé el BCN3D Moveo, un brazo de código abierto de cinco grados de libertad, lo imprimí y lo armé en el FabLab de ESAN, y desarrollé todo lo que necesita para imprimir con un extrusor en su último eslabón.": "A common 3D printer lays down flat layers with the nozzle always vertical. A robot arm can tilt the nozzle and follow curved surfaces, printing domes, overhangs or coatings without supports. To do that I took the BCN3D Moveo, an open-source five-degree-of-freedom arm, printed and assembled it at the ESAN FabLab, and developed everything it needs to print with an extruder on its last link.",
       "Una plataforma terrestre para investigación espacial": "An Earth-based platform for space research",
       "Una trayectoria de construcción": "A path of learning and building",
       "Unidad extrusora — vista explosionada": "Extrusion unit — exploded view",
@@ -3341,12 +3621,14 @@
       "Velero autónomo no tripulado de 3,30 m construido en 2023 por estudiantes y docentes de Ingeniería de USIL para la Primera Regata de Veleros No Tripulados que promovió la Marina de Guerra del Perú. Casco hecho con piezas impresas en 3D y revestido con fibra de vidrio, vela rígida y paneles solares.": "A 3.30 m uncrewed autonomous sailboat built in 2023 by USIL Engineering students and faculty for the First Uncrewed Sailboat Regatta promoted by the Peruvian Navy. Its hull is made of 3D-printed parts covered with fiberglass, with a rigid wing sail and solar panels.",
       "Velero autónomo «Belén» — Saildrone USIL": "Autonomous sailboat “Belén” — USIL Saildrone",
       "Velero terminado y presentado en el Centro Naval de San Borja ante la Marina de Guerra del Perú (agosto de 2023), como uno de los cinco prototipos universitarios seleccionados entre quince instituciones; exhibido después en la Expo Drone Tech 2023 (noviembre de 2023). Datos publicados por USIL: eslora de 3,30 m, vela rígida de 1,80 m, ancho de 0,50 m y carga de hasta 100 kg.": "Sailboat completed and presented at the San Borja Naval Center to the Peruvian Navy (August 2023), as one of the five university prototypes selected from fifteen institutions; later exhibited at the Drone Tech 2023 Expo (November 2023). Figures published by USIL: 3.30 m length, 1.80 m rigid sail, 0.50 m beam and up to 100 kg of payload.",
+      "Ventana de RViz con el brazo, la cama elevada y un domo naranja impreso.": "RViz window with the arm, the raised bed and a printed orange dome.",
       "Ver artículo y figura original": "View article and original figure",
       "Ver experiencia completa": "See full experience",
       "Ver experiencia relacionada": "See related experience",
       "Ver ficha": "View project",
       "Ver trayectoria y CV": "View background and CV",
       "Ver, seguir y decidir": "See, track and decide",
+      "Versión 1 armada en el FabLab": "Version 1 assembled at the FabLab",
       "Video de 1 min 36 s con diseño, mecanismo e impresión simulada de la revisión B. El tiempo está acelerado y la deformación del módulo se amplía ×10 para visualizarla. La cifra de factor de seguridad ≥ 7,5 de la lámina corresponde a las piezas de aluminio, no al módulo auxético. No es una grabación de un prototipo.": "A 1 min 36 s video showing the design, mechanism and simulated printing with Revision B. Time is accelerated and module deformation is magnified ×10 for visibility. The safety factor ≥ 7.5 shown on the slide applies to the aluminum parts, not the auxetic module. This is not footage of a prototype.",
       "Video del proyecto — simulaciones y diseño": "Project video — simulations and design",
       "Video original de la prueba de movimiento: el robot sobre un soporte en la mesa responde al mando de PS4.": "Original video of the motion test: the robot on a stand on the desk responds to the PS4 controller.",
@@ -3379,10 +3661,10 @@
       "Área de la caja frente a la distancia: cuando el peatón no cabe en la imagen, el área deja de crecer y el umbral de 45 000 px² se dispara a 1,12 m en lugar de 2 m.": "Box area versus distance: when the pedestrian no longer fits in the image, the area stops growing and the 45,000 px² threshold fires at 1.12 m instead of 2 m.",
       "Áreas de especialización": "Areas of specialization",
       "Áreas que conectan mi trabajo": "Areas that connect my work",
+      "Brazo robótico Moveo para impresión 3D multieje | Anghello Rodríguez": "Moveo robotic arm for multi-axis 3D printing | Anghello Rodríguez",
       "Chasqui 2 — AOCS | Anghello Rodríguez": "Chasqui 2 — AOCS | Anghello Rodríguez",
       "Cuadrúpedo para terrenos complejos | Anghello Rodríguez": "Quadruped robot for challenging terrain | Anghello Rodríguez",
       "Enjambre de robots — ovejas y lobo | Anghello Rodríguez": "Robot swarm — sheep and wolf | Anghello Rodríguez",
-      "Ensamblaje de brazo robótico | Anghello Rodríguez": "Robotic arm assembly | Anghello Rodríguez",
       "Extrusora 3D de pasta cerámica con módulo auxético | Anghello Rodríguez": "Ceramic paste 3D extruder with an auxetic module | Anghello Rodríguez",
       "PachaLab — robótica espacial | Anghello Rodríguez": "PachaLab — space robotics | Anghello Rodríguez",
       "Phyto-G — agricultura espacial | Anghello Rodríguez": "Phyto-G — space agriculture | Anghello Rodríguez",
@@ -3390,10 +3672,10 @@
       "Proyectos | Anghello Rodríguez": "Projects | Anghello Rodríguez",
       "Robot de servicio para estudiantes | Anghello Rodríguez": "Service robot for students | Anghello Rodríguez",
       "Velero autónomo «Belén» — Saildrone USIL | Anghello Rodríguez": "Autonomous sailboat “Belén” — USIL Saildrone | Anghello Rodríguez",
+      "Ver proyecto: Brazo robótico Moveo para impresión 3D multieje": "View project: Moveo robotic arm for multi-axis 3D printing",
       "Ver proyecto: Chasqui 2 — AOCS": "View project: Chasqui 2 — AOCS",
       "Ver proyecto: Cuadrúpedo para terrenos complejos": "View project: Quadruped robot for challenging terrain",
       "Ver proyecto: Enjambre de robots — ovejas y lobo": "View project: Robot swarm — sheep and wolf",
-      "Ver proyecto: Ensamblaje de brazo robótico": "View project: Robotic arm assembly",
       "Ver proyecto: Extrusora 3D de pasta cerámica con módulo auxético": "View project: Ceramic paste 3D extruder with an auxetic module",
       "Ver proyecto: PachaLab — robótica espacial": "View project: PachaLab — space robotics",
       "Ver proyecto: Phyto-G — agricultura espacial": "View project: Phyto-G — space agriculture",
